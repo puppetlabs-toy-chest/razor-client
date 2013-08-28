@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1566'
+      Date:
+      - Wed, 28 Aug 2013 21:46:05 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"commands":[{"name":"create-image","rel":"http://api.puppetlabs.com/razor/v1/commands/create-image","id":"http://localhost:8080/api/commands/create-image"},{"name":"delete-image","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-image","id":"http://localhost:8080/api/commands/delete-image"},{"name":"create-installer","rel":"http://api.puppetlabs.com/razor/v1/commands/create-installer","id":"http://localhost:8080/api/commands/create-installer"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"images","rel":"http://api.puppetlabs.com/razor/v1/collections/images","id":"http://localhost:8080/api/collections/images"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"}]}'
+    http_version: 
+  recorded_at: Wed, 28 Aug 2013 21:46:05 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/collections/tags
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2'
+      Date:
+      - Wed, 28 Aug 2013 21:46:05 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '[]'
+    http_version: 
+  recorded_at: Wed, 28 Aug 2013 21:46:05 GMT
+recorded_with: VCR 2.5.0
