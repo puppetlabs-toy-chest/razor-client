@@ -3,7 +3,6 @@ require 'terminal-table'
 module Razor::CLI
   module Format
     PriorityKeys = %w[ id name ]
-    KeyAliases = {"id" => "ID", "spec" => "Type", "url" => "URL"}
     SpecNames = {
       "/spec/object/policy" => "Policy",
       "/spec/object/tag" => "Tag",
@@ -33,15 +32,12 @@ module Razor::CLI
     end
 
     def format_reference_object(ref, indent = 0)
-      output = ' '* indent + "ID: #{ref['obj_id'].to_s.ljust 4} "
-      output << "\"#{ref['name']}\" => " if ref["name"]
-      output << "#{URI.parse(ref["url"]).path}"
+      output = ' '* indent + "#{ref['name']} => #{ref['id'].to_s.ljust 4}"
     end
 
 
     def format_object(object, indent = 0)
-      case Format.spec_name(object["spec"])
-      when "reference"
+      if object.keys == ["id", "name"]
         format_reference_object(object, indent)
       else
         format_default_object(object, indent)
@@ -54,12 +50,16 @@ module Razor::CLI
       output = ""
       fields.map do |f|
         value = object[f]
-        output = "#{(KeyAliases[f]||f).capitalize.rjust key_indent + 2}: "
+        output = "#{f.rjust key_indent + 2}: "
         output << case value
         when Hash
           "\n" + format_object(value, key_indent + 4).rstrip
         when Array
-          "[\n" + format_objects(value, key_indent + 6) + ("\n"+' '*(key_indent+4)+"]")
+           if value.all? { |v| v.is_a?(String) }
+             "[" + value.map(&:inspect).join(",") + "]"
+           else
+             "[\n" + format_objects(value, key_indent + 6) + ("\n"+' '*(key_indent+4)+"]")
+           end
         else
           case f
           when "spec" then "\"#{Format.spec_name(value)}\""
