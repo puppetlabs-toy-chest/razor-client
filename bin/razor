@@ -21,11 +21,9 @@ rescue RestClient::Exception => e
   puts e.message
   begin
     body = JSON::parse(r.body)
-    if body["details"]
-      puts body.delete("details")
-      unless body.empty?
-        puts format_document(body)
-      end
+    puts body.delete("details") if body["details"]
+    unless body.empty?
+      puts format_document(body)
     end
   rescue => e
     # Ignore errors here; our best efforts at telling the user more about
