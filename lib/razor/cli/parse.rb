@@ -52,7 +52,7 @@ module Razor::CLI
       @api_url = URI.parse("http://localhost:8080/api")
       @args = args.dup
       rest = get_optparse.order(args)
-      if args.any?
+      if rest.any?
         @navigation = rest
       else
         @option_help = true
