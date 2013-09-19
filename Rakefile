@@ -1,4 +1,5 @@
 require 'rake'
+require "bundler/gem_tasks"
 require_relative 'spec/vcr_library'
 
 namespace :bundler do
