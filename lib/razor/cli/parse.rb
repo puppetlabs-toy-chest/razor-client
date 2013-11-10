@@ -45,11 +45,18 @@ module Razor::CLI
     def dump_response?
       !!@dump
     end
+    
+    def get_url_from_env_or_default(url)
+      if ENV['RAZOR_API_URL'] =~ /^#{URI::regexp}$/
+        url = ENV['RAZOR_API_URL']
+      end   
+      api_url = URI.parse(url)      
+    end
 
     attr_reader :api_url
 
     def initialize(args)
-      @api_url = URI.parse("http://localhost:8080/api")
+      @api_url = get_url_from_env_or_default("http://localhost:8080/api")
       @args = args.dup
       rest = get_optparse.order(args)
       if rest.any?
