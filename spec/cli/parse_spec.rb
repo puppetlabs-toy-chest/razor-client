@@ -43,6 +43,11 @@ describe Razor::CLI::Parse do
         ENV["RAZOR_API_URL"] = env_url
         parse('-U',url).api_url.to_s.should == url
       end
+      it "should use default URL if env has no correct URL" do
+        url = 'not valid url'
+        ENV["RAZOR_API_URL"] = url
+        parse.api_url.to_s.should == 'http://localhost:8080/api'        
+      end
     end
 
     describe "#help", :vcr do
