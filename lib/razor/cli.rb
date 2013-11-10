@@ -12,6 +12,20 @@ module Razor
         end
       end
     end
+
+    class InvalidURIError < Error
+      def initialize(url, type)
+        case type
+        when :env
+          super "URL '#{url}' in ENV variable RAZOR_API is not valid"
+        when :opts
+          super "URL '#{url}' provided by -U or --url is not valid"
+        else
+          super "URL '#{url}' is not valid"
+        end
+      end
+    end
+
   end
 end
 

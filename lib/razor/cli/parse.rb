@@ -19,7 +19,7 @@ module Razor::CLI
           "The full Razor API URL, can also be set\n" + " "*37 +
           "with the RAZOR_API environment variable\n" + " "*37 +
           "(default #{DEFAULT_RAZOR_API})" do |url|
-          @api_url = URI.parse(url)
+          parse_and_set_api_url(url, :opts)
         end
 
         opts.on "-h", "--help", "Show this screen" do
@@ -59,7 +59,7 @@ module Razor::CLI
     attr_reader :api_url
 
     def initialize(args)
-      @api_url = URI.parse(ENV["RAZOR_API"] || DEFAULT_RAZOR_API)
+      parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
       rest = get_optparse.order(args)
       if rest.any?
@@ -71,6 +71,15 @@ module Razor::CLI
 
     def navigate
       @navigate ||=Navigate.new(self, @navigation)
+    end
+
+    private
+    def parse_and_set_api_url(url, source)
+      begin
+        @api_url = URI.parse(url)
+      rescue URI::InvalidURIError => e
+        raise Razor::CLI::InvalidURIError.new(url, source)
+      end
     end
   end
 end
