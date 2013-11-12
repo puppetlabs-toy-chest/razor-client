@@ -29,6 +29,9 @@ describe Razor::CLI::Parse do
         url = 'http://razor.example.com:2150/path/to/api'
         parse('-U',url).api_url.to_s.should == url
       end
+      it "should terminate with properiate error message if no valid URL is provided" do
+        expect{parse('-U','not valid url')}.to raise_error(Razor::CLI::RazorApiUrlError, "Api Url 'not valid url' provided by -U or --url is not valid")        
+      end
     end
     
     context "with ENV RAZOR_API_URL set" do
@@ -43,10 +46,9 @@ describe Razor::CLI::Parse do
         ENV["RAZOR_API_URL"] = env_url
         parse('-U',url).api_url.to_s.should == url
       end
-      it "should use default URL if env has no correct URL" do
-        url = 'not valid url'
-        ENV["RAZOR_API_URL"] = url
-        parse.api_url.to_s.should == 'http://localhost:8080/api'        
+      it "should terminate with properiate error message if no valid URL is provided" do
+        ENV["RAZOR_API_URL"] = 'not valid url'
+        expect{parse}.to raise_error(Razor::CLI::RazorApiUrlError, "Api Url 'not valid url' in ENV variable RAZOR_API_URL is not valid")
       end
     end
 
