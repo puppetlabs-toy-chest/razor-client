@@ -12,6 +12,20 @@ module Razor
         end
       end
     end
+    
+    class RazorApiUrlError < Error
+      def initialize(type, url)
+        case type
+        when "ENV"          
+          super "Api Url '#{url}' in ENV variable RAZOR_API_URL is not valid"
+        when "-U"
+          super "Api Url '#{url}' provided by -U or --url is not valid"
+        else
+          super "Api Url '#{url}' is not valid"            
+        end
+      end
+    end
+    
   end
 end
 

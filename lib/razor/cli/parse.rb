@@ -14,7 +14,11 @@ module Razor::CLI
         end
 
         opts.on "-U", "--url URL", "The full Razor API URL (default #{@api_url})" do |url|
-          @api_url = URI.parse(url)
+          if url =~ /^#{URI::regexp}$/
+            @api_url = URI.parse(url)
+          else
+            raise Razor::CLI::RazorApiUrlError.new('-U', url)
+          end
         end
 
         opts.on "-h", "--help", "Show this screen" do
@@ -45,11 +49,20 @@ module Razor::CLI
     def dump_response?
       !!@dump
     end
+    
+    def get_url_from_env_or_default(url)
+      url = ENV['RAZOR_API_URL'].to_s unless ENV['RAZOR_API_URL'].to_s.empty?
+      if url =~ /^#{URI::regexp}$/
+        @api_url = URI.parse(url)
+      else
+        raise Razor::CLI::RazorApiUrlError.new('ENV', url)
+      end          
+    end
 
     attr_reader :api_url
 
     def initialize(args)
-      @api_url = URI.parse("http://localhost:8080/api")
+      @api_url = get_url_from_env_or_default("http://localhost:8080/api")
       @args = args.dup
       rest = get_optparse.order(args)
       if rest.any?
