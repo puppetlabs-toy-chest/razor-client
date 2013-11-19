@@ -1,0 +1,14 @@
+---
+
+# This file helps Razor::CLI::Navigate with a few things by annotating the
+# API. Ultimately, this should be something the server provides. But until
+# we better understand what sort of annotation we need from the server,
+# we'll keep this with the client.
+
+commands:
+  create-tag:
+    args:
+      rule: json
+  update-tag:
+    args:
+      rule: json
