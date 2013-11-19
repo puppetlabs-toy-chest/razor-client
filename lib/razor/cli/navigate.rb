@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json'
+require 'yaml'
 
 module Razor::CLI
   class Navigate
@@ -63,10 +64,10 @@ module Razor::CLI
       body = {}
       until @segments.empty?
         if @segments.shift =~ /\A--([a-z-]+)(=(\S+))?\Z/
-          body[$1] = ($3 || @segments.shift)
+          body[$1] = convert_arg(cmd["name"], $1, ($3 || @segments.shift))
         end
       end
-      # Special treatment for tag rules
+      # Parse JSON-valued arguments
       if cmd["name"] == "create-tag" && body["rule"]
         body["rule"] = JSON::parse(body["rule"])
       end
@@ -113,6 +114,21 @@ module Razor::CLI
       response = RestClient.post url, body.to_json, headers
       puts "POST #{url.to_s}\n#{body}\n-->\n#{response.body}" if @parse.dump_response?
       JSON::parse(response.body)
+    end
+
+    private
+    def self.annotations
+      @@annotations ||=
+        YAML::load_file(File::join(File::dirname(__FILE__), "navigate.yaml"))
+    end
+
+    def self.arg_type(cmd_name, arg_name)
+      cmd = annotations["commands"][cmd_name]
+      cmd && cmd["args"][arg_name]
+    end
+
+    def convert_arg(cmd_name, arg_name, value)
+      self.class.arg_type(cmd_name, arg_name) == "json" ? JSON::parse(value) : value
     end
   end
 end
