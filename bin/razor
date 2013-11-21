@@ -15,6 +15,9 @@ begin
   puts "From #{url}:\n\n#{format_document document}\n\n"
 rescue Razor::CLI::NavigationError => e
   puts "Error: #{e}\n#{parse.help}\n\n"
+rescue SocketError, Errno::ECONNREFUSED => e
+  puts "Error: Could not connect to the server at #{parse.api_url}"
+  puts "       #{e}\n"
 rescue RestClient::Exception => e
   r = e.response
   puts "Error from doing #{r.args[:method].to_s.upcase} #{r.args[:url]}"
