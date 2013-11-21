@@ -33,8 +33,13 @@ module Razor::CLI
 
     def help
       output = get_optparse.to_s
-      output << list_things("collections", navigate.collections)
-      output << list_things("commands", navigate.commands)
+      begin
+        output << list_things("collections", navigate.collections)
+        output << list_things("commands", navigate.commands)
+      rescue
+        output << "\nCould not connect to the server at #{@api_url}. More help is available after "
+        output << "pointing\nthe client to a Razor server"
+      end
       output
     end
 
