@@ -4,6 +4,8 @@ require 'optparse'
 module Razor::CLI
 
   class Parse
+    DEFAULT_RAZOR_API = "http://localhost:8080/api"
+
     def get_optparse
       @optparse ||= OptionParser.new do |opts|
         opts.banner = "Usage: razor [FLAGS] NAVIGATION\n"
@@ -13,7 +15,10 @@ module Razor::CLI
           @dump = true
         end
 
-        opts.on "-U", "--url URL", "The full Razor API URL (default #{@api_url})" do |url|
+        opts.on "-U", "--url URL",
+          "The full Razor API URL, can also be set\n" + " "*37 +
+          "with the RAZOR_API environment variable\n" + " "*37 +
+          "(default #{DEFAULT_RAZOR_API})" do |url|
           @api_url = URI.parse(url)
         end
 
@@ -33,8 +38,13 @@ module Razor::CLI
 
     def help
       output = get_optparse.to_s
-      output << list_things("collections", navigate.collections)
-      output << list_things("commands", navigate.commands)
+      begin
+        output << list_things("collections", navigate.collections)
+        output << list_things("commands", navigate.commands)
+      rescue
+        output << "\nCould not connect to the server at #{@api_url}. More help is available after "
+        output << "pointing\nthe client to a Razor server"
+      end
       output
     end
 
@@ -49,7 +59,7 @@ module Razor::CLI
     attr_reader :api_url
 
     def initialize(args)
-      @api_url = URI.parse("http://localhost:8080/api")
+      @api_url = URI.parse(ENV["RAZOR_API"] || DEFAULT_RAZOR_API)
       @args = args.dup
       rest = get_optparse.order(args)
       if rest.any?
