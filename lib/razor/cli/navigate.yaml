@@ -9,6 +9,6 @@ commands:
   create-tag:
     args:
       rule: json
-  update-tag:
+  update-tag-rule:
     args:
       rule: json
