@@ -4,20 +4,32 @@ require_relative "../lib/razor/cli"
 
 include Razor::CLI::Format
 
-parse = Razor::CLI::Parse.new(ARGV)
+def die(message = nil)
+  puts "Error: #{message}" if message
+  exit 1
+end
+
+begin
+  parse = Razor::CLI::Parse.new(ARGV)
+rescue Razor::CLI::InvalidURIError => e
+  die e.message
+end
+
 if parse.show_help?
   puts parse.help
   exit 0
 end
+
 begin
   document = parse.navigate.get_document
   url = parse.navigate.last_url
   puts "From #{url}:\n\n#{format_document document}\n\n"
 rescue Razor::CLI::NavigationError => e
-  puts "Error: #{e}\n#{parse.help}\n\n"
+  die "#{e}\n#{parse.help}\n\n"
 rescue SocketError, Errno::ECONNREFUSED => e
   puts "Error: Could not connect to the server at #{parse.api_url}"
   puts "       #{e}\n"
+  die
 rescue RestClient::Exception => e
   r = e.response
   puts "Error from doing #{r.args[:method].to_s.upcase} #{r.args[:url]}"
@@ -33,4 +45,5 @@ rescue RestClient::Exception => e
     # what happened has failed. Just dump the response
     puts r.body
   end
+  die
 end
