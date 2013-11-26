@@ -5,9 +5,11 @@ backwards incompatible changes, especially to the database schema which
 would force you to rebuild all the machines that Razor is managing. Razor
 will become stable RSN.
 
-This is the command line client for the
-[Razor server](https://github.com/puppetlabs/razor-server) Please have a
-look at the Wiki over there for details.
+This is the command line client for the [Razor
+server](https://github.com/puppetlabs/razor-server) Please have a look at
+the Wiki over there for details, in particular, the [Getting
+Started](https://github.com/puppetlabs/razor-server/wiki/Getting-started)
+page contains instructions about installation and setup of the client.
 
 ## Getting in touch
 
