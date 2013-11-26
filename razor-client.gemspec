@@ -4,11 +4,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "razor-client"
-  spec.version       = "0.10.0"
-  spec.authors       = ["David Lutterkort"]
-  spec.email         = ["lutter@watzmann.net"]
+  spec.version       = "0.11.0"
+  spec.authors       = ["Puppet Labs"]
+  spec.email         = ["info@puppetlabs.com"]
   spec.description   = "The client for the Razor server"
-  spec.summary       = "The client for everyvody's favorite provisioning tool"
+  spec.summary       = "The client for everybody's favorite provisioning tool"
   spec.homepage      = "https://github.com/puppetlabs/razor-client"
   spec.license       = "ASL2"
 
