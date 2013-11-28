@@ -67,10 +67,7 @@ module Razor::CLI
           body[$1] = convert_arg(cmd["name"], $1, ($3 || @segments.shift))
         end
       end
-      # Parse JSON-valued arguments
-      if cmd["name"] == "create-tag" && body["rule"]
-        body["rule"] = JSON::parse(body["rule"])
-      end
+
       body = JSON::parse(File::read(body["json"])) if body["json"]
       [cmd, body]
     end
