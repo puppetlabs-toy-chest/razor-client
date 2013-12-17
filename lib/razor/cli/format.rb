@@ -52,8 +52,6 @@ module Razor::CLI
         value = object[f]
         output = "#{f.rjust key_indent + 2}: "
         output << case value
-        when Hash
-          "\n" + format_object(value, key_indent + 4).rstrip
         when Array
            if value.all? { |v| v.is_a?(String) }
              "[" + value.map(&:inspect).join(",") + "]"
