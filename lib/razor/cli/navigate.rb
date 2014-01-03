@@ -84,6 +84,10 @@ module Razor::CLI
 
       if obj.is_a?(Hash) && obj["id"]
         @doc = json_get(obj["id"])
+        # strip the wrapper around collections
+        if @doc.is_a? Hash and @doc["items"].is_a? Array
+          @doc = @doc["items"]
+        end
         @doc_url = obj["id"]
       elsif obj.is_a? Hash
         @doc = obj
