@@ -129,6 +129,7 @@ module Razor::CLI
     end
 
     def convert_arg(cmd_name, arg_name, value)
+      value = nil if value == "null"
       self.class.arg_type(cmd_name, arg_name) == "json" ? JSON::parse(value) : value
     end
   end
