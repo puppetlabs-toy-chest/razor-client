@@ -38,6 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   kramdown
+  mime-types (< 2.0)
   rack-test
   rake
   rest-client

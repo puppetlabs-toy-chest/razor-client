@@ -3,7 +3,7 @@ SimpleCov.start do
   add_filter "/spec/"
 end
 
-require 'json'
+require 'multi_json'
 require 'vcr'
 
 require_relative '../lib/razor'

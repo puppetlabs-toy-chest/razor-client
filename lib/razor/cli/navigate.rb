@@ -1,5 +1,5 @@
 require 'rest-client'
-require 'json'
+require 'multi_json'
 require 'yaml'
 
 module Razor::CLI
@@ -68,7 +68,7 @@ module Razor::CLI
         end
       end
 
-      body = JSON::parse(File::read(body["json"])) if body["json"]
+      body = MultiJson::load(File::read(body["json"])) if body["json"]
       [cmd, body]
     end
 
@@ -107,14 +107,14 @@ module Razor::CLI
       unless response.headers[:content_type] =~ /application\/json/
        raise "Received content type #{response.headers[:content_type]}"
       end
-      JSON.parse(response.body)
+      MultiJson.load(response.body)
     end
 
     def json_post(url, body)
       headers = {  :accept=>:json, "Content-Type" => :json }
-      response = RestClient.post url, body.to_json, headers
+      response = RestClient.post url, MultiJson::dump(body), headers
       puts "POST #{url.to_s}\n#{body}\n-->\n#{response.body}" if @parse.dump_response?
-      JSON::parse(response.body)
+      MultiJson::load(response.body)
     end
 
     private
@@ -130,7 +130,7 @@ module Razor::CLI
 
     def convert_arg(cmd_name, arg_name, value)
       value = nil if value == "null"
-      self.class.arg_type(cmd_name, arg_name) == "json" ? JSON::parse(value) : value
+      self.class.arg_type(cmd_name, arg_name) == "json" ? MultiJson::load(value) : value
     end
   end
 end

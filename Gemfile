@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# mime-types is a dependency of rest-client. We need to explicitly depend
+# on it and pin its version to make sure this works with Ruby 1.8.7
+gem 'mime-types', '< 2.0'
 gem 'rest-client'
 gem 'terminal-table'
 
