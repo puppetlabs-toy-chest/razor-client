@@ -15,7 +15,7 @@ module Razor::CLI
           @dump = true
         end
 
-        opts.on "-U", "--url URL",
+        opts.on "-u", "--url URL",
           "The full Razor API URL, can also be set\n" + " "*37 +
           "with the RAZOR_API environment variable\n" + " "*37 +
           "(default #{DEFAULT_RAZOR_API})" do |url|
