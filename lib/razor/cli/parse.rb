@@ -9,7 +9,6 @@ module Razor::CLI
     def get_optparse
       @optparse ||= OptionParser.new do |opts|
         opts.banner = "Usage: razor [FLAGS] NAVIGATION\n"
-                      "   or: razor shell"
 
         opts.on "-d", "--dump", "Dumps API output to the screen" do
           @dump = true
