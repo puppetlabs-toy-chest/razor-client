@@ -11,6 +11,9 @@
 #              is "true", convert to +true+; everything else gets converted
 #              to +false+
 commands:
+  create-broker:
+    args:
+      configuration: json
   create-tag:
     args:
       rule: json
