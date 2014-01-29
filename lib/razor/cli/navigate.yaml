@@ -4,7 +4,12 @@
 # API. Ultimately, this should be something the server provides. But until
 # we better understand what sort of annotation we need from the server,
 # we'll keep this with the client.
-
+#
+# Possible argument types are
+#   - json: parse the argument value as a JSON document and use that
+#   - boolean: if the argument has no value associated with it, or the value
+#              is "true", convert to +true+; everything else gets converted
+#              to +false+
 commands:
   create-tag:
     args:
@@ -12,3 +17,6 @@ commands:
   update-tag-rule:
     args:
       rule: json
+  reboot-node:
+    args:
+      hard: boolean

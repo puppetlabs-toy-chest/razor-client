@@ -138,7 +138,14 @@ module Razor::CLI
 
     def convert_arg(cmd_name, arg_name, value)
       value = nil if value == "null"
-      self.class.arg_type(cmd_name, arg_name) == "json" ? MultiJson::load(value) : value
+      case self.class.arg_type(cmd_name, arg_name)
+        when "json"
+          MultiJson::load(value)
+        when "boolean"
+          ["true", nil].include?(value)
+        else
+          value
+      end
     end
   end
 end
