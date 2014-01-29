@@ -33,9 +33,4 @@ describe Razor::CLI::Navigate do
 
     it {expect{nav.get_document}.to raise_error Razor::CLI::NavigationError}
   end
-
-  describe "extract_command" do
-    it "should understand --arg=value"
-    it "should understand '--arg value'"
-  end
 end
