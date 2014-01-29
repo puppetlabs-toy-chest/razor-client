@@ -53,7 +53,15 @@ module Razor::CLI
         # @todo lutter 2013-08-16: None of this has any tests, and error
         # handling is heinous at best
         cmd, body = extract_command
-        json_post(cmd["id"], body)
+
+        # Ensure that we copy authentication data from our previous URL.
+        url = cmd["id"]
+        if @doc_url
+          url          = URI.parse(url.to_s)
+          url.userinfo = @doc_url.userinfo
+        end
+
+        json_post(url, body)
       else
         raise NavigationError.new(@doc_url, @segments, @doc)
       end
@@ -85,12 +93,18 @@ module Razor::CLI
       raise NavigationError.new(@doc_url, key, @doc) unless obj
 
       if obj.is_a?(Hash) && obj["id"]
-        @doc = json_get(obj["id"])
+        url = obj["id"]
+        if @doc_url
+          url          = URI.parse(url.to_s)
+          url.userinfo = @doc_url.userinfo
+        end
+
+        @doc = json_get(url)
         # strip the wrapper around collections
         if @doc.is_a? Hash and @doc["items"].is_a? Array
           @doc = @doc["items"]
         end
-        @doc_url = obj["id"]
+        @doc_url = url
       elsif obj.is_a? Hash
         @doc = obj
       else
@@ -115,7 +129,7 @@ module Razor::CLI
     def json_post(url, body)
       headers = {  :accept=>:json, "Content-Type" => :json }
       begin
-        response = RestClient.post url, MultiJson::dump(body), headers
+        response = RestClient.post url.to_s, MultiJson::dump(body), headers
       ensure
         if @parse.dump_response?
           print "POST #{url.to_s}\n#{body}\n-->\n"
