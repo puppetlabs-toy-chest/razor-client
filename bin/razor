@@ -23,6 +23,8 @@ begin
   parse = Razor::CLI::Parse.new(ARGV)
 rescue Razor::CLI::InvalidURIError => e
   die e.message
+rescue OptionParser::InvalidOption => e
+  die e.message + "\nTry 'razor --help' for more information"
 end
 
 if parse.show_help?
