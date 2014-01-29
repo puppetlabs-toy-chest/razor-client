@@ -17,6 +17,9 @@ commands:
   create-tag:
     args:
       rule: json
+  add-policy-tag:
+    args:
+      rule: json
   update-tag-rule:
     args:
       rule: json
