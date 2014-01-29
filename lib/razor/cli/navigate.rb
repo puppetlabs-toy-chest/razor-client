@@ -98,7 +98,7 @@ module Razor::CLI
 
     def get(url, headers={})
       response = RestClient.get url.to_s, headers
-      puts "GET #{url.to_s}\n#{response.body}" if @parse.dump_response?
+      print "GET #{url.to_s}\n#{response.body}\n\n" if @parse.dump_response?
       response
     end
 
@@ -112,8 +112,14 @@ module Razor::CLI
 
     def json_post(url, body)
       headers = {  :accept=>:json, "Content-Type" => :json }
-      response = RestClient.post url, MultiJson::dump(body), headers
-      puts "POST #{url.to_s}\n#{body}\n-->\n#{response.body}" if @parse.dump_response?
+      begin
+        response = RestClient.post url, MultiJson::dump(body), headers
+      ensure
+        if @parse.dump_response?
+          print "POST #{url.to_s}\n#{body}\n-->\n"
+          puts (response ? response.body : "ERROR")
+        end
+      end
       MultiJson::load(response.body)
     end
 
