@@ -64,7 +64,9 @@ module Razor::CLI
       body = {}
       until @segments.empty?
         if @segments.shift =~ /\A--([a-z-]+)(=(\S+))?\Z/
-          body[$1] = convert_arg(cmd["name"], $1, ($3 || @segments.shift))
+          arg, value = [$1, $3]
+          value = @segments.shift if value.nil? && @segments[0] !~ /^--/
+          body[arg] = convert_arg(cmd["name"], arg, value)
         end
       end
 
