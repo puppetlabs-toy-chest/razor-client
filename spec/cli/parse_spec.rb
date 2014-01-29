@@ -29,14 +29,14 @@ describe Razor::CLI::Parse do
       it {parse("-d").dump_response?.should be true}
     end
 
-    context "with a '-U'" do
+    context "with a '-u'" do
       it "should use the given URL" do
         url = 'http://razor.example.com:2150/path/to/api'
-        parse('-U',url).api_url.to_s.should == url
+        parse('-u',url).api_url.to_s.should == url
       end
 
       it "should terminate with an error if an invalid URL is provided" do
-        expect{parse('-U','not valid url')}.to raise_error(Razor::CLI::InvalidURIError)
+        expect{parse('-u','not valid url')}.to raise_error(Razor::CLI::InvalidURIError)
       end
     end
 
@@ -47,11 +47,11 @@ describe Razor::CLI::Parse do
         parse.api_url.to_s.should == url
       end
 
-      it "should use -U before ENV" do
+      it "should use -u before ENV" do
         env_url = 'http://razor.example.com:2150/env/path/to/api'
         url = 'http://razor.example.com:2150/path/to/api'
         ENV["RAZOR_API"] = env_url
-        parse('-U',url).api_url.to_s.should == url
+        parse('-u',url).api_url.to_s.should == url
       end
 
       it "should terminate with an error if an invalid URL is provided" do
