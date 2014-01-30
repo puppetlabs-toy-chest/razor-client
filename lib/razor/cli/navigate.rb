@@ -113,6 +113,7 @@ module Razor::CLI
     end
 
     def get(url, headers={})
+      # Ensure that we copy authentication data from our previous URL.
       response = RestClient.get url.to_s, headers
       print "GET #{url.to_s}\n#{response.body}\n\n" if @parse.dump_response?
       response
