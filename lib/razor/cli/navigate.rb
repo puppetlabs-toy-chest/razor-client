@@ -87,6 +87,9 @@ module Razor::CLI
         raise Razor::CLI::Error, "File #{body["json"]} is not valid JSON"
       rescue Errno::ENOENT
         raise Razor::CLI::Error, "File #{body["json"]} not found"
+      rescue Errno::EACCES
+        raise Razor::CLI::Error,
+          "Permission to read file #{body["json"]} denied"
       end
       [cmd, body]
     end
