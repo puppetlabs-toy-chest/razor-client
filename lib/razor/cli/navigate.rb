@@ -81,7 +81,13 @@ module Razor::CLI
         end
       end
 
-      body = MultiJson::load(File::read(body["json"])) if body["json"]
+      begin
+        body = MultiJson::load(File::read(body["json"])) if body["json"]
+      rescue MultiJson::LoadError
+        raise Razor::CLI::Error, "File #{body["json"]} is not valid JSON"
+      rescue Errno::ENOENT
+        raise Razor::CLI::Error, "File #{body["json"]} not found"
+      end
       [cmd, body]
     end
 
