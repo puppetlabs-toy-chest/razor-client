@@ -53,7 +53,10 @@ module Razor::CLI
         # @todo lutter 2013-08-16: None of this has any tests, and error
         # handling is heinous at best
         cmd, body = extract_command
-
+        if body.empty?
+          raise Razor::CLI::Error,
+            "No arguments for command (did you forget --json ?)"
+        end
         # Ensure that we copy authentication data from our previous URL.
         url = cmd["id"]
         if @doc_url
