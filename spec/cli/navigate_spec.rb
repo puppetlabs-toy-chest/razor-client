@@ -34,6 +34,13 @@ describe Razor::CLI::Navigate do
     it {expect{nav.get_document}.to raise_error Razor::CLI::NavigationError}
   end
 
+  context "with invalid parameter", :vcr do
+    it "should fail with bad JSON" do
+      nav = Razor::CLI::Parse.new(['update-tag-rule', '--name', 'tag_1', '--rule', 'not-json']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, "Invalid JSON for argument 'rule': unexpected token at 'not-json'")
+    end
+  end
+
   context "with authentication", :vcr do
     AuthArg = %w[-u http://fred:dead@localhost:8080/api].freeze
 

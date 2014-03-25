@@ -166,7 +166,11 @@ module Razor::CLI
       value = nil if value == "null"
       case self.class.arg_type(cmd_name, arg_name)
         when "json"
-          MultiJson::load(value)
+          begin
+            MultiJson::load(value)
+          rescue MultiJson::LoadError => error
+            raise ArgumentError, "Invalid JSON for argument '#{arg_name}': #{error.message}"
+          end
         when "boolean"
           ["true", nil].include?(value)
         else
