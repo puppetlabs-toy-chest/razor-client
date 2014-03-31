@@ -38,13 +38,29 @@ module Razor::CLI
     def help
       output = get_optparse.to_s
       begin
-        output << list_things("Collections", navigate.collections)
-        output << "\n\n      Navigate to entries of a collection using COLLECTION NAME, for example,\n      'nodes node15'  for the  details of a node or 'nodes node15 log' to see\n      the log for node15\n"
-        output << list_things("Commands", navigate.commands)
-        output << "\n\n      Pass arguments to commands either directly by name ('--name=NAME')\n      or save the JSON body for the  command  in a file and pass it with\n      '--json FILE'.  Using --json is the only way to pass  arguments in\n      nested structures such as the configuration for a broker.\n"
+        output << <<-HELP
+#{list_things("Collections", navigate.collections)}
+
+      Navigate to entries of a collection using COLLECTION NAME, for example,
+      'nodes node15'  for the  details of a node or 'nodes node15 log' to see
+      the log for node15
+#{list_things("Commands", navigate.commands)}
+
+      Pass arguments to commands either directly by name ('--name=NAME')
+      or save the JSON body for the  command  in a file and pass it with
+      '--json FILE'.  Using --json is the only way to pass  arguments in
+      nested structures such as the configuration for a broker.
+
+HELP
+      rescue RestClient::Unauthorized
+        output << <<-UNAUTH
+Error: Credentials are required to connect to the server at #{@api_url}"
+UNAUTH
       rescue
-        output << "\nCould not connect to the server at #{@api_url}. More help is available after "
-        output << "pointing\nthe client to a Razor server"
+        output << <<-ERR
+Error: Could not connect to the server at #{@api_url}. More help is available after pointing
+the client to a Razor server
+ERR
       end
       output
     end
