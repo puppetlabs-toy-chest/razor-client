@@ -95,7 +95,6 @@ module Razor::CLI
     end
 
     def move_to(key)
-      key = key.to_i if key.to_i.to_s == key
       if @doc.is_a? Array
         obj = @doc.find {|x| x.is_a?(Hash) and x["name"] == key }
       elsif @doc.is_a? Hash
