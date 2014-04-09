@@ -41,6 +41,28 @@ describe Razor::CLI::Navigate do
     end
   end
 
+  context "with no parameters", :vcr do
+    it "should fail with bad JSON" do
+      nav = Razor::CLI::Parse.new(['update-tag-rule']).navigate
+      expect{nav.get_document}.to raise_error(Razor::CLI::Error, /No arguments for command/)
+    end
+  end
+
+  context "for command help", :vcr do
+    [['command', '--help'], ['command', '-h'],
+     ['--help', 'command'], ['-h', 'command'],
+     ['help', 'command'], ['command', 'help']].
+    each do |scenario|
+      it "should provide command help for `razor #{scenario.join ' '}`" do
+        scenario = scenario.map { |name| name.sub('command', 'update-tag-rule') }
+        nav = Razor::CLI::Parse.new(scenario).navigate
+        document = nav.get_document
+        document["name"].should == "update-tag-rule"
+        document["help"].class.should <= Hash
+      end
+    end
+  end
+
   context "with authentication", :vcr do
     AuthArg = %w[-u http://fred:dead@localhost:8080/api].freeze
 
