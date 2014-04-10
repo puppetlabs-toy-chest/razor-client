@@ -26,3 +26,6 @@ commands:
   reboot-node:
     args:
       hard: boolean
+  create-repo:
+    args:
+      task: json
