@@ -1,9 +1,11 @@
 require 'rest-client'
 require 'multi_json'
 require 'yaml'
+require 'forwardable'
 
 module Razor::CLI
   class Navigate
+    extend Forwardable
 
     def initialize(parse, segments)
       @parse = parse
@@ -40,6 +42,8 @@ module Razor::CLI
       !! command(@segments.first)
     end
 
+    def_delegator '@parse', 'show_command_help?'
+
     def get_document
       if @segments.empty?
         entrypoint
@@ -53,10 +57,6 @@ module Razor::CLI
         # @todo lutter 2013-08-16: None of this has any tests, and error
         # handling is heinous at best
         cmd, body = extract_command
-        if body.empty?
-          raise Razor::CLI::Error,
-            "No arguments for command (did you forget --json ?)"
-        end
         # Ensure that we copy authentication data from our previous URL.
         url = cmd["id"]
         if @doc_url
@@ -64,7 +64,15 @@ module Razor::CLI
           url.userinfo = @doc_url.userinfo
         end
 
-        json_post(url, body)
+        if show_command_help?
+          json_get(url)
+        else
+          if body.empty?
+            raise Razor::CLI::Error,
+                  "No arguments for command (did you forget --json ?)"
+          end
+          json_post(url, body)
+        end
       else
         raise NavigationError.new(@doc_url, @segments, @doc)
       end

@@ -37,7 +37,9 @@ module Razor::CLI
 
 
     def format_object(object, indent = 0)
-      if object.keys == ["id", "name"]
+      if object.has_key?('help') and object.has_key?('name')
+        object['help']['full']
+      elsif object.has_key?('id') and object.has_key?('name')
         format_reference_object(object, indent)
       else
         format_default_object(object, indent)

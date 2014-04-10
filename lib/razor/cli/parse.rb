@@ -22,6 +22,7 @@ module Razor::CLI
         end
 
         opts.on "-h", "--help", "Show this screen" do
+          # If searching for a command's help, leave the argument for navigation.
           @option_help = true
         end
 
@@ -69,6 +70,10 @@ ERR
       !!@option_help
     end
 
+    def show_command_help?
+      !!@command_help
+    end
+
     def dump_response?
       !!@dump
     end
@@ -79,11 +84,33 @@ ERR
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
       rest = get_optparse.order(args)
+      rest = set_help_vars(rest)
       if rest.any?
         @navigation = rest
       else
+        # Called with no remaining arguments to parse.
         @option_help = true
       end
+    end
+
+    # This method sets the appropriate help flags `@command_help` and `@option_help`,
+    # then returns a new set of arguments.
+    def set_help_vars(rest)
+      # Find and remove 'help' variations anywhere in the command.
+      if rest.any? { |arg| ['-h', '--help'].include? arg } or
+          rest.first == 'help' or rest.drop(1).first == 'help'
+        rest = rest.reject { |arg| ['-h', '--help', 'help'].include? arg }
+        # If anything is left, assume it is a command.
+        if rest.any?
+          @command_help = true
+        else
+          @option_help = true
+        end
+      end
+      if @option_help && rest.any?
+        @command_help = true
+      end
+      rest
     end
 
     def navigate

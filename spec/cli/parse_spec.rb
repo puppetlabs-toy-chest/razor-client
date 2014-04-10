@@ -25,6 +25,26 @@ describe Razor::CLI::Parse do
       it {parse("-h").show_help?.should be true}
     end
 
+    context "with a '-h COMMAND'" do
+      it {parse("-h", "create-policy").show_command_help?.should be true}
+    end
+
+    context "with a '--help COMMAND'" do
+      it {parse("--help", "create-policy").show_command_help?.should be true}
+    end
+
+    context "with a 'help COMMAND'" do
+      it {parse("help", "create-policy").show_command_help?.should be true}
+    end
+
+    context "with a 'help COMMAND'" do
+      it {parse("create-policy", "help").show_command_help?.should be true}
+    end
+
+    context "with a 'COMMAND var help'" do
+      it {parse("create-policy", "var", "help").show_command_help?.should_not be true}
+    end
+
     context "with a '-d'" do
       it {parse("-d").dump_response?.should be true}
     end
