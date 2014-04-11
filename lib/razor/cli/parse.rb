@@ -57,10 +57,16 @@ HELP
         output << <<-UNAUTH
 Error: Credentials are required to connect to the server at #{@api_url}"
 UNAUTH
-      rescue
+       rescue RestClient::InternalServerError => exception
+         output << <<-EOT
+Error: the server reported an internal error satisfying the request:
+#{exception.http_body}
+ EOT
+      rescue => exception
         output << <<-ERR
-Error: Could not connect to the server at #{@api_url}. More help is available after pointing
-the client to a Razor server
+Error: failed to communicate with the server at #{@api_url}.
+More help is available after successfully communicating with the server.
+#{exception.class}: #{exception}
 ERR
       end
       output
