@@ -28,4 +28,4 @@ commands:
       hard: boolean
   create-repo:
     args:
-      task: json
+      task: reference

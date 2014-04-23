@@ -180,6 +180,12 @@ module Razor::CLI
           end
         when "boolean"
           ["true", nil].include?(value)
+        when "reference"
+          begin
+            MultiJson::load(value)
+          rescue MultiJson::LoadError
+            { "name" => value }
+          end
         else
           value
       end

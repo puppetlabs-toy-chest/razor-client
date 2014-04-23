@@ -48,6 +48,17 @@ describe Razor::CLI::Navigate do
     end
   end
 
+  context "with shortcut syntax", :vcr do
+    it "should allow the shortcut form" do
+      nav = Razor::CLI::Parse.new(%w{create-repo --name test1 --iso-url exists-in-vcr --task noop}).navigate
+      nav.get_document
+    end
+    it "should allow the long form" do
+      nav = Razor::CLI::Parse.new(%w{create-repo --name test2 --iso-url exists-in-vcr --task '{"name": "noop"}'}).navigate
+      nav.get_document
+    end
+  end
+
   context "for command help", :vcr do
     [['command', '--help'], ['command', '-h'],
      ['--help', 'command'], ['-h', 'command'],
