@@ -29,3 +29,15 @@ commands:
   create-repo:
     args:
       task: reference
+  create-policy:
+    args:
+      tags: json
+      before: reference
+      after: reference
+      repo: reference
+      broker: reference
+      task: reference
+  move-policy:
+    args:
+      before: reference
+      after: reference
