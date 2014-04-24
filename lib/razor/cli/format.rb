@@ -32,7 +32,11 @@ module Razor::CLI
     end
 
     def format_reference_object(ref, indent = 0)
-      output = ' '* indent + "#{ref['name']} => #{ref['id'].to_s.ljust 4}"
+      key_indent = indent + [ref['name'].size, 'command'.size].max
+
+      output = "#{ref['name'].rjust key_indent + 2} => #{ref['id'].to_s.ljust 4}"
+      output += "\n#{'command'.rjust key_indent + 2} => #{ref['command'].to_s.ljust 4}" if ref['command']
+      output
     end
 
 
