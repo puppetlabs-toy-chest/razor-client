@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'terminal-table'
 
 module Razor::CLI
   module Format
@@ -17,15 +18,38 @@ module Razor::CLI
       spec
     end
 
-    def format_document(doc, parse)
+    def format_document(doc, parse = nil)
       doc = Razor::CLI::Document.new(doc, parse.format)
-      case
-        when doc.items.size > 1 then
-          format_objects(doc.items)
-        when doc.items.size == 1 then
-          format_object(doc.items.first)
-        else "[none]"
-      end.chomp
+      case (doc.format_view['+layout'] or 'list')
+      when 'list'
+        case
+          when doc.items.size > 0 then
+            format_objects(doc.items)
+          else "[none]"
+        end.chomp
+      when 'table'
+        case doc.items
+          when Array then
+            get_table(doc.items, doc.format_view)
+          else doc.to_s
+        end
+      else
+          raise ArgumentError, "Unrecognized view format #{doc.format_view['+layout']}"
+      end
+    end
+
+    def get_table(doc, formatting)
+      # Use the formatting if it exists, otherwise build from the data.
+      headings = (formatting['+show'] and formatting['+show'].keys or [])
+      Terminal::Table.new do |t|
+        t.rows = doc.map do |page|
+          page.map do |item|
+            headings << item[0] unless headings.include? item[0]
+            item[1]
+          end
+        end
+        t.headings = headings
+      end
     end
 
     # We assume that all collections are homogenous

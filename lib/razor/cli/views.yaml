@@ -12,6 +12,7 @@
 collections:
   brokers:
     +short:
+      +layout: table
       +show:
         name:
         broker-type:
@@ -21,6 +22,7 @@ collections:
           +format: count_column
     member:
       +short:
+        +layout: list
         +show:
           name:
           broker-type:
@@ -29,6 +31,7 @@ collections:
             +format: count_column
   nodes:
     +short:
+      +layout: table
       +show:
         name:
         dhcp_mac:
@@ -39,6 +42,7 @@ collections:
           +format: select_name
     member:
       +short:
+        +layout: list
         +show:
           name:
           dhcp_mac:
@@ -46,14 +50,16 @@ collections:
           state:
           tags:
             +format: join_names
-#    log:
-#      +short:
+    log:
+      +short:
+        +layout: table
 #        +show:
 #          event:
 #          task:
 #          timestamp:
   policies:
     +short:
+      +layout: table
       +show:
         name:
         repo:
@@ -86,6 +92,7 @@ collections:
             +format: count_column
   tasks:
     +short:
+      +layout: table
       +show:
         name:
         description:
@@ -102,6 +109,7 @@ collections:
           boot_seq:
   repos:
     +short:
+      +layout: table
       +show:
         name:
         iso_url:
@@ -112,6 +120,7 @@ collections:
           +format: name
     member:
       +short:
+        +layout: list
         +show:
           name:
           iso_url:
@@ -122,6 +131,7 @@ collections:
             +format: name
   tags:
     +short:
+      +layout: table
       +show:
         name:
         rule:
@@ -132,6 +142,7 @@ collections:
           +format: count_column
     member:
       +short:
+        +layout: list
         +show:
           name:
           rule:
@@ -142,6 +153,7 @@ collections:
             +format: count_column
   commands:
     +short:
+      +layout: table
       +show:
         name:
         command:
