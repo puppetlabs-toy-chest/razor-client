@@ -52,6 +52,13 @@ module Razor::CLI
         while @segments.any?
           move_to @segments.shift
         end
+
+        # Get the next level if it's a list of objects.
+        if @doc.is_a?(Hash) and @doc['items'].is_a?(Array)
+          @doc['items'] = @doc['items'].map do |item|
+            item.has_key?('id') ? json_get(item['id']) : item
+          end
+        end
         @doc
       elsif command?
         # @todo lutter 2013-08-16: None of this has any tests, and error
@@ -71,7 +78,10 @@ module Razor::CLI
             raise Razor::CLI::Error,
                   "No arguments for command (did you forget --json ?)"
           end
-          json_post(url, body)
+          result = json_post(url, body)
+          # Get actual object from the id.
+          result = result.merge(json_get(result['id'])) if result['id']
+          result
         end
       else
         raise NavigationError.new(@doc_url, @segments, @doc)
@@ -108,6 +118,8 @@ module Razor::CLI
     def move_to(key)
       if @doc.is_a? Array
         obj = @doc.find {|x| x.is_a?(Hash) and x["name"] == key }
+      elsif @doc.is_a?(Hash) && @doc['items'].is_a?(Array)
+        obj = @doc['items'].find {|x| x.is_a?(Hash) and x["name"] == key }
       elsif @doc.is_a? Hash
         obj = @doc[key]
       end
@@ -122,10 +134,6 @@ module Razor::CLI
         end
 
         @doc = json_get(url)
-        # strip the wrapper around collections
-        if @doc.is_a? Hash and @doc["items"].is_a? Array
-          @doc = @doc["items"]
-        end
         @doc_url = url
       elsif obj.is_a? Hash
         @doc = obj

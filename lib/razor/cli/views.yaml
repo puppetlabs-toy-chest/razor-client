@@ -1,0 +1,162 @@
+---
+
+# This file contains instructions for how the client should format various
+# objects based on the object's 'spec' path. The structure uses a `+` prefix
+# to denote metadata. `member` is used to describe a member of a group.
+#
+# Accepted metadata annotations are:
+# `+short`: This section configures what the output for the object looks like in short format.
+# `+show`: This section configures which attributes are shown in the output.
+# `+layout`: This configures whether to use 'list' or 'table' output.
+
+collections:
+  brokers:
+    +short:
+      +show:
+        name:
+        broker-type:
+        configuration:
+          +format: nested
+        policies:
+          +format: count_column
+    member:
+      +short:
+        +show:
+          name:
+          broker-type:
+          configuration:
+          policies:
+            +format: count_column
+  nodes:
+    +short:
+      +show:
+        name:
+        dhcp_mac:
+          +format: mac
+        tags:
+          +format: join_names
+        policy:
+          +format: select_name
+    member:
+      +short:
+        +show:
+          name:
+          dhcp_mac:
+            +format: mac
+          state:
+          tags:
+            +format: join_names
+#    log:
+#      +short:
+#        +show:
+#          event:
+#          task:
+#          timestamp:
+  policies:
+    +short:
+      +show:
+        name:
+        repo:
+          +format: name
+        task:
+          +format: name
+        broker:
+          +format: name
+        enabled:
+        max_count_column:
+        tags:
+          +format: join_names
+        nodes:
+          +format: count_column
+    member:
+      +short:
+        +show:
+          name:
+          repo:
+            +format: name
+          task:
+            +format: name
+          broker:
+            +format: name
+          enabled:
+          max_count_column:
+          tags:
+            +format: join_names
+          nodes:
+            +format: count_column
+  tasks:
+    +short:
+      +show:
+        name:
+        description:
+        base:
+          +format: name_if_present
+        boot_seq:
+          +format: shallow_hash
+    member:
+      +short:
+        +show:
+          name:
+          description:
+          os:
+          boot_seq:
+  repos:
+    +short:
+      +show:
+        name:
+        iso_url:
+          +format: if_present
+        url:
+          +format: if_present
+        task:
+          +format: name
+    member:
+      +short:
+        +show:
+          name:
+          iso_url:
+            +format: if_present
+          url:
+            +format: if_present
+          task:
+            +format: name
+  tags:
+    +short:
+      +show:
+        name:
+        rule:
+          +format: nested
+        nodes:
+          +format: count_column
+        policies:
+          +format: count_column
+    member:
+      +short:
+        +show:
+          name:
+          rule:
+            +format: nested
+          nodes:
+            +format: count_column
+          policies:
+            +format: count_column
+  commands:
+    +short:
+      +show:
+        name:
+        command:
+        name parameter:
+          +format: name
+        errors:
+          +format: count
+        status:
+    member:
+      +short:
+        +show:
+          name:
+          command:
+          params:
+          errors:
+            +format: count
+          status:
+          submitted_at:

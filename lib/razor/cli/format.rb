@@ -1,8 +1,9 @@
-require 'terminal-table'
+require 'forwardable'
 
 module Razor::CLI
   module Format
-    PriorityKeys = %w[ id name ]
+    extend Forwardable
+    PriorityKeys = %w[ id name spec ]
     SpecNames = {
       "/spec/object/policy" => "Policy",
       "/spec/object/tag" => "Tag",
@@ -16,11 +17,14 @@ module Razor::CLI
       spec
     end
 
-    def format_document(doc)
-      case doc
-      when Array then format_objects(doc)
-      when Hash then format_object(doc)
-      else doc.to_s
+    def format_document(doc, parse)
+      doc = Razor::CLI::Document.new(doc, parse.format)
+      case
+        when doc.items.size > 1 then
+          format_objects(doc.items)
+        when doc.items.size == 1 then
+          format_object(doc.items.first)
+        else "[none]"
       end.chomp
     end
 
@@ -31,20 +35,9 @@ module Razor::CLI
       end.join "\n\n"
     end
 
-    def format_reference_object(ref, indent = 0)
-      key_indent = indent + [ref['name'].size, 'command'.size].max
-
-      output = "#{ref['name'].rjust key_indent + 2} => #{ref['id'].to_s.ljust 4}"
-      output += "\n#{'command'.rjust key_indent + 2} => #{ref['command'].to_s.ljust 4}" if ref['command']
-      output
-    end
-
-
     def format_object(object, indent = 0)
       if object.has_key?('help') and object.has_key?('name')
         object['help']['full']
-      elsif object.has_key?('id') and object.has_key?('name')
-        format_reference_object(object, indent)
       else
         format_default_object(object, indent)
       end
@@ -65,11 +58,13 @@ module Razor::CLI
             "\n" + format_object(value, key_indent + 4).rstrip
           end
         when Array
-           if value.all? { |v| v.is_a?(String) }
-             "[" + value.map(&:inspect).join(",") + "]"
-           else
-             "[\n" + format_objects(value, key_indent + 6) + ("\n"+' '*(key_indent+4)+"]")
-           end
+          if value.all? { |v| v.is_a?(String) }
+            "[" + value.map(&:to_s).join(",") + "]"
+          else
+            "[\n" + format_objects(value, key_indent + 6) + ("\n"+' '*(key_indent+4)+"]")
+          end
+        when String
+          value
         else
           case f
           when "spec" then "\"#{Format.spec_name(value)}\""

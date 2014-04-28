@@ -14,6 +14,14 @@ module Razor::CLI
           @dump = true
         end
 
+        opts.on "-f", "--full", "Show full details when viewing entities" do
+          @format = 'full'
+        end
+
+        opts.on "-s", "--short", "Show shortened details when viewing entities" do
+          @format = 'short'
+        end
+
         opts.on "-u", "--url URL",
           "The full Razor API URL, can also be set\n" + " "*37 +
           "with the RAZOR_API environment variable\n" + " "*37 +
@@ -78,11 +86,12 @@ ERR
       !!@dump
     end
 
-    attr_reader :api_url
+    attr_reader :api_url, :format
 
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
+      @format = 'short'
       rest = get_optparse.order(args)
       rest = set_help_vars(rest)
       if rest.any?
