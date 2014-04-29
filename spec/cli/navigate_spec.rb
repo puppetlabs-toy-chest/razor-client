@@ -39,6 +39,10 @@ describe Razor::CLI::Navigate do
       nav = Razor::CLI::Parse.new(['update-tag-rule', '--name', 'tag_1', '--rule', 'not-json']).navigate
       expect{nav.get_document}.to raise_error(ArgumentError, /Invalid JSON for argument 'rule'/)
     end
+    it "should fail with malformed argument" do
+      nav = Razor::CLI::Parse.new(['update-tag-rule', '--name', 'tag_1', '--inva_lid']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, /Unexpected argument --inva_lid/)
+    end
   end
 
   context "with no parameters", :vcr do
@@ -54,8 +58,8 @@ describe Razor::CLI::Navigate do
       nav.get_document
     end
     it "should allow the long form" do
-      nav = Razor::CLI::Parse.new(%w{create-repo --name test2 --iso-url exists-in-vcr --task '{"name": "noop"}'}).navigate
-      nav.get_document
+      nav = Razor::CLI::Parse.new(%w{create-repo --name test2 --iso-url exists-in-vcr --task '{"name":\ "noop"}'}).navigate
+      nav.get_document['name'].should == 'test2'
     end
   end
 
