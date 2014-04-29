@@ -37,6 +37,7 @@ commands:
       repo: reference
       broker: reference
       task: reference
+      max-count: integer
   move-policy:
     args:
       before: reference
