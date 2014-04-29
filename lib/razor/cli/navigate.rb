@@ -82,10 +82,13 @@ module Razor::CLI
       cmd = command(@segments.shift)
       body = {}
       until @segments.empty?
-        if @segments.shift =~ /\A--([a-z-]+)(=(\S+))?\Z/
+        argument = @segments.shift
+        if argument =~ /\A--([a-z-]+)(=(\S+))?\Z/
           arg, value = [$1, $3]
           value = @segments.shift if value.nil? && @segments[0] !~ /^--/
           body[arg] = convert_arg(cmd["name"], arg, value)
+        else
+          raise ArgumentError, "Unexpected argument #{argument}"
         end
       end
 
@@ -180,6 +183,12 @@ module Razor::CLI
           end
         when "boolean"
           ["true", nil].include?(value)
+        when "integer"
+          begin
+            Integer(value)
+          rescue ArgumentError
+            raise ArgumentError, "Invalid integer for argument '#{arg_name}': #{value}"
+          end
         when "reference"
           begin
             MultiJson::load(value)
