@@ -52,17 +52,6 @@ describe Razor::CLI::Navigate do
     end
   end
 
-  context "with shortcut syntax", :vcr do
-    it "should allow the shortcut form" do
-      nav = Razor::CLI::Parse.new(%w{create-repo --name test1 --iso-url exists-in-vcr --task noop}).navigate
-      nav.get_document
-    end
-    it "should allow the long form" do
-      nav = Razor::CLI::Parse.new(%w{create-repo --name test2 --iso-url exists-in-vcr --task '{"name":\ "noop"}'}).navigate
-      nav.get_document['name'].should == 'test2'
-    end
-  end
-
   context "for command help", :vcr do
     [['command', '--help'], ['command', '-h'],
      ['--help', 'command'], ['-h', 'command'],
@@ -70,10 +59,12 @@ describe Razor::CLI::Navigate do
     each do |scenario|
       it "should provide command help for `razor #{scenario.join ' '}`" do
         scenario = scenario.map { |name| name.sub('command', 'update-tag-rule') }
-        nav = Razor::CLI::Parse.new(scenario).navigate
+        parse = Razor::CLI::Parse.new(scenario)
+        nav = parse.navigate
         document = nav.get_document
         document["name"].should == "update-tag-rule"
         document["help"].class.should <= Hash
+        parse.should be_show_command_help
       end
     end
   end
@@ -89,7 +80,7 @@ describe Razor::CLI::Navigate do
 
     it "should preserve that across navigation" do
       nav = Razor::CLI::Parse.new(AuthArg + ['tags']).navigate
-      nav.get_document.should == []
+      nav.get_document['items'].should == []
       URI.parse(nav.last_url.to_s).userinfo.should == "fred:dead"
     end
   end

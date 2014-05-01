@@ -32,3 +32,6 @@ end
 require_relative 'cli/navigate'
 require_relative 'cli/parse'
 require_relative 'cli/format'
+require_relative 'cli/document'
+require_relative 'cli/views'
+require_relative 'cli/transforms'
