@@ -63,6 +63,24 @@ describe Razor::CLI::Navigate do
                                    'abc', '--repo', 'name', '--broker', 'puppet', '--tags', '["tag1"]', '--tag', 'tag2']).navigate
       nav.get_document
     end
+    it "should construct a json object" do
+      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker_name', '--broker-type', 'puppet',
+                                   '--configuration', 'server=puppet.example.org', '--configuration',
+                                   'environment=production']).navigate
+      nav.get_document
+    end
+    it "should fail with mixed types" do
+      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker_name', '--broker-type', 'puppet',
+                                   '--configuration', '["server"]',
+                                   '--configuration', 'environment=production']).navigate
+      expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+    end
+    it "should fail with mixed types" do
+      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker_name', '--broker-type', 'puppet',
+                                   '--configuration', 'environment=production',
+                                   '--configuration', '["server"]']).navigate
+      expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+    end
   end
 
   context "for command help", :vcr do

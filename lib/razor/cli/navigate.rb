@@ -94,13 +94,27 @@ module Razor::CLI
       until @segments.empty?
         argument = @segments.shift
         if argument =~ /\A--([a-z-]+)(=(\S+))?\Z/
+          # `--arg=value` or `--arg value`
           arg, value = [$1, $3]
           value = @segments.shift if value.nil? && @segments[0] !~ /^--/
-          value = convert_arg(cmd["name"], arg, value)
-          if body[arg].nil?
-            body[arg] = value
+          if value =~ /\A([a-zA-Z._-]+)=(\S+)?\z/
+            # `--arg name=value`
+            unless body[arg].nil? or body[arg].is_a?(Hash)
+              # Error: `--arg value --arg name=value`
+              raise ArgumentError, "Cannot handle mixed types for argument #{arg}"
+            end
+            # Do not convert, assume the above is the conversion.
+            body[arg] = Hash(body[arg]).merge($1 => $2)
+          elsif body[arg].is_a?(Hash)
+            # Error: `--arg name=value --arg value`
+            raise ArgumentError, "Cannot handle mixed types for argument #{arg}"
           else
-            body[arg] = Array[body[arg]] << value
+            value = convert_arg(cmd["name"], arg, value)
+            if body[arg].nil?
+              body[arg] = value
+            else
+              body[arg] = Array[body[arg]] << value
+            end
           end
         else
           raise ArgumentError, "Unexpected argument #{argument}"
@@ -115,7 +129,7 @@ module Razor::CLI
         raise Razor::CLI::Error, "File #{body["json"]} not found"
       rescue Errno::EACCES
         raise Razor::CLI::Error,
-          "Permission to read file #{body["json"]} denied"
+              "Permission to read file #{body["json"]} denied"
       end
       [cmd, body]
     end
@@ -156,7 +170,7 @@ module Razor::CLI
     def json_get(url, headers = {})
       response = get(url,headers.merge(:accept => :json))
       unless response.headers[:content_type] =~ /application\/json/
-       raise "Received content type #{response.headers[:content_type]}"
+        raise "Received content type #{response.headers[:content_type]}"
       end
       MultiJson.load(response.body)
     end
@@ -177,7 +191,7 @@ module Razor::CLI
     private
     def self.annotations
       @@annotations ||=
-        YAML::load_file(File::join(File::dirname(__FILE__), "navigate.yaml"))
+          YAML::load_file(File::join(File::dirname(__FILE__), "navigate.yaml"))
     end
 
     def self.arg_type(cmd_name, arg_name)
