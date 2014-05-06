@@ -52,6 +52,19 @@ describe Razor::CLI::Navigate do
     end
   end
 
+  context "with multiple arguments with same name", :vcr do
+    it "should merge the arguments as an array" do
+      nav = Razor::CLI::Parse.new(['create-policy', '--name', 'test', '--hostname', 'abc.com', '--root-password',
+                                   'abc', '--repo', 'name', '--broker', 'puppet', '--tag', 'tag1', '--tag', 'tag2']).navigate
+      nav.get_document
+    end
+    it "should merge the arguments into existing array" do
+      nav = Razor::CLI::Parse.new(['create-policy', '--name', 'test', '--hostname', 'abc.com', '--root-password',
+                                   'abc', '--repo', 'name', '--broker', 'puppet', '--tags', '["tag1"]', '--tag', 'tag2']).navigate
+      nav.get_document
+    end
+  end
+
   context "for command help", :vcr do
     [['command', '--help'], ['command', '-h'],
      ['--help', 'command'], ['-h', 'command'],

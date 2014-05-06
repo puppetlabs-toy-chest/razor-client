@@ -96,7 +96,12 @@ module Razor::CLI
         if argument =~ /\A--([a-z-]+)(=(\S+))?\Z/
           arg, value = [$1, $3]
           value = @segments.shift if value.nil? && @segments[0] !~ /^--/
-          body[arg] = convert_arg(cmd["name"], arg, value)
+          value = convert_arg(cmd["name"], arg, value)
+          if body[arg].nil?
+            body[arg] = value
+          else
+            body[arg] = Array[body[arg]] << value
+          end
         else
           raise ArgumentError, "Unexpected argument #{argument}"
         end
