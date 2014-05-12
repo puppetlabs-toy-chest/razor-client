@@ -20,7 +20,7 @@ describe Razor::CLI::Navigate do
 
   context "with a single item path", :vcr do
     subject(:nav) {Razor::CLI::Parse.new(["tags"]).navigate}
-    it { nav.get_document.should == []}
+    it { nav.get_document['items'].should == []}
 
     it do
       nav.get_document;
@@ -36,11 +36,12 @@ describe Razor::CLI::Navigate do
 
   context "with invalid parameter", :vcr do
     it "should fail with bad JSON" do
-      nav = Razor::CLI::Parse.new(['update-tag-rule', '--name', 'tag_1', '--rule', 'not-json']).navigate
-      expect{nav.get_document}.to raise_error(ArgumentError, /Invalid JSON for argument 'rule'/)
+      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker', '--type', 'puppet', '--configuration', 'not-json']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, /Invalid JSON for argument 'configuration'/)
     end
+
     it "should fail with malformed argument" do
-      nav = Razor::CLI::Parse.new(['update-tag-rule', '--name', 'tag_1', '--inva_lid']).navigate
+      nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag_2', '--inva_lid']).navigate
       expect{nav.get_document}.to raise_error(ArgumentError, /Unexpected argument --inva_lid/)
     end
   end
@@ -53,33 +54,58 @@ describe Razor::CLI::Navigate do
   end
 
   context "with multiple arguments with same name", :vcr do
-    it "should merge the arguments as an array" do
-      nav = Razor::CLI::Parse.new(['create-policy', '--name', 'test', '--hostname', 'abc.com', '--root-password',
-                                   'abc', '--repo', 'name', '--broker', 'puppet', '--tag', 'tag1', '--tag', 'tag2']).navigate
-      nav.get_document
+    context "combining as an array" do
+      before(:each) do
+        # Prerequisites
+        nav = Razor::CLI::Parse.new(['create-repo', '--name', 'name', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+        nav = Razor::CLI::Parse.new(['create-broker', '--name', 'puppet', '--configuration', '{"server": "puppet.example.org", "environment": "production"}', '--broker-type', 'puppet']).navigate.get_document
+        nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag1', '--rule', '["=", ["fact", "processorcount"], "1"]']).navigate.get_document
+        nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag2', '--rule', '["=", ["fact", "processorcount"], "2"]']).navigate.get_document
+      end
+      it "should merge the arguments as an array" do
+        nav = Razor::CLI::Parse.new(['create-policy',
+                 '--name', 'test', '--hostname', 'abc.com', '--root-password', 'abc',
+                 '--task', 'noop', '--repo', 'name', '--broker', 'puppet', '--tag', 'tag1', '--tag', 'tag2']).navigate
+        tags = nav.get_document['tags'].to_s
+        tags.should =~ /tag1/
+        tags.should =~ /tag2/
+      end
+      it "should merge the arguments into an existing array" do
+        nav = Razor::CLI::Parse.new(['create-policy',
+                 '--name', 'test', '--hostname', 'abc.com', '--root-password', 'abc',
+                 '--task', 'noop', '--repo', 'name', '--broker', 'puppet', '--tags', '["tag1"]', '--tag', 'tag2']).navigate
+        tags = nav.get_document['tags'].to_s
+        tags.should =~ /tag1/
+        tags.should =~ /tag2/
+      end
+      it "should merge an array into an existing array" do
+        nav = Razor::CLI::Parse.new(['create-policy',
+                 '--name', 'test', '--hostname', 'abc.com', '--root-password', 'abc',
+                 '--task', 'noop', '--repo', 'name', '--broker', 'puppet', '--tags', '["tag1"]', '--tags', '["tag2"]']).navigate
+        tags = nav.get_document['tags'].to_s
+        tags.should =~ /tag1/
+        tags.should =~ /tag2/
+      end
     end
-    it "should merge the arguments into existing array" do
-      nav = Razor::CLI::Parse.new(['create-policy', '--name', 'test', '--hostname', 'abc.com', '--root-password',
-                                   'abc', '--repo', 'name', '--broker', 'puppet', '--tags', '["tag1"]', '--tag', 'tag2']).navigate
-      nav.get_document
-    end
-    it "should construct a json object" do
-      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker_name', '--broker-type', 'puppet',
-                                   '--configuration', 'server=puppet.example.org', '--configuration',
-                                   'environment=production']).navigate
-      nav.get_document
-    end
-    it "should fail with mixed types" do
-      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker_name', '--broker-type', 'puppet',
-                                   '--configuration', '["server"]',
-                                   '--configuration', 'environment=production']).navigate
-      expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
-    end
-    it "should fail with mixed types" do
-      nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker_name', '--broker-type', 'puppet',
-                                   '--configuration', 'environment=production',
-                                   '--configuration', '["server"]']).navigate
-      expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+    context "combining as an object" do
+      it "should construct a json object" do
+        nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker1', '--broker-type', 'puppet',
+                                     '--configuration', 'server=puppet.example.org', '--configuration',
+                                     'environment=production']).navigate
+        nav.get_document
+      end
+      it "should fail with mixed types (array then hash)" do
+        nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker2', '--broker-type', 'puppet',
+                                     '--configuration', '["server"]',
+                                     '--configuration', 'environment=production']).navigate
+        expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+      end
+      it "should fail with mixed types (hash then array)" do
+        nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker3', '--broker-type', 'puppet',
+                                     '--configuration', 'environment=production',
+                                     '--configuration', '["server"]']).navigate
+        expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+      end
     end
   end
 

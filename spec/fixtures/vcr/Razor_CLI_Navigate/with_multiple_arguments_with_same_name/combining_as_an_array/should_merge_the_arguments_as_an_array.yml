@@ -1,0 +1,2006 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '4982'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.14.1-113-g8b33d83-dirty"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-repo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '3227'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-repo","help":{"full":"# SYNOPSIS\nCreate a new repository,
+        from an ISO image or a URL\n\n# DESCRIPTION\nCreate a new repository, which
+        can either contain the content to install a\nnode, or simply point to an existing
+        online repository by URL.\n\n\n# Access Control\n\nThis command''s access
+        control pattern: `commands:create-repo:%{name}`\n\nWords surrounded by `%{...}`
+        are substitutions from the input data: typically\nthe name of the object being
+        modified, or some other critical detail, these\nallow roles to be granted
+        partial access to modify the system.\n\nFor more detail on how the permission
+        strings are structured and work, you can\nsee the [Shiro Permissions documentation][shiro].  That
+        pattern is expanded\nand then a permission check applied to it, before the
+        command is authorized.\n\nThese checks only apply if security is enabled in
+        the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
+        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        The name of the repository.\n   - This attribute is required\n   - It must
+        be of type string.\n   - It must be between 1 and 250 in length.\n\n * url\n   -
+        The URL of the remote repository to use.\n   - It must be of type string.\n   -
+        If present, iso-url must not be present.\n   - It must be between 1 and 1000
+        in length.\n\n * iso-url\n   - The URL of the ISO image to download and unpack
+        to create the\n   repository.  This can be an HTTP or HTTPS URL, or it can
+        be a\n   file URL.\n   \n   In the later case, the file path is interpreted
+        as a path on the\n   Razor server, rather than a path on the client.  This
+        requires that\n   you manually place the ISO image on the server before invoking
+        the\n   command.\n   - It must be of type string.\n   - If present, url must
+        not be present.\n   - It must be between 1 and 1000 in length.\n\n * task\n   -
+        The name of the task associated with this repository.  This is used to\n   install
+        nodes that match a policy using this repository; generally it\n   should match
+        the OS that the URL or ISO-URL attributes point to.\n   - This attribute is
+        required\n   - It must be of type string.\n\n\n\n# EXAMPLES\n  Create a repository
+        from an ISO image, which will be downloaded and unpacked\n  by the razor-server
+        in the background:\n  \n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
+        \"http://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
+        can also unpack an ISO image from a file *on the server*; this does not\n  upload
+        the file from the client:\n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
+        \"file:///tmp/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  Finally,
+        you can providing a `url` property when you create the repository;\n  this
+        form is merely a pointer to a resource somehwere and nothing will be\n  downloaded
+        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
+        \"fedora\"\n      }\n\n"},"schema":{"name":{"type":"string"},"url":{"type":"string"},"iso-url":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-repo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '3227'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-repo","help":{"full":"# SYNOPSIS\nCreate a new repository,
+        from an ISO image or a URL\n\n# DESCRIPTION\nCreate a new repository, which
+        can either contain the content to install a\nnode, or simply point to an existing
+        online repository by URL.\n\n\n# Access Control\n\nThis command''s access
+        control pattern: `commands:create-repo:%{name}`\n\nWords surrounded by `%{...}`
+        are substitutions from the input data: typically\nthe name of the object being
+        modified, or some other critical detail, these\nallow roles to be granted
+        partial access to modify the system.\n\nFor more detail on how the permission
+        strings are structured and work, you can\nsee the [Shiro Permissions documentation][shiro].  That
+        pattern is expanded\nand then a permission check applied to it, before the
+        command is authorized.\n\nThese checks only apply if security is enabled in
+        the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
+        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        The name of the repository.\n   - This attribute is required\n   - It must
+        be of type string.\n   - It must be between 1 and 250 in length.\n\n * url\n   -
+        The URL of the remote repository to use.\n   - It must be of type string.\n   -
+        If present, iso-url must not be present.\n   - It must be between 1 and 1000
+        in length.\n\n * iso-url\n   - The URL of the ISO image to download and unpack
+        to create the\n   repository.  This can be an HTTP or HTTPS URL, or it can
+        be a\n   file URL.\n   \n   In the later case, the file path is interpreted
+        as a path on the\n   Razor server, rather than a path on the client.  This
+        requires that\n   you manually place the ISO image on the server before invoking
+        the\n   command.\n   - It must be of type string.\n   - If present, url must
+        not be present.\n   - It must be between 1 and 1000 in length.\n\n * task\n   -
+        The name of the task associated with this repository.  This is used to\n   install
+        nodes that match a policy using this repository; generally it\n   should match
+        the OS that the URL or ISO-URL attributes point to.\n   - This attribute is
+        required\n   - It must be of type string.\n\n\n\n# EXAMPLES\n  Create a repository
+        from an ISO image, which will be downloaded and unpacked\n  by the razor-server
+        in the background:\n  \n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
+        \"http://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
+        can also unpack an ISO image from a file *on the server*; this does not\n  upload
+        the file from the client:\n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
+        \"file:///tmp/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  Finally,
+        you can providing a `url` property when you create the repository;\n  this
+        form is merely a pointer to a resource somehwere and nothing will be\n  downloaded
+        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
+        \"fedora\"\n      }\n\n"},"schema":{"name":{"type":"string"},"url":{"type":"string"},"iso-url":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-repo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '3227'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-repo","help":{"full":"# SYNOPSIS\nCreate a new repository,
+        from an ISO image or a URL\n\n# DESCRIPTION\nCreate a new repository, which
+        can either contain the content to install a\nnode, or simply point to an existing
+        online repository by URL.\n\n\n# Access Control\n\nThis command''s access
+        control pattern: `commands:create-repo:%{name}`\n\nWords surrounded by `%{...}`
+        are substitutions from the input data: typically\nthe name of the object being
+        modified, or some other critical detail, these\nallow roles to be granted
+        partial access to modify the system.\n\nFor more detail on how the permission
+        strings are structured and work, you can\nsee the [Shiro Permissions documentation][shiro].  That
+        pattern is expanded\nand then a permission check applied to it, before the
+        command is authorized.\n\nThese checks only apply if security is enabled in
+        the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
+        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        The name of the repository.\n   - This attribute is required\n   - It must
+        be of type string.\n   - It must be between 1 and 250 in length.\n\n * url\n   -
+        The URL of the remote repository to use.\n   - It must be of type string.\n   -
+        If present, iso-url must not be present.\n   - It must be between 1 and 1000
+        in length.\n\n * iso-url\n   - The URL of the ISO image to download and unpack
+        to create the\n   repository.  This can be an HTTP or HTTPS URL, or it can
+        be a\n   file URL.\n   \n   In the later case, the file path is interpreted
+        as a path on the\n   Razor server, rather than a path on the client.  This
+        requires that\n   you manually place the ISO image on the server before invoking
+        the\n   command.\n   - It must be of type string.\n   - If present, url must
+        not be present.\n   - It must be between 1 and 1000 in length.\n\n * task\n   -
+        The name of the task associated with this repository.  This is used to\n   install
+        nodes that match a policy using this repository; generally it\n   should match
+        the OS that the URL or ISO-URL attributes point to.\n   - This attribute is
+        required\n   - It must be of type string.\n\n\n\n# EXAMPLES\n  Create a repository
+        from an ISO image, which will be downloaded and unpacked\n  by the razor-server
+        in the background:\n  \n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
+        \"http://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
+        can also unpack an ISO image from a file *on the server*; this does not\n  upload
+        the file from the client:\n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
+        \"file:///tmp/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  Finally,
+        you can providing a `url` property when you create the repository;\n  this
+        form is merely a pointer to a resource somehwere and nothing will be\n  downloaded
+        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
+        \"fedora\"\n      }\n\n"},"schema":{"name":{"type":"string"},"url":{"type":"string"},"iso-url":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/commands/create-repo
+    body:
+      encoding: UTF-8
+      string: '{"name":"name","url":"http://url.com/some.iso","task":"noop"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '61'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '201'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8080/api/collections/repos/name","name":"name","command":"http://localhost:8080/api/collections/commands/1"}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/collections/repos/name
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '335'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8080/api/collections/repos/name","name":"name","iso_url":null,"url":"http://url.com/some.iso","task":{"spec":"http://api.puppetlabs.com/razor/v1/collections/tasks/member","id":"http://localhost:8080/api/collections/tasks/noop","name":"noop"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '4982'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.14.1-113-g8b33d83-dirty"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-broker
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2496'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-broker","help":{"full":"# SYNOPSIS\nCreate a new broker
+        configuration for hand-off of installed nodes\n\n# DESCRIPTION\nCreate a new
+        broker configuration.  Brokers are responsible for handing a node\noff to
+        a config management system, such as Puppet or Chef.  In cases where you\nhave
+        no configuration management system, you can use the `noop` broker.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-broker:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the broker, as it will be referenced
+        within Razor.\n   This is the name that you supply to, eg, `create-policy`
+        to specify\n   which broker the node will be handed off via after installation.\n   -
+        This attribute is required\n   - It must be of type string.\n   - It must
+        be between 1 and 250 in length.\n\n * broker-type\n   - The broker type that
+        this broker is created from.  The available\n   broker types on your server
+        are:\n        - chef\n    - noop\n    - puppet-pe\n    - puppet\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must match
+        the name of an existing broker type.\n\n * configuration\n   - The configuration
+        for the broker.  The acceptable values here are\n   determined by the `broker-type`
+        selected.  In general this has\n   settings like which server to contact,
+        and other configuration\n   related to handing on the newly installed system
+        to the final\n   configuration management system.\n   - It must be of type
+        object.\n   \n   \n\n\n\n# EXAMPLES\n  Creating a simple Puppet broker:\n  \n  {\n    \"name\":
+        \"puppet\",\n    \"configuration\": {\n       \"server\":      \"puppet.example.org\",\n       \"environment\":
+        \"production\"\n    },\n    \"broker-type\": \"puppet\"\n  }\n\n"},"schema":{"name":{"type":"string"},"broker-type":{"type":"string"},"configuration":{"type":"object"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-broker
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2496'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-broker","help":{"full":"# SYNOPSIS\nCreate a new broker
+        configuration for hand-off of installed nodes\n\n# DESCRIPTION\nCreate a new
+        broker configuration.  Brokers are responsible for handing a node\noff to
+        a config management system, such as Puppet or Chef.  In cases where you\nhave
+        no configuration management system, you can use the `noop` broker.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-broker:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the broker, as it will be referenced
+        within Razor.\n   This is the name that you supply to, eg, `create-policy`
+        to specify\n   which broker the node will be handed off via after installation.\n   -
+        This attribute is required\n   - It must be of type string.\n   - It must
+        be between 1 and 250 in length.\n\n * broker-type\n   - The broker type that
+        this broker is created from.  The available\n   broker types on your server
+        are:\n        - chef\n    - noop\n    - puppet-pe\n    - puppet\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must match
+        the name of an existing broker type.\n\n * configuration\n   - The configuration
+        for the broker.  The acceptable values here are\n   determined by the `broker-type`
+        selected.  In general this has\n   settings like which server to contact,
+        and other configuration\n   related to handing on the newly installed system
+        to the final\n   configuration management system.\n   - It must be of type
+        object.\n   \n   \n\n\n\n# EXAMPLES\n  Creating a simple Puppet broker:\n  \n  {\n    \"name\":
+        \"puppet\",\n    \"configuration\": {\n       \"server\":      \"puppet.example.org\",\n       \"environment\":
+        \"production\"\n    },\n    \"broker-type\": \"puppet\"\n  }\n\n"},"schema":{"name":{"type":"string"},"broker-type":{"type":"string"},"configuration":{"type":"object"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-broker
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2496'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-broker","help":{"full":"# SYNOPSIS\nCreate a new broker
+        configuration for hand-off of installed nodes\n\n# DESCRIPTION\nCreate a new
+        broker configuration.  Brokers are responsible for handing a node\noff to
+        a config management system, such as Puppet or Chef.  In cases where you\nhave
+        no configuration management system, you can use the `noop` broker.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-broker:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the broker, as it will be referenced
+        within Razor.\n   This is the name that you supply to, eg, `create-policy`
+        to specify\n   which broker the node will be handed off via after installation.\n   -
+        This attribute is required\n   - It must be of type string.\n   - It must
+        be between 1 and 250 in length.\n\n * broker-type\n   - The broker type that
+        this broker is created from.  The available\n   broker types on your server
+        are:\n        - chef\n    - noop\n    - puppet-pe\n    - puppet\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must match
+        the name of an existing broker type.\n\n * configuration\n   - The configuration
+        for the broker.  The acceptable values here are\n   determined by the `broker-type`
+        selected.  In general this has\n   settings like which server to contact,
+        and other configuration\n   related to handing on the newly installed system
+        to the final\n   configuration management system.\n   - It must be of type
+        object.\n   \n   \n\n\n\n# EXAMPLES\n  Creating a simple Puppet broker:\n  \n  {\n    \"name\":
+        \"puppet\",\n    \"configuration\": {\n       \"server\":      \"puppet.example.org\",\n       \"environment\":
+        \"production\"\n    },\n    \"broker-type\": \"puppet\"\n  }\n\n"},"schema":{"name":{"type":"string"},"broker-type":{"type":"string"},"configuration":{"type":"object"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/commands/create-broker
+    body:
+      encoding: UTF-8
+      string: '{"name":"puppet","configuration":{"server":"puppet.example.org","environment":"production"},"broker-type":"puppet"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '115'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '209'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/brokers/member","id":"http://localhost:8080/api/collections/brokers/puppet","name":"puppet","command":"http://localhost:8080/api/collections/commands/2"}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/collections/brokers/puppet
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '356'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/brokers/member","id":"http://localhost:8080/api/collections/brokers/puppet","name":"puppet","configuration":{"server":"puppet.example.org","environment":"production"},"broker-type":"puppet","policies":{"id":"http://localhost:8080/api/collections/brokers/puppet/policies","count":0,"name":"policies"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '4982'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.14.1-113-g8b33d83-dirty"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:08 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-tag
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2178'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJuYW1lIjoiY3JlYXRlLXRhZyIsImhlbHAiOnsiZnVsbCI6IiMgU1lOT1BT
+        SVNcbkNyZWF0ZSBhIG5ldyB0YWdcblxuIyBERVNDUklQVElPTlxuQ3JlYXRl
+        IGEgbmV3IHRhZywgYW5kIHNldCB0aGUgcnVsZSBpdCB3aWxsIHVzZSB0byBt
+        YXRjaCBvbiBmYWN0cyBhbmQgbm9kZVxubWV0YWRhdGEuXG5cblxuIyBBY2Nl
+        c3MgQ29udHJvbFxuXG5UaGlzIGNvbW1hbmQncyBhY2Nlc3MgY29udHJvbCBw
+        YXR0ZXJuOiBgY29tbWFuZHM6Y3JlYXRlLXRhZzole25hbWV9YFxuXG5Xb3Jk
+        cyBzdXJyb3VuZGVkIGJ5IGAley4uLn1gIGFyZSBzdWJzdGl0dXRpb25zIGZy
+        b20gdGhlIGlucHV0IGRhdGE6IHR5cGljYWxseVxudGhlIG5hbWUgb2YgdGhl
+        IG9iamVjdCBiZWluZyBtb2RpZmllZCwgb3Igc29tZSBvdGhlciBjcml0aWNh
+        bCBkZXRhaWwsIHRoZXNlXG5hbGxvdyByb2xlcyB0byBiZSBncmFudGVkIHBh
+        cnRpYWwgYWNjZXNzIHRvIG1vZGlmeSB0aGUgc3lzdGVtLlxuXG5Gb3IgbW9y
+        ZSBkZXRhaWwgb24gaG93IHRoZSBwZXJtaXNzaW9uIHN0cmluZ3MgYXJlIHN0
+        cnVjdHVyZWQgYW5kIHdvcmssIHlvdSBjYW5cbnNlZSB0aGUgW1NoaXJvIFBl
+        cm1pc3Npb25zIGRvY3VtZW50YXRpb25dW3NoaXJvXS4gIFRoYXQgcGF0dGVy
+        biBpcyBleHBhbmRlZFxuYW5kIHRoZW4gYSBwZXJtaXNzaW9uIGNoZWNrIGFw
+        cGxpZWQgdG8gaXQsIGJlZm9yZSB0aGUgY29tbWFuZCBpcyBhdXRob3JpemVk
+        LlxuXG5UaGVzZSBjaGVja3Mgb25seSBhcHBseSBpZiBzZWN1cml0eSBpcyBl
+        bmFibGVkIGluIHRoZSBSYXpvciBjb25maWd1cmF0aW9uXG5maWxlOyBvbiB0
+        aGlzIHNlcnZlciBzZWN1cml0eSBpcyBjdXJyZW50bHkgZGlzYWJsZWQuXG5c
+        bltzaGlyb106IGh0dHA6Ly9zaGlyby5hcGFjaGUub3JnL3Blcm1pc3Npb25z
+        Lmh0bWxcblxuIyBBdHRyaWJ1dGVzXG5cbiAqIG5hbWVcbiAgIC0gVGhlIG5h
+        bWUgb2YgdGhlIHRhZ1xuICAgLSBUaGlzIGF0dHJpYnV0ZSBpcyByZXF1aXJl
+        ZFxuICAgLSBJdCBtdXN0IGJlIG9mIHR5cGUgc3RyaW5nLlxuICAgLSBJdCBt
+        dXN0IGJlIGJldHdlZW4gMSBhbmQgSW5maW5pdHkgaW4gbGVuZ3RoLlxuXG4g
+        KiBydWxlXG4gICAtIFRoZSB0YWcgbWF0Y2hlcyBhIG5vZGUgaWYgZXZhbHVh
+        dGluZyB0aGlzIHJ1biBhZ2FpbnN0IHRoZSB0YWfigJlzIGZhY3RzXG4gICBy
+        ZXN1bHRzIGluIHRydWUuIE5vdGUgdGhhdCB0YWcgbWF0Y2hpbmcgaXMgY2Fz
+        ZSBzZW5zaXRpdmUuXG4gICBcbiAgIEZvciBleGFtcGxlLCBoZXJlIGlzIGEg
+        dGFnIHJ1bGU6XG4gICBcbiAgICAgICBbXCJvclwiLFxuICAgICAgICBbXCI9
+        XCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBcImRlOmVhOmRiOmVl
+        OmYwOjAwXCJdXG4gICAgICAgIFtcIj1cIiwgW1wiZmFjdFwiLCBcIm1hY2Fk
+        ZHJlc3NcIl0sIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1dXG4gICBcbiAgIFRo
+        ZSB0YWcgY291bGQgYWxzbyBiZSB3cml0dGVuIGxpa2UgdGhpczpcbiAgIFxu
+        ICAgICAgIFtcImluXCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBc
+        ImRlOmVhOmRiOmVlOmYwOjAwXCIsIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1c
+        biAgIFxuICAgVGhlIHN5bnRheCBmb3IgcnVsZSBleHByZXNzaW9ucyBpcyBk
+        ZWZpbmVkIGluXG4gICBgbGliL3Jhem9yL21hdGNoZXIucmJgLiBFeHByZXNz
+        aW9ucyBhcmUgb2YgdGhlIGZvcm0gYFtvcCBhcmcxIGFyZzIgLi4gYXJnbl1g
+        XG4gICB3aGVyZSBvcCBpcyBvbmUgb2YgdGhlIG9wZXJhdG9ycyBiZWxvdywg
+        YW5kIGFyZzEgdGhyb3VnaCBhcmduIGFyZSB0aGVcbiAgIGFyZ3VtZW50cyBm
+        b3IgdGhlIG9wZXJhdG9yLiBJZiB0aGV5IGFyZSBleHByZXNzaW9ucyB0aGVt
+        c2VsdmVzLCB0aGV5IHdpbGxcbiAgIGJlIGV2YWx1YXRlZCBiZWZvcmUgb3Ag
+        aXMgZXZhbHVhdGVkXG4gICAtIFRoaXMgYXR0cmlidXRlIGlzIHJlcXVpcmVk
+        XG4gICAtIEl0IG11c3QgYmUgb2YgdHlwZSBhcnJheS5cblxuXG5cbiMgRVhB
+        TVBMRVNcbiAgQ3JlYXRlIGEgc2ltcGxlIHRhZzpcbiAgXG4gIHtcbiAgICBc
+        Im5hbWVcIjogXCJzbWFsbFwiLFxuICAgIFwicnVsZVwiOiBbXCI9XCIsIFtc
+        ImZhY3RcIiwgXCJwcm9jZXNzb3Jjb3VudFwiXSwgXCIyXCJdXG4gIH1cblxu
+        In0sInNjaGVtYSI6eyJuYW1lIjp7InR5cGUiOiJzdHJpbmcifSwicnVsZSI6
+        eyJ0eXBlIjoiYXJyYXkifX19
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-tag
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2178'
+      Date:
+      - Fri, 16 May 2014 22:18:08 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJuYW1lIjoiY3JlYXRlLXRhZyIsImhlbHAiOnsiZnVsbCI6IiMgU1lOT1BT
+        SVNcbkNyZWF0ZSBhIG5ldyB0YWdcblxuIyBERVNDUklQVElPTlxuQ3JlYXRl
+        IGEgbmV3IHRhZywgYW5kIHNldCB0aGUgcnVsZSBpdCB3aWxsIHVzZSB0byBt
+        YXRjaCBvbiBmYWN0cyBhbmQgbm9kZVxubWV0YWRhdGEuXG5cblxuIyBBY2Nl
+        c3MgQ29udHJvbFxuXG5UaGlzIGNvbW1hbmQncyBhY2Nlc3MgY29udHJvbCBw
+        YXR0ZXJuOiBgY29tbWFuZHM6Y3JlYXRlLXRhZzole25hbWV9YFxuXG5Xb3Jk
+        cyBzdXJyb3VuZGVkIGJ5IGAley4uLn1gIGFyZSBzdWJzdGl0dXRpb25zIGZy
+        b20gdGhlIGlucHV0IGRhdGE6IHR5cGljYWxseVxudGhlIG5hbWUgb2YgdGhl
+        IG9iamVjdCBiZWluZyBtb2RpZmllZCwgb3Igc29tZSBvdGhlciBjcml0aWNh
+        bCBkZXRhaWwsIHRoZXNlXG5hbGxvdyByb2xlcyB0byBiZSBncmFudGVkIHBh
+        cnRpYWwgYWNjZXNzIHRvIG1vZGlmeSB0aGUgc3lzdGVtLlxuXG5Gb3IgbW9y
+        ZSBkZXRhaWwgb24gaG93IHRoZSBwZXJtaXNzaW9uIHN0cmluZ3MgYXJlIHN0
+        cnVjdHVyZWQgYW5kIHdvcmssIHlvdSBjYW5cbnNlZSB0aGUgW1NoaXJvIFBl
+        cm1pc3Npb25zIGRvY3VtZW50YXRpb25dW3NoaXJvXS4gIFRoYXQgcGF0dGVy
+        biBpcyBleHBhbmRlZFxuYW5kIHRoZW4gYSBwZXJtaXNzaW9uIGNoZWNrIGFw
+        cGxpZWQgdG8gaXQsIGJlZm9yZSB0aGUgY29tbWFuZCBpcyBhdXRob3JpemVk
+        LlxuXG5UaGVzZSBjaGVja3Mgb25seSBhcHBseSBpZiBzZWN1cml0eSBpcyBl
+        bmFibGVkIGluIHRoZSBSYXpvciBjb25maWd1cmF0aW9uXG5maWxlOyBvbiB0
+        aGlzIHNlcnZlciBzZWN1cml0eSBpcyBjdXJyZW50bHkgZGlzYWJsZWQuXG5c
+        bltzaGlyb106IGh0dHA6Ly9zaGlyby5hcGFjaGUub3JnL3Blcm1pc3Npb25z
+        Lmh0bWxcblxuIyBBdHRyaWJ1dGVzXG5cbiAqIG5hbWVcbiAgIC0gVGhlIG5h
+        bWUgb2YgdGhlIHRhZ1xuICAgLSBUaGlzIGF0dHJpYnV0ZSBpcyByZXF1aXJl
+        ZFxuICAgLSBJdCBtdXN0IGJlIG9mIHR5cGUgc3RyaW5nLlxuICAgLSBJdCBt
+        dXN0IGJlIGJldHdlZW4gMSBhbmQgSW5maW5pdHkgaW4gbGVuZ3RoLlxuXG4g
+        KiBydWxlXG4gICAtIFRoZSB0YWcgbWF0Y2hlcyBhIG5vZGUgaWYgZXZhbHVh
+        dGluZyB0aGlzIHJ1biBhZ2FpbnN0IHRoZSB0YWfigJlzIGZhY3RzXG4gICBy
+        ZXN1bHRzIGluIHRydWUuIE5vdGUgdGhhdCB0YWcgbWF0Y2hpbmcgaXMgY2Fz
+        ZSBzZW5zaXRpdmUuXG4gICBcbiAgIEZvciBleGFtcGxlLCBoZXJlIGlzIGEg
+        dGFnIHJ1bGU6XG4gICBcbiAgICAgICBbXCJvclwiLFxuICAgICAgICBbXCI9
+        XCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBcImRlOmVhOmRiOmVl
+        OmYwOjAwXCJdXG4gICAgICAgIFtcIj1cIiwgW1wiZmFjdFwiLCBcIm1hY2Fk
+        ZHJlc3NcIl0sIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1dXG4gICBcbiAgIFRo
+        ZSB0YWcgY291bGQgYWxzbyBiZSB3cml0dGVuIGxpa2UgdGhpczpcbiAgIFxu
+        ICAgICAgIFtcImluXCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBc
+        ImRlOmVhOmRiOmVlOmYwOjAwXCIsIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1c
+        biAgIFxuICAgVGhlIHN5bnRheCBmb3IgcnVsZSBleHByZXNzaW9ucyBpcyBk
+        ZWZpbmVkIGluXG4gICBgbGliL3Jhem9yL21hdGNoZXIucmJgLiBFeHByZXNz
+        aW9ucyBhcmUgb2YgdGhlIGZvcm0gYFtvcCBhcmcxIGFyZzIgLi4gYXJnbl1g
+        XG4gICB3aGVyZSBvcCBpcyBvbmUgb2YgdGhlIG9wZXJhdG9ycyBiZWxvdywg
+        YW5kIGFyZzEgdGhyb3VnaCBhcmduIGFyZSB0aGVcbiAgIGFyZ3VtZW50cyBm
+        b3IgdGhlIG9wZXJhdG9yLiBJZiB0aGV5IGFyZSBleHByZXNzaW9ucyB0aGVt
+        c2VsdmVzLCB0aGV5IHdpbGxcbiAgIGJlIGV2YWx1YXRlZCBiZWZvcmUgb3Ag
+        aXMgZXZhbHVhdGVkXG4gICAtIFRoaXMgYXR0cmlidXRlIGlzIHJlcXVpcmVk
+        XG4gICAtIEl0IG11c3QgYmUgb2YgdHlwZSBhcnJheS5cblxuXG5cbiMgRVhB
+        TVBMRVNcbiAgQ3JlYXRlIGEgc2ltcGxlIHRhZzpcbiAgXG4gIHtcbiAgICBc
+        Im5hbWVcIjogXCJzbWFsbFwiLFxuICAgIFwicnVsZVwiOiBbXCI9XCIsIFtc
+        ImZhY3RcIiwgXCJwcm9jZXNzb3Jjb3VudFwiXSwgXCIyXCJdXG4gIH1cblxu
+        In0sInNjaGVtYSI6eyJuYW1lIjp7InR5cGUiOiJzdHJpbmcifSwicnVsZSI6
+        eyJ0eXBlIjoiYXJyYXkifX19
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/commands/create-tag
+    body:
+      encoding: UTF-8
+      string: '{"name":"tag1","rule":["=",["fact","processorcount"],"1"]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '58'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '199'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8080/api/collections/tags/tag1","name":"tag1","command":"http://localhost:8080/api/collections/commands/3"}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/collections/tags/tag1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '382'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8080/api/collections/tags/tag1","name":"tag1","rule":["=",["fact","processorcount"],"1"],"nodes":{"id":"http://localhost:8080/api/collections/tags/tag1/nodes","count":0,"name":"nodes"},"policies":{"id":"http://localhost:8080/api/collections/tags/tag1/policies","count":0,"name":"policies"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '4982'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.14.1-113-g8b33d83-dirty"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-tag
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2178'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJuYW1lIjoiY3JlYXRlLXRhZyIsImhlbHAiOnsiZnVsbCI6IiMgU1lOT1BT
+        SVNcbkNyZWF0ZSBhIG5ldyB0YWdcblxuIyBERVNDUklQVElPTlxuQ3JlYXRl
+        IGEgbmV3IHRhZywgYW5kIHNldCB0aGUgcnVsZSBpdCB3aWxsIHVzZSB0byBt
+        YXRjaCBvbiBmYWN0cyBhbmQgbm9kZVxubWV0YWRhdGEuXG5cblxuIyBBY2Nl
+        c3MgQ29udHJvbFxuXG5UaGlzIGNvbW1hbmQncyBhY2Nlc3MgY29udHJvbCBw
+        YXR0ZXJuOiBgY29tbWFuZHM6Y3JlYXRlLXRhZzole25hbWV9YFxuXG5Xb3Jk
+        cyBzdXJyb3VuZGVkIGJ5IGAley4uLn1gIGFyZSBzdWJzdGl0dXRpb25zIGZy
+        b20gdGhlIGlucHV0IGRhdGE6IHR5cGljYWxseVxudGhlIG5hbWUgb2YgdGhl
+        IG9iamVjdCBiZWluZyBtb2RpZmllZCwgb3Igc29tZSBvdGhlciBjcml0aWNh
+        bCBkZXRhaWwsIHRoZXNlXG5hbGxvdyByb2xlcyB0byBiZSBncmFudGVkIHBh
+        cnRpYWwgYWNjZXNzIHRvIG1vZGlmeSB0aGUgc3lzdGVtLlxuXG5Gb3IgbW9y
+        ZSBkZXRhaWwgb24gaG93IHRoZSBwZXJtaXNzaW9uIHN0cmluZ3MgYXJlIHN0
+        cnVjdHVyZWQgYW5kIHdvcmssIHlvdSBjYW5cbnNlZSB0aGUgW1NoaXJvIFBl
+        cm1pc3Npb25zIGRvY3VtZW50YXRpb25dW3NoaXJvXS4gIFRoYXQgcGF0dGVy
+        biBpcyBleHBhbmRlZFxuYW5kIHRoZW4gYSBwZXJtaXNzaW9uIGNoZWNrIGFw
+        cGxpZWQgdG8gaXQsIGJlZm9yZSB0aGUgY29tbWFuZCBpcyBhdXRob3JpemVk
+        LlxuXG5UaGVzZSBjaGVja3Mgb25seSBhcHBseSBpZiBzZWN1cml0eSBpcyBl
+        bmFibGVkIGluIHRoZSBSYXpvciBjb25maWd1cmF0aW9uXG5maWxlOyBvbiB0
+        aGlzIHNlcnZlciBzZWN1cml0eSBpcyBjdXJyZW50bHkgZGlzYWJsZWQuXG5c
+        bltzaGlyb106IGh0dHA6Ly9zaGlyby5hcGFjaGUub3JnL3Blcm1pc3Npb25z
+        Lmh0bWxcblxuIyBBdHRyaWJ1dGVzXG5cbiAqIG5hbWVcbiAgIC0gVGhlIG5h
+        bWUgb2YgdGhlIHRhZ1xuICAgLSBUaGlzIGF0dHJpYnV0ZSBpcyByZXF1aXJl
+        ZFxuICAgLSBJdCBtdXN0IGJlIG9mIHR5cGUgc3RyaW5nLlxuICAgLSBJdCBt
+        dXN0IGJlIGJldHdlZW4gMSBhbmQgSW5maW5pdHkgaW4gbGVuZ3RoLlxuXG4g
+        KiBydWxlXG4gICAtIFRoZSB0YWcgbWF0Y2hlcyBhIG5vZGUgaWYgZXZhbHVh
+        dGluZyB0aGlzIHJ1biBhZ2FpbnN0IHRoZSB0YWfigJlzIGZhY3RzXG4gICBy
+        ZXN1bHRzIGluIHRydWUuIE5vdGUgdGhhdCB0YWcgbWF0Y2hpbmcgaXMgY2Fz
+        ZSBzZW5zaXRpdmUuXG4gICBcbiAgIEZvciBleGFtcGxlLCBoZXJlIGlzIGEg
+        dGFnIHJ1bGU6XG4gICBcbiAgICAgICBbXCJvclwiLFxuICAgICAgICBbXCI9
+        XCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBcImRlOmVhOmRiOmVl
+        OmYwOjAwXCJdXG4gICAgICAgIFtcIj1cIiwgW1wiZmFjdFwiLCBcIm1hY2Fk
+        ZHJlc3NcIl0sIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1dXG4gICBcbiAgIFRo
+        ZSB0YWcgY291bGQgYWxzbyBiZSB3cml0dGVuIGxpa2UgdGhpczpcbiAgIFxu
+        ICAgICAgIFtcImluXCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBc
+        ImRlOmVhOmRiOmVlOmYwOjAwXCIsIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1c
+        biAgIFxuICAgVGhlIHN5bnRheCBmb3IgcnVsZSBleHByZXNzaW9ucyBpcyBk
+        ZWZpbmVkIGluXG4gICBgbGliL3Jhem9yL21hdGNoZXIucmJgLiBFeHByZXNz
+        aW9ucyBhcmUgb2YgdGhlIGZvcm0gYFtvcCBhcmcxIGFyZzIgLi4gYXJnbl1g
+        XG4gICB3aGVyZSBvcCBpcyBvbmUgb2YgdGhlIG9wZXJhdG9ycyBiZWxvdywg
+        YW5kIGFyZzEgdGhyb3VnaCBhcmduIGFyZSB0aGVcbiAgIGFyZ3VtZW50cyBm
+        b3IgdGhlIG9wZXJhdG9yLiBJZiB0aGV5IGFyZSBleHByZXNzaW9ucyB0aGVt
+        c2VsdmVzLCB0aGV5IHdpbGxcbiAgIGJlIGV2YWx1YXRlZCBiZWZvcmUgb3Ag
+        aXMgZXZhbHVhdGVkXG4gICAtIFRoaXMgYXR0cmlidXRlIGlzIHJlcXVpcmVk
+        XG4gICAtIEl0IG11c3QgYmUgb2YgdHlwZSBhcnJheS5cblxuXG5cbiMgRVhB
+        TVBMRVNcbiAgQ3JlYXRlIGEgc2ltcGxlIHRhZzpcbiAgXG4gIHtcbiAgICBc
+        Im5hbWVcIjogXCJzbWFsbFwiLFxuICAgIFwicnVsZVwiOiBbXCI9XCIsIFtc
+        ImZhY3RcIiwgXCJwcm9jZXNzb3Jjb3VudFwiXSwgXCIyXCJdXG4gIH1cblxu
+        In0sInNjaGVtYSI6eyJuYW1lIjp7InR5cGUiOiJzdHJpbmcifSwicnVsZSI6
+        eyJ0eXBlIjoiYXJyYXkifX19
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-tag
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2178'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJuYW1lIjoiY3JlYXRlLXRhZyIsImhlbHAiOnsiZnVsbCI6IiMgU1lOT1BT
+        SVNcbkNyZWF0ZSBhIG5ldyB0YWdcblxuIyBERVNDUklQVElPTlxuQ3JlYXRl
+        IGEgbmV3IHRhZywgYW5kIHNldCB0aGUgcnVsZSBpdCB3aWxsIHVzZSB0byBt
+        YXRjaCBvbiBmYWN0cyBhbmQgbm9kZVxubWV0YWRhdGEuXG5cblxuIyBBY2Nl
+        c3MgQ29udHJvbFxuXG5UaGlzIGNvbW1hbmQncyBhY2Nlc3MgY29udHJvbCBw
+        YXR0ZXJuOiBgY29tbWFuZHM6Y3JlYXRlLXRhZzole25hbWV9YFxuXG5Xb3Jk
+        cyBzdXJyb3VuZGVkIGJ5IGAley4uLn1gIGFyZSBzdWJzdGl0dXRpb25zIGZy
+        b20gdGhlIGlucHV0IGRhdGE6IHR5cGljYWxseVxudGhlIG5hbWUgb2YgdGhl
+        IG9iamVjdCBiZWluZyBtb2RpZmllZCwgb3Igc29tZSBvdGhlciBjcml0aWNh
+        bCBkZXRhaWwsIHRoZXNlXG5hbGxvdyByb2xlcyB0byBiZSBncmFudGVkIHBh
+        cnRpYWwgYWNjZXNzIHRvIG1vZGlmeSB0aGUgc3lzdGVtLlxuXG5Gb3IgbW9y
+        ZSBkZXRhaWwgb24gaG93IHRoZSBwZXJtaXNzaW9uIHN0cmluZ3MgYXJlIHN0
+        cnVjdHVyZWQgYW5kIHdvcmssIHlvdSBjYW5cbnNlZSB0aGUgW1NoaXJvIFBl
+        cm1pc3Npb25zIGRvY3VtZW50YXRpb25dW3NoaXJvXS4gIFRoYXQgcGF0dGVy
+        biBpcyBleHBhbmRlZFxuYW5kIHRoZW4gYSBwZXJtaXNzaW9uIGNoZWNrIGFw
+        cGxpZWQgdG8gaXQsIGJlZm9yZSB0aGUgY29tbWFuZCBpcyBhdXRob3JpemVk
+        LlxuXG5UaGVzZSBjaGVja3Mgb25seSBhcHBseSBpZiBzZWN1cml0eSBpcyBl
+        bmFibGVkIGluIHRoZSBSYXpvciBjb25maWd1cmF0aW9uXG5maWxlOyBvbiB0
+        aGlzIHNlcnZlciBzZWN1cml0eSBpcyBjdXJyZW50bHkgZGlzYWJsZWQuXG5c
+        bltzaGlyb106IGh0dHA6Ly9zaGlyby5hcGFjaGUub3JnL3Blcm1pc3Npb25z
+        Lmh0bWxcblxuIyBBdHRyaWJ1dGVzXG5cbiAqIG5hbWVcbiAgIC0gVGhlIG5h
+        bWUgb2YgdGhlIHRhZ1xuICAgLSBUaGlzIGF0dHJpYnV0ZSBpcyByZXF1aXJl
+        ZFxuICAgLSBJdCBtdXN0IGJlIG9mIHR5cGUgc3RyaW5nLlxuICAgLSBJdCBt
+        dXN0IGJlIGJldHdlZW4gMSBhbmQgSW5maW5pdHkgaW4gbGVuZ3RoLlxuXG4g
+        KiBydWxlXG4gICAtIFRoZSB0YWcgbWF0Y2hlcyBhIG5vZGUgaWYgZXZhbHVh
+        dGluZyB0aGlzIHJ1biBhZ2FpbnN0IHRoZSB0YWfigJlzIGZhY3RzXG4gICBy
+        ZXN1bHRzIGluIHRydWUuIE5vdGUgdGhhdCB0YWcgbWF0Y2hpbmcgaXMgY2Fz
+        ZSBzZW5zaXRpdmUuXG4gICBcbiAgIEZvciBleGFtcGxlLCBoZXJlIGlzIGEg
+        dGFnIHJ1bGU6XG4gICBcbiAgICAgICBbXCJvclwiLFxuICAgICAgICBbXCI9
+        XCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBcImRlOmVhOmRiOmVl
+        OmYwOjAwXCJdXG4gICAgICAgIFtcIj1cIiwgW1wiZmFjdFwiLCBcIm1hY2Fk
+        ZHJlc3NcIl0sIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1dXG4gICBcbiAgIFRo
+        ZSB0YWcgY291bGQgYWxzbyBiZSB3cml0dGVuIGxpa2UgdGhpczpcbiAgIFxu
+        ICAgICAgIFtcImluXCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBc
+        ImRlOmVhOmRiOmVlOmYwOjAwXCIsIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1c
+        biAgIFxuICAgVGhlIHN5bnRheCBmb3IgcnVsZSBleHByZXNzaW9ucyBpcyBk
+        ZWZpbmVkIGluXG4gICBgbGliL3Jhem9yL21hdGNoZXIucmJgLiBFeHByZXNz
+        aW9ucyBhcmUgb2YgdGhlIGZvcm0gYFtvcCBhcmcxIGFyZzIgLi4gYXJnbl1g
+        XG4gICB3aGVyZSBvcCBpcyBvbmUgb2YgdGhlIG9wZXJhdG9ycyBiZWxvdywg
+        YW5kIGFyZzEgdGhyb3VnaCBhcmduIGFyZSB0aGVcbiAgIGFyZ3VtZW50cyBm
+        b3IgdGhlIG9wZXJhdG9yLiBJZiB0aGV5IGFyZSBleHByZXNzaW9ucyB0aGVt
+        c2VsdmVzLCB0aGV5IHdpbGxcbiAgIGJlIGV2YWx1YXRlZCBiZWZvcmUgb3Ag
+        aXMgZXZhbHVhdGVkXG4gICAtIFRoaXMgYXR0cmlidXRlIGlzIHJlcXVpcmVk
+        XG4gICAtIEl0IG11c3QgYmUgb2YgdHlwZSBhcnJheS5cblxuXG5cbiMgRVhB
+        TVBMRVNcbiAgQ3JlYXRlIGEgc2ltcGxlIHRhZzpcbiAgXG4gIHtcbiAgICBc
+        Im5hbWVcIjogXCJzbWFsbFwiLFxuICAgIFwicnVsZVwiOiBbXCI9XCIsIFtc
+        ImZhY3RcIiwgXCJwcm9jZXNzb3Jjb3VudFwiXSwgXCIyXCJdXG4gIH1cblxu
+        In0sInNjaGVtYSI6eyJuYW1lIjp7InR5cGUiOiJzdHJpbmcifSwicnVsZSI6
+        eyJ0eXBlIjoiYXJyYXkifX19
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/commands/create-tag
+    body:
+      encoding: UTF-8
+      string: '{"name":"tag2","rule":["=",["fact","processorcount"],"2"]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '58'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '199'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8080/api/collections/tags/tag2","name":"tag2","command":"http://localhost:8080/api/collections/commands/4"}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/collections/tags/tag2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '382'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8080/api/collections/tags/tag2","name":"tag2","rule":["=",["fact","processorcount"],"2"],"nodes":{"id":"http://localhost:8080/api/collections/tags/tag2/nodes","count":0,"name":"nodes"},"policies":{"id":"http://localhost:8080/api/collections/tags/tag2/policies","count":0,"name":"policies"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '4982'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.14.1-113-g8b33d83-dirty"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '5306'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-policy","help":{"full":"# SYNOPSIS\nCreate a new policy\n\n#
+        DESCRIPTION\nPolicies tie together the rules, as tags, with the task and repo
+        containing\nthe OS to install, and the broker for post-install configuration.\n\nThe
+        overall list of policies is ordered, and policies are considered in that\norder.
+        When a new policy is created, the entry `before` or `after` can be\nused to
+        put the new policy into the table before or after another\npolicy. If neither
+        `before` or `after` are specified, the policy is\nappended to the policy table.\n\n\n#
+        Access Control\n\nThis command''s access control pattern: `commands:create-policy:%{name}`\n\nWords
+        surrounded by `%{...}` are substitutions from the input data: typically\nthe
+        name of the object being modified, or some other critical detail, these\nallow
+        roles to be granted partial access to modify the system.\n\nFor more detail
+        on how the permission strings are structured and work, you can\nsee the [Shiro
+        Permissions documentation][shiro].  That pattern is expanded\nand then a permission
+        check applied to it, before the command is authorized.\n\nThese checks only
+        apply if security is enabled in the Razor configuration\nfile; on this server
+        security is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the policy to create.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must be between 1 and
+        Infinity in length.\n\n * hostname\n   - The hostname pattern to use for newly
+        installed nodes.  This is filled\n   in on a per-node basis, and then supplied
+        to the task to be configured\n   appropriately on the newly installed node.\n   \n   Substitutions
+        are performed using `${...}` syntax, and the available\n   substitution names
+        on your server are:\n   \n   - id -- the internal node ID number\n   - This
+        attribute is required\n   - It must be of type string.\n   - It must be between
+        1 and Infinity in length.\n\n * root-password\n   - The root password for
+        newly installed systems.  This is passed directly\n   to the individual task,
+        rather than \"understood\" by the server, so the\n   valid values are dependent
+        on the individual task capabilities.\n   - This attribute is required\n   -
+        It must be of type string.\n   - It must be between 1 and Infinity in length.\n\n
+        * enabled\n   - Is this policy enabled when first created?\n   - It must be
+        of type boolean.\n\n * max-count\n   - The maximum number of nodes that can
+        bind to this policy.\n   If omitted, the policy is ''unlimited'', and no maximum
+        is applied.\n   - It must be of type number.\n\n * before\n   - The name of
+        the policy to create this policy before in the policy list.\n   - It must
+        be of type string.\n   - If present, after must not be present.\n   - It must
+        match the name of an existing policy.\n\n * after\n   - The name of the policy
+        to create this policy after in the policy list.\n   - It must be of type string.\n   -
+        If present, before must not be present.\n   - It must match the name of an
+        existing policy.\n\n * tags\n   - The array of names of tags that are used
+        for matching nodes to this policy.\n   \n   When a node has all these tags
+        matched on it, it will be a candidate\n   for binding to this policy.\n   -
+        It must be of type array.\n   \n   - This value must be an array.\n      -
+        \n      - This must be an array.\n      - All elements must be of type string.\n      -
+        All elements must match the name of an existing tag.\n   \n   \n\n * repo\n   -
+        The name of the repository containing the OS to be installed by this policy.\n   This
+        should match the task assigned, or bad things will happen.\n   - This attribute
+        is required\n   - It must be of type string.\n   - It must match the name
+        of an existing repo.\n\n * broker\n   - The name of the broker to use when
+        the node is fully installed, and is ready\n   to hand off to the final configuration
+        management system.  If you have no\n   ongoing configuration management, the
+        supplied `noop` broker will do nothing.\n   \n   Please note that this is
+        a broker created with the `create-broker` command,\n   which is distinct from
+        the broker types found on disk.\n   - This attribute is required\n   - It
+        must be of type string.\n   - It must match the name of an existing broker.\n\n
+        * task\n   - The name of the task used to install nodes that match this policy.  This
+        must\n   match the selected repo, as it references files contained within
+        that repository.\n   - This attribute is required\n   - It must be of type
+        string.\n\n\n\n# EXAMPLES\n  A sample policy installing CentOS 6.4:\n  \n  {\n    \"name\":          \"centos-for-small\",\n    \"repo\":          \"centos-6.4\",\n    \"task\":          \"centos\",\n    \"broker\":        \"noop\",\n    \"enabled\":       true,\n    \"hostname\":      \"host${id}.example.com\",\n    \"root-password\":
+        \"secret\",\n    \"max-count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"]\n  }\n\n"},"schema":{"name":{"type":"string"},"hostname":{"type":"string"},"root-password":{"type":"string"},"enabled":{"type":"boolean"},"max-count":{"type":"number"},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array"},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"}}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/commands/create-policy
+    body:
+      encoding: UTF-8
+      string: '{"name":"test","hostname":"abc.com","root-password":"abc","task":"noop","repo":"name","broker":"puppet","tag":["tag1","tag2"]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '126'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '207'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/policies/member","id":"http://localhost:8080/api/collections/policies/test","name":"test","command":"http://localhost:8080/api/collections/commands/5"}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/collections/policies/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1071'
+      Date:
+      - Fri, 16 May 2014 22:18:09 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/policies/member","id":"http://localhost:8080/api/collections/policies/test","name":"test","repo":{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8080/api/collections/repos/name","name":"name"},"task":{"spec":"http://api.puppetlabs.com/razor/v1/collections/tasks/member","id":"http://localhost:8080/api/collections/tasks/noop","name":"noop"},"broker":{"spec":"http://api.puppetlabs.com/razor/v1/collections/brokers/member","id":"http://localhost:8080/api/collections/brokers/puppet","name":"puppet"},"enabled":true,"configuration":{"hostname_pattern":"abc.com","root_password":"abc"},"tags":[{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8080/api/collections/tags/tag1","name":"tag1"},{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8080/api/collections/tags/tag2","name":"tag2"}],"nodes":{"id":"http://localhost:8080/api/collections/policies/test/nodes","count":0,"name":"nodes"}}'
+    http_version:
+  recorded_at: Fri, 16 May 2014 22:18:09 GMT
+recorded_with: VCR 2.5.0
