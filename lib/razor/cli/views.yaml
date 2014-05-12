@@ -8,7 +8,7 @@
 # `+short`: This section configures what the output for the object looks like in short format.
 # `+show`: This section configures which attributes are shown in the output.
 # `+layout`: This configures whether to use 'list' or 'table' output.
-
+# `+column`: This changes which column is used in the field formatting.
 collections:
   brokers:
     +short:
@@ -69,7 +69,7 @@ collections:
         broker:
           +format: name
         enabled:
-        max_count_column:
+        max_count:
         tags:
           +format: join_names
         nodes:
@@ -85,7 +85,7 @@ collections:
           broker:
             +format: name
           enabled:
-          max_count_column:
+          max_count:
           tags:
             +format: join_names
           nodes:

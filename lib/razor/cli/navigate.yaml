@@ -38,6 +38,7 @@ commands:
       broker: reference
       task: reference
       max-count: integer
+      enabled: boolean
   move-policy:
     args:
       before: reference
