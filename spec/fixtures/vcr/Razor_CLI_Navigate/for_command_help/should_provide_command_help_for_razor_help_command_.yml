@@ -25,14 +25,14 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '4629'
+      - '4982'
       Date:
-      - Wed, 09 Apr 2014 21:31:05 GMT
+      - Fri, 16 May 2014 21:36:42 GMT
     body:
       encoding: US-ASCII
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}]}'
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.14.1-113-g8b33d83-dirty"}}'
     http_version:
-  recorded_at: Wed, 09 Apr 2014 21:31:05 GMT
+  recorded_at: Fri, 16 May 2014 21:36:42 GMT
 - request:
     method: get
     uri: http://localhost:8080/api/commands/update-tag-rule
@@ -54,19 +54,46 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v0.14.1-59-g927a036"'
+      - '"server-version-v0.14.1-113-g8b33d83-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '116'
+      - '2307'
       Date:
-      - Wed, 09 Apr 2014 21:31:05 GMT
+      - Fri, 16 May 2014 21:36:42 GMT
     body:
       encoding: US-ASCII
-      string: '{"name":"update-tag-rule","help":{"full":"Unfortunately, the `update-tag-rule`
-        command has not been documented.\n"}}'
+      string: '{"name":"update-tag-rule","help":{"full":"# SYNOPSIS\nUpdate the matching
+        rule for an existing tag\n\n# DESCRIPTION\nThis will change the rule of the
+        given tag to the new rule. The tag will be\nreevaluated against all nodes
+        and each node''s tag attribute will be updated to\nreflect whether the tag
+        now matches or not, i.e., the tag will be added\nto/removed from each node''s
+        tag as appropriate.\n\nIf the tag is used by any policies, the update will
+        only be performed if the\noptional parameter `force` is set to `true`. Otherwise,
+        it will fail.\n\n\n# Access Control\n\nThis command''s access control pattern:
+        `commands:update-tag-rule:%{name}`\n\nWords surrounded by `%{...}` are substitutions
+        from the input data: typically\nthe name of the object being modified, or
+        some other critical detail, these\nallow roles to be granted partial access
+        to modify the system.\n\nFor more detail on how the permission strings are
+        structured and work, you can\nsee the [Shiro Permissions documentation][shiro].  That
+        pattern is expanded\nand then a permission check applied to it, before the
+        command is authorized.\n\nThese checks only apply if security is enabled in
+        the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
+        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        The tag to change the rule of\n   - This attribute is required\n   - It must
+        be of type string.\n   - It must match the name of an existing tag.\n\n *
+        rule\n   - The new rule to apply to the tag\n   - This attribute is required\n   -
+        It must be of type array.\n\n * force\n   - By default this command will fail
+        if the tag is in use by an existing\n   policy.  This flag allows you to override
+        that, and force the change to\n   apply despite the tag being in use.\n   \n   This
+        will not change policy binding of nodes, which may lead to some\n   counter-intuitive
+        results such as a node that does *not* match policy\n   tags being bound to
+        the policy.\n   - It must be of type boolean.\n\n\n\n# EXAMPLES\n  An example
+        of updating a tag rule, and forcing reevaluation:\n  \n  {\n    \"name\":
+        \"small\",\n    \"rule\": [\"<=\", [\"fact\", \"processorcount\"], \"2\"],\n    \"force\":
+        true\n  }\n\n"},"schema":{"name":{"type":"string"},"rule":{"type":"array"},"force":{"type":"boolean"}}}'
     http_version:
-  recorded_at: Wed, 09 Apr 2014 21:31:05 GMT
+  recorded_at: Fri, 16 May 2014 21:36:42 GMT
 recorded_with: VCR 2.5.0

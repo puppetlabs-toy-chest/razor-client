@@ -26,6 +26,12 @@ module Razor
       end
     end
 
+    class VersionCompatibilityError < Error
+      def initialize(reason)
+        super "Server version is not compatible with client version: #{reason}"
+      end
+    end
+
   end
 end
 

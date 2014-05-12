@@ -94,6 +94,7 @@ module Razor::CLI
 
     def extract_command
       cmd = command(@segments.shift)
+      @cmd_url = cmd['id']
       body = {}
       until @segments.empty?
         argument = @segments.shift
@@ -117,7 +118,8 @@ module Razor::CLI
             if body[arg].nil?
               body[arg] = value
             else
-              body[arg] = Array[body[arg]] << value
+              # Either/both `body[arg]` or/and `value` might be an array at this point.
+              body[arg] = Array(body[arg]) + Array(value)
             end
           end
         else
@@ -193,20 +195,33 @@ module Razor::CLI
     end
 
     private
-    def self.annotations
-      @@annotations ||=
-          YAML::load_file(File::join(File::dirname(__FILE__), "navigate.yaml"))
+    def cmd_schema(cmd_name)
+      cmd = json_get(@cmd_url)
+      cmd['schema'] or raise VersionCompatibilityError, 'Server must supply the expected datatypes for command arguments'
     end
 
-    def self.arg_type(cmd_name, arg_name)
-      cmd = annotations["commands"][cmd_name]
-      cmd && cmd["args"][arg_name]
+    def arg_type(cmd_name, arg_name)
+      cmd = cmd_schema(cmd_name)
+      cmd && cmd[arg_name] && cmd[arg_name]['type'] or nil
     end
 
     def convert_arg(cmd_name, arg_name, value)
       value = nil if value == "null"
-      case self.class.arg_type(cmd_name, arg_name)
-        when "json"
+
+      argument_type = arg_type(cmd_name, arg_name)
+
+      # This might be helpful, since there's no other method for debug-level logging on the client.
+      puts "Formatting argument #{arg_name} with value #{value} as #{argument_type}\n" if @parse.dump_response?
+
+      case argument_type
+        when "array"
+          # 'array' datatype arguments will never fail. At worst, they'll be wrapped in an array.
+          begin
+            MultiJson::load(value)
+          rescue MultiJson::LoadError => _
+            Array(value)
+          end
+        when "object"
           begin
             MultiJson::load(value)
           rescue MultiJson::LoadError => error
@@ -214,20 +229,19 @@ module Razor::CLI
           end
         when "boolean"
           ["true", nil].include?(value)
-        when "integer"
+        when "number"
           begin
             Integer(value)
           rescue ArgumentError
             raise ArgumentError, "Invalid integer for argument '#{arg_name}': #{value}"
           end
-        when "reference"
-          begin
-            MultiJson::load(value)
-          rescue MultiJson::LoadError
-            { "name" => value }
-          end
-        else
+        when "null"
+          raise ArgumentError, "Expected nothing for argument '#{arg_name}', but was: '#{value}'" unless value.nil?
+          nil
+        when "string", nil # `nil` for 'might be an alias, send as-is'
           value
+        else
+          raise Razor::CLI::Error, "Unexpected datatype '#{argument_type}' for argument #{arg_name}"
       end
     end
   end
