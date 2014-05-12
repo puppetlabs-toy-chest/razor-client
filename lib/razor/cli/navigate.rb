@@ -30,6 +30,10 @@ module Razor::CLI
       entrypoint["commands"]
     end
 
+    def server_version
+      entrypoint.has_key?('version') and entrypoint['version']['server'] or 'Unknown'
+    end
+
     def query?
       collections.any? { |coll| coll["name"] == @segments.first }
     end

@@ -29,6 +29,7 @@ module Razor
   end
 end
 
+require_relative 'cli/version'
 require_relative 'cli/navigate'
 require_relative 'cli/parse'
 require_relative 'cli/format'

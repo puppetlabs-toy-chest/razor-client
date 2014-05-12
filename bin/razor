@@ -27,6 +27,11 @@ rescue OptionParser::InvalidOption => e
   die e.message + "\nTry 'razor --help' for more information"
 end
 
+if parse.show_version?
+  puts parse.version
+  exit 0
+end
+
 if parse.show_help? and not parse.show_command_help?
   puts parse.help
   exit 0

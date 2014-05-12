@@ -29,6 +29,10 @@ module Razor::CLI
           parse_and_set_api_url(url, :opts)
         end
 
+        opts.on "-v", "--version", "Show the version of Razor" do
+          @show_version = true
+        end
+
         opts.on "-h", "--help", "Show this screen" do
           # If searching for a command's help, leave the argument for navigation.
           @option_help = true
@@ -42,6 +46,13 @@ module Razor::CLI
         items.map {|x| x["name"]}.compact.sort.map do |name|
         "        #{name}"
       end.join("\n")
+    end
+
+    def version
+      <<-VERSION
+Razor Server version: #{navigate.server_version}
+Razor Client version: #{Razor::CLI::VERSION}
+      VERSION
     end
 
     def help
@@ -74,6 +85,10 @@ ERR
       output
     end
 
+    def show_version?
+      !!@show_version
+    end
+
     def show_help?
       !!@option_help
     end
@@ -94,7 +109,9 @@ ERR
       @format = 'short'
       rest = get_optparse.order(args)
       rest = set_help_vars(rest)
-      if rest.any?
+      if rest == ['version'] or @show_version
+        @show_version = true
+      elsif rest.any?
         @navigation = rest
       else
         # Called with no remaining arguments to parse.
