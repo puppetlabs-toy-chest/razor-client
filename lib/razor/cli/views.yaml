@@ -50,6 +50,20 @@ collections:
           state:
           tags:
             +format: join_names
+      tags:
+        +short:
+          +layout: table
+          +show:
+            name:
+            rule:
+              +format: nested
+            nodes:
+              +format: count_column
+            policies:
+              +format: count_column
+      hw_info:
+        +short:
+          +layout: list
     log:
       +short:
         +layout: table

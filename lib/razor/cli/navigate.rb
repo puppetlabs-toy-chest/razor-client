@@ -60,7 +60,7 @@ module Razor::CLI
         # Get the next level if it's a list of objects.
         if @doc.is_a?(Hash) and @doc['items'].is_a?(Array)
           @doc['items'] = @doc['items'].map do |item|
-            item.has_key?('id') ? json_get(item['id']) : item
+            item.is_a?(Hash) && item.has_key?('id') ? json_get(item['id']) : item
           end
         end
         @doc
@@ -160,8 +160,26 @@ module Razor::CLI
 
         @doc = json_get(url)
         @doc_url = url
-      elsif obj.is_a? Hash
+      elsif obj.is_a?(Hash) && obj['spec']
         @doc = obj
+      elsif obj.is_a?(Hash)
+        # No spec string; use parent's and remember extra navigation.
+        if @doc['+spec'].is_a?(Array)
+          # Something's been added.
+          @doc['+spec'] << key
+        elsif @doc['+spec'].nil? || @doc['+spec'].is_a?(String)
+          @doc['+spec'] = [@doc['spec'], key]
+        end
+        @doc = obj.merge({'+spec' => @doc['+spec']})
+      elsif obj.is_a?(Array)
+        # No spec string; use parent's and remember extra navigation.
+        if @doc['+spec'].is_a?(Array)
+          # Something's already been added.
+          @doc['+spec'] << key
+        elsif @doc['+spec'].nil? || @doc['+spec'].is_a?(String)
+          @doc['+spec'] = [@doc['spec'], key]
+        end
+        @doc = {'+spec' => @doc['+spec'], 'items' => obj}
       else
         @doc = nil
       end
