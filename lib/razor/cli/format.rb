@@ -68,7 +68,7 @@ module Razor::CLI
     end
 
     def format_default_object(object, indent = 0 )
-      fields = (PriorityKeys & object.keys) + (object.keys - PriorityKeys)
+      fields = display_fields(object)
       key_indent = indent + fields.map {|f| f.length}.max
       output = ""
       fields.map do |f|
@@ -96,6 +96,10 @@ module Razor::CLI
           end
         end
       end.join "\n"
+    end
+
+    def display_fields(object)
+      (PriorityKeys & object.keys) + (object.keys - PriorityKeys) - ['+spec']
     end
   end
 end

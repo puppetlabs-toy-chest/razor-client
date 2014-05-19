@@ -5,10 +5,14 @@ module Razor::CLI
       extend Forwardable
     attr_reader 'spec', 'items', 'format_view'
     def initialize(doc, format_type)
-      @spec = doc['spec']
+      if doc['spec'].is_a?(Array)
+        @spec, @remaining_navigation = doc['spec']
+      else
+        @spec = doc['spec']
+      end
       @command = doc['command']
-      @items = (doc['items'] or Array[doc])
-      @format_view = Razor::CLI::Views.find_formatting(spec, format_type)
+      @items = doc['items'] || Array[doc]
+      @format_view = Razor::CLI::Views.find_formatting(spec, format_type, @remaining_navigation)
 
       @items = hide_or_transform_elements!(items, format_view)
     end

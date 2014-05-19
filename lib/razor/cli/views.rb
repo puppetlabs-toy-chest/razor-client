@@ -9,10 +9,12 @@ module Razor::CLI
       Razor::CLI::Transforms.send(transform_name || 'identity', item)
     end
 
-    def find_formatting(spec, format)
+    def find_formatting(spec, format, remaining_navigation)
+      remaining_navigation ||= ''
       # Scope will narrow by traversing the spec.
       scope = views
       spec = spec ? spec.split('/').drop_while { |i| i != 'collections'} : []
+      spec = spec + remaining_navigation.split(' ')
       while spec.any?
         val = spec.shift
         scope = (scope[val] or {})
