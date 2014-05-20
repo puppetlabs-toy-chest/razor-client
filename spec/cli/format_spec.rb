@@ -14,7 +14,7 @@ describe Razor::CLI::Format do
   include described_class
 
   def format(doc, args = {})
-    args = {:format => '+short', :args => ['something', 'else']}.merge(args)
+    args = {:format => 'short', :args => ['something', 'else']}.merge(args)
     parse = double(args)
     format_document doc, parse
   end
@@ -54,6 +54,19 @@ describe Razor::CLI::Format do
       doc = {'items' => [{'name' => 'entirely'}, {'name' => 'bar'} ]}
       result = format doc
       result.should =~ /Query an entry by including its name, e.g. `razor something else entirely`\z/
+    end
+  end
+
+  context 'empty display' do
+    it "works right when it has nothing to display as a table" do
+      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/policies", "items"=>[]}
+      result = format doc
+      result.should == "There are no items for this query."
+    end
+    it "works right when it has nothing to display as a list" do
+      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/policies/member", "items"=>[]}
+      result = format doc
+      result.should == "There are no items for this query."
     end
   end
 end

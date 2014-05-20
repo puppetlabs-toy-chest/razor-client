@@ -22,13 +22,10 @@ module Razor::CLI
       format = parse.format
       arguments = parse.args
       doc = Razor::CLI::Document.new(doc, format)
+      return "There are no items for this query." if doc.items.empty?
       case (doc.format_view['+layout'] or 'list')
       when 'list'
-        case
-          when doc.items.size > 0 then
-            format_objects(doc.items) + String(additional_details(doc.original_items, arguments))
-          else "[none]"
-        end.chomp
+        format_objects(doc.items) + String(additional_details(doc.original_items, arguments)).chomp
       when 'table'
         case doc.items
           when Array then
