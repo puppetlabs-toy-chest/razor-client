@@ -19,25 +19,28 @@ module Razor::CLI
     end
 
     def format_document(doc, parse = nil)
-      doc = Razor::CLI::Document.new(doc, parse.format)
+      format = parse.format
+      arguments = parse.args
+      doc = Razor::CLI::Document.new(doc, format)
       case (doc.format_view['+layout'] or 'list')
       when 'list'
         case
           when doc.items.size > 0 then
-            format_objects(doc.items)
+            format_objects(doc.items) + String(additional_details(doc.original_items, arguments))
           else "[none]"
         end.chomp
       when 'table'
         case doc.items
           when Array then
-            get_table(doc.items, doc.format_view)
+            get_table(doc.items, doc.format_view) + String(additional_details(doc.original_items, arguments))
           else doc.to_s
         end
       else
-          raise ArgumentError, "Unrecognized view format #{doc.format_view['+layout']}"
+        raise ArgumentError, "Unrecognized view format #{doc.format_view['+layout']}"
       end
     end
 
+    private
     def get_table(doc, formatting)
       # Use the formatting if it exists, otherwise build from the data.
       headings = (formatting['+show'] and formatting['+show'].keys or [])
@@ -49,7 +52,7 @@ module Razor::CLI
           end
         end
         t.headings = headings
-      end
+      end.to_s
     end
 
     # We assume that all collections are homogenous
@@ -100,6 +103,26 @@ module Razor::CLI
 
     def display_fields(object)
       (PriorityKeys & object.keys) + (object.keys - PriorityKeys) - ['+spec']
+    end
+
+    def additional_details(objects, arguments)
+      # This is only relevant for a single item. If there are multiple, it's likely that each has
+      # its own name.
+      if objects.size == 1
+        object = objects.first
+        fields = display_fields(object) - PriorityKeys
+        list = fields.map do |f|
+          case object[f]
+            when Hash, Array
+              f
+          end
+        end.compact
+        if list.any?
+          "\n\nQuery additional details via: `razor #{arguments.join(' ')} [#{list.join(', ')}]`"
+        end
+      elsif objects.size > 1 and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
+        "\n\nQuery an entry by including its name, e.g. `razor #{arguments.join(' ')} #{objects.first['name']}`"
+      end
     end
   end
 end

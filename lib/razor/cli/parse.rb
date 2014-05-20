@@ -101,7 +101,7 @@ ERR
       !!@dump
     end
 
-    attr_reader :api_url, :format
+    attr_reader :api_url, :format, :args
 
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
