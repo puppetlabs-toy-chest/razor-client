@@ -107,12 +107,12 @@ ERR
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
       @format = 'short'
-      rest = get_optparse.order(args)
-      rest = set_help_vars(rest)
-      if rest == ['version'] or @show_version
+      @args = get_optparse.order(@args)
+      @args = set_help_vars(@args)
+      if @args == ['version'] or @show_version
         @show_version = true
-      elsif rest.any?
-        @navigation = rest
+      elsif @args.any?
+        @navigation = @args.dup
       else
         # Called with no remaining arguments to parse.
         @option_help = true
