@@ -3,7 +3,7 @@ require 'forwardable'
 module Razor::CLI
   class Document
       extend Forwardable
-    attr_reader 'spec', 'items', 'format_view'
+    attr_reader 'spec', 'items', 'format_view', 'original_items'
     def initialize(doc, format_type)
       if doc['spec'].is_a?(Array)
         @spec, @remaining_navigation = doc['spec']
@@ -12,8 +12,10 @@ module Razor::CLI
       end
       @command = doc['command']
       @items = doc['items'] || Array[doc]
-      @format_view = Razor::CLI::Views.find_formatting(spec, format_type, @remaining_navigation)
+      @format_view = Razor::CLI::Views.find_formatting(@spec, format_type, @remaining_navigation)
 
+      # Untransformed and unordered for displaying nested views.
+      @original_items = @items
       @items = hide_or_transform_elements!(items, format_view)
     end
 
