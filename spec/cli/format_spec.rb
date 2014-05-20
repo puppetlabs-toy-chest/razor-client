@@ -30,6 +30,11 @@ describe Razor::CLI::Format do
       result = format doc
       result.should =~ /Query additional details via: `razor something else \[abc\]`\z/
     end
+    it "tells multiple additional details" do
+      doc = {'abc' => ['def'], 'ghi' => {'jkl' => 'mno'}}
+      result = format doc
+      result.should =~ /Query additional details via: `razor something else \[abc, ghi\]`\z/
+    end
     it "tells no additional details for a string" do
       doc = {'abc' => 'def'}
       result = format doc
