@@ -98,7 +98,7 @@ module Razor::CLI
       body = {}
       until @segments.empty?
         argument = @segments.shift
-        if argument =~ /\A--([a-z-]+)(=(\S+))?\Z/
+        if argument =~ /\A--([a-z-]+)(=(.+))?\Z/
           # `--arg=value` or `--arg value`
           arg, value = [$1, $3]
           value = @segments.shift if value.nil? && @segments[0] !~ /^--/
@@ -109,7 +109,7 @@ module Razor::CLI
               raise ArgumentError, "Cannot handle mixed types for argument #{arg}"
             end
             # Do not convert, assume the above is the conversion.
-            body[arg] = Hash(body[arg]).merge($1 => $2)
+            body[arg] = (body[arg].nil? ? {} : body[arg]).merge($1 => $2)
           elsif body[arg].is_a?(Hash)
             # Error: `--arg name=value --arg value`
             raise ArgumentError, "Cannot handle mixed types for argument #{arg}"
