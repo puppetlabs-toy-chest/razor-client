@@ -22,14 +22,17 @@ module Razor::CLI
       format = parse.format
       arguments = parse.args
       doc = Razor::CLI::Document.new(doc, format)
+
       return "There are no items for this query." if doc.items.empty?
+      return format_objects(doc.items).chomp if parse.show_command_help?
+
       case (doc.format_view['+layout'] or 'list')
       when 'list'
-        format_objects(doc.items) + String(additional_details(doc.original_items, arguments)).chomp
+        format_objects(doc.items) + String(additional_details(doc, arguments)).chomp
       when 'table'
         case doc.items
           when Array then
-            get_table(doc.items, doc.format_view) + String(additional_details(doc.original_items, arguments))
+            get_table(doc.items, doc.format_view) + String(additional_details(doc, arguments))
           else doc.to_s
         end
       else
@@ -102,10 +105,12 @@ module Razor::CLI
       (PriorityKeys & object.keys) + (object.keys - PriorityKeys) - ['+spec']
     end
 
-    def additional_details(objects, arguments)
-      # This is only relevant for a single item. If there are multiple, it's likely that each has
-      # its own name.
-      if objects.size == 1
+    def additional_details(doc, arguments)
+      objects = doc.original_items
+      # If every element has the 'name' key, it has nested elements.
+      if doc.is_list? and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
+        "\n\nQuery an entry by including its name, e.g. `razor #{arguments.join(' ')} #{objects.first['name']}`"
+      elsif objects.any?
         object = objects.first
         fields = display_fields(object) - PriorityKeys
         list = fields.map do |f|
@@ -117,8 +122,6 @@ module Razor::CLI
         if list.any?
           "\n\nQuery additional details via: `razor #{arguments.join(' ')} [#{list.join(', ')}]`"
         end
-      elsif objects.size > 1 and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
-        "\n\nQuery an entry by including its name, e.g. `razor #{arguments.join(' ')} #{objects.first['name']}`"
       end
     end
   end

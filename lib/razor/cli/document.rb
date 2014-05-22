@@ -11,12 +11,21 @@ module Razor::CLI
         @spec = doc['spec']
       end
       @command = doc['command']
+      if doc.has_key?('items')
+        @type = :list
+      else
+        @type = :single
+      end
       @items = doc['items'] || Array[doc]
       @format_view = Razor::CLI::Views.find_formatting(@spec, format_type, @remaining_navigation)
 
       # Untransformed and unordered for displaying nested views.
       @original_items = @items
       @items = hide_or_transform_elements!(items, format_view)
+    end
+
+    def is_list?
+      @type == :list
     end
 
     private
