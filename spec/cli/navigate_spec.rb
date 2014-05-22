@@ -109,6 +109,14 @@ describe Razor::CLI::Navigate do
     end
   end
 
+  context "argument formatting", :vcr do
+    it "should allow spaces" do
+      Razor::CLI::Parse.new(['create-repo', '--name', 'separate with spaces', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+      Razor::CLI::Parse.new(['create-repo', '--name="double-quote with spaces"', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+      Razor::CLI::Parse.new(['create-repo', '--name=\'single-quote with spaces\'', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+    end
+  end
+
   context "for command help", :vcr do
     [['command', '--help'], ['command', '-h'],
      ['--help', 'command'], ['-h', 'command'],
