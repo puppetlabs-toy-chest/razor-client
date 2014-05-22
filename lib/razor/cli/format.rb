@@ -102,7 +102,8 @@ module Razor::CLI
     end
 
     def display_fields(object)
-      (PriorityKeys & object.keys) + (object.keys - PriorityKeys) - ['+spec']
+      keys = object.respond_to?(:keys) ? object.keys : []
+      (PriorityKeys & keys) + (keys - PriorityKeys) - ['+spec']
     end
 
     def additional_details(doc, arguments)
@@ -113,12 +114,9 @@ module Razor::CLI
       elsif objects.any?
         object = objects.first
         fields = display_fields(object) - PriorityKeys
-        list = fields.map do |f|
-          case object[f]
-            when Hash, Array
-              f
-          end
-        end.compact.sort
+        list = fields.select do |f|
+          object[f].is_a?(Hash) or object[f].is_a?(Array)
+        end.sort
         if list.any?
           "\n\nQuery additional details via: `razor #{arguments.join(' ')} [#{list.join(', ')}]`"
         end
