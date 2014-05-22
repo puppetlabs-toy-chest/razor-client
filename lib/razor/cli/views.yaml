@@ -48,6 +48,7 @@ collections:
           dhcp_mac:
             +format: mac
           state:
+          last_checkin:
           tags:
             +format: join_names
       tags:
