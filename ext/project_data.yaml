@@ -1,0 +1,35 @@
+---
+project: 'razor-client'
+author: 'Puppet Labs'
+email: 'info@puppetlabs.com'
+homepage: 'http://puppetlabs.com/puppet/puppet-enterprise'
+summary: 'Razor is an advanced provisioning application'
+description: |
+  Razor is an advanced provisioning application which can deploy both bare-metal
+  and virtual systems. It's aimed at solving the problem of how to bring new
+  metal into a state where your existing DevOps/configuration management
+  workflows can take it over.
+
+  This provides the client application gem, used to provide CLI access and control
+  to users of razor-server.
+# automatically burn our version into the generated source
+version_file: 'lib/razor/cli/version.rb'
+update_version_file: true
+# files and gem_files are space separated lists (or arrays)
+files:
+  - 'Gemfile*'
+  - razor-client.gemspec
+  - bin
+  - lib
+  - '*.md'
+  - LICENSE
+gem_files: '{bin,lib}/**/* *.md LICENSE'
+gem_require_path: 'lib'
+gem_test_files: 'spec/**/*'
+gem_executables: 'razor'
+gem_default_executables: 'razor'
+gem_runtime_dependencies:
+  mime-types: '< 2.0'
+  multi_json:
+  rest-client:
+  terminal-table:

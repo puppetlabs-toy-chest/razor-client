@@ -5,3 +5,4 @@ pkg/
 /Gemfile.local*
 /coverage
 /.project
+/ext/packaging/
