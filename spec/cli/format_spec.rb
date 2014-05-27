@@ -50,6 +50,11 @@ describe Razor::CLI::Format do
       result = format doc
       result.should =~ /Query additional details via: `razor something else \[abc\]`\z/
     end
+    it "only shows additional details for nested objects" do
+      doc = {'one-prop' => 'val', 'abc' => [], 'prop' => 'jkl'}
+      result = format doc
+      result.should =~ /Query additional details via: `razor something else \[abc\]`\z/
+    end
     it "tells how to query by name" do
       doc = {'items' => [{'name' => 'entirely'}, {'name' => 'bar'} ]}
       result = format doc

@@ -118,7 +118,7 @@ module Razor::CLI
             when Hash, Array
               f
           end
-        end.sort.compact
+        end.compact.sort
         if list.any?
           "\n\nQuery additional details via: `razor #{arguments.join(' ')} [#{list.join(', ')}]`"
         end
