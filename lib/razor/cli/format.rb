@@ -43,16 +43,25 @@ module Razor::CLI
     private
     def get_table(doc, formatting)
       # Use the formatting if it exists, otherwise build from the data.
-      headings = (formatting['+show'] and formatting['+show'].keys or [])
-      Terminal::Table.new do |t|
-        t.rows = doc.map do |page|
-          page.map do |item|
-            headings << item[0] unless headings.include? item[0]
-            item[1]
+      headings = (formatting['+show'] and formatting['+show'].keys or get_headers(doc))
+      Terminal::Table.new do |table|
+        table.rows = doc.map do |page|
+          headings.map do |heading|
+            page[heading]
           end
         end
-        t.headings = headings
+        table.headings = headings
       end.to_s
+    end
+
+    def get_headers(doc)
+      [].tap do |headers|
+        doc.map do |page|
+          page.map do |item|
+            headers << item[0] unless headers.include?(item[0])
+          end
+        end
+      end
     end
 
     # We assume that all collections are homogenous

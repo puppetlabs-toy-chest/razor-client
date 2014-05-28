@@ -74,4 +74,21 @@ describe Razor::CLI::Format do
       result.should == "There are no items for this query."
     end
   end
+
+  context 'tabular display' do
+    it "works right when columns do not match up" do
+      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/nodes/log",
+             "items"=>[{'a' => 'b', 'c' => 'd'},
+                       {'b' => 'c', 'e' => 'f'}]}
+      result = format doc
+      result.should == <<-OUTPUT.rstrip
++---+---+---+---+
+| a | c | b | e |
++---+---+---+---+
+| b | d |   |   |
+|   |   | c | f |
++---+---+---+---+
+OUTPUT
+    end
+  end
 end
