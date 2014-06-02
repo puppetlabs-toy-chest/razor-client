@@ -28,11 +28,11 @@ module Razor::CLI
 
       case (doc.format_view['+layout'] or 'list')
       when 'list'
-        format_objects(doc.items) + String(additional_details(doc, arguments)).chomp
+        format_objects(doc.items) + String(additional_details(doc, parse, arguments)).chomp
       when 'table'
         case doc.items
           when Array then
-            get_table(doc.items, doc.format_view) + String(additional_details(doc, arguments))
+            get_table(doc.items, doc.format_view) + String(additional_details(doc, parse, arguments))
           else doc.to_s
         end
       else
@@ -115,10 +115,12 @@ module Razor::CLI
       (PriorityKeys & keys) + (keys - PriorityKeys) - ['+spec']
     end
 
-    def additional_details(doc, arguments)
+    def additional_details(doc, parse, arguments)
       objects = doc.original_items
-      # If every element has the 'name' key, it has nested elements.
-      if doc.is_list? and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
+      if objects.empty? or not parse.query?
+        ""
+      elsif doc.is_list? and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
+        # If every element has the 'name' key, it has nested elements.
         "\n\nQuery an entry by including its name, e.g. `razor #{arguments.join(' ')} #{objects.first['name']}`"
       elsif objects.any?
         object = objects.first

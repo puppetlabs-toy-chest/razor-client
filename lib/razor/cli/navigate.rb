@@ -35,11 +35,11 @@ module Razor::CLI
     end
 
     def query?
-      collections.any? { |coll| coll["name"] == @segments.first }
+      @query ||= collections.any? { |coll| coll["name"] == @segments.first }
     end
 
     def command(name)
-      commands.find { |coll| coll["name"] == name }
+      @command ||= commands.find { |coll| coll["name"] == name }
     end
 
     def command?

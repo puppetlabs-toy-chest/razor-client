@@ -1,10 +1,14 @@
 require 'uri'
 require 'optparse'
+require 'forwardable'
 
 module Razor::CLI
 
   class Parse
+    extend Forwardable
     DEFAULT_RAZOR_API = "http://localhost:8080/api"
+
+    def_delegator 'navigate', 'query?'
 
     def get_optparse
       @optparse ||= OptionParser.new do |opts|

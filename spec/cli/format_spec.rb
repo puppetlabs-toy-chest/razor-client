@@ -14,7 +14,7 @@ describe Razor::CLI::Format do
   include described_class
 
   def format(doc, args = {})
-    args = {:format => 'short', :args => ['something', 'else'], :show_command_help? => false}.merge(args)
+    args = {:format => 'short', :args => ['something', 'else'], :query? => true, :show_command_help? => false}.merge(args)
     parse = double(args)
     format_document doc, parse
   end
@@ -59,6 +59,11 @@ describe Razor::CLI::Format do
       doc = {'items' => [{'name' => 'entirely'}, {'name' => 'bar'} ]}
       result = format doc
       result.should =~ /Query an entry by including its name, e.g. `razor something else entirely`\z/
+    end
+    it "hides for commands" do
+      doc = {'items' => [{'name' => 'entirely'}, {'name' => 'bar'} ]}
+      result = format doc, query?: false
+      result.should_not =~ /Query an entry by including its name/
     end
   end
 
