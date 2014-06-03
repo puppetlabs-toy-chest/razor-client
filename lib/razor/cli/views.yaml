@@ -40,6 +40,9 @@ collections:
           +format: join_names
         policy:
           +format: select_name
+        metadata count:
+          +column: metadata
+          +format: count_hash
     member:
       +short:
         +layout: list
@@ -49,6 +52,9 @@ collections:
             +format: mac
           state:
           last_checkin:
+            +format: if_present
+          metadata:
+            +format: if_present
           tags:
             +format: join_names
       tags:

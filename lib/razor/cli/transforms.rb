@@ -35,5 +35,8 @@ module Razor::CLI
     def count(arr)
       arr.size
     end
+    def count_hash(hash)
+      hash.is_a?(Hash) ? hash.keys.size : 0
+    end
   end
 end
