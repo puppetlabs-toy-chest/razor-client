@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 # Needed to make the client work on Ruby 1.8.7
 unless Kernel.respond_to?(:require_relative)
   module Kernel
@@ -92,7 +93,15 @@ describe Razor::CLI::Navigate do
         nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker1', '--broker-type', 'puppet',
                                      '--configuration', 'server=puppet.example.org', '--configuration',
                                      'environment=production']).navigate
-        nav.get_document
+        keys = nav.get_document['configuration'].keys
+        keys.should include 'server'
+        keys.should include 'environment'
+      end
+      it "should construct a json object with unicode", :preserve_exact_body_bytes do
+        doc = Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', '{"net0": "abcdef"}']).navigate.get_document
+        name = doc['name']
+        nav = Razor::CLI::Parse.new(['modify-node-metadata', '--node', name, '--update', 'keyᓱ123=valueᓱ1']).navigate
+        nav.get_document['metadata'].should == {'keyᓱ123' => 'valueᓱ1'}
       end
       it "should fail with mixed types (array then hash)" do
         nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker2', '--broker-type', 'puppet',

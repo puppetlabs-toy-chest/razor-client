@@ -102,7 +102,7 @@ module Razor::CLI
           # `--arg=value` or `--arg value`
           arg, value = [$1, $3]
           value = @segments.shift if value.nil? && @segments[0] !~ /^--/
-          if value =~ /\A([a-zA-Z._-]+)=(\S+)?\z/
+          if value =~ /\A(.+?)=(\S+)?\z/
             # `--arg name=value`
             unless body[arg].nil? or body[arg].is_a?(Hash)
               # Error: `--arg value --arg name=value`
