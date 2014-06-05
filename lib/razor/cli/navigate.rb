@@ -214,11 +214,16 @@ module Razor::CLI
 
     private
     def cmd_schema(cmd_name)
-      cmd = json_get(@cmd_url)
-      cmd['schema'] or raise VersionCompatibilityError, 'Server must supply the expected datatypes for command arguments'
+      begin
+        json_get(@cmd_url)['schema']
+      rescue RestClient::ResourceNotFound => _
+        raise VersionCompatibilityError, 'Server must supply the expected datatypes for command arguments; use `--json` or upgrade razor-server'
+      end
     end
 
     def arg_type(cmd_name, arg_name)
+      # Short-circuit to allow this as a work-around for backwards compatibility.
+      return nil if arg_name == 'json'
       cmd = cmd_schema(cmd_name)
       cmd && cmd[arg_name] && cmd[arg_name]['type'] or nil
     end
