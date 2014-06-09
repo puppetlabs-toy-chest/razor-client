@@ -1,5 +1,12 @@
 # Razor Client Release Notes
 
+## 0.15.1 - 2014-06-12
+
+Server version compatibility
+
+* It is highly recommended that razor-client version 0.15.x be used with
+  razor-server version 0.15.x or higher.
+
 ## 0.15.0 - 2014-05-22
 
 Usability of the client has been greatly enhanced:
