@@ -19,12 +19,12 @@ module Razor::CLI
     end
 
     def format_document(doc, parse = nil)
-      format = parse.format
-      arguments = parse.args
+      format = parse && parse.format
+      arguments = parse && parse.args
       doc = Razor::CLI::Document.new(doc, format)
 
       return "There are no items for this query." if doc.items.empty?
-      return format_objects(doc.items).chomp if parse.show_command_help?
+      return format_objects(doc.items).chomp if parse && parse.show_command_help?
 
       case (doc.format_view['+layout'] or 'list')
       when 'list'
@@ -117,7 +117,7 @@ module Razor::CLI
 
     def additional_details(doc, parse, arguments)
       objects = doc.original_items
-      if objects.empty? or not parse.query?
+      if objects.empty? or (parse and not parse.query?)
         ""
       elsif doc.is_list? and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
         # If every element has the 'name' key, it has nested elements.
