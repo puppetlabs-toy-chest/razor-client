@@ -37,6 +37,22 @@ if parse.show_help? and not parse.show_command_help?
   exit 0
 end
 
+def unexpected_error(e)
+  die <<-ERROR
+An unexpected error has occurred.
+
+Backtrace:
+  #{e.backtrace.take(10).join('
+  ')}
+
+Error: #{e}
+
+Please inspect server logs for the cause, then report issue to:
+https://tickets.puppetlabs.com/browse/RAZOR
+
+  ERROR
+end
+
 begin
   document = parse.navigate.get_document
   url = parse.navigate.last_url
@@ -47,6 +63,7 @@ rescue SocketError, Errno::ECONNREFUSED => e
   die
 rescue RestClient::Exception => e
   r = e.response
+  unexpected_error(e) if r.nil?
   puts "Error from doing #{r.args[:method].to_s.upcase} #{r.args[:url]}"
   puts e.message
   begin
