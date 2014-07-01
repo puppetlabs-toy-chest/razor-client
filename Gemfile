@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # on it and pin its version to make sure this works with Ruby 1.8.7
 gem 'mime-types', '< 2.0'
 gem 'rest-client'
-gem 'terminal-table'
+gem 'command_line_reporter', '>=3.0'
 
 group :doc do
   gem 'yard'

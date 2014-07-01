@@ -1,5 +1,5 @@
 require 'forwardable'
-require 'terminal-table'
+require 'command_line_reporter'
 
 module Razor::CLI
   module Format
@@ -43,25 +43,8 @@ module Razor::CLI
     private
     def get_table(doc, formatting)
       # Use the formatting if it exists, otherwise build from the data.
-      headings = (formatting['+show'] and formatting['+show'].keys or get_headers(doc))
-      Terminal::Table.new do |table|
-        table.rows = doc.map do |page|
-          headings.map do |heading|
-            page[heading]
-          end
-        end
-        table.headings = headings
-      end.to_s
-    end
-
-    def get_headers(doc)
-      [].tap do |headers|
-        doc.map do |page|
-          page.map do |item|
-            headers << item[0] unless headers.include?(item[0])
-          end
-        end
-      end
+      column_overrides = formatting['+show'] && formatting['+show'].keys
+      Razor::CLI::TableFormat.new.run(doc, column_overrides)
     end
 
     # We assume that all collections are homogenous

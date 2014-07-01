@@ -32,4 +32,4 @@ gem_runtime_dependencies:
   mime-types: '< 2.0'
   multi_json:
   rest-client:
-  terminal-table:
+  command_line_reporter: '> 3.0'

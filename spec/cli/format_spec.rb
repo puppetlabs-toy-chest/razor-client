@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 # Needed to make the client work on Ruby 1.8.7
 unless Kernel.respond_to?(:require_relative)
   module Kernel
@@ -86,13 +87,51 @@ describe Razor::CLI::Format do
              "items"=>[{'a' => 'b', 'c' => 'd'},
                        {'b' => 'c', 'e' => 'f'}]}
       result = format doc
-      result.should == <<-OUTPUT.rstrip
+      result.should ==
+          # The framework seems to be adding unnecessary spaces at the end of each data line;
+          # Working around this by adding \s to the expectation.
+
+          # Unicode:
+#┏━━━┳━━━┳━━━┳━━━┓
+#┃ a ┃ c ┃ b ┃ e ┃\s
+#┣━━━╊━━━╊━━━╊━━━┫
+#┃ b ┃ d ┃   ┃   ┃\s
+#┣━━━╊━━━╊━━━╊━━━┫
+#┃   ┃   ┃ c ┃ f ┃\s
+#┗━━━┻━━━┻━━━┻━━━┛
+          # ASCII:
+          <<-OUTPUT.rstrip
 +---+---+---+---+
-| a | c | b | e |
+| a | c | b | e |\s
 +---+---+---+---+
-| b | d |   |   |
-|   |   | c | f |
+| b | d |   |   |\s
 +---+---+---+---+
+|   |   | c | f |\s
++---+---+---+---+
+          OUTPUT
+    end
+
+    it "works right with unicode" do
+      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/nodes/log",
+             "items"=>[{'a' => 'ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ'}]}
+      result = format doc
+      result.should ==
+          # The framework seems to be adding unnecessary spaces at the end of each data line;
+          # Working around this by adding \s to the expectation.
+
+          # Unicode:
+#┏━━━━━━━━━━━━┓
+#┃ a          ┃\s
+#┣━━━━━━━━━━━━┫
+#┃ ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ ┃\s
+#┗━━━━━━━━━━━━┛
+          # ASCII:
+          <<-OUTPUT.rstrip
++------------+
+| a          |\s
++------------+
+| ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ |\s
++------------+
 OUTPUT
     end
   end
