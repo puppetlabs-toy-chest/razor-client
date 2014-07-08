@@ -44,7 +44,7 @@ DEPENDENCIES
   mime-types (< 2.0)
   rack-test
   rake
-  rest-client
+  rest-client (< 1.7)
   rspec (~> 2.13.0)
   rspec-core (~> 2.13.1)
   rspec-expectations (~> 2.13.0)
