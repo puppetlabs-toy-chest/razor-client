@@ -12,6 +12,7 @@ module Razor::CLI
       @segments = segments||[]
       @doc = entrypoint
       @doc_url = parse.api_url
+      @userinfo = parse.api_url.userinfo
     end
 
     def last_url
@@ -186,12 +187,16 @@ module Razor::CLI
     end
 
     def get(url, headers={})
+      url = URI.parse(url.to_s)
+      url.userinfo = @userinfo
       response = RestClient.get url.to_s, headers
       print "GET #{url.to_s}\n#{response.body}\n\n" if @parse.dump_response?
       response
     end
 
     def json_get(url, headers = {})
+      url = URI.parse(url.to_s)
+      url.userinfo = @userinfo
       response = get(url,headers.merge(:accept => :json))
       unless response.headers[:content_type] =~ /application\/json/
         raise "Received content type #{response.headers[:content_type]}"
@@ -200,6 +205,8 @@ module Razor::CLI
     end
 
     def json_post(url, body)
+      url = URI.parse(url.to_s)
+      url.userinfo = @userinfo
       headers = {  :accept=>:json, "Content-Type" => :json }
       begin
         response = RestClient.post url.to_s, MultiJson::dump(body), headers
