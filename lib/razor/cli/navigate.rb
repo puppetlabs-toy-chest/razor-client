@@ -11,12 +11,12 @@ module Razor::CLI
       @parse = parse
       @segments = segments||[]
       @doc = entrypoint
-      @doc_url = parse.api_url
       @username, @password = parse.api_url.userinfo.to_s.split(':')
+      @doc_resource = create_resource parse.api_url, {:accept => :json}
     end
 
     def last_url
-      @doc_url
+      @doc_resource
     end
 
     def entrypoint
@@ -71,7 +71,7 @@ module Razor::CLI
         cmd, body = extract_command
         # Ensure that we copy authentication data from our previous URL.
         url = cmd["id"]
-        if @doc_url
+        if @doc_resource
           url          = URI.parse(url.to_s)
         end
 
@@ -88,7 +88,7 @@ module Razor::CLI
           result
         end
       else
-        raise NavigationError.new(@doc_url, @segments, @doc)
+        raise NavigationError.new(@doc_resource, @segments, @doc)
       end
     end
 
@@ -149,16 +149,15 @@ module Razor::CLI
         obj = @doc[key]
       end
 
-      raise NavigationError.new(@doc_url, key, @doc) unless obj
+      raise NavigationError.new(@doc_resource, key, @doc) unless obj
 
       if obj.is_a?(Hash) && obj["id"]
         url = obj["id"]
-        if @doc_url
+        if @doc_resource
           url          = URI.parse(url.to_s)
         end
 
         @doc = json_get(url)
-        @doc_url = url
       elsif obj.is_a?(Hash) && obj['spec']
         @doc = obj
       elsif obj.is_a?(Hash)
@@ -216,7 +215,7 @@ module Razor::CLI
     private
 
     def create_resource(url, headers)
-      RestClient::Resource.new(url.to_s, :headers => headers,
+      @doc_resource = RestClient::Resource.new(url.to_s, :headers => headers,
                                          :verify_ssl => @parse.verify_ssl?,
                                          :user => @username,
                                          :password => @password)

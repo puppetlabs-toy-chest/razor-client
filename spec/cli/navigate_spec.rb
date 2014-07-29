@@ -149,13 +149,15 @@ describe Razor::CLI::Navigate do
     it "should supply that to the API service" do
       nav = Razor::CLI::Parse.new(AuthArg).navigate
       nav.get_document.should be_an_instance_of Hash
-      URI.parse(nav.last_url.to_s).userinfo.should == "fred:dead"
+      nav.last_url.user.should == 'fred'
+      nav.last_url.password.should == 'dead'
     end
 
     it "should preserve that across navigation" do
       nav = Razor::CLI::Parse.new(AuthArg + ['tags']).navigate
       nav.get_document['items'].should == []
-      URI.parse(nav.last_url.to_s).userinfo.should == "fred:dead"
+      nav.last_url.user.should == 'fred'
+      nav.last_url.password.should == 'dead'
     end
   end
 end
