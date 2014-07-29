@@ -12,7 +12,7 @@ module Razor::CLI
       @segments = segments||[]
       @doc = entrypoint
       @doc_url = parse.api_url
-      @userinfo = parse.api_url.userinfo
+      @username, @password = parse.api_url.userinfo.to_s.split(':')
     end
 
     def last_url
@@ -185,9 +185,8 @@ module Razor::CLI
     end
 
     def get(url, headers={})
-      url = URI.parse(url.to_s)
-      url.userinfo = @userinfo
-      response = RestClient.get url.to_s, headers
+      resource = create_resource(url, headers)
+      response = resource.get
       print "GET #{url.to_s}\n#{response.body}\n\n" if @parse.dump_response?
       response
     end
@@ -201,11 +200,10 @@ module Razor::CLI
     end
 
     def json_post(url, body)
-      url = URI.parse(url.to_s)
-      url.userinfo = @userinfo
       headers = {  :accept=>:json, "Content-Type" => :json }
       begin
-        response = RestClient.post url.to_s, MultiJson::dump(body), headers
+        resource = create_resource(url, headers)
+        response = resource.post MultiJson::dump(body)
       ensure
         if @parse.dump_response?
           print "POST #{url.to_s}\n#{body}\n-->\n"
@@ -216,6 +214,14 @@ module Razor::CLI
     end
 
     private
+
+    def create_resource(url, headers)
+      RestClient::Resource.new(url.to_s, :headers => headers,
+                                         :verify_ssl => @parse.verify_ssl?,
+                                         :user => @username,
+                                         :password => @password)
+    end
+    
     def cmd_schema(cmd_name)
       begin
         json_get(@cmd_url)['schema']

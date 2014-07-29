@@ -19,6 +19,7 @@ describe Razor::CLI::Parse do
   describe "#new" do
     context "with no arguments" do
       it {parse.show_help?.should be true}
+      it {parse.verify_ssl?.should be true}
     end
 
     context "with a '-h'" do
@@ -58,6 +59,14 @@ describe Razor::CLI::Parse do
       it "should terminate with an error if an invalid URL is provided" do
         expect{parse('-u','not valid url')}.to raise_error(Razor::CLI::InvalidURIError)
       end
+    end
+
+    context "with a '-k'" do
+      it {parse("-k").verify_ssl?.should be false}
+    end
+
+    context "with a '--insecure'" do
+      it {parse("--insecure").verify_ssl?.should be false}
     end
 
     context "with ENV RAZOR_API set" do

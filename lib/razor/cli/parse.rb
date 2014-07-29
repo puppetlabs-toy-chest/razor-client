@@ -26,6 +26,10 @@ module Razor::CLI
           @format = 'short'
         end
 
+        opts.on "-k", "--insecure", "Allow SSL connections without verified certificates" do
+	  @verify_ssl = false
+	end
+
         opts.on "-u", "--url URL",
           "The full Razor API URL, can also be set\n" + " "*37 +
           "with the RAZOR_API environment variable\n" + " "*37 +
@@ -105,12 +109,17 @@ ERR
       !!@dump
     end
 
+    def verify_ssl?
+      !!@verify_ssl
+    end
+
     attr_reader :api_url, :format, :args
 
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
       @format = 'short'
+      @verify_ssl = true
       @args = get_optparse.order(@args)
       @args = set_help_vars(@args)
       if @args == ['version'] or @show_version

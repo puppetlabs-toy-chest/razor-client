@@ -61,6 +61,10 @@ rescue SocketError, Errno::ECONNREFUSED => e
   puts "Error: Could not connect to the server at #{parse.api_url}"
   puts "       #{e}\n"
   die
+rescue RestClient::SSLCertificateNotVerified
+  puts "Error: SSL certificate could not be verified against known CA certificates."
+  puts "       To turn off verification, use the -k or --insecure option."
+  die
 rescue RestClient::Exception => e
   r = e.response
   unexpected_error(e) if r.nil?
