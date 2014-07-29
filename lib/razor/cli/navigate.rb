@@ -73,7 +73,6 @@ module Razor::CLI
         url = cmd["id"]
         if @doc_url
           url          = URI.parse(url.to_s)
-          url.userinfo = @doc_url.userinfo
         end
 
         if show_command_help?
@@ -156,7 +155,6 @@ module Razor::CLI
         url = obj["id"]
         if @doc_url
           url          = URI.parse(url.to_s)
-          url.userinfo = @doc_url.userinfo
         end
 
         @doc = json_get(url)
@@ -195,8 +193,6 @@ module Razor::CLI
     end
 
     def json_get(url, headers = {})
-      url = URI.parse(url.to_s)
-      url.userinfo = @userinfo
       response = get(url,headers.merge(:accept => :json))
       unless response.headers[:content_type] =~ /application\/json/
         raise "Received content type #{response.headers[:content_type]}"
