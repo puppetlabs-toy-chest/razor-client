@@ -38,7 +38,7 @@ describe Razor::CLI::Navigate do
   context "with invalid parameter", :vcr do
     it "should fail with bad JSON" do
       nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker', '--type', 'puppet', '--configuration', 'not-json']).navigate
-      expect{nav.get_document}.to raise_error(ArgumentError, /Invalid JSON for argument 'configuration'/)
+      expect{nav.get_document}.to raise_error(ArgumentError, /Invalid object for argument 'configuration'/)
     end
 
     it "should fail with malformed argument" do
@@ -107,13 +107,13 @@ describe Razor::CLI::Navigate do
         nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker2', '--broker-type', 'puppet',
                                      '--configuration', '["server"]',
                                      '--configuration', 'environment=production']).navigate
-        expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+        expect {nav.get_document}.to raise_error(ArgumentError, "Invalid object for argument 'configuration'")
       end
       it "should fail with mixed types (hash then array)" do
         nav = Razor::CLI::Parse.new(['create-broker', '--name', 'broker3', '--broker-type', 'puppet',
                                      '--configuration', 'environment=production',
                                      '--configuration', '["server"]']).navigate
-        expect {nav.get_document}.to raise_error(ArgumentError, "Cannot handle mixed types for argument configuration")
+        expect {nav.get_document}.to raise_error(ArgumentError, "Invalid object for argument 'configuration'")
       end
     end
   end
@@ -123,6 +123,10 @@ describe Razor::CLI::Navigate do
       Razor::CLI::Parse.new(['create-repo', '--name', 'separate with spaces', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
       Razor::CLI::Parse.new(['create-repo', '--name="double-quote with spaces"', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
       Razor::CLI::Parse.new(['create-repo', '--name=\'single-quote with spaces\'', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+    end
+
+    it "should allow '=' in string" do
+      Razor::CLI::Parse.new(['create-repo', '--name=\'with=equals\'', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document['name'].should =~ /with=equals/
     end
   end
 

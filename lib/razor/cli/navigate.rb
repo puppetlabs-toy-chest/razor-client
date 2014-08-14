@@ -102,26 +102,7 @@ module Razor::CLI
           # `--arg=value` or `--arg value`
           arg, value = [$1, $3]
           value = @segments.shift if value.nil? && @segments[0] !~ /^--/
-          if value =~ /\A(.+?)=(\S+)?\z/
-            # `--arg name=value`
-            unless body[arg].nil? or body[arg].is_a?(Hash)
-              # Error: `--arg value --arg name=value`
-              raise ArgumentError, "Cannot handle mixed types for argument #{arg}"
-            end
-            # Do not convert, assume the above is the conversion.
-            body[arg] = (body[arg].nil? ? {} : body[arg]).merge($1 => $2)
-          elsif body[arg].is_a?(Hash)
-            # Error: `--arg name=value --arg value`
-            raise ArgumentError, "Cannot handle mixed types for argument #{arg}"
-          else
-            value = convert_arg(cmd["name"], arg, value)
-            if body[arg].nil?
-              body[arg] = value
-            else
-              # Either/both `body[arg]` or/and `value` might be an array at this point.
-              body[arg] = Array(body[arg]) + Array(value)
-            end
-          end
+          body[arg] = convert_arg(cmd["name"], arg, value, body[arg])
         else
           raise ArgumentError, "Unexpected argument #{argument}"
         end
@@ -236,7 +217,14 @@ module Razor::CLI
       cmd && cmd[arg_name] && cmd[arg_name]['type'] or nil
     end
 
-    def convert_arg(cmd_name, arg_name, value)
+    # `cmd_name`: The name of the command being executed.
+    # `arg_name`: The name of the argument being formatted.
+    # `value`: The original value provided by the user.
+    # `existing_value`: The value already assigned to this variable
+    #     by previous calls to this method. The new `value` will be
+    #     concatenated to an array or hash if an array/hash is
+    #     accepted by the command for the given argument.
+    def convert_arg(cmd_name, arg_name, value, existing_value)
       value = nil if value == "null"
 
       argument_type = arg_type(cmd_name, arg_name)
@@ -246,17 +234,29 @@ module Razor::CLI
 
       case argument_type
         when "array"
-          # 'array' datatype arguments will never fail. At worst, they'll be wrapped in an array.
+          existing_value ||= []
           begin
-            MultiJson::load(value)
+            MultiJson::load(value).tap do |value|
+              value = Array(value)
+              existing_value + value
+            end
           rescue MultiJson::LoadError => _
-            Array(value)
+            existing_value + Array(value)
           end
         when "object"
+          existing_value ||= {}
           begin
-            MultiJson::load(value)
+            if value =~ /\A(.+?)=(.+)?\z/
+              # `--arg name=value`
+              existing_value.merge($1 => $2)
+            else
+              MultiJson::load(value).tap do |value|
+                value.is_a?(Hash) or raise ArgumentError, "Invalid object for argument '#{arg_name}'"
+                existing_value.merge(value)
+              end
+            end
           rescue MultiJson::LoadError => error
-            raise ArgumentError, "Invalid JSON for argument '#{arg_name}': #{error.message}"
+            raise ArgumentError, "Invalid object for argument '#{arg_name}': #{error.message}"
           end
         when "boolean"
           ["true", nil].include?(value)
