@@ -65,6 +65,14 @@ describe Razor::CLI::Parse do
       it {parse("-k").verify_ssl?.should be false}
     end
 
+    context "with an '-a'" do
+      it {parse("-a").show_api_help?.should be true}
+    end
+
+    context "with an '--api'" do
+      it {parse("--api").show_api_help?.should be true}
+    end
+
     context "with a '--insecure'" do
       it {parse("--insecure").verify_ssl?.should be false}
     end

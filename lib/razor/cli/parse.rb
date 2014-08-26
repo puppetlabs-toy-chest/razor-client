@@ -22,13 +22,17 @@ module Razor::CLI
           @format = 'full'
         end
 
+        opts.on "-a", "--api", "Show API help for a command" do
+          @api_help = true
+        end
+
         opts.on "-s", "--short", "Show shortened details when viewing entities" do
           @format = 'short'
         end
 
         opts.on "-k", "--insecure", "Allow SSL connections without verified certificates" do
-	  @verify_ssl = false
-	end
+          @verify_ssl = false
+        end
 
         opts.on "-u", "--url URL",
           "The full Razor API URL, can also be set\n" + " "*37 +
@@ -95,6 +99,10 @@ ERR
 
     def show_version?
       !!@show_version
+    end
+
+    def show_api_help?
+      !!@api_help
     end
 
     def show_help?

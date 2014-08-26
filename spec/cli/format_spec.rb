@@ -15,7 +15,8 @@ describe Razor::CLI::Format do
   include described_class
 
   def format(doc, args = {})
-    args = {:format => 'short', :args => ['something', 'else'], :query? => true, :show_command_help? => false}.merge(args)
+    args = {:format => 'short', :args => ['something', 'else'], :query? => true, :show_command_help? => false,
+        :show_api_help? => false}.merge(args)
     parse = double(args)
     format_document doc, parse
   end
@@ -133,6 +134,50 @@ describe Razor::CLI::Format do
 | ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ |\s
 +------------+
 OUTPUT
+    end
+  end
+
+  context 'api help' do
+    it "displays the CLI help by default" do
+      doc = {"name"=>"some-help", "help" => {"summary"=>"summary here",
+                                             "examples"=>{"api"=>"api example is here", "cli"=>"cli example is here"},
+                                             "full" => "shouldn't show this"},
+             "schema" => {"name"=>{"type"=>"string"}}}
+      result = format doc, show_command_help?: true
+      result.should =~ /cli example is here/
+    end
+
+    it "displays the API help when the --api flag is true" do
+      doc = {"name"=>"some-help", "help" => {"summary"=>"summary here",
+          "examples"=>{"api"=>"api example is here", "cli"=>"cli example is here"},
+          "full" => "shouldn't show this"},
+          "schema" => {"name"=>{"type"=>"string"}}}
+      result = format doc, show_api_help?: true, show_command_help?: true
+      result.should =~ /api example is here/
+    end
+
+    it "displays the full help if on an older server" do
+      doc = {"name"=>"some-help", "help" => {"full" => "full help is here"},
+             "schema" => {"name"=>{"type"=>"string"}}}
+      result = format doc, show_command_help?: true
+      result.should =~ /full help is here/
+    end
+
+    it "displays the full help if on an older server and api is specified" do
+      doc = {"name"=>"some-help", "help" => {"full" => "full help is here"},
+             "schema" => {"name"=>{"type"=>"string"}}}
+      result = format doc, show_api_help?: true, show_command_help?: true
+      result.should =~ /full help is here/
+    end
+
+    it "skips the 'Examples' section if cli examples are not included" do
+      doc = {"name"=>"some-help", "help" => {"summary"=>"summary here",
+                                             "examples"=>{"api"=>"api example is here"},
+                                             "full" => "shouldn't show this"},
+             "schema" => {"name"=>{"type"=>"string"}}}
+      result = format doc, show_cli_help?: true, show_command_help?: true
+      result.should =~ /summary here/
+      result.should_not =~ /EXAMPLES/
     end
   end
 end

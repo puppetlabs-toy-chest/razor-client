@@ -24,7 +24,7 @@ module Razor::CLI
       doc = Razor::CLI::Document.new(doc, format)
 
       return "There are no items for this query." if doc.items.empty?
-      return format_objects(doc.items).chomp if parse && parse.show_command_help?
+      return format_command_help(doc, parse.show_api_help?) if parse && parse.show_command_help?
 
       case (doc.format_view['+layout'] or 'list')
       when 'list'
@@ -60,6 +60,46 @@ module Razor::CLI
       else
         format_default_object(object, indent)
       end
+    end
+
+    def format_command_help(doc, show_api_help)
+      item = doc.items.first
+      if show_api_help and (item['help'].has_key?('summary') or item['help'].has_key?('description'))
+        format_composed_help(item['help']).chomp
+      elsif item['help'].has_key?('summary') or item['help'].has_key?('description')
+        format_composed_help(item['help'], item['help']['examples']['cli']).chomp
+      else
+        format_full_help(item['help']).chomp
+      end
+    end
+
+    def format_composed_help(object, examples = object['examples']['api'])
+      ret = ''
+      ret = ret + <<-SYNOPSIS if object.has_key?('summary')
+# SYNOPSIS
+#{object['summary']}
+
+      SYNOPSIS
+      ret = ret + <<-DESCRIPTION if object.has_key?('description')
+# DESCRIPTION
+#{object['description']}
+
+#{object['schema']}
+      DESCRIPTION
+      ret = ret + <<-RETURNS if object.has_key?('returns')
+# RETURNS
+#{object['returns'].gsub(/^/, '  ')}
+      RETURNS
+      ret = ret + <<-EXAMPLES if object.has_key?('examples') && object['examples'].has_key?('cli')
+# EXAMPLES
+
+#{examples.gsub(/^/, '  ')}
+      EXAMPLES
+      ret
+    end
+
+    def format_full_help(object)
+      object['full']
     end
 
     def format_default_object(object, indent = 0 )
