@@ -179,5 +179,11 @@ OUTPUT
       result.should =~ /summary here/
       result.should_not =~ /EXAMPLES/
     end
+
+    it "errors if help does not exist" do
+      doc = {"name"=>"some-help", "schema" => {"name"=>{"type"=>"string"}}}
+      expect { format doc, show_cli_help?: true, show_command_help?: true }.
+          to raise_error(Razor::CLI::Error, /Could not find help for that entry/)
+    end
   end
 end

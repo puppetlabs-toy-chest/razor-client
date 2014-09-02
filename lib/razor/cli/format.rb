@@ -64,6 +64,7 @@ module Razor::CLI
 
     def format_command_help(doc, show_api_help)
       item = doc.items.first
+      raise Razor::CLI::Error, 'Could not find help for that entry' unless item.has_key?('help')
       if show_api_help and (item['help'].has_key?('summary') or item['help'].has_key?('description'))
         format_composed_help(item['help']).chomp
       elsif item['help'].has_key?('summary') or item['help'].has_key?('description')
