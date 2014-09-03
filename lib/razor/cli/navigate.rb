@@ -60,9 +60,12 @@ module Razor::CLI
 
         # Get the next level if it's a list of objects.
         if @doc.is_a?(Hash) and @doc['items'].is_a?(Array)
+          # Cache doc_resource since these queries are just for extra detail.
+          temp_doc_resource = @doc_resource
           @doc['items'] = @doc['items'].map do |item|
             item.is_a?(Hash) && item.has_key?('id') ? json_get(item['id']) : item
           end
+          @doc_resource = temp_doc_resource
         end
         @doc
       elsif command?
