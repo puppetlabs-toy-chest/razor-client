@@ -1,5 +1,20 @@
 # Razor Client Release Notes
 
+## 0.15.3 - 2014-09-04
+
+* BUGFIX: Commands were not always including authentication
+  information in every request.
+* NEW: Separate API and CLI help examples: There are now two formats for help
+  examples. The new CLI format shows help text as a standard razor-client
+  command. CLI is used by default. The API format is the same as before,
+  and will show examples in JSON format.
+* IMPROVEMENT: Ruby version compatibility: 0.15.1 would not install on Ruby < 1.9.2.
+* NEW: razor-client now has an 'insecure' flag to ignore SSL verification 
+  errors.
+* IMPROVEMENT: Argument types were previously not very context-aware. Now,
+  for example, names can include the '=' character.
+* BUGFIX: A reasonable error will be thrown if help is requested but does not exist.
+
 ## 0.15.1 - 2014-06-12
 
 Server version compatibility
