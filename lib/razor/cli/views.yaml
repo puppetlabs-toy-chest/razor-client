@@ -9,6 +9,7 @@
 # `+show`: This section configures which attributes are shown in the output.
 # `+layout`: This configures whether to use 'list' or 'table' output.
 # `+column`: This changes which column is used in the field formatting.
+# `+format`: This references a method inside `transforms.rb` which will mutate the column's value.
 collections:
   brokers:
     +short:
@@ -194,3 +195,40 @@ collections:
             +format: count
           status:
           submitted_at:
+  events:
+    +short:
+      +layout: table
+      +show:
+        name:
+        timestamp:
+        message:
+          +column: entry
+          +format: event_msg
+        entities:
+          +column: entry
+          +format: event_entities
+        entry:
+          +column: entry
+          +format: event_misc
+    member:
+      +short:
+        +show:
+          name:
+          timestamp:
+          message:
+            +column: entry
+            +format: full_event_msg
+          broker:
+            +format: name_hide_nil
+          node:
+            +format: name_hide_nil
+          policy:
+            +format: name_hide_nil
+          repo:
+            +format: name_hide_nil
+          command:
+            +format: name_hide_nil
+          task:
+            +format: name_hide_nil
+          entry:
+            +format: event_misc

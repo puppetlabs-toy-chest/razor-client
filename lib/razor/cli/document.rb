@@ -1,6 +1,7 @@
 require 'forwardable'
 
 module Razor::CLI
+  class HideColumnError < RuntimeError; end
   class Document
       extend Forwardable
     attr_reader 'spec', 'items', 'format_view', 'original_items'
@@ -42,10 +43,13 @@ module Razor::CLI
               item_spec = (item_format_spec[1] or {})
               item_label = item_format_spec[0]
               item_column = (item_spec['+column'] or item_label)
-              value = Razor::CLI::Views.transform(item[item_column], item_spec['+format'])
-
-              [item_label, value]
-            end
+              begin
+                value = Razor::CLI::Views.transform(item[item_column], item_spec['+format'])
+                [item_label, value]
+              rescue Razor::CLI::HideColumnError
+                nil
+              end
+            end.reject {|k| k.nil? }
           ].tap do |hash|
             # Re-add the special 'command' key and value if the key isn't already there.
             hash['command'] = @command if @command and not hash.has_key?('command')
