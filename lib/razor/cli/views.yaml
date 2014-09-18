@@ -16,7 +16,7 @@ collections:
       +layout: table
       +show:
         name:
-        broker-type:
+        broker_type:
         configuration:
           +format: nested
         policies:
@@ -26,7 +26,7 @@ collections:
         +layout: list
         +show:
           name:
-          broker-type:
+          broker_type:
           configuration:
           policies:
             +format: count_column
