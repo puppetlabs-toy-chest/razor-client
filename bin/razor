@@ -57,6 +57,9 @@ begin
   document = parse.navigate.get_document
   url = parse.navigate.last_url
   puts "From #{url}:\n\n#{format_document document, parse}\n\n"
+rescue OptionParser::InvalidOption => e
+  # Occurs when invalid flags are passed in the navigation.
+  die e.message + "\nTry 'razor --help' for more information"
 rescue SocketError, Errno::ECONNREFUSED => e
   puts "Error: Could not connect to the server at #{parse.api_url}"
   puts "       #{e}\n"
