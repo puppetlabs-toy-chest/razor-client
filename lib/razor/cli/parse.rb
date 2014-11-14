@@ -18,16 +18,8 @@ module Razor::CLI
           @dump = true
         end
 
-        opts.on "-f", "--full", "Show full details when viewing entities" do
-          @format = 'full'
-        end
-
         opts.on "-a", "--api", "Show API help for a command" do
           @api_help = true
-        end
-
-        opts.on "-s", "--short", "Show shortened details when viewing entities" do
-          @format = 'short'
         end
 
         opts.on "-k", "--insecure", "Allow SSL connections without verified certificates" do
@@ -121,7 +113,9 @@ ERR
       !!@verify_ssl
     end
 
-    attr_reader :api_url, :format, :args
+    attr_reader :api_url, :args
+    # The format can be determined from later segments.
+    attr_accessor :format
 
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)

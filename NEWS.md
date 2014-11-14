@@ -12,6 +12,8 @@
 * NEW: The `events` collection is new and has a special client-side display.
 * NEW: Event queries can be limited (`razor events --limit 5`) and offset
   (`razor events --start 5`). This also works for `razor nodes $name log`.
+* IMPROVEMENT: Viewing all columns in a query is now possible via 
+  `razor $collection_path --full` rather than `razor --full $collection_path`.
 * NEW: razor-client now has an 'insecure' flag to ignore SSL verification 
   errors.
 * IMPROVEMENT: Argument types were previously not very context-aware. Now,

@@ -18,6 +18,14 @@ class Razor::CLI::Query
       params = (doc[nav] && doc[nav]['params']) || {}
     end
     @queryoptparse = OptionParser.new do |opts|
+      opts.on "-f", "--full", "Show full details when viewing entities" do
+        @parse.format = 'full'
+      end
+
+      opts.on "-s", "--short", "Show shortened details when viewing entities" do
+        @parse.format = 'short'
+      end
+
       params.each do |param, args|
         if args['type'] == 'boolean'
           opts.on "--#{param}" do
