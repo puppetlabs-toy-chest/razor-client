@@ -164,4 +164,33 @@ describe Razor::CLI::Navigate do
       nav.last_url.password.should == 'dead'
     end
   end
+
+  context "with query parameters", :vcr do
+    it "should append limit" do
+      nav = Razor::CLI::Parse.new(%w[-u http://fred:dead@localhost:8080/api events --limit 1]).navigate
+      nav.get_document.should be_an_instance_of Hash
+      nav.last_url.to_s.should =~ /limit=1/
+    end
+    it "should append start" do
+      nav = Razor::CLI::Parse.new(%w[-u http://fred:dead@localhost:8080/api events --start 1]).navigate
+      nav.get_document.should be_an_instance_of Hash
+      nav.last_url.to_s.should =~ /start=1/
+    end
+    it "should throw an error if the query parameter is not in the API" do
+      nav = Razor::CLI::Parse.new(%w[-u http://fred:dead@localhost:8080/api events --not-in-api 1]).navigate
+      expect {nav.get_document}.to raise_error(OptionParser::InvalidOption, 'invalid option: --not-in-api')
+    end
+    it "should not fail when query returns details for one item" do
+      nav = Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:00']).navigate.get_document
+      name = nav['name']
+      nav = Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8080/api', 'nodes', name]).navigate
+      nav.get_document['name'].should == name
+    end
+    it "should throw an error if the query parameter is not in the API from a single item" do
+      nav = Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:00']).navigate.get_document
+      name = nav['name']
+      expect {Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8080/api', 'nodes', name, '--limit', '1']).
+          navigate.get_document}.to raise_error(OptionParser::InvalidOption, 'invalid option: --limit')
+    end
+  end
 end

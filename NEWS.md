@@ -10,6 +10,8 @@
   command. CLI is used by default. The API format is the same as before,
   and will show examples in JSON format.
 * NEW: The `events` collection is new and has a special client-side display.
+* NEW: Event queries can be limited (`razor events --limit 5`) and offset
+  (`razor events --start 5`). This also works for `razor nodes $name log`.
 * NEW: razor-client now has an 'insecure' flag to ignore SSL verification 
   errors.
 * IMPROVEMENT: Argument types were previously not very context-aware. Now,

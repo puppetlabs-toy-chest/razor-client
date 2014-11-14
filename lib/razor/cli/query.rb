@@ -4,23 +4,40 @@ class Razor::CLI::Query
     @navigate = navigate
     @collections = collections
     @segments = segments
+    @options = {}
   end
 
-  def get_optparse
-    @queryoptparse ||= OptionParser.new do |opts|
+  def get_optparse(doc, nav)
+    # If the last document is an Array, we need to find
+    # which element matches the given query. Once found,
+    # return the 'params' section, if it has one.
+    if doc.is_a?(Array)
+      query = doc.find {|coll| coll['name'] == nav}
+      params = (query && query['params']) || {}
+    elsif doc.is_a?(Hash)
+      params = (doc[nav] && doc[nav]['params']) || {}
     end
-  end
-
-  def options
-    {}.delete_if{|_, v| v.nil?}
+    @queryoptparse = OptionParser.new do |opts|
+      params.each do |param, args|
+        if args['type'] == 'boolean'
+          opts.on "--#{param}" do
+            @options[param] = true
+          end
+        else
+          opts.on "--#{param} VALUE" do |value|
+            @options[param] = value
+          end
+        end
+      end
+    end
   end
 
   def run
     @doc = @collections
     while @segments.any?
       nav = @segments.shift
-      @segments = get_optparse.order(@segments)
-      @doc = @navigate.move_to nav, @doc, options
+      @segments = get_optparse(@doc, nav).order(@segments)
+      @doc = @navigate.move_to nav, @doc, @options
     end
 
     # Get the next level if it's a list of objects.
