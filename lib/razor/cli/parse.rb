@@ -161,6 +161,9 @@ ERR
     private
     def parse_and_set_api_url(url, source)
       begin
+        unless url.start_with?('http:') or url.start_with?('https:')
+          raise Razor::CLI::InvalidURIError.new(url, source)
+        end
         @api_url = URI.parse(url)
       rescue URI::InvalidURIError => e
         raise Razor::CLI::InvalidURIError.new(url, source)

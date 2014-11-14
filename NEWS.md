@@ -10,6 +10,8 @@
   command. CLI is used by default. The API format is the same as before,
   and will show examples in JSON format.
 * NEW: The `events` collection is new and has a special client-side display.
+* NEW: RAZOR_API and `razor -u $url` URLs need to be explicit about `http:` 
+  and `https:`.
 * NEW: Event queries can be limited (`razor events --limit 5`) and offset
   (`razor events --start 5`). This also works for `razor nodes $name log`.
 * IMPROVEMENT: Viewing all columns in a query is now possible via 

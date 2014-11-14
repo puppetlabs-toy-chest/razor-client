@@ -19,7 +19,7 @@ module Razor
         when :env
           super "URL '#{url}' in ENV variable RAZOR_API is not valid"
         when :opts
-          super "URL '#{url}' provided by -U or --url is not valid"
+          super "URL '#{url}' provided by -u or --url is not valid"
         else
           super "URL '#{url}' is not valid"
         end

@@ -59,6 +59,10 @@ describe Razor::CLI::Parse do
       it "should terminate with an error if an invalid URL is provided" do
         expect{parse('-u','not valid url')}.to raise_error(Razor::CLI::InvalidURIError)
       end
+
+      it "should terminate with an error if a URL without a protocol is provided" do
+        expect{parse('-u','localhost:8080/api')}.to raise_error(Razor::CLI::InvalidURIError)
+      end
     end
 
     context "with a '-k'" do
