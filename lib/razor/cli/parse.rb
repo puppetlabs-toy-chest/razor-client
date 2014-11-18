@@ -115,11 +115,13 @@ ERR
 
     attr_reader :api_url, :args
     # The format can be determined from later segments.
-    attr_accessor :format
+    attr_accessor :format, :stripped_args
 
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
+      # To be populated externally.
+      @stripped_args = []
       @format = 'short'
       @verify_ssl = true
       @args = get_optparse.order(@args)

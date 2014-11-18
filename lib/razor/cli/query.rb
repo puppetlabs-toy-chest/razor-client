@@ -4,7 +4,12 @@ class Razor::CLI::Query
     @navigate = navigate
     @collections = collections
     @segments = segments
+    @stripped_segments = []
     @options = {}
+  end
+
+  def stripped_segments
+    @stripped_segments.join
   end
 
   def get_optparse(doc, nav)
@@ -44,6 +49,7 @@ class Razor::CLI::Query
     @doc = @collections
     while @segments.any?
       nav = @segments.shift
+      @parse.stripped_args << nav
       @segments = get_optparse(@doc, nav).order(@segments)
       @doc = @navigate.move_to nav, @doc, @options
     end

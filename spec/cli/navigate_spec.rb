@@ -192,5 +192,14 @@ describe Razor::CLI::Navigate do
       expect {Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8080/api', 'nodes', name, '--limit', '1']).
           navigate.get_document}.to raise_error(OptionParser::InvalidOption, 'invalid option: --limit')
     end
+    it "should store query without query parameters" do
+      name = Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:00']).
+          navigate.get_document['name']
+      Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:01']).
+          navigate.get_document
+      parse = Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8080/api', 'nodes', name, 'log', '--limit', '1'])
+      parse.navigate.get_document
+      parse.stripped_args.should == ['nodes', name, 'log']
+    end
   end
 end

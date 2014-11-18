@@ -20,7 +20,7 @@ module Razor::CLI
 
     def format_document(doc, parse = nil)
       format = parse && parse.format
-      arguments = parse && parse.args
+      arguments = parse && parse.stripped_args
       doc = Razor::CLI::Document.new(doc, format)
 
       return "There are no items for this query." if doc.items.empty?

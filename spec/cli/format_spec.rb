@@ -15,7 +15,7 @@ describe Razor::CLI::Format do
   include described_class
 
   def format(doc, args = {})
-    args = {:format => 'short', :args => ['something', 'else'], :query? => true, :show_command_help? => false,
+    args = {:format => 'short', :stripped_args => ['something', 'else'], :query? => true, :show_command_help? => false,
         :show_api_help? => false}.merge(args)
     parse = double(args)
     format_document doc, parse
