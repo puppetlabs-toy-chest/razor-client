@@ -1,6 +1,6 @@
 # Razor Client Release Notes
 
-## 0.16.0 - 2014-11-24
+## 0.16.0 - 2015-01-05
 
 * BUGFIX: Commands were not always including authentication
   information in every request.
