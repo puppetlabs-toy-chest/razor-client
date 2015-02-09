@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/api
+    uri: https://localhost:8151/api
     body:
       encoding: US-ASCII
       string: ''
@@ -30,12 +30,12 @@ http_interactions:
       - Thu, 14 Aug 2014 21:10:25 GMT
     body:
       encoding: US-ASCII
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8080/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8080/api/commands/create-broker"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8080/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8080/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8080/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8080/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8080/api/commands/delete-broker"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8080/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8080/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8080/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8080/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8080/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8080/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8080/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8080/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8080/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8080/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8080/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8080/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8080/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8080/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8080/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8080/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8080/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8080/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8080/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8080/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8080/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8080/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8080/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8080/api/collections/nodes"},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8080/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8080/api/collections/commands"}],"version":{"server":"v0.15.0-26-gfffaba4-dirty"}}'
+      string: '{"commands":[{"name":"add-policy-tag","rel":"https://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"https://localhost:8151/api/commands/add-policy-tag"},{"name":"create-broker","rel":"https://api.puppetlabs.com/razor/v1/commands/create-broker","id":"https://localhost:8151/api/commands/create-broker"},{"name":"create-policy","rel":"https://api.puppetlabs.com/razor/v1/commands/create-policy","id":"https://localhost:8151/api/commands/create-policy"},{"name":"create-repo","rel":"https://api.puppetlabs.com/razor/v1/commands/create-repo","id":"https://localhost:8151/api/commands/create-repo"},{"name":"create-tag","rel":"https://api.puppetlabs.com/razor/v1/commands/create-tag","id":"https://localhost:8151/api/commands/create-tag"},{"name":"create-task","rel":"https://api.puppetlabs.com/razor/v1/commands/create-task","id":"https://localhost:8151/api/commands/create-task"},{"name":"delete-broker","rel":"https://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"https://localhost:8151/api/commands/delete-broker"},{"name":"delete-node","rel":"https://api.puppetlabs.com/razor/v1/commands/delete-node","id":"https://localhost:8151/api/commands/delete-node"},{"name":"delete-policy","rel":"https://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"https://localhost:8151/api/commands/delete-policy"},{"name":"delete-repo","rel":"https://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"https://localhost:8151/api/commands/delete-repo"},{"name":"delete-tag","rel":"https://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"https://localhost:8151/api/commands/delete-tag"},{"name":"disable-policy","rel":"https://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"https://localhost:8151/api/commands/disable-policy"},{"name":"enable-policy","rel":"https://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"https://localhost:8151/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"https://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"https://localhost:8151/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"https://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"https://localhost:8151/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"https://api.puppetlabs.com/razor/v1/commands/move-policy","id":"https://localhost:8151/api/commands/move-policy"},{"name":"reboot-node","rel":"https://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"https://localhost:8151/api/commands/reboot-node"},{"name":"register-node","rel":"https://api.puppetlabs.com/razor/v1/commands/register-node","id":"https://localhost:8151/api/commands/register-node"},{"name":"reinstall-node","rel":"https://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"https://localhost:8151/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"https://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"https://localhost:8151/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"https://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"https://localhost:8151/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"https://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"https://localhost:8151/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"https://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"https://localhost:8151/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"https://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"https://localhost:8151/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"https://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"https://localhost:8151/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"https://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"https://localhost:8151/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"https://api.puppetlabs.com/razor/v1/collections/brokers","id":"https://localhost:8151/api/collections/brokers"},{"name":"repos","rel":"https://api.puppetlabs.com/razor/v1/collections/repos","id":"https://localhost:8151/api/collections/repos"},{"name":"tags","rel":"https://api.puppetlabs.com/razor/v1/collections/tags","id":"https://localhost:8151/api/collections/tags"},{"name":"policies","rel":"https://api.puppetlabs.com/razor/v1/collections/policies","id":"https://localhost:8151/api/collections/policies"},{"name":"nodes","rel":"https://api.puppetlabs.com/razor/v1/collections/nodes","id":"https://localhost:8151/api/collections/nodes"},{"name":"tasks","rel":"https://api.puppetlabs.com/razor/v1/collections/tasks","id":"https://localhost:8151/api/collections/tasks"},{"name":"commands","rel":"https://api.puppetlabs.com/razor/v1/collections/commands","id":"https://localhost:8151/api/collections/commands"}],"version":{"server":"v0.15.0-26-gfffaba4-dirty"}}'
     http_version:
   recorded_at: Thu, 14 Aug 2014 21:10:25 GMT
 - request:
     method: get
-    uri: http://localhost:8080/api/commands/create-repo
+    uri: https://localhost:8151/api/commands/create-repo
     body:
       encoding: US-ASCII
       string: ''
@@ -77,13 +77,13 @@ http_interactions:
         pattern is expanded\nand then a permission check applied to it, before the
         command is authorized.\n\nThese checks only apply if security is enabled in
         the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
-        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        https://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
         The name of the repository.\n   - This attribute is required.\n   - It must
         be of type string.\n   - It must be between 1 and 250 in length.\n\n * url\n   -
         The URL of the remote repository to use.\n   - It must be of type string.\n   -
         If present, iso-url must not be present.\n   - It must be between 1 and 1000
         in length.\n\n * iso-url\n   - The URL of the ISO image to download and unpack
-        to create the\n     repository.  This can be an HTTP or HTTPS URL, or it can
+        to create the\n     repository.  This can be an https or httpsS URL, or it can
         be a\n     file URL.\n     \n     In the latter case, the file path is interpreted
         as a path on the\n     Razor server, rather than a path on the client.  This
         requires that\n     you manually place the ISO image on the server before
@@ -95,19 +95,19 @@ http_interactions:
         This attribute is required.\n   - It must be of type string.\n\n# EXAMPLES\n\n  Create
         a repository from an ISO image, which will be downloaded and unpacked\n  by
         the razor-server in the background:\n  \n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
-        \"http://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
+        \"https://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
         can also unpack an ISO image from a file *on the server*; this does not\n  upload
         the file from the client:\n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
         \"file:///tmp/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  Finally,
         you can provide a `url` property when you create the repository;\n  this form
         is merely a pointer to a resource somewhere and nothing will be\n  downloaded
-        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
+        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"https://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
         \"fedora\"\n      }\n"},"schema":{"name":{"type":"string"},"url":{"type":"string"},"iso-url":{"type":"string"},"task":{"type":"string"}}}'
     http_version:
   recorded_at: Thu, 14 Aug 2014 21:10:25 GMT
 - request:
     method: get
-    uri: http://localhost:8080/api/commands/create-repo
+    uri: https://localhost:8151/api/commands/create-repo
     body:
       encoding: US-ASCII
       string: ''
@@ -149,13 +149,13 @@ http_interactions:
         pattern is expanded\nand then a permission check applied to it, before the
         command is authorized.\n\nThese checks only apply if security is enabled in
         the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
-        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        https://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
         The name of the repository.\n   - This attribute is required.\n   - It must
         be of type string.\n   - It must be between 1 and 250 in length.\n\n * url\n   -
         The URL of the remote repository to use.\n   - It must be of type string.\n   -
         If present, iso-url must not be present.\n   - It must be between 1 and 1000
         in length.\n\n * iso-url\n   - The URL of the ISO image to download and unpack
-        to create the\n     repository.  This can be an HTTP or HTTPS URL, or it can
+        to create the\n     repository.  This can be an https or httpsS URL, or it can
         be a\n     file URL.\n     \n     In the latter case, the file path is interpreted
         as a path on the\n     Razor server, rather than a path on the client.  This
         requires that\n     you manually place the ISO image on the server before
@@ -167,19 +167,19 @@ http_interactions:
         This attribute is required.\n   - It must be of type string.\n\n# EXAMPLES\n\n  Create
         a repository from an ISO image, which will be downloaded and unpacked\n  by
         the razor-server in the background:\n  \n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
-        \"http://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
+        \"https://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
         can also unpack an ISO image from a file *on the server*; this does not\n  upload
         the file from the client:\n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
         \"file:///tmp/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  Finally,
         you can provide a `url` property when you create the repository;\n  this form
         is merely a pointer to a resource somewhere and nothing will be\n  downloaded
-        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
+        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"https://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
         \"fedora\"\n      }\n"},"schema":{"name":{"type":"string"},"url":{"type":"string"},"iso-url":{"type":"string"},"task":{"type":"string"}}}'
     http_version:
   recorded_at: Thu, 14 Aug 2014 21:10:25 GMT
 - request:
     method: get
-    uri: http://localhost:8080/api/commands/create-repo
+    uri: https://localhost:8151/api/commands/create-repo
     body:
       encoding: US-ASCII
       string: ''
@@ -221,13 +221,13 @@ http_interactions:
         pattern is expanded\nand then a permission check applied to it, before the
         command is authorized.\n\nThese checks only apply if security is enabled in
         the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
-        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        https://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
         The name of the repository.\n   - This attribute is required.\n   - It must
         be of type string.\n   - It must be between 1 and 250 in length.\n\n * url\n   -
         The URL of the remote repository to use.\n   - It must be of type string.\n   -
         If present, iso-url must not be present.\n   - It must be between 1 and 1000
         in length.\n\n * iso-url\n   - The URL of the ISO image to download and unpack
-        to create the\n     repository.  This can be an HTTP or HTTPS URL, or it can
+        to create the\n     repository.  This can be an https or httpsS URL, or it can
         be a\n     file URL.\n     \n     In the latter case, the file path is interpreted
         as a path on the\n     Razor server, rather than a path on the client.  This
         requires that\n     you manually place the ISO image on the server before
@@ -239,22 +239,22 @@ http_interactions:
         This attribute is required.\n   - It must be of type string.\n\n# EXAMPLES\n\n  Create
         a repository from an ISO image, which will be downloaded and unpacked\n  by
         the razor-server in the background:\n  \n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
-        \"http://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
+        \"https://example.com/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  You
         can also unpack an ISO image from a file *on the server*; this does not\n  upload
         the file from the client:\n      {\n        \"name\":    \"fedora19\",\n        \"iso-url\":
         \"file:///tmp/Fedora-19-x86_64-DVD.iso\"\n        \"task\":    \"fedora\"\n      }\n  \n  Finally,
         you can provide a `url` property when you create the repository;\n  this form
         is merely a pointer to a resource somewhere and nothing will be\n  downloaded
-        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
+        onto the Razor server:\n  \n      {\n        \"name\": \"fedora19\",\n        \"url\":  \"https://mirrors.n-ix.net/fedora/linux/releases/19/Fedora/x86_64/os/\"\n        \"task\":
         \"fedora\"\n      }\n"},"schema":{"name":{"type":"string"},"url":{"type":"string"},"iso-url":{"type":"string"},"task":{"type":"string"}}}'
     http_version:
   recorded_at: Thu, 14 Aug 2014 21:10:26 GMT
 - request:
     method: post
-    uri: http://localhost:8080/api/commands/create-repo
+    uri: https://localhost:8151/api/commands/create-repo
     body:
       encoding: UTF-8
-      string: '{"name":"''with=equals''","url":"http://url.com/some.iso","task":"noop"}'
+      string: '{"name":"''with=equals''","url":"https://url.com/some.iso","task":"noop"}'
     headers:
       Accept:
       - application/json
@@ -283,12 +283,12 @@ http_interactions:
       - Thu, 14 Aug 2014 21:10:25 GMT
     body:
       encoding: US-ASCII
-      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8080/api/collections/repos/''with=equals''","name":"''with=equals''","command":"http://localhost:8080/api/collections/commands/1"}'
+      string: '{"spec":"https://api.puppetlabs.com/razor/v1/collections/repos/member","id":"https://localhost:8151/api/collections/repos/''with=equals''","name":"''with=equals''","command":"https://localhost:8151/api/collections/commands/1"}'
     http_version:
   recorded_at: Thu, 14 Aug 2014 21:10:26 GMT
 - request:
     method: get
-    uri: http://localhost:8080/api/collections/repos/'with=equals'
+    uri: https://localhost:8151/api/collections/repos/'with=equals'
     body:
       encoding: US-ASCII
       string: ''
@@ -316,7 +316,7 @@ http_interactions:
       - Thu, 14 Aug 2014 21:10:25 GMT
     body:
       encoding: US-ASCII
-      string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8080/api/collections/repos/''with=equals''","name":"''with=equals''","iso_url":null,"url":"http://url.com/some.iso","task":{"spec":"http://api.puppetlabs.com/razor/v1/collections/tasks/member","id":"http://localhost:8080/api/collections/tasks/noop","name":"noop"}}'
+      string: '{"spec":"https://api.puppetlabs.com/razor/v1/collections/repos/member","id":"https://localhost:8151/api/collections/repos/''with=equals''","name":"''with=equals''","iso_url":null,"url":"https://url.com/some.iso","task":{"spec":"https://api.puppetlabs.com/razor/v1/collections/tasks/member","id":"https://localhost:8151/api/collections/tasks/noop","name":"noop"}}'
     http_version:
   recorded_at: Thu, 14 Aug 2014 21:10:26 GMT
 recorded_with: VCR 2.9.2
