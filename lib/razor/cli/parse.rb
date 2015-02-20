@@ -115,7 +115,7 @@ ERR
 
     attr_reader :api_url, :args
     # The format can be determined from later segments.
-    attr_accessor :format, :stripped_args
+    attr_accessor :format, :stripped_args, :ssl_ca_file
 
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
@@ -124,6 +124,12 @@ ERR
       @stripped_args = []
       @format = 'short'
       @verify_ssl = true
+      # If this is set, it should actually exist.
+      if ENV['RAZOR_CA_FILE'] && !File.exists?(ENV['RAZOR_CA_FILE'])
+        raise Razor::CLI::InvalidCAFileError.new(ENV['RAZOR_CA_FILE'])
+      end
+      ca_file = ENV["RAZOR_CA_FILE"]
+      @ssl_ca_file = ca_file if ca_file && File.exists?(ca_file)
       @args = get_optparse.order(@args)
       @args = set_help_vars(@args)
       if @args == ['version'] or @show_version

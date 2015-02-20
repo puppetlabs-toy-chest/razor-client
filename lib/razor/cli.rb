@@ -26,6 +26,12 @@ module Razor
       end
     end
 
+    class InvalidCAFileError < Error
+      def initialize(path)
+        super "CA file '#{path}' in ENV variable RAZOR_CA_FILE does not exist"
+      end
+    end
+
     class VersionCompatibilityError < Error
       def initialize(reason)
         super "Server version is not compatible with client version: #{reason}"

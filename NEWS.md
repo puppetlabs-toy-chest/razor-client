@@ -1,5 +1,10 @@
 # Razor Client Release Notes
 
+## Next - TBD
+
+* NEW: RAZOR_CA_FILE environment variable allows TLS/SSL certificate
+  verification for requests.
+
 ## 0.16.0 - 2015-01-05
 
 * BUGFIX: Commands were not always including authentication

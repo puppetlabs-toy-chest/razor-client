@@ -101,6 +101,17 @@ describe Razor::CLI::Parse do
       end
     end
 
+    context "with ENV RAZOR_CA_FILE set" do
+      after :each do
+        ENV::delete('RAZOR_CA_FILE')
+      end
+      it "should raise an error if the RAZOR_CA_FILE override is invalid" do
+        ENV['RAZOR_CA_FILE'] = '/does/not/exist'
+        expect{parse}.to raise_error(Razor::CLI::InvalidCAFileError,
+            "CA file '/does/not/exist' in ENV variable RAZOR_CA_FILE does not exist")
+      end
+    end
+
     describe "#help", :vcr do
       subject(:p) {parse}
       it { should respond_to :help}

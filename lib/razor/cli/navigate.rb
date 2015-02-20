@@ -142,6 +142,7 @@ module Razor::CLI
     def create_resource(url, headers)
       @doc_resource = RestClient::Resource.new(url.to_s, :headers => headers,
                                          :verify_ssl => @parse.verify_ssl?,
+                                         :ssl_ca_file      =>  @parse.ssl_ca_file,
                                          :user => @username,
                                          :password => @password)
     end
