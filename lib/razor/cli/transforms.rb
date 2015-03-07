@@ -44,7 +44,7 @@ module Razor::CLI
     end
     def event_msg(obj)
       raise Razor::CLI::HideColumnError if obj['msg'].nil?
-      obj['msg'][0..50] + ('...' if obj['msg'].size > 50) if obj['msg']
+      obj['msg'][0..50] + (obj['msg'].size > 50 ? '...' : '') if obj['msg']
     end
     def full_event_msg(obj)
       raise Razor::CLI::HideColumnError if obj['msg'].nil?
