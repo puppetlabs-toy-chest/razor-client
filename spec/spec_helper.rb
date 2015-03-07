@@ -41,7 +41,7 @@ end
 RSpec.configure do |c|
   c.treat_symbols_as_metadata_keys_with_true_values = true
   c.before(:each) do
-    ENV::delete('RAZOR_API')
+    ENV::store('RAZOR_API', 'http://localhost:8150/api')
   end
   # Make tests have no side effects when [re-]recording.
   if vcr_recording?

@@ -58,7 +58,7 @@ describe Razor::CLI::Navigate do
     context "combining as an array" do
       before(:each) do
         # Prerequisites
-        nav = Razor::CLI::Parse.new(['create-repo', '--name', 'name', '--url', 'https://url.com/some.iso', '--task', 'noop']).navigate.get_document
+        nav = Razor::CLI::Parse.new(['create-repo', '--name', 'name', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
         nav = Razor::CLI::Parse.new(['create-broker', '--name', 'puppet', '--configuration', '{"server": "puppet.example.org", "environment": "production"}', '--broker-type', 'puppet']).navigate.get_document
         nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag1', '--rule', '["=", ["fact", "processorcount"], "1"]']).navigate.get_document
         nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag2', '--rule', '["=", ["fact", "processorcount"], "2"]']).navigate.get_document
@@ -120,13 +120,13 @@ describe Razor::CLI::Navigate do
 
   context "argument formatting", :vcr do
     it "should allow spaces" do
-      Razor::CLI::Parse.new(['create-repo', '--name', 'separate with spaces', '--url', 'https://url.com/some.iso', '--task', 'noop']).navigate.get_document
-      Razor::CLI::Parse.new(['create-repo', '--name="double-quote with spaces"', '--url', 'https://url.com/some.iso', '--task', 'noop']).navigate.get_document
-      Razor::CLI::Parse.new(['create-repo', '--name=\'single-quote with spaces\'', '--url', 'https://url.com/some.iso', '--task', 'noop']).navigate.get_document
+      Razor::CLI::Parse.new(['create-repo', '--name', 'separate with spaces', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+      Razor::CLI::Parse.new(['create-repo', '--name="double-quote with spaces"', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
+      Razor::CLI::Parse.new(['create-repo', '--name=\'single-quote with spaces\'', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document
     end
 
     it "should allow '=' in string" do
-      Razor::CLI::Parse.new(['create-repo', '--name=\'with=equals\'', '--url', 'https://url.com/some.iso', '--task', 'noop']).navigate.get_document['name'].should =~ /with=equals/
+      Razor::CLI::Parse.new(['create-repo', '--name=\'with=equals\'', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document['name'].should =~ /with=equals/
     end
   end
 
@@ -148,7 +148,7 @@ describe Razor::CLI::Navigate do
   end
 
   context "with authentication", :vcr do
-    AuthArg = %w[-u https://fred:dead@localhost:8151/api].freeze
+    AuthArg = %w[-u http://fred:dead@localhost:8150/api].freeze
 
     it "should supply that to the API service" do
       nav = Razor::CLI::Parse.new(AuthArg).navigate
@@ -167,29 +167,29 @@ describe Razor::CLI::Navigate do
 
   context "with query parameters", :vcr do
     it "should append limit" do
-      nav = Razor::CLI::Parse.new(%w[-u https://fred:dead@localhost:8151/api events --limit 1]).navigate
+      nav = Razor::CLI::Parse.new(%w[-u http://fred:dead@localhost:8150/api events --limit 1]).navigate
       nav.get_document.should be_an_instance_of Hash
       nav.last_url.to_s.should =~ /limit=1/
     end
     it "should append start" do
-      nav = Razor::CLI::Parse.new(%w[-u https://fred:dead@localhost:8151/api events --start 1]).navigate
+      nav = Razor::CLI::Parse.new(%w[-u http://fred:dead@localhost:8150/api events --start 1]).navigate
       nav.get_document.should be_an_instance_of Hash
       nav.last_url.to_s.should =~ /start=1/
     end
     it "should throw an error if the query parameter is not in the API" do
-      nav = Razor::CLI::Parse.new(%w[-u https://fred:dead@localhost:8151/api events --not-in-api 1]).navigate
+      nav = Razor::CLI::Parse.new(%w[-u http://fred:dead@localhost:8150/api events --not-in-api 1]).navigate
       expect {nav.get_document}.to raise_error(OptionParser::InvalidOption, 'invalid option: --not-in-api')
     end
     it "should not fail when query returns details for one item" do
       nav = Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:00']).navigate.get_document
       name = nav['name']
-      nav = Razor::CLI::Parse.new(['-u', 'https://fred:dead@localhost:8151/api', 'nodes', name]).navigate
+      nav = Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8150/api', 'nodes', name]).navigate
       nav.get_document['name'].should == name
     end
     it "should throw an error if the query parameter is not in the API from a single item" do
       nav = Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:00']).navigate.get_document
       name = nav['name']
-      expect {Razor::CLI::Parse.new(['-u', 'https://fred:dead@localhost:8151/api', 'nodes', name, '--limit', '1']).
+      expect {Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8150/api', 'nodes', name, '--limit', '1']).
           navigate.get_document}.to raise_error(OptionParser::InvalidOption, 'invalid option: --limit')
     end
     it "should store query without query parameters" do
@@ -197,7 +197,7 @@ describe Razor::CLI::Navigate do
           navigate.get_document['name']
       Razor::CLI::Parse.new(['register-node', '--installed', 'true', '--hw-info', 'net0=78:31:c1:be:c8:01']).
           navigate.get_document
-      parse = Razor::CLI::Parse.new(['-u', 'https://fred:dead@localhost:8151/api', 'nodes', name, 'log', '--limit', '1'])
+      parse = Razor::CLI::Parse.new(['-u', 'http://fred:dead@localhost:8150/api', 'nodes', name, 'log', '--limit', '1'])
       parse.navigate.get_document
       parse.stripped_args.should == ['nodes', name, 'log']
     end
