@@ -29,8 +29,12 @@ end
 def reset_db
   razor_admin_path = ENV['razor-admin'] || 'bin/razor-admin'
   db_environment = ENV['server-database-environment'] || 'development'
-  # The `cd` business is a workaround, since running `razor-admin` from a different directory currently fails.
-  system("cd ../razor-server && #{razor_admin_path} -e #{db_environment} reset-database")
+  # The `cd` business is a workaround, since running `razor-admin` from a
+  # different directory currently fails. Without the `Bundler` wrap, it uses
+  # the same bundler environment for the shell command, leading to errors
+  # relating to gems on razor-server that are not included in the razor-client
+  # bundle.
+  Bundler.with_clean_env {system("cd ../razor-server && #{razor_admin_path} -e #{db_environment} reset-database")}
 end
 
 # Record one cassette for each test
@@ -42,6 +46,6 @@ RSpec.configure do |c|
   # Make tests have no side effects when [re-]recording.
   if vcr_recording?
     c.before(:all) { reset_db }
-    c.after(:each) { reset_db }
+    c.after(:each, :vcr => true) { reset_db }
   end
 end
