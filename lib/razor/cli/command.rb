@@ -37,6 +37,7 @@ class Razor::CLI::Command
   def extract_command
     cmd = command(@segments.shift)
     @cmd_url = URI.parse(cmd['id'])
+    @cmd_schema = cmd_schema(@cmd_url)
     body = {}
     until @segments.empty?
       argument = @segments.shift
@@ -44,7 +45,8 @@ class Razor::CLI::Command
         # `--arg=value` or `--arg value`
         arg, value = [$1, $3]
         value = @segments.shift if value.nil? && @segments[0] !~ /^--/
-        body[arg] = convert_arg(cmd["name"], arg, value, body[arg])
+        arg = self.class.resolve_alias(arg, @cmd_schema)
+        body[arg] = self.class.convert_arg(arg, value, body[arg], @cmd_schema)
       else
         raise ArgumentError, "Unexpected argument #{argument}"
       end
@@ -63,19 +65,20 @@ class Razor::CLI::Command
     [cmd, body]
   end
 
-  def cmd_schema(cmd_name)
+  def cmd_schema(cmd_url)
     begin
-      @navigate.json_get(@cmd_url)['schema']
+      @navigate.json_get(cmd_url)['schema']
     rescue RestClient::ResourceNotFound => _
       raise VersionCompatibilityError, 'Server must supply the expected datatypes for command arguments; use `--json` or upgrade razor-server'
     end
   end
 
-  def arg_type(cmd_name, arg_name)
+  def self.arg_type(arg_name, cmd_schema)
     # Short-circuit to allow this as a work-around for backwards compatibility.
     return nil if arg_name == 'json'
-    cmd = cmd_schema(cmd_name)
-    cmd && cmd[arg_name] && cmd[arg_name]['type'] or nil
+    return nil unless cmd_schema.is_a?(Hash)
+    return cmd_schema[arg_name]['type'] if cmd_schema.has_key?(arg_name)
+    return nil
   end
 
   # `cmd_name`: The name of the command being executed.
@@ -85,22 +88,19 @@ class Razor::CLI::Command
   #     by previous calls to this method. The new `value` will be
   #     concatenated to an array or hash if an array/hash is
   #     accepted by the command for the given argument.
-  def convert_arg(cmd_name, arg_name, value, existing_value)
+  def self.convert_arg(arg_name, value, existing_value, cmd_schema)
     value = nil if value == "null"
 
-    argument_type = arg_type(cmd_name, arg_name)
+    argument_type = arg_type(arg_name, cmd_schema)
 
     # This might be helpful, since there's no other method for debug-level logging on the client.
-    puts "Formatting argument #{arg_name} with value #{value} as #{argument_type}\n" if @parse.dump_response?
+    puts "Formatting argument #{arg_name} with value #{value} as #{argument_type}\n" if @parse && @parse.dump_response?
 
     case argument_type
       when "array"
         existing_value ||= []
         begin
-          MultiJson::load(value).tap do |value|
-            value = Array(value)
-            existing_value + value
-          end
+          existing_value + Array(MultiJson::load(value))
         rescue MultiJson::LoadError => _
           existing_value + Array(value)
         end
@@ -135,5 +135,16 @@ class Razor::CLI::Command
       else
         raise Razor::CLI::Error, "Unexpected datatype '#{argument_type}' for argument #{arg_name}"
     end
+  end
+
+  def self.resolve_alias(arg_name, cmd_schema)
+    return arg_name if cmd_schema[arg_name]
+    cmd_schema.find do |other_attr, metadata|
+      if metadata && metadata.has_key?('aliases')
+        return other_attr if metadata['aliases'].find {|aliaz| aliaz == arg_name}
+      end
+    end
+    # No results; return the same name to generate a reasonable error message.
+    arg_name
   end
 end
