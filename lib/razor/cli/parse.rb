@@ -123,7 +123,8 @@ ERR
       # To be populated externally.
       @stripped_args = []
       @format = 'short'
-      @verify_ssl = true
+      # Localhost won't match the server's certificate; no verification required.
+      @verify_ssl = (@api_url.hostname != 'localhost')
       # If this is set, it should actually exist.
       if ENV['RAZOR_CA_FILE'] && !File.exists?(ENV['RAZOR_CA_FILE'])
         raise Razor::CLI::InvalidCAFileError.new(ENV['RAZOR_CA_FILE'])
