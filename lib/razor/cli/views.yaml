@@ -232,3 +232,17 @@ collections:
             +format: name_hide_nil
           entry:
             +format: event_misc
+  hooks:
+    +short:
+      +layout: table
+      +show:
+        name:
+        hook_type:
+        configuration:
+          +format: shallow_hash
+    member:
+      +short:
+        +show:
+          name:
+          hook_type:
+          configuration:
