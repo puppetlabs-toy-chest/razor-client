@@ -33,8 +33,9 @@ if parse.show_version?
 end
 
 if parse.show_help? and not parse.show_command_help?
-  puts parse.help
-  exit 0
+  output, exitcode = parse.help
+  puts output
+  exit exitcode
 end
 
 def unexpected_error(e)

@@ -19,7 +19,7 @@ describe Razor::CLI::Parse do
   describe "#new" do
     context "with no arguments" do
       it {parse.show_help?.should be true}
-      it {parse.verify_ssl?.should be true}
+      it {parse.verify_ssl?.should be false}
     end
 
     context "with a '-h'" do
@@ -54,6 +54,7 @@ describe Razor::CLI::Parse do
       it "should use the given URL" do
         url = 'http://razor.example.com:2150/path/to/api'
         parse('-u',url).api_url.to_s.should == url
+        parse('-u',url).verify_ssl?.should == true
       end
 
       it "should terminate with an error if an invalid URL is provided" do
@@ -79,6 +80,10 @@ describe Razor::CLI::Parse do
 
     context "with a '--insecure'" do
       it {parse("--insecure").verify_ssl?.should be false}
+    end
+
+    context "with '--version'" do
+      it {parse("--version").show_version?.should be true}
     end
 
     context "with ENV RAZOR_API set" do
@@ -116,12 +121,15 @@ describe Razor::CLI::Parse do
       subject(:p) {parse}
       it { should respond_to :help}
 
-      it { p.help.should be_a String}
+      it { output, exitcode = p.help
+           output.should be_a String
+           exitcode.should == 0}
 
       it "should print a list of known endpoints" do
         p.navigate.should_receive(:collections).and_return([])
         p.navigate.should_receive(:commands).and_return([])
-        p.help
+        _, exitcode = p.help
+        exitcode.should == 0
       end
     end
   end

@@ -53,14 +53,28 @@ module Razor::CLI
     end
 
     def version
+      begin
       <<-VERSION
 Razor Server version: #{navigate.server_version}
 Razor Client version: #{Razor::CLI::VERSION}
       VERSION
+      rescue RestClient::Unauthorized
+        puts <<-UNAUTH
+Error: Credentials are required to connect to the server at #{@api_url}"
+        UNAUTH
+        exit 1
+      rescue
+        puts <<-ERR
+Error: Could not connect to the server at #{@api_url}. More help is available after pointing
+the client to a Razor server
+        ERR
+        exit 1
+      end
     end
 
     def help
       output = get_optparse.to_s
+      exit = 0
       begin
         output << <<-HELP
 #{list_things("Collections", navigate.collections)}
@@ -80,13 +94,15 @@ HELP
         output << <<-UNAUTH
 Error: Credentials are required to connect to the server at #{@api_url}"
 UNAUTH
+        exit = 1
       rescue
         output << <<-ERR
 Error: Could not connect to the server at #{@api_url}. More help is available after pointing
 the client to a Razor server
 ERR
+        exit = 1
       end
-      output
+      [output, exit]
     end
 
     def show_version?
@@ -123,8 +139,6 @@ ERR
       # To be populated externally.
       @stripped_args = []
       @format = 'short'
-      # Localhost won't match the server's certificate; no verification required.
-      @verify_ssl = (@api_url.hostname != 'localhost')
       # If this is set, it should actually exist.
       if ENV['RAZOR_CA_FILE'] && !File.exists?(ENV['RAZOR_CA_FILE'])
         raise Razor::CLI::InvalidCAFileError.new(ENV['RAZOR_CA_FILE'])
@@ -132,6 +146,11 @@ ERR
       ca_file = ENV["RAZOR_CA_FILE"]
       @ssl_ca_file = ca_file if ca_file && File.exists?(ca_file)
       @args = get_optparse.order(@args)
+
+      # Localhost won't match the server's certificate; no verification required.
+      # This needs to happen after get_optparse so `-k` and `-u` can take effect.
+      @verify_ssl ||= (@api_url.hostname != 'localhost')
+
       @args = set_help_vars(@args)
       if @args == ['version'] or @show_version
         @show_version = true
