@@ -20,7 +20,8 @@ class Razor::CLI::Query
       query = doc.find {|coll| coll['name'] == nav}
       params = (query && query['params']) || {}
     elsif doc.is_a?(Hash)
-      params = (doc[nav].is_a?(Hash) && doc[nav].has_key?('params') && doc[nav]['params'].is_a?(Hash)) || {}
+      params = (doc[nav].is_a?(Hash) && doc[nav].has_key?('params') &&
+          doc[nav]['params'].is_a?(Hash) && doc[nav]['params']) || {}
     end
     @queryoptparse = OptionParser.new do |opts|
       opts.on "-f", "--full", "Show full details when viewing entities" do
