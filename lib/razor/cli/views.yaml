@@ -227,11 +227,10 @@ collections:
           repo:
             +format: name_hide_nil
           command:
-            +format: name_hide_nil
+            +format: name_or_whole
           task:
             +format: name_hide_nil
           entry:
-            +format: event_misc
   hooks:
     +short:
       +layout: table

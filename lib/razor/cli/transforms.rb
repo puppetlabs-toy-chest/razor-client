@@ -33,6 +33,13 @@ module Razor::CLI
     def name_if_present(obj)
       obj ? obj['name'] : "---"
     end
+    def name_or_whole(obj)
+      if obj
+        (obj['name'] ? obj['name'] : obj)
+      else
+        '---'
+      end
+    end
     def count_column(hash)
       hash['count']
     end
