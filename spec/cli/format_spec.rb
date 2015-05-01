@@ -84,9 +84,11 @@ describe Razor::CLI::Format do
 
   context 'tabular display' do
     it "works right when columns do not match up" do
-      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/nodes/log",
+      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/some/table",
              "items"=>[{'a' => 'b', 'c' => 'd'},
                        {'b' => 'c', 'e' => 'f'}]}
+      Razor::CLI::Views.instance_variable_set('@views',
+            {'collections' => {'some' => {'table' => {'+short' => {'+layout' => 'table'}}}}})
       result = format doc
       result.should ==
           # The framework seems to be adding unnecessary spaces at the end of each data line;
@@ -113,8 +115,10 @@ describe Razor::CLI::Format do
     end
 
     it "works right with unicode" do
-      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/nodes/log",
+      doc = {"spec"=>"http://api.puppetlabs.com/razor/v1/collections/some/table",
              "items"=>[{'a' => 'ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ'}]}
+      Razor::CLI::Views.instance_variable_set('@views',
+          {'collections' => {'some' => {'table' => {'+short' => {'+layout' => 'table'}}}}})
       result = format doc
       result.should ==
           # The framework seems to be adding unnecessary spaces at the end of each data line;

@@ -58,10 +58,15 @@ module Razor::CLI
       obj['msg']
     end
     def event_entities(hash)
+      hash ||= {}
       shallow_hash(Hash[hash].keep_if {|k,_| ['task', 'policy', 'broker', 'repo', 'node', 'command'].include?(k)})
     end
     def event_misc(hash)
+      hash ||= {}
       shallow_hash(Hash[hash].delete_if {|k,_|['task', 'policy', 'broker', 'repo', 'node', 'msg', 'command'].include?(k)})
+    end
+    def node_log_entry(hash)
+      shallow_hash(Hash[hash].delete_if {|k,_|['event', 'timestamp', 'severity'].include?(k)})
     end
   end
 end

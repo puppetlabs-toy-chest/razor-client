@@ -52,6 +52,8 @@ collections:
           dhcp_mac:
             +format: mac
           state:
+          policy:
+            +format: select_name
           last_checkin:
             +format: if_present
           metadata:
@@ -75,10 +77,14 @@ collections:
     log:
       +short:
         +layout: table
-#        +show:
-#          event:
-#          task:
-#          timestamp:
+        +show:
+          name:
+          timestamp:
+          severity:
+          event:
+          entry:
+            +all-columns:
+            +format: node_log_entry
   policies:
     +short:
       +layout: table
@@ -201,6 +207,7 @@ collections:
       +show:
         name:
         timestamp:
+        severity:
         message:
           +column: entry
           +format: event_msg
@@ -215,6 +222,7 @@ collections:
         +show:
           name:
           timestamp:
+          severity:
           message:
             +column: entry
             +format: full_event_msg

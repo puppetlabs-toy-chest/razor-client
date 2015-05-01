@@ -42,9 +42,13 @@ module Razor::CLI
               # Allow both '+column' as overrides.
               item_spec = (item_format_spec[1] or {})
               item_label = item_format_spec[0]
-              item_column = (item_spec['+column'] or item_label)
               begin
-                value = Razor::CLI::Views.transform(item[item_column], item_spec['+format'])
+                value = if item_spec.has_key?('+all-columns')
+                          Razor::CLI::Views.transform(item, item_spec['+format'])
+                        else
+                          item_column = (item_spec['+column'] or item_label)
+                          Razor::CLI::Views.transform(item[item_column], item_spec['+format'])
+                        end
                 [item_label, value]
               rescue Razor::CLI::HideColumnError
                 nil
