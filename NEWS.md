@@ -1,9 +1,19 @@
 # Razor Client Release Notes
 
-## Next - TBD
+## 1.0.0 - 2015-06-08
 
+* NEW: Fit collection output to STDIN size for easier viewing.
 * NEW: RAZOR_CA_FILE environment variable allows TLS/SSL certificate
   verification for requests.
+* NEW: The default API protocol and port are HTTPS over TLS/SSL on port 8151.
+* NEW: Utilizes `aliases` property in command metadata to better guess datatypes
+  for aliases.
+* IMPROVEMENT: `razor hooks` now displays as a table.
+* IMPROVEMENT: Better output for `razor events ##`.
+* IMPROVEMENT: Exits with an error code of 1 when a `razor` command fails.
+* BUGFIX: `razor events` no longer causes exception.
+* BUGFIX: `razor commands ## errors` no longer causes exception.
+* BUGFIX: Hook output message can now be any datatype.
 
 ## 0.16.0 - 2015-01-05
 
