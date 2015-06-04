@@ -19,7 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # This is added until compatibility issues can be resolved in
-  # e.g. https://tickets.puppetlabs.com/browse/RAZOR-572.
+  # e.g. https://tickets.puppetlabs.com/browse/RAZOR-572. This is only
+  # effective for locally built gems, as project_data.yaml does not support
+  # this feature.
   spec.required_ruby_version = '>= 1.9.2'
 
   # mime-types is a dependency of rest-client. We need to explicitly depend

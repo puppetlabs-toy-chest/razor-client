@@ -31,5 +31,5 @@ gem_default_executables: 'razor'
 gem_runtime_dependencies:
   mime-types: '< 2.0'
   multi_json:
-  rest-client:
+  rest-client: '< 1.7'
   command_line_reporter: '> 3.0'
