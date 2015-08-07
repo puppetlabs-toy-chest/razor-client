@@ -6,7 +6,7 @@ module Razor::CLI
 
   class Parse
     extend Forwardable
-    DEFAULT_RAZOR_API = "http://localhost:8080/api"
+    DEFAULT_RAZOR_API = "http://localhost:8150/api"
 
     def_delegator 'navigate', 'query?'
 

@@ -1,5 +1,9 @@
 # Razor Client Release Notes
 
+## Next - Next
+
+* IMPROVEMENT: By default, `razor` will point to port 8150.
+
 ## 1.0.0 - 2015-06-08
 
 * NEW: Fit collection output to STDIN size for easier viewing.
