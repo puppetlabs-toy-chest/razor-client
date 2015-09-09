@@ -54,7 +54,11 @@ class Razor::CLI::TableFormat
   def average_width(headings)
     # The 3 here = 2 for width gap + 1 for the column separator.
     # The 1 is for the last separator.
-    @average_width ||= (((`stty size | cut -d ' ' -f 2` || 80).to_i - (headings.count * 3) - 1) / headings.count)
+    console_width = `stty size | cut -d ' ' -f 2`
+    if console_width.nil? || console_width.to_i <= 0
+      console_width = 80
+    end
+    @average_width ||= ((console_width.to_i - (headings.count * 3) - 1) / headings.count)
   end
 
   def content_width(header, doc)
