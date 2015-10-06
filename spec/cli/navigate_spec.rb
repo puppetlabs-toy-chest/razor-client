@@ -128,6 +128,18 @@ describe Razor::CLI::Navigate do
     it "should allow '=' in string" do
       Razor::CLI::Parse.new(['create-repo', '--name=\'with=equals\'', '--url', 'http://url.com/some.iso', '--task', 'noop']).navigate.get_document['name'].should =~ /with=equals/
     end
+
+    it "should not allow double-dash with single character flag" do
+      nav = Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '--broker-type', 'puppet-pe', '--c', 'server=abc.com']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument --c')
+    end
+    it "should not allow single-dash with multiple character flag" do
+      nav = Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '-broker-type', 'puppet-pe']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument -broker-type')
+    end
+    it "should allow single-dash with single character flag" do
+      Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '--broker-type', 'puppet-pe', '-c', 'server=abc.com']).navigate.get_document['configuration']['server'].should == 'abc.com'
+    end
   end
 
   context "for command help", :vcr do

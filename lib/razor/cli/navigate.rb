@@ -93,7 +93,15 @@ module Razor::CLI
       elsif query?
         Razor::CLI::Query.new(@parse, self, collections, @segments).run
       elsif command?
-        Razor::CLI::Command.new(@parse, self, commands, @segments).run
+        cmd = @segments.shift
+        command = commands.find { |coll| coll["name"] == cmd }
+        cmd_url = URI.parse(command['id'])
+        # Ensure that we copy authentication data from our previous URL.
+        if @doc_resource
+          cmd_url = URI.parse(cmd_url.to_s)
+        end
+        command = json_get(cmd_url)
+        Razor::CLI::Command.new(@parse, self, command, @segments, cmd_url).run
       else
         raise NavigationError.new(@doc_resource, @segments, @doc)
       end

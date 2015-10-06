@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8150/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '6470'
+      Date:
+      - Wed, 09 Dec 2015 01:27:48 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"}],"version":{"server":"v1.1.0-4-gbc32aac-dirty"}}'
+    http_version:
+  recorded_at: Wed, 09 Dec 2015 01:27:48 GMT
+- request:
+    method: get
+    uri: http://localhost:8150/api/commands/create-broker
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Etag:
+      - '"server-version-v1.1.0-4-gbc32aac-dirty"'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '5210'
+      Date:
+      - Wed, 09 Dec 2015 01:27:48 GMT
+    body:
+      encoding: US-ASCII
+      string: '{"name":"create-broker","help":{"summary":"Create a new broker configuration
+        for hand-off of installed nodes","description":"Create a new broker configuration.  Brokers
+        are responsible for handing a node\noff to a config management system, such
+        as Puppet or Chef.  In cases where you\nhave no configuration management system,
+        you can use the `noop` broker.","schema":"# Access Control\n\nThis command''s
+        access control pattern: `commands:create-broker:%{name}`\n\nWords surrounded
+        by `%{...}` are substitutions from the input data: typically\nthe name of
+        the object being modified, or some other critical detail, these\nallow roles
+        to be granted partial access to modify the system.\n\nFor more detail on how
+        the permission strings are structured and work, you can\nsee the [Shiro Permissions
+        documentation][shiro].  That pattern is expanded\nand then a permission check
+        applied to it, before the command is authorized.\n\nThese checks only apply
+        if security is enabled in the Razor configuration\nfile; on this server security
+        is currently disabled.\n\n[shiro]: http://shiro.apache.org/permissions.html\n\n#
+        Attributes\n\n * name\n   - The name of the broker, as it will be referenced
+        within Razor.\n     This is the name that you supply to, eg, `create-policy`
+        to specify\n     which broker the node will be handed off via after installation.\n   -
+        This attribute is required.\n   - It must be of type string.\n   - It must
+        be between 1 and 250 in length.\n\n * broker_type\n   - The broker type from
+        which this broker is created.  The available\n     broker types on your server
+        are:\n     - chef\n     - noop\n     - puppet-pe\n     - puppet\n   - This
+        attribute is required.\n   - It must be of type string.\n   - It must match
+        the name of an existing broker type.\n\n * configuration\n   - The configuration
+        for the broker.  The acceptable values here are\n     determined by the `broker_type`
+        selected.  In general this has\n     settings like which server to contact,
+        and other configuration\n     related to handing on the newly installed system
+        to the final\n     configuration management system.\n     \n     This attribute
+        can be abbreviated as `c` for convenience.\n   - It must be of type object.\n","examples":{"api":"Creating
+        a simple Puppet broker:\n\n{\n  \"name\": \"puppet\",\n  \"configuration\":
+        {\n     \"server\":      \"puppet.example.org\",\n     \"environment\": \"production\"\n  },\n  \"broker_type\":
+        \"puppet\"\n}","cli":"Creating a simple Puppet broker:\n\nrazor create-broker
+        --name puppet -c server=puppet.example.org \\\n    -c environment=production
+        --broker-type puppet"},"full":"# SYNOPSIS\nCreate a new broker configuration
+        for hand-off of installed nodes\n\n# DESCRIPTION\nCreate a new broker configuration.  Brokers
+        are responsible for handing a node\noff to a config management system, such
+        as Puppet or Chef.  In cases where you\nhave no configuration management system,
+        you can use the `noop` broker.\n# Access Control\n\nThis command''s access
+        control pattern: `commands:create-broker:%{name}`\n\nWords surrounded by `%{...}`
+        are substitutions from the input data: typically\nthe name of the object being
+        modified, or some other critical detail, these\nallow roles to be granted
+        partial access to modify the system.\n\nFor more detail on how the permission
+        strings are structured and work, you can\nsee the [Shiro Permissions documentation][shiro].  That
+        pattern is expanded\nand then a permission check applied to it, before the
+        command is authorized.\n\nThese checks only apply if security is enabled in
+        the Razor configuration\nfile; on this server security is currently disabled.\n\n[shiro]:
+        http://shiro.apache.org/permissions.html\n\n# Attributes\n\n * name\n   -
+        The name of the broker, as it will be referenced within Razor.\n     This
+        is the name that you supply to, eg, `create-policy` to specify\n     which
+        broker the node will be handed off via after installation.\n   - This attribute
+        is required.\n   - It must be of type string.\n   - It must be between 1 and
+        250 in length.\n\n * broker_type\n   - The broker type from which this broker
+        is created.  The available\n     broker types on your server are:\n     -
+        chef\n     - noop\n     - puppet-pe\n     - puppet\n   - This attribute is
+        required.\n   - It must be of type string.\n   - It must match the name of
+        an existing broker type.\n\n * configuration\n   - The configuration for the
+        broker.  The acceptable values here are\n     determined by the `broker_type`
+        selected.  In general this has\n     settings like which server to contact,
+        and other configuration\n     related to handing on the newly installed system
+        to the final\n     configuration management system.\n     \n     This attribute
+        can be abbreviated as `c` for convenience.\n   - It must be of type object.\n\n#
+        EXAMPLES\n\n  Creating a simple Puppet broker:\n  \n  {\n    \"name\": \"puppet\",\n    \"configuration\":
+        {\n       \"server\":      \"puppet.example.org\",\n       \"environment\":
+        \"production\"\n    },\n    \"broker_type\": \"puppet\"\n  }\n"},"schema":{"name":{"type":"string","position":0},"broker_type":{"type":"string","aliases":["broker-type"],"position":1},"configuration":{"type":"object","aliases":["c"]}}}'
+    http_version:
+  recorded_at: Wed, 09 Dec 2015 01:27:48 GMT
+recorded_with: VCR 2.5.0

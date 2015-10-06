@@ -63,4 +63,35 @@ describe Razor::CLI::Command do
       result.should == 'abc'
     end
   end
+
+  context "extract_command" do
+    it "fails with a single dash for long flags" do
+      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'name' => {'type' => 'array'}}},
+                                  ['-name', 'abc'], '/foobar')
+      expect{c.extract_command}.
+          to raise_error(ArgumentError, 'Unexpected argument -name')
+    end
+    it "fails with a double dash for short flags" do
+      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
+                                  ['--n', 'abc'], '/foobar')
+      expect{c.extract_command}.
+          to raise_error(ArgumentError, 'Unexpected argument --n')
+    end
+    it "fails with a double dash for short flags if argument does not exist" do
+      c = Razor::CLI::Command.new(nil, nil, {'schema' => {}},
+                                  ['--n', 'abc'], '/foobar')
+      expect{c.extract_command}.
+          to raise_error(ArgumentError, 'Unexpected argument --n')
+    end
+    it "succeeds with a double dash for long flags" do
+      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'name' => {'type' => 'array'}}},
+                                  ['--name', 'abc'], '/foobar')
+      c.extract_command['name'].should == ['abc']
+    end
+    it "succeeds with a single dash for short flags" do
+      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
+                                  ['-n', 'abc'], nil)
+      c.extract_command['n'].should == ['abc']
+    end
+  end
 end

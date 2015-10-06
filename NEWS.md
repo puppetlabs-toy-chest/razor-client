@@ -3,6 +3,8 @@
 ## Next - Next
 
 * BUGFIX: Fixed insecure flag when supplied in addition to a server URL.
+* IMPROVEMENT: Proper short form argument style is now followed.
+  Single-character arguments now require a single dash, e.g. `-c`.
 * IMPROVEMENT: Error messaging for SSL issues has been improved.
 
 ## 1.1.0 - 2015-11-12

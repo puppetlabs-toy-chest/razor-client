@@ -1,48 +1,38 @@
 class Razor::CLI::Command
-  def initialize(parse, navigate, commands, segments)
-    @parse = parse
+  def initialize(parse, navigate, command, segments, cmd_url)
+    @dump_response = parse && parse.dump_response?
+    @show_command_help = parse && parse.show_command_help?
     @navigate = navigate
-    @commands = commands
+    @command = command
+    @cmd_schema = command['schema']
+    @cmd_url = cmd_url
     @segments = segments
   end
 
   def run
-    # @todo lutter 2013-08-16: None of this has any tests, and error
-    # handling is heinous at best
-    cmd, body = extract_command
-    # Ensure that we copy authentication data from our previous URL.
-    url = URI.parse(cmd["id"])
-    if @doc_resource
-      url          = URI.parse(url.to_s)
-    end
-
-    if @parse.show_command_help?
-      @navigate.json_get(url)
+    body = extract_command
+    if @show_command_help
+      @command
     else
       if body.empty?
         raise Razor::CLI::Error,
               "No arguments for command (did you forget --json ?)"
       end
-      result = @navigate.json_post(url, body)
+      result = @navigate.json_post(@cmd_url, body)
       # Get actual object from the id.
       result = result.merge(@navigate.json_get(URI.parse(result['id']))) if result['id']
       result
     end
   end
 
-  def command(name)
-    @command ||= @commands.find { |coll| coll["name"] == name }
-  end
-
   def extract_command
-    cmd = command(@segments.shift)
-    @cmd_url = URI.parse(cmd['id'])
-    @cmd_schema = cmd_schema(@cmd_url)
     body = {}
     until @segments.empty?
       argument = @segments.shift
-      if argument =~ /\A--([a-z-]+)(=(.+))?\Z/
-        # `--arg=value` or `--arg value`
+      if argument =~ /\A--([a-z-]{2,})(=(.+))?\Z/ or
+          argument =~ /\A-([a-z])(=(.+))?\Z/
+        # `--arg=value`/`--arg value`
+        # `-a=value`/`-a value`
         arg, value = [$1, $3]
         value = @segments.shift if value.nil? && @segments[0] !~ /^--/
         arg = self.class.resolve_alias(arg, @cmd_schema)
@@ -62,15 +52,7 @@ class Razor::CLI::Command
       raise Razor::CLI::Error,
             "Permission to read file #{body["json"]} denied"
     end
-    [cmd, body]
-  end
-
-  def cmd_schema(cmd_url)
-    begin
-      @navigate.json_get(cmd_url)['schema']
-    rescue RestClient::ResourceNotFound => _
-      raise VersionCompatibilityError, 'Server must supply the expected datatypes for command arguments; use `--json` or upgrade razor-server'
-    end
+    body
   end
 
   def self.arg_type(arg_name, cmd_schema)
@@ -94,7 +76,7 @@ class Razor::CLI::Command
     argument_type = arg_type(arg_name, cmd_schema)
 
     # This might be helpful, since there's no other method for debug-level logging on the client.
-    puts "Formatting argument #{arg_name} with value #{value} as #{argument_type}\n" if @parse && @parse.dump_response?
+    puts "Formatting argument #{arg_name} with value #{value} as #{argument_type}\n" if @dump_response
 
     case argument_type
       when "array"
