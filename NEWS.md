@@ -1,8 +1,9 @@
 # Razor Client Release Notes
 
-## Next - Next
+## 1.1.0 - 2015-11-04
 
 * IMPROVEMENT: By default, `razor` will point to port 8150.
+* IMPROVEMENT: Better display of several views/collections.
 
 ## 1.0.0 - 2015-06-08
 
