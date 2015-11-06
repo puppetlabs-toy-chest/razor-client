@@ -2,6 +2,16 @@ require 'uri'
 require 'optparse'
 require 'forwardable'
 
+# Needed to make the client work on Ruby 1.8.7
+unless URI::Generic.method_defined?(:hostname)
+  module URI
+    def hostname
+      v = self.host
+      /\A\[(.*)\]\z/ =~ v ? $1 : v
+    end
+  end
+end
+
 module Razor::CLI
 
   class Parse
