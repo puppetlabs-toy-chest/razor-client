@@ -57,6 +57,11 @@ describe Razor::CLI::Parse do
         parse('-u',url).verify_ssl?.should == true
       end
 
+      it "should respect insecure requests" do
+        url = 'http://razor.example.com:2150/path/to/api'
+        parse('-u',url,'-k').verify_ssl?.should be false
+      end
+
       it "should terminate with an error if an invalid URL is provided" do
         expect{parse('-u','not valid url')}.to raise_error(Razor::CLI::InvalidURIError)
       end

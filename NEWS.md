@@ -2,6 +2,7 @@
 
 ## Next - Next
 
+* BUGFIX: Fixed insecure flag when supplied in addition to a server URL.
 * IMPROVEMENT: Error messaging for SSL issues has been improved.
 
 ## 1.1.0 - 2015-11-12

@@ -164,6 +164,7 @@ ERR
       # To be populated externally.
       @stripped_args = []
       @format = 'short'
+      @verify_ssl = true
       env_pem_file = ENV['RAZOR_CA_FILE']
       # If this is set, it should actually exist.
       if env_pem_file && !File.exists?(env_pem_file)
@@ -180,7 +181,9 @@ ERR
 
       # Localhost won't match the server's certificate; no verification required.
       # This needs to happen after get_optparse so `-k` and `-u` can take effect.
-      @verify_ssl ||= (@api_url.hostname != 'localhost')
+      if @api_url.hostname == 'localhost'
+        @verify_ssl = false
+      end
 
       @args = set_help_vars(@args)
       if @args == ['version'] or @show_version
