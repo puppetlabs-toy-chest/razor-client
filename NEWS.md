@@ -1,5 +1,9 @@
 # Razor Client Release Notes
 
+## Next - Next
+
+* IMPROVEMENT: Error messaging for SSL issues has been improved.
+
 ## 1.1.0 - 2015-11-12
 
 * IMPROVEMENT: By default, `razor` will point to port 8150.

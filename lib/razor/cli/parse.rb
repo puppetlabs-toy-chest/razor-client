@@ -105,10 +105,23 @@ HELP
 Error: Credentials are required to connect to the server at #{@api_url}"
 UNAUTH
         exit = 1
-      rescue
+      rescue SocketError, Errno::ECONNREFUSED => e
+        puts "Error: Could not connect to the server at #{@api_url}"
+        puts "       #{e}\n"
+        die
+      rescue RestClient::SSLCertificateNotVerified
+        puts "Error: SSL certificate could not be verified against known CA certificates."
+        puts "       To turn off verification, use the -k or --insecure option."
+        die
+      rescue OpenSSL::SSL::SSLError => e
+        # Occurs in case of e.g. certificate mismatch (FQDN vs. hostname)
+        puts "Error: SSL certificate error from server at #{@api_url}"
+        puts "       #{e}"
+        die
+      rescue => e
         output << <<-ERR
-Error: Could not connect to the server at #{@api_url}. More help is available after pointing
-the client to a Razor server
+Error: Unknown error occurred while connecting to server at #{@api_url}:
+       #{e}
 ERR
         exit = 1
       end
