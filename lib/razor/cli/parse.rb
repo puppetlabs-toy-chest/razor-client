@@ -156,18 +156,26 @@ ERR
     # The format can be determined from later segments.
     attr_accessor :format, :stripped_args, :ssl_ca_file
 
+    LINUX_PEM_FILE = '/etc/puppetlabs/puppet/ssl/certs/ca.pem'
+    WIN_PEM_FILE = 'C:\ProgramData\PuppetLabs\puppet\etc\ssl\certs\ca.pem'
     def initialize(args)
       parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
       # To be populated externally.
       @stripped_args = []
       @format = 'short'
+      env_pem_file = ENV['RAZOR_CA_FILE']
       # If this is set, it should actually exist.
-      if ENV['RAZOR_CA_FILE'] && !File.exists?(ENV['RAZOR_CA_FILE'])
-        raise Razor::CLI::InvalidCAFileError.new(ENV['RAZOR_CA_FILE'])
+      if env_pem_file && !File.exists?(env_pem_file)
+        raise Razor::CLI::InvalidCAFileError.new(env_pem_file)
       end
-      ca_file = ENV["RAZOR_CA_FILE"]
-      @ssl_ca_file = ca_file if ca_file && File.exists?(ca_file)
+      pem_file_locations = [env_pem_file, LINUX_PEM_FILE, WIN_PEM_FILE]
+      pem_file_locations.each do |file|
+        if file && File.exists?(file)
+          @ssl_ca_file = file
+          break
+        end
+      end
       @args = get_optparse.order(@args)
 
       # Localhost won't match the server's certificate; no verification required.
