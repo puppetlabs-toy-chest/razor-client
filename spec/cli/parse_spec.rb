@@ -91,6 +91,12 @@ describe Razor::CLI::Parse do
       it {parse("--version").show_version?.should be true}
     end
 
+    context "with '--version' and no reachable server" do
+      subject { parse("--version", '-u', 'https://localhost:9999999/api').version.first }
+      it { should =~ /Razor Server version: \(unknown\)/ }
+      it { should =~ /Razor Client version: #{Razor::CLI::VERSION}/ }
+    end
+
     context "with ENV RAZOR_API set" do
       it "should use the given URL" do
         url = 'http://razor.example.com:2150/env/path/to/api'

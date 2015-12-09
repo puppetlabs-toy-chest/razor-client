@@ -28,8 +28,9 @@ rescue OptionParser::InvalidOption => e
 end
 
 if parse.show_version?
-  puts parse.version
-  exit 0
+  version, exit_code = parse.version
+  puts version
+  exit exit_code
 end
 
 if parse.show_help? and not parse.show_command_help?

@@ -63,22 +63,19 @@ module Razor::CLI
     end
 
     def version
+      server_version = '(unknown)'
+      error = ''
       begin
-      <<-VERSION
-Razor Server version: #{navigate.server_version}
-Razor Client version: #{Razor::CLI::VERSION}
-      VERSION
+        server_version = navigate.server_version
       rescue RestClient::Unauthorized
-        puts <<-UNAUTH
-Error: Credentials are required to connect to the server at #{@api_url}"
-        UNAUTH
-        exit 1
+        error = "Error: Credentials are required to connect to the server at #{@api_url}."
       rescue
-        puts <<-ERR
-Error: Could not connect to the server at #{@api_url}. More help is available after pointing
-the client to a Razor server
-        ERR
-        exit 1
+        error = "Error: Could not connect to the server at #{@api_url}."
+      ensure
+        return [(<<-OUTPUT + "\n" + error).rstrip, error != '' ? 1 : 0]
+        Razor Server version: #{server_version}
+        Razor Client version: #{Razor::CLI::VERSION}
+        OUTPUT
       end
     end
 
