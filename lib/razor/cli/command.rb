@@ -37,6 +37,14 @@ class Razor::CLI::Command
         value = @segments.shift if value.nil? && @segments[0] !~ /^--/
         arg = self.class.resolve_alias(arg, @cmd_schema)
         body[arg] = self.class.convert_arg(arg, value, body[arg], @cmd_schema)
+      elsif argument =~ /\A-([a-z-]{2,})(=(.+))?\Z/ and
+            @cmd_schema[self.class.resolve_alias($1, @cmd_schema)]
+        # Short form, should be long; offer suggestion
+        raise ArgumentError, "Unexpected argument #{argument} (did you mean --#{$1}?)"
+      elsif argument =~ /\A--([a-z])(=(.+))?\Z/ and
+            @cmd_schema[self.class.resolve_alias($1, @cmd_schema)]
+        # Long form, should be short; offer suggestion
+        raise ArgumentError, "Unexpected argument #{argument} (did you mean -#{$1}?)"
       else
         raise ArgumentError, "Unexpected argument #{argument}"
       end

@@ -69,13 +69,13 @@ describe Razor::CLI::Command do
       c = Razor::CLI::Command.new(nil, nil, {'schema' => {'name' => {'type' => 'array'}}},
                                   ['-name', 'abc'], '/foobar')
       expect{c.extract_command}.
-          to raise_error(ArgumentError, 'Unexpected argument -name')
+          to raise_error(ArgumentError, 'Unexpected argument -name (did you mean --name?)')
     end
     it "fails with a double dash for short flags" do
       c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
                                   ['--n', 'abc'], '/foobar')
       expect{c.extract_command}.
-          to raise_error(ArgumentError, 'Unexpected argument --n')
+          to raise_error(ArgumentError, 'Unexpected argument --n (did you mean -n?)')
     end
     it "fails with a double dash for short flags if argument does not exist" do
       c = Razor::CLI::Command.new(nil, nil, {'schema' => {}},

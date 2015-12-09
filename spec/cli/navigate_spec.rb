@@ -131,11 +131,11 @@ describe Razor::CLI::Navigate do
 
     it "should not allow double-dash with single character flag" do
       nav = Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '--broker-type', 'puppet-pe', '--c', 'server=abc.com']).navigate
-      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument --c')
+      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument --c (did you mean -c?)')
     end
     it "should not allow single-dash with multiple character flag" do
       nav = Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '-broker-type', 'puppet-pe']).navigate
-      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument -broker-type')
+      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument -broker-type (did you mean --broker-type?)')
     end
     it "should allow single-dash with single character flag" do
       Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '--broker-type', 'puppet-pe', '-c', 'server=abc.com']).navigate.get_document['configuration']['server'].should == 'abc.com'
