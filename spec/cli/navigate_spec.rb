@@ -142,6 +142,19 @@ describe Razor::CLI::Navigate do
     end
   end
 
+  context "positional arguments", :vcr do
+    it "should allow the use of positional arguments" do
+      Razor::CLI::Parse.new(['create-broker', 'some noop broker', 'noop']).navigate.get_document['name'].should == 'some noop broker'
+      Razor::CLI::Parse.new(['create-broker', 'some other broker', '--broker-type', 'noop']).navigate.get_document['name'].should == 'some other broker'
+      Razor::CLI::Parse.new(['delete-broker', 'some noop broker']).navigate.get_document['result'].should == 'broker some noop broker destroyed'
+      Razor::CLI::Parse.new(['delete-broker', 'some other broker']).navigate.get_document['result'].should == 'broker some other broker destroyed'
+    end
+    it "should fail with too many positional arguments" do
+      nav = Razor::CLI::Parse.new(['create-broker', 'some noop broker', 'noop', 'extra']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, 'Unexpected argument extra')
+    end
+  end
+
   context "for command help", :vcr do
     [['command', '--help'], ['command', '-h'],
      ['--help', 'command'], ['-h', 'command'],

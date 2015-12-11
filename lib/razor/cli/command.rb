@@ -4,7 +4,7 @@ class Razor::CLI::Command
     @show_command_help = parse && parse.show_command_help?
     @navigate = navigate
     @command = command
-    @cmd_schema = command['schema']
+    @cmd_schema = command ? command['schema'] : nil
     @cmd_url = cmd_url
     @segments = segments
   end
@@ -27,16 +27,17 @@ class Razor::CLI::Command
 
   def extract_command
     body = {}
+    pos_index = 0
     until @segments.empty?
       argument = @segments.shift
       if argument =~ /\A--([a-z-]{2,})(=(.+))?\Z/ or
           argument =~ /\A-([a-z])(=(.+))?\Z/
         # `--arg=value`/`--arg value`
         # `-a=value`/`-a value`
-        arg, value = [$1, $3]
+        arg_name, value = [$1, $3]
         value = @segments.shift if value.nil? && @segments[0] !~ /^--/
-        arg = self.class.resolve_alias(arg, @cmd_schema)
-        body[arg] = self.class.convert_arg(arg, value, body[arg], @cmd_schema)
+        arg_name = self.class.resolve_alias(arg_name, @cmd_schema)
+        body[arg_name] = self.class.convert_arg(arg_name, value, body[arg_name], @cmd_schema)
       elsif argument =~ /\A-([a-z-]{2,})(=(.+))?\Z/ and
             @cmd_schema[self.class.resolve_alias($1, @cmd_schema)]
         # Short form, should be long; offer suggestion
@@ -46,7 +47,14 @@ class Razor::CLI::Command
         # Long form, should be short; offer suggestion
         raise ArgumentError, "Unexpected argument #{argument} (did you mean -#{$1}?)"
       else
-        raise ArgumentError, "Unexpected argument #{argument}"
+        # This may be a positional argument.
+        arg_name = positional_argument(@cmd_schema, pos_index)
+        if arg_name
+          body[arg_name] = self.class.convert_arg(arg_name, argument, body[arg_name], @cmd_schema)
+          pos_index += 1
+        else
+          raise ArgumentError, "Unexpected argument #{argument}"
+        end
       end
     end
 
@@ -61,6 +69,13 @@ class Razor::CLI::Command
             "Permission to read file #{body["json"]} denied"
     end
     body
+  end
+
+  def positional_argument(cmd_schema, pos_index)
+    # Find a matching position and return its argument name.
+    cmd_schema && cmd_schema.select do |_, schema|
+      schema['position'] == pos_index
+    end.keys.first
   end
 
   def self.arg_type(arg_name, cmd_schema)

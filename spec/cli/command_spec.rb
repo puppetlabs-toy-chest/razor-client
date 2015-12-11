@@ -65,33 +65,98 @@ describe Razor::CLI::Command do
   end
 
   context "extract_command" do
-    it "fails with a single dash for long flags" do
-      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'name' => {'type' => 'array'}}},
-                                  ['-name', 'abc'], '/foobar')
-      expect{c.extract_command}.
-          to raise_error(ArgumentError, 'Unexpected argument -name (did you mean --name?)')
+
+    def extract(schema, run_array)
+      c = Razor::CLI::Command.new(nil, nil, schema, run_array, nil)
+      c.extract_command
     end
-    it "fails with a double dash for short flags" do
-      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
-                                  ['--n', 'abc'], '/foobar')
-      expect{c.extract_command}.
-          to raise_error(ArgumentError, 'Unexpected argument --n (did you mean -n?)')
+    context "flag length" do
+
+      it "fails with a single dash for long flags" do
+        expect{extract({'schema' => {'name' => {'type' => 'array'}}}, ['-name', 'abc'])}.
+            to raise_error(ArgumentError, 'Unexpected argument -name (did you mean --name?)')
+      end
+      it "fails with a double dash for short flags" do
+        expect{extract({'schema' => {'n' => {'type' => 'array'}}}, ['--n', 'abc'])}.
+            to raise_error(ArgumentError, 'Unexpected argument --n (did you mean -n?)')
+      end
+      it "fails with a double dash for short flags if argument does not exist" do
+        c = Razor::CLI::Command.new(nil, nil, {'schema' => {}},
+                                    ['--n', 'abc'], '/foobar')
+        expect{extract({'schema' => {}}, ['--n', 'abc'])}.
+            to raise_error(ArgumentError, 'Unexpected argument --n')
+      end
+      it "succeeds with a double dash for long flags" do
+        extract({'schema' => {'name' => {'type' => 'array'}}},
+                ['--name', 'abc'])['name'].should == ['abc']
+      end
+      it "succeeds with a single dash for short flags" do
+        c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
+                                    ['-n', 'abc'], nil)
+        extract({'schema' => {'n' => {'type' => 'array'}}}, ['-n', 'abc'])['n'].should == ['abc']
+      end
     end
-    it "fails with a double dash for short flags if argument does not exist" do
-      c = Razor::CLI::Command.new(nil, nil, {'schema' => {}},
-                                  ['--n', 'abc'], '/foobar')
-      expect{c.extract_command}.
-          to raise_error(ArgumentError, 'Unexpected argument --n')
-    end
-    it "succeeds with a double dash for long flags" do
-      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'name' => {'type' => 'array'}}},
-                                  ['--name', 'abc'], '/foobar')
-      c.extract_command['name'].should == ['abc']
-    end
-    it "succeeds with a single dash for short flags" do
-      c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
-                                  ['-n', 'abc'], nil)
-      c.extract_command['n'].should == ['abc']
+
+    context "positional arguments" do
+      let(:schema) do
+        {'schema' => {'n' => {'position' => 1},
+                      'o' => {'position' => 0}}}
+      end
+      it "fails without a command schema" do
+        expect{extract(nil, ['123'])}.
+            to raise_error(ArgumentError, 'Unexpected argument 123')
+      end
+      it "fails if no positional arguments exist for a command" do
+        expect{extract({'schema' => {'n' => {}}}, ['abc'])}.
+            to raise_error(ArgumentError, 'Unexpected argument abc')
+      end
+      it "succeeds if no position is supplied" do
+        extract({'schema' => {'n' => {'position' => 0}}}, ['-n', '123'])['n'].
+            should == '123'
+      end
+      it "succeeds if position exists and is supplied" do
+        extract({'schema' => {'n' => {'position' => 0}}}, ['123'])['n'].
+            should == '123'
+      end
+      it "succeeds if multiple positions exist and are supplied" do
+        body = extract(schema, ['123', '456'])
+        body['o'].should == '123'
+        body['n'].should == '456'
+      end
+      it "fails if too many positions are supplied" do
+        expect{extract(schema, ['123', '456', '789'])}.
+            to raise_error(ArgumentError, 'Unexpected argument 789')
+      end
+      it "succeeds if multiple positions exist and one is supplied" do
+        body = extract(schema, ['123'])
+        body['o'].should == '123'
+        body['n'].should == nil
+      end
+      it "succeeds with a combination of positional and flags" do
+        body = extract(schema, ['123', '-n', '456'])
+        body['o'].should == '123'
+        body['n'].should == '456'
+      end
+      it "prefers the later between positional and flags" do
+        body = extract(schema, ['123', '-o', '456'])
+        body['o'].should == '456'
+        body = extract(schema, ['-o', '456', '123'])
+        body['o'].should == '123'
+      end
+      it "correctly sets datatypes" do
+        schema =
+            {'schema' => {'n' => {'type' => 'array', 'position' => 0},
+                          'o' => {'type' => 'number', 'position' => 1},
+                          'w' => {'type' => 'boolean', 'position' => 2},
+                          'a' => {'type' => 'object', 'position' => 3},
+                          'i' => {'type' => 'object', 'position' => 4}}}
+        body = extract(schema, ['arr', '123', 'true', '{}', 'abc=123'])
+        body['n'].should == ['arr']
+        body['o'].should == 123
+        body['w'].should == true
+        body['a'].should == {}
+        body['i'].should == {'abc' => '123'}
+      end
     end
   end
 end
