@@ -65,33 +65,48 @@ module Razor::CLI
     def format_command_help(doc, show_api_help)
       item = doc.items.first
       raise Razor::CLI::Error, 'Could not find help for that entry' unless item.has_key?('help')
-      if show_api_help and (item['help'].has_key?('summary') or item['help'].has_key?('description'))
-        format_composed_help(item['help']).chomp
-      elsif item['help'].has_key?('summary') or item['help'].has_key?('description')
-        format_composed_help(item['help'], item['help']['examples']['cli']).chomp
+      if item['help'].has_key?('examples')
+        if show_api_help && item['help']['examples'].has_key?('api')
+          format_composed_help(item, item['help']['examples']['api']).chomp
+        else
+          format_composed_help(item).chomp
+        end
       else
         format_full_help(item['help']).chomp
       end
     end
 
-    def format_composed_help(object, examples = object['examples']['api'])
+    def positional_args_usage(object)
+      object['schema'].map do |k, v|
+        [v['position'], k] if v.has_key?('position')
+      end.compact.sort.map(&:last).
+          map {|attr| "[#{attr.gsub('_', '-')}] " }.join.strip
+    end
+    def format_composed_help(object, examples = object['help']['examples']['cli'])
+      help_obj = object['help']
       ret = ''
-      ret = ret + <<-SYNOPSIS if object.has_key?('summary')
+      ret = ret + <<-USAGE
+# USAGE
+
+  razor #{object['name']} #{positional_args_usage(object)} <flags>
+
+      USAGE
+      ret = ret + <<-SYNOPSIS if help_obj.has_key?('summary')
 # SYNOPSIS
-#{object['summary']}
+#{help_obj['summary']}
 
       SYNOPSIS
-      ret = ret + <<-DESCRIPTION if object.has_key?('description')
+      ret = ret + <<-DESCRIPTION if help_obj.has_key?('description')
 # DESCRIPTION
-#{object['description']}
+#{help_obj['description']}
 
-#{object['schema']}
+#{help_obj['schema']}
       DESCRIPTION
-      ret = ret + <<-RETURNS if object.has_key?('returns')
+      ret = ret + <<-RETURNS if help_obj.has_key?('returns')
 # RETURNS
-#{object['returns'].gsub(/^/, '  ')}
+#{help_obj['returns'].gsub(/^/, '  ')}
       RETURNS
-      ret = ret + <<-EXAMPLES if object.has_key?('examples') && object['examples'].has_key?('cli')
+      ret = ret + <<-EXAMPLES if examples
 # EXAMPLES
 
 #{examples.gsub(/^/, '  ')}
