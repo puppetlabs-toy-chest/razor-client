@@ -2,6 +2,12 @@
 
 ## Next - Next
 
+* NEW: Added positional argument support, when supplied by the server. See
+  `razor <command> --help` for details on usage.
+* NEW: Added USAGE section to the command's help, which will include positional
+  arguments, if any exist.
+* BUGFIX: Razor client version will be reported even if the Razor server is
+  unreachable.
 * BUGFIX: Fixed insecure flag when supplied in addition to a server URL.
 * IMPROVEMENT: Proper short form argument style is now followed.
   Single-character arguments now require a single dash, e.g. `-c`.
