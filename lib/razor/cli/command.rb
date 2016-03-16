@@ -30,15 +30,15 @@ class Razor::CLI::Command
     pos_index = 0
     until @segments.empty?
       argument = @segments.shift
-      if argument =~ /\A--([a-z-]{2,})(=(.+))?\Z/ or
+      if argument =~ /\A--([a-z][a-z_-]+)(=(.+))?\Z/ or
           argument =~ /\A-([a-z])(=(.+))?\Z/
         # `--arg=value`/`--arg value`
         # `-a=value`/`-a value`
         arg_name, value = [$1, $3]
-        value = @segments.shift if value.nil? && @segments[0] !~ /^--/
+        value = @segments.shift if value.nil? && @segments[0] !~ /^-/
         arg_name = self.class.resolve_alias(arg_name, @cmd_schema)
         body[arg_name] = self.class.convert_arg(arg_name, value, body[arg_name], @cmd_schema)
-      elsif argument =~ /\A-([a-z-]{2,})(=(.+))?\Z/ and
+      elsif argument =~ /\A-([a-z][a-z_-]+)(=(.+))?\Z/ and
             @cmd_schema[self.class.resolve_alias($1, @cmd_schema)]
         # Short form, should be long; offer suggestion
         raise ArgumentError, "Unexpected argument #{argument} (did you mean --#{$1}?)"

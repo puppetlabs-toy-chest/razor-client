@@ -42,8 +42,8 @@ describe Razor::CLI::Navigate do
     end
 
     it "should fail with malformed argument" do
-      nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag_2', '--inva_lid']).navigate
-      expect{nav.get_document}.to raise_error(ArgumentError, /Unexpected argument --inva_lid/)
+      nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag_2', '--inva^lid']).navigate
+      expect{nav.get_document}.to raise_error(ArgumentError, /Unexpected argument --inva\^lid/)
     end
   end
 
