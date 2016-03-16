@@ -71,7 +71,6 @@ describe Razor::CLI::Command do
       c.extract_command
     end
     context "flag length" do
-
       it "fails with a single dash for long flags" do
         expect{extract({'schema' => {'name' => {'type' => 'array'}}}, ['-name', 'abc'])}.
             to raise_error(ArgumentError, 'Unexpected argument -name (did you mean --name?)')
@@ -95,6 +94,16 @@ describe Razor::CLI::Command do
                                     ['-n', 'abc'], nil)
         extract({'schema' => {'n' => {'type' => 'array'}}}, ['-n', 'abc'])['n'].should == ['abc']
       end
+    end
+
+    it "handles all reasonable characters" do
+      def generate_arg
+        prng = Random.new
+        [*'a'..'z'].shuffle(random: prng).first +
+            [*'a'..'z', '-', '_'].shuffle(random:prng).join
+      end
+      arg = generate_arg
+      extract({'schema' => {arg => {'type' => 'array'}}}, ["--#{arg}", 'abc'])[arg].should == ['abc']
     end
 
     context "positional arguments" do
