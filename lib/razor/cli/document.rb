@@ -4,21 +4,24 @@ module Razor::CLI
   class HideColumnError < RuntimeError; end
   class Document
       extend Forwardable
-    attr_reader 'spec', 'items', 'format_view', 'original_items'
+    attr_reader 'spec', 'type', 'items', 'format_view', 'original_items',
+                'command'
     def initialize(doc, format_type)
-      if doc['spec'].is_a?(Array)
-        @spec, @remaining_navigation = doc['spec']
-      else
-        @spec = doc['spec']
+      @type = :single
+      if doc.is_a?(Hash)
+        if doc['+spec'].is_a?(Array)
+          @spec, remaining_navigation = doc['+spec']
+        else
+          @spec = doc['spec']
+        end
+        @command = doc['command']
+        if doc.has_key?('items')
+          @type = :list
+          @items = doc['items']
+        end
       end
-      @command = doc['command']
-      if doc.has_key?('items')
-        @type = :list
-      else
-        @type = :single
-      end
-      @items = doc['items'] || Array[doc]
-      @format_view = Razor::CLI::Views.find_formatting(@spec, format_type, @remaining_navigation)
+      @items ||= Array[doc]
+      @format_view = Razor::CLI::Views.find_formatting(@spec, format_type, remaining_navigation)
 
       # Untransformed and unordered for displaying nested views.
       @original_items = @items

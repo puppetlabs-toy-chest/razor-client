@@ -1,6 +1,9 @@
 module Razor::CLI
   module Views
     module_function
+    def views= v
+      @views = v
+    end
     def views
       @views ||= YAML::load_file(File::join(File::dirname(__FILE__), "views.yaml"))
     end

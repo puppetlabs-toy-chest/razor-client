@@ -50,7 +50,7 @@ module Razor::CLI
     # We assume that all collections are homogenous
     def format_objects(objects, indent = 0)
       objects.map do |obj|
-        obj.is_a?(Hash) ? format_object(obj, indent) : ' '*indent + obj.inspect
+        obj.is_a?(Hash) ? format_object(obj, indent) : ' '*indent + obj.to_s
       end.join "\n\n"
     end
 
@@ -143,7 +143,7 @@ module Razor::CLI
         else
           case f
           when "spec" then "\"#{Format.spec_name(value)}\""
-          else value.inspect
+          else value.to_s # Could be `false` or `nil` possibly
           end
         end
       end.join "\n"

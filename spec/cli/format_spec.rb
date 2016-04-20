@@ -42,11 +42,6 @@ describe Razor::CLI::Format do
       result = format doc
       result.should_not =~ /Query additional details/
     end
-    it "hides array spec array from additional details" do
-      doc = {'abc' => [], 'spec' => ['def', 'jkl']}
-      result = format doc
-      result.should =~ /Query additional details via: `razor something else \[abc\]`\z/
-    end
     it "hides array +spec array from additional details" do
       doc = {'abc' => [], '+spec' => ['def', 'jkl']}
       result = format doc

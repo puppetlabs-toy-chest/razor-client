@@ -113,11 +113,11 @@ module Razor::CLI
         obj = @doc.find {|x| x.is_a?(Hash) and x["name"] == key }
       elsif @doc.is_a?(Hash) && @doc['items'].is_a?(Array)
         obj = @doc['items'].find {|x| x.is_a?(Hash) and x["name"] == key }
-      elsif @doc.is_a? Hash
+      elsif @doc.is_a?(Hash)
         obj = @doc[key]
       end
 
-      raise NavigationError.new(@doc_resource, key, @doc) unless obj
+      raise NavigationError.new(@doc_resource, key, @doc) if obj.nil?
 
       if obj.is_a?(Hash) && obj["id"]
         url = URI.parse(obj["id"])
@@ -125,26 +125,22 @@ module Razor::CLI
         @doc = json_get(url, {}, params)
       elsif obj.is_a?(Hash) && obj['spec']
         @doc = obj
-      elsif obj.is_a?(Hash)
-        # No spec string; use parent's and remember extra navigation.
+      elsif obj.is_a?(Hash) || obj.is_a?(Array)
+        # We have reached a data structure that doesn't have a spec string!
+        # This means we should use the parent's string and keep track of which
+        # extra navigation is needed, so we can still format the data
+        # accordingly.
         if @doc['+spec'].is_a?(Array)
           # Something's been added.
           @doc['+spec'] << key
         elsif @doc['+spec'].nil? || @doc['+spec'].is_a?(String)
           @doc['+spec'] = [@doc['spec'], key]
         end
-        @doc = obj.merge({'+spec' => @doc['+spec']})
-      elsif obj.is_a?(Array)
-        # No spec string; use parent's and remember extra navigation.
-        if @doc['+spec'].is_a?(Array)
-          # Something's already been added.
-          @doc['+spec'] << key
-        elsif @doc['+spec'].nil? || @doc['+spec'].is_a?(String)
-          @doc['+spec'] = [@doc['spec'], key]
-        end
-        @doc = {'+spec' => @doc['+spec'], 'items' => obj}
+        @doc = obj.merge({'+spec' => @doc['+spec']}) if obj.is_a?(Hash)
+        @doc = {'+spec' => @doc['+spec'], 'items' => obj} if obj.is_a?(Array)
+        @doc
       else
-        @doc = nil
+        @doc = obj
       end
     end
 
