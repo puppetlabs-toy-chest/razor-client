@@ -78,7 +78,6 @@ collections:
       +short:
         +layout: table
         +show:
-          name:
           timestamp:
           severity:
           event:
@@ -253,3 +252,6 @@ collections:
           name:
           hook_type:
           configuration:
+  config:
+    +short:
+      +layout: table
