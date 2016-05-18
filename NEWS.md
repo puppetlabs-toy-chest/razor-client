@@ -1,5 +1,12 @@
 # Razor Client Release Notes
 
+## 1.3.0 - 2016-05-19
+
+* NEW: Added elegant display of the `razor config` collection.
+* IMPROVEMENT: Individual properties in collections can now be scoped.
+  Previously, only arrays and objects were allowed, now you can find
+  a single value.
+
 ## 1.2.0 - 2016-03-08
 
 * BUGFIX: Razor client version will be reported even if the Razor server is
