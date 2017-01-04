@@ -11,7 +11,7 @@ GEM
     gettext (3.2.2)
       locale (>= 2.0.5)
       text (>= 1.3.0)
-    gettext-setup (0.11)
+    gettext-setup (0.12)
       fast_gettext (~> 1.1.0)
       gettext (>= 3.0.2)
     kramdown (1.1.0)
@@ -45,6 +45,7 @@ GEM
     yard (0.8.7)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
@@ -66,3 +67,6 @@ DEPENDENCIES
   vcr
   webmock
   yard
+
+BUNDLED WITH
+   1.13.6
