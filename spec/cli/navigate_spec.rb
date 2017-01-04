@@ -227,4 +227,23 @@ describe Razor::CLI::Navigate do
       parse.stripped_args.should == ['nodes', name, 'log']
     end
   end
+
+  context "accept-language header", :vcr do
+    before :each do
+      GettextSetup.clear
+    end
+    it "should set the accept-language header" do
+      GettextSetup.candidate_locales.should_not be_nil
+      nav = Razor::CLI::Parse.new(['create-broker', '--name=some-broker', '--broker-type', 'puppet-pe', '-c', 'server=abc.com']).navigate
+      nav.accept_language.should == GettextSetup.candidate_locales
+    end
+    it "should allow other accept-language headers" do
+      ENV['LANG'] = 'de_DE'
+      locales = GettextSetup.candidate_locales
+      locales.should == 'de_DE,de,en'
+      nav = Razor::CLI::Parse.new(['create-broker', '--name=other-broker', '--broker-type', 'puppet-pe', '-c', 'server=abc.com']).navigate
+      nav.accept_language.should == locales
+      nav.doc_resource.options[:headers][:accept_language].should == locales
+    end
+  end
 end

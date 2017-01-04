@@ -48,7 +48,8 @@ module Razor::CLI
       @segments = segments||[]
       @doc = entrypoint
       @username, @password = parse.api_url.userinfo.to_s.split(':')
-      @doc_resource = create_resource parse.api_url, {:accept => :json}
+      @doc_resource = create_resource parse.api_url, {:accept => :json,
+                                                      :accept_language => accept_language}
     end
 
     attr_accessor :doc_resource
@@ -144,6 +145,10 @@ module Razor::CLI
       end
     end
 
+    def accept_language
+      @accept_language ||= GettextSetup.candidate_locales
+    end
+
     def get(url, headers={})
       resource = create_resource(url, headers)
       response = resource.get
@@ -156,7 +161,8 @@ module Razor::CLI
       url.query = URI.encode_www_form(params)
       url.query = nil if url.query.empty? # Remove dangling '?' from URL.
 
-      response = get(url,headers.merge(:accept => :json))
+      response = get(url,headers.merge(:accept => :json,
+                                       :accept_language => accept_language))
       unless response.headers[:content_type] =~ /application\/json/
         raise _("Received content type %{content_type}") % {content_type: response.headers[:content_type]}
       end
@@ -164,7 +170,8 @@ module Razor::CLI
     end
 
     def json_post(url, body)
-      headers = {  :accept=>:json, "Content-Type" => :json }
+      headers = { :accept=>:json, "Content-Type" => :json,
+                  :accept_language => accept_language}
       begin
         resource = create_resource(url, headers)
         response = resource.post MultiJson::dump(body)
