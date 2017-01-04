@@ -1,0 +1,268 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017 Puppet, LLC.
+# This file is distributed under the same license as the Razor Client package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Razor Client 1.3.0-3-ga296fc7\n"
+"\n"
+"Report-Msgid-Bugs-To: docs@puppet.com\n"
+"POT-Creation-Date: 2017-01-12 03:03-0600\n"
+"PO-Revision-Date: 2017-01-12 03:03-0600\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Error: %{error}"
+msgstr ""
+
+#. TRANSLATORS: This occurs when invalid flags are passed in the navigation.
+msgid ""
+"%{error}\n"
+"Try 'razor --help' for more information"
+msgstr ""
+
+msgid ""
+"An unexpected error has occurred.\n"
+"\n"
+"Backtrace:\n"
+"  %{backtrace}\n"
+"\n"
+"Error: %{error}\n"
+"\n"
+"Please inspect server logs for the cause, then report issue to:\n"
+"https://tickets.puppetlabs.com/browse/RAZOR\n"
+"\n"
+msgstr ""
+
+#. TRANSLATORS: This is a template for all results that the client outputs.
+msgid ""
+"From %{url}:\n"
+"\n"
+"%{result}\n"
+"\n"
+msgstr ""
+
+msgid ""
+"Error: Could not connect to the server at %{url}\n"
+"       %{error}"
+msgstr ""
+
+msgid ""
+"Error: SSL certificate could not be verified against known CA certificates.\n"
+"       To turn off verification, use the -k or --insecure option."
+msgstr ""
+
+msgid "Error from doing %{request_type} %{url}"
+msgstr ""
+
+msgid ""
+"%{error}\n"
+"Try 'razor --help' for more information\n"
+"\n"
+msgstr ""
+
+msgid "Could not navigate to '%{path}' from %{url}"
+msgstr ""
+
+msgid "Could not find entry '%{key}' in document at %{url}"
+msgstr ""
+
+msgid "URL '%{url}' in ENV variable RAZOR_API is not valid"
+msgstr ""
+
+msgid "URL '%{url}' provided by -u or --url is not valid"
+msgstr ""
+
+msgid "URL '%{url}' is not valid"
+msgstr ""
+
+msgid "CA file '%{path}' in ENV variable RAZOR_CA_FILE does not exist"
+msgstr ""
+
+msgid "Server version is not compatible with client version: %{reason}"
+msgstr ""
+
+msgid "No arguments for command (did you forget --json ?)"
+msgstr ""
+
+msgid "Unexpected argument %{argument} (did you mean %{suggestion}?)"
+msgstr ""
+
+msgid "Unexpected argument %{argument}"
+msgstr ""
+
+msgid "File %{path} is not valid JSON"
+msgstr ""
+
+msgid "File %{path} not found"
+msgstr ""
+
+msgid "Permission to read file %{path} denied"
+msgstr ""
+
+msgid ""
+"Formatting argument %{argument_name} with value %{value} as %{argument_type}\n"
+msgstr ""
+
+msgid "Invalid object for argument '%{argument_name}'"
+msgstr ""
+
+msgid "Invalid object for argument '%{argument_name}': %{error}"
+msgstr ""
+
+msgid "Invalid integer for argument '%{arg_name}': %{value}"
+msgstr ""
+
+msgid "Expected nothing for argument '%{arg_name}', but was: '%{value}'"
+msgstr ""
+
+msgid "Unexpected datatype '%{argument_type}' for argument %{argument_name}"
+msgstr ""
+
+msgid "There are no items for this query."
+msgstr ""
+
+msgid "Unrecognized view format %{format_name}"
+msgstr ""
+
+msgid "Could not find help for that entry"
+msgstr ""
+
+msgid ""
+"# USAGE\n"
+"\n"
+"  razor %{command} %{arguments} <flags>\n"
+"\n"
+msgstr ""
+
+msgid ""
+"# SYNOPSIS\n"
+"%{summary}\n"
+"\n"
+msgstr ""
+
+msgid ""
+"# DESCRIPTION\n"
+"%{description}\n"
+"\n"
+"%{schema}\n"
+msgstr ""
+
+msgid ""
+"# RETURNS\n"
+"%{returns}\n"
+msgstr ""
+
+msgid ""
+"# EXAMPLES\n"
+"\n"
+"%{examples}\n"
+msgstr ""
+
+msgid ""
+"\n"
+"\n"
+"Query an entry by including its name, e.g. `razor %{arguments} %{name}`"
+msgstr ""
+
+msgid ""
+"\n"
+"\n"
+"Query additional details via: `razor %{arguments} [%{options}]`"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Received content type %{content_type}"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
+
+msgid ""
+"Usage: razor [FLAGS] NAVIGATION\n"
+msgstr ""
+
+msgid "Dumps API output to the screen"
+msgstr ""
+
+msgid "Show API help for a command"
+msgstr ""
+
+msgid "Allow SSL connections without verified certificates"
+msgstr ""
+
+msgid ""
+"The full Razor API URL, can also be set\n"
+" "
+msgstr ""
+
+msgid "Show the version of Razor"
+msgstr ""
+
+msgid "Show this screen"
+msgstr ""
+
+msgid "Error: Credentials are required to connect to the server at %{url}."
+msgstr ""
+
+msgid "Error: Could not connect to the server at %{url}."
+msgstr ""
+
+msgid ""
+"        Razor Server version: #{server_version}\n"
+"        Razor Client version: #{Razor::CLI::VERSION}\n"
+msgstr ""
+
+msgid "Collections"
+msgstr ""
+
+msgid "Commands"
+msgstr ""
+
+msgid ""
+"%{collections}\n"
+"\n"
+"      Navigate to entries of a collection using COLLECTION NAME, for example,\n"
+"      'nodes node15'  for the  details of a node or 'nodes node15 log' to see\n"
+"      the log for node15\n"
+"%{commands}\n"
+"\n"
+"      Pass arguments to commands either directly by name ('--name=NAME')\n"
+"      or save the JSON body for the  command  in a file and pass it with\n"
+"      '--json FILE'.  Using --json is the only way to pass  arguments in\n"
+"      nested structures such as the configuration for a broker.\n"
+"\n"
+msgstr ""
+
+msgid ""
+"Error: Credentials are required to connect to the server at %{url}\"\n"
+msgstr ""
+
+msgid "Error: Could not connect to the server at %{url}"
+msgstr ""
+
+msgid "Error: SSL certificate error from server at %{url}"
+msgstr ""
+
+msgid ""
+"Error: Unknown error occurred while connecting to server at %{url}:\n"
+"       #{e}\n"
+msgstr ""
+
+msgid "Show full details when viewing entities"
+msgstr ""
+
+msgid "Show shortened details when viewing entities"
+msgstr ""
+
+msgid "(none)"
+msgstr ""

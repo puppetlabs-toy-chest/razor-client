@@ -16,7 +16,7 @@ class Razor::CLI::Command
     else
       if body.empty?
         raise Razor::CLI::Error,
-              "No arguments for command (did you forget --json ?)"
+              _("No arguments for command (did you forget --json ?)")
       end
       result = @navigate.json_post(@cmd_url, body)
       # Get actual object from the id.
@@ -41,11 +41,11 @@ class Razor::CLI::Command
       elsif argument =~ /\A-([a-z-]{2,})(=(.+))?\Z/ and
             @cmd_schema[self.class.resolve_alias($1, @cmd_schema)]
         # Short form, should be long; offer suggestion
-        raise ArgumentError, "Unexpected argument #{argument} (did you mean --#{$1}?)"
+        raise ArgumentError, _("Unexpected argument %{argument} (did you mean %{suggestion}?)") % {argument: argument, suggestion: "--#{$1}"}
       elsif argument =~ /\A--([a-z])(=(.+))?\Z/ and
             @cmd_schema[self.class.resolve_alias($1, @cmd_schema)]
         # Long form, should be short; offer suggestion
-        raise ArgumentError, "Unexpected argument #{argument} (did you mean -#{$1}?)"
+        raise ArgumentError, _("Unexpected argument %{argument} (did you mean %{suggestion}?)") % {argument: argument, suggestion: "-#{$1}"}
       else
         # This may be a positional argument.
         arg_name = positional_argument(@cmd_schema, pos_index)
@@ -53,7 +53,7 @@ class Razor::CLI::Command
           body[arg_name] = self.class.convert_arg(arg_name, argument, body[arg_name], @cmd_schema)
           pos_index += 1
         else
-          raise ArgumentError, "Unexpected argument #{argument}"
+          raise ArgumentError, _("Unexpected argument %{argument}") % {argument: argument}
         end
       end
     end
@@ -61,12 +61,12 @@ class Razor::CLI::Command
     begin
       body = MultiJson::load(File::read(body["json"])) if body["json"]
     rescue MultiJson::LoadError
-      raise Razor::CLI::Error, "File #{body["json"]} is not valid JSON"
+      raise Razor::CLI::Error, _("File %{path} is not valid JSON") % {path: body['json']}
     rescue Errno::ENOENT
-      raise Razor::CLI::Error, "File #{body["json"]} not found"
+      raise Razor::CLI::Error, _("File %{path} not found") % {path: body['json']}
     rescue Errno::EACCES
       raise Razor::CLI::Error,
-            "Permission to read file #{body["json"]} denied"
+            _("Permission to read file %{path} denied") % {path: body['json']}
     end
     body
   end
@@ -99,7 +99,8 @@ class Razor::CLI::Command
     argument_type = arg_type(arg_name, cmd_schema)
 
     # This might be helpful, since there's no other method for debug-level logging on the client.
-    puts "Formatting argument #{arg_name} with value #{value} as #{argument_type}\n" if @dump_response
+    puts _("Formatting argument %{argument_name} with value %{value} as %{argument_type}\n") %
+             {argument_name: arg_name, value: value, argument_type: argument_type} if @dump_response
 
     case argument_type
       when "array"
@@ -117,12 +118,13 @@ class Razor::CLI::Command
             existing_value.merge($1 => $2)
           else
             MultiJson::load(value).tap do |value|
-              value.is_a?(Hash) or raise ArgumentError, "Invalid object for argument '#{arg_name}'"
+              value.is_a?(Hash) or raise ArgumentError, _("Invalid object for argument '%{argument_name}'") % {argument_name: arg_name}
               existing_value.merge(value)
             end
           end
         rescue MultiJson::LoadError => error
-          raise ArgumentError, "Invalid object for argument '#{arg_name}': #{error.message}"
+          raise ArgumentError, _("Invalid object for argument '%{argument_name}': %{error}") %
+              {argument_name: arg_name, error: error.message}
         end
       when "boolean"
         ["true", nil].include?(value)
@@ -130,15 +132,16 @@ class Razor::CLI::Command
         begin
           Integer(value)
         rescue ArgumentError
-          raise ArgumentError, "Invalid integer for argument '#{arg_name}': #{value}"
+          raise ArgumentError, _("Invalid integer for argument '%{arg_name}': %{value}") % {argument_name: arg_name, value: value}
         end
       when "null"
-        raise ArgumentError, "Expected nothing for argument '#{arg_name}', but was: '#{value}'" unless value.nil?
+        raise ArgumentError, _("Expected nothing for argument '%{arg_name}', but was: '%{value}'") %
+            {argument_name: arg_name, value: value} unless value.nil?
         nil
       when "string", nil # `nil` for 'might be an alias, send as-is'
         value
       else
-        raise Razor::CLI::Error, "Unexpected datatype '#{argument_type}' for argument #{arg_name}"
+        raise Razor::CLI::Error, _("Unexpected datatype '%{argument_type}' for argument %{argument_name}") % {argument_type: argument_type, argument_name: arg_name}
     end
   end
 

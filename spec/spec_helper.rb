@@ -6,6 +6,9 @@ end
 require 'multi_json'
 require 'vcr'
 
+require 'gettext-setup'
+GettextSetup.initialize(File.absolute_path('locales', File.dirname(__FILE__)))
+
 require_relative '../lib/razor'
 require_relative 'vcr_library'
 

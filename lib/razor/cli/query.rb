@@ -24,11 +24,11 @@ class Razor::CLI::Query
           doc[nav]['params'].is_a?(Hash) && doc[nav]['params']) || {}
     end
     @queryoptparse = OptionParser.new do |opts|
-      opts.on "-f", "--full", "Show full details when viewing entities" do
+      opts.on "-f", "--full", _("Show full details when viewing entities") do
         @parse.format = 'full'
       end
 
-      opts.on "-s", "--short", "Show shortened details when viewing entities" do
+      opts.on "-s", "--short", _("Show shortened details when viewing entities") do
         @parse.format = 'short'
       end
 

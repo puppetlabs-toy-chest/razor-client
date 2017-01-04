@@ -10,12 +10,16 @@ unless Kernel.respond_to?(:require_relative)
 end
 
 require 'rubygems'
+require 'gettext-setup'
 require_relative "../lib/razor/cli"
+
+GettextSetup.initialize(File.absolute_path('locales', File.dirname(File.dirname(__FILE__))))
+FastGettext.locale = GettextSetup.negotiate_locale(GettextSetup.this_locale)
 
 include Razor::CLI::Format
 
 def die(message = nil)
-  puts "Error: #{message}" if message
+  puts _("Error: %{error}") % {error: message} if message
   exit 1
 end
 
@@ -24,7 +28,7 @@ begin
 rescue Razor::CLI::InvalidURIError => e
   die e.message
 rescue OptionParser::InvalidOption => e
-  die e.message + "\nTry 'razor --help' for more information"
+  die _("%{error}\nTry 'razor --help' for more information") % {error: e.message}
 end
 
 if parse.show_version?
@@ -40,14 +44,13 @@ if parse.show_help? and not parse.show_command_help?
 end
 
 def unexpected_error(e)
-  die <<-ERROR
+  die _(<<-ERROR) % {backtrace: e.backtrace.take(10).join("\n"), error: e}
 An unexpected error has occurred.
 
 Backtrace:
-  #{e.backtrace.take(10).join('
-  ')}
+  %{backtrace}
 
-Error: #{e}
+Error: %{error}
 
 Please inspect server logs for the cause, then report issue to:
 https://tickets.puppetlabs.com/browse/RAZOR
@@ -58,22 +61,27 @@ end
 begin
   document = parse.navigate.get_document
   url = parse.navigate.last_url
-  puts "From #{url}:\n\n#{format_document document, parse}\n\n"
+  result = format_document document, parse
+  # TRANSLATORS: This is a template for all results that the client outputs.
+  puts _("From %{url}:\n\n%{result}\n\n") % {url: url, result: result}
 rescue OptionParser::InvalidOption => e
-  # Occurs when invalid flags are passed in the navigation.
-  die e.message + "\nTry 'razor --help' for more information"
+  # TRANSLATORS: This occurs when invalid flags are passed in the navigation.
+  die _("%{error}\nTry 'razor --help' for more information") %
+      {error: e.message}
 rescue SocketError, Errno::ECONNREFUSED => e
-  puts "Error: Could not connect to the server at #{parse.api_url}"
-  puts "       #{e}\n"
+  puts _("Error: Could not connect to the server at %{url}\n" +
+         "       %{error}") % {url: parse.api_url, error: e}
   die
 rescue RestClient::SSLCertificateNotVerified
-  puts "Error: SSL certificate could not be verified against known CA certificates."
-  puts "       To turn off verification, use the -k or --insecure option."
+  puts _("Error: SSL certificate could not be verified against known CA " +
+         "certificates.\n       To turn off verification, use the -k or --insecure option.")
   die
 rescue RestClient::Exception => e
   r = e.response
   unexpected_error(e) if r.nil?
-  puts "Error from doing #{r.args[:method].to_s.upcase} #{r.args[:url]}"
+  request_type = r.args[:method].to_s.upcase
+  url = r.args[:url]
+  puts _("Error from doing %{request_type} %{url}") % {request_type: request_type, url: url}
   puts e.message
   begin
     body = MultiJson::load(r.body)
@@ -88,5 +96,5 @@ rescue RestClient::Exception => e
   end
   die
 rescue StandardError => e
-  die "#{e.message}\nTry 'razor --help' for more information\n\n"
+  die _("%{error}\nTry 'razor --help' for more information\n\n") % {error: e.message}
 end

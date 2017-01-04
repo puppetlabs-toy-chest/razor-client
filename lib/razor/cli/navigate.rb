@@ -70,7 +70,7 @@ module Razor::CLI
     end
 
     def server_version
-      entrypoint.has_key?('version') and entrypoint['version']['server'] or 'Unknown'
+      entrypoint.has_key?('version') and entrypoint['version']['server'] or _('Unknown')
     end
 
     def query?
@@ -158,7 +158,7 @@ module Razor::CLI
 
       response = get(url,headers.merge(:accept => :json))
       unless response.headers[:content_type] =~ /application\/json/
-        raise "Received content type #{response.headers[:content_type]}"
+        raise _("Received content type %{content_type}") % {content_type: response.headers[:content_type]}
       end
       MultiJson.load(response.body)
     end
@@ -171,7 +171,7 @@ module Razor::CLI
       ensure
         if @parse.dump_response?
           print "POST #{url.to_s}\n#{body}\n-->\n"
-          puts (response ? response.body : "ERROR")
+          puts (response ? response.body : _("ERROR"))
         end
       end
       MultiJson::load(response.body)

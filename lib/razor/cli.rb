@@ -6,9 +6,9 @@ module Razor
       def initialize(url, key, doc)
         @key = key; @doc = doc
         if key.is_a?(Array)
-          super "Could not navigate to '#{key.join(" ")}' from #{url}"
+          super _("Could not navigate to '%{path}' from %{url}") % {path: key.join(" "), url: url}
         else
-          super "Could not find entry '#{key}' in document at #{url}"
+          super _("Could not find entry '%{key}' in document at %{url}") % {key: key, url: url}
         end
       end
     end
@@ -17,24 +17,24 @@ module Razor
       def initialize(url, type)
         case type
         when :env
-          super "URL '#{url}' in ENV variable RAZOR_API is not valid"
+          super _("URL '%{url}' in ENV variable RAZOR_API is not valid") % {url: url}
         when :opts
-          super "URL '#{url}' provided by -u or --url is not valid"
+          super _("URL '%{url}' provided by -u or --url is not valid") % {url: url}
         else
-          super "URL '#{url}' is not valid"
+          super _("URL '%{url}' is not valid") % {url: url}
         end
       end
     end
 
     class InvalidCAFileError < Error
       def initialize(path)
-        super "CA file '#{path}' in ENV variable RAZOR_CA_FILE does not exist"
+        super _("CA file '%{path}' in ENV variable RAZOR_CA_FILE does not exist") % {path: path}
       end
     end
 
     class VersionCompatibilityError < Error
       def initialize(reason)
-        super "Server version is not compatible with client version: #{reason}"
+        super _("Server version is not compatible with client version: %{reason}") % {reason: reason}
       end
     end
 
