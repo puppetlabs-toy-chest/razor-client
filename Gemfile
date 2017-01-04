@@ -6,6 +6,9 @@ gem 'mime-types', '< 2.0'
 # `rest-client` adds an undesirable dependency on Ruby >= 1.9.2 in version 1.7.0.
 gem 'rest-client', '< 1.7'
 gem 'command_line_reporter', '>=3.0'
+gem 'gettext-setup'
+gem 'rack', '< 2.0.0'
+gem 'multi_json'
 
 group :doc do
   gem 'yard'
@@ -14,6 +17,7 @@ end
 
 # This group will be excluded by default in `torquebox archive`
 group :test do
+  gem 'public_suffix', '~> 1.4.6'
   gem 'rack-test'
   gem 'rspec', '~> 2.13.0'
   gem 'rspec-core', '~> 2.13.1'

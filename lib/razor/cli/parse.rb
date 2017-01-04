@@ -22,32 +22,32 @@ module Razor::CLI
 
     def get_optparse
       @optparse ||= OptionParser.new do |opts|
-        opts.banner = "Usage: razor [FLAGS] NAVIGATION\n"
+        opts.banner = _("Usage: razor [FLAGS] NAVIGATION\n")
 
-        opts.on "-d", "--dump", "Dumps API output to the screen" do
+        opts.on "-d", "--dump", _("Dumps API output to the screen") do
           @dump = true
         end
 
-        opts.on "-a", "--api", "Show API help for a command" do
+        opts.on "-a", "--api", _("Show API help for a command") do
           @api_help = true
         end
 
-        opts.on "-k", "--insecure", "Allow SSL connections without verified certificates" do
+        opts.on "-k", "--insecure", _("Allow SSL connections without verified certificates") do
           @verify_ssl = false
         end
 
         opts.on "-u", "--url URL",
-          "The full Razor API URL, can also be set\n" + " "*37 +
+          _("The full Razor API URL, can also be set\n" + " "*37 +
           "with the RAZOR_API environment variable\n" + " "*37 +
-          "(default #{DEFAULT_RAZOR_API})" do |url|
+          "(default %{default_api})") % {default_api: DEFAULT_RAZOR_API} do |url|
           parse_and_set_api_url(url, :opts)
         end
 
-        opts.on "-v", "--version", "Show the version of Razor" do
+        opts.on "-v", "--version", _("Show the version of Razor") do
           @show_version = true
         end
 
-        opts.on "-h", "--help", "Show this screen" do
+        opts.on "-h", "--help", _("Show this screen") do
           # If searching for a command's help, leave the argument for navigation.
           @option_help = true
         end
@@ -68,11 +68,11 @@ module Razor::CLI
       begin
         server_version = navigate.server_version
       rescue RestClient::Unauthorized
-        error = "Error: Credentials are required to connect to the server at #{@api_url}."
+        error = _("Error: Credentials are required to connect to the server at %{url}.") % {url: @api_url}
       rescue
-        error = "Error: Could not connect to the server at #{@api_url}."
+        error = _("Error: Could not connect to the server at %{url}.") % {url: @api_url}
       ensure
-        return [(<<-OUTPUT + "\n" + error).rstrip, error != '' ? 1 : 0]
+        return [(_(<<-OUTPUT) % {server_version: server_version, client_version: Razor::CLI::VERSION} + "\n" + error).rstrip, error != '' ? 1 : 0]
         Razor Server version: #{server_version}
         Razor Client version: #{Razor::CLI::VERSION}
         OUTPUT
@@ -83,13 +83,15 @@ module Razor::CLI
       output = get_optparse.to_s
       exit = 0
       begin
-        output << <<-HELP
-#{list_things("Collections", navigate.collections)}
+        replacements = {collections: list_things(_("Collections"), navigate.collections),
+                        commands: list_things(_("Commands"), navigate.commands)}
+        output << _(<<-HELP) % replacements
+%{collections}
 
       Navigate to entries of a collection using COLLECTION NAME, for example,
       'nodes node15'  for the  details of a node or 'nodes node15 log' to see
       the log for node15
-#{list_things("Commands", navigate.commands)}
+%{commands}
 
       Pass arguments to commands either directly by name ('--name=NAME')
       or save the JSON body for the  command  in a file and pass it with
@@ -98,26 +100,26 @@ module Razor::CLI
 
 HELP
       rescue RestClient::Unauthorized
-        output << <<-UNAUTH
-Error: Credentials are required to connect to the server at #{@api_url}"
+        output << _(<<-UNAUTH) % {url: @api_url}
+Error: Credentials are required to connect to the server at %{url}"
 UNAUTH
         exit = 1
       rescue SocketError, Errno::ECONNREFUSED => e
-        puts "Error: Could not connect to the server at #{@api_url}"
+        puts _("Error: Could not connect to the server at %{url}") % {url: @api_url}
         puts "       #{e}\n"
         die
       rescue RestClient::SSLCertificateNotVerified
-        puts "Error: SSL certificate could not be verified against known CA certificates."
-        puts "       To turn off verification, use the -k or --insecure option."
+        puts _("Error: SSL certificate could not be verified against known CA certificates.\n" +
+               "       To turn off verification, use the -k or --insecure option.")
         die
       rescue OpenSSL::SSL::SSLError => e
         # Occurs in case of e.g. certificate mismatch (FQDN vs. hostname)
-        puts "Error: SSL certificate error from server at #{@api_url}"
+        puts _("Error: SSL certificate error from server at %{url}") % {url: @api_url}
         puts "       #{e}"
         die
       rescue => e
-        output << <<-ERR
-Error: Unknown error occurred while connecting to server at #{@api_url}:
+        output << _(<<-ERR) % {url: @api_url}
+Error: Unknown error occurred while connecting to server at %{url}:
        #{e}
 ERR
         exit = 1

@@ -23,7 +23,7 @@ module Razor::CLI
       arguments = parse && parse.stripped_args
       doc = Razor::CLI::Document.new(doc, format)
 
-      return "There are no items for this query." if doc.items.empty?
+      return _("There are no items for this query.") if doc.items.empty?
       return format_command_help(doc, parse.show_api_help?) if parse && parse.show_command_help?
 
       case (doc.format_view['+layout'] or 'list')
@@ -36,7 +36,7 @@ module Razor::CLI
           else doc.to_s
         end
       else
-        raise ArgumentError, "Unrecognized view format #{doc.format_view['+layout']}"
+        raise ArgumentError, _("Unrecognized view format %{format_name}") % {format_name: doc.format_view['+layout']}
       end
     end
 
@@ -64,7 +64,7 @@ module Razor::CLI
 
     def format_command_help(doc, show_api_help)
       item = doc.items.first
-      raise Razor::CLI::Error, 'Could not find help for that entry' unless item.has_key?('help')
+      raise Razor::CLI::Error, _('Could not find help for that entry') unless item.has_key?('help')
       if item['help'].has_key?('examples')
         if show_api_help && item['help']['examples'].has_key?('api')
           format_composed_help(item, item['help']['examples']['api']).chomp
@@ -85,31 +85,31 @@ module Razor::CLI
     def format_composed_help(object, examples = object['help']['examples']['cli'])
       help_obj = object['help']
       ret = ''
-      ret = ret + <<-USAGE
+      ret = ret + _(<<-USAGE) % {command: object['name'], arguments: positional_args_usage(object)}
 # USAGE
 
-  razor #{object['name']} #{positional_args_usage(object)} <flags>
+  razor %{command} %{arguments} <flags>
 
       USAGE
-      ret = ret + <<-SYNOPSIS if help_obj.has_key?('summary')
+      ret = ret + _(<<-SYNOPSIS) % {summary: help_obj['summary']} if help_obj.has_key?('summary')
 # SYNOPSIS
-#{help_obj['summary']}
+%{summary}
 
       SYNOPSIS
-      ret = ret + <<-DESCRIPTION if help_obj.has_key?('description')
+      ret = ret + _(<<-DESCRIPTION) % {description: help_obj['description'], schema: help_obj['schema']} if help_obj.has_key?('description')
 # DESCRIPTION
-#{help_obj['description']}
+%{description}
 
-#{help_obj['schema']}
+%{schema}
       DESCRIPTION
-      ret = ret + <<-RETURNS if help_obj.has_key?('returns')
+      ret = ret + _(<<-RETURNS) % {returns: help_obj['returns'].gsub(/^/, '  ')} if help_obj.has_key?('returns')
 # RETURNS
-#{help_obj['returns'].gsub(/^/, '  ')}
+%{returns}
       RETURNS
-      ret = ret + <<-EXAMPLES if examples
+      ret = ret + _(<<-EXAMPLES) % {examples: examples.gsub(/^/, '  ')} if examples
 # EXAMPLES
 
-#{examples.gsub(/^/, '  ')}
+%{examples}
       EXAMPLES
       ret
     end
@@ -160,7 +160,7 @@ module Razor::CLI
         ""
       elsif doc.is_list? and objects.all? { |it| it.is_a?(Hash) && it.has_key?('name')}
         # If every element has the 'name' key, it has nested elements.
-        "\n\nQuery an entry by including its name, e.g. `razor #{arguments.join(' ')} #{objects.first['name']}`"
+        _("\n\nQuery an entry by including its name, e.g. `razor %{arguments} %{name}`") % {arguments: arguments.join(' '), name: objects.first['name']}
       elsif objects.any?
         object = objects.first
         fields = display_fields(object) - PriorityKeys
@@ -168,7 +168,7 @@ module Razor::CLI
           object[f].is_a?(Hash) or object[f].is_a?(Array)
         end.sort
         if list.any?
-          "\n\nQuery additional details via: `razor #{arguments.join(' ')} [#{list.join(', ')}]`"
+          _("\n\nQuery additional details via: `razor %{arguments} [%{options}]`") % {arguments: arguments.join(' '), options: list.join(', ')}
         end
       end
     end

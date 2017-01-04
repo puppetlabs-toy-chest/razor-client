@@ -8,13 +8,13 @@ module Razor::CLI
       obj.nil? ? "---" : obj
     end
     def join_names(arr)
-      (arr.nil? or arr.empty?) ? '(none)' : arr.map { |item| item['name'] }.join(", ")
+      (arr.nil? or arr.empty?) ? _('(none)') : arr.map { |item| item['name'] }.join(", ")
     end
     def nested(nested_obj)
-      (nested_obj.nil? or nested_obj.empty?) ? '(none)' : nested_obj.to_s
+      (nested_obj.nil? or nested_obj.empty?) ? _('(none)') : nested_obj.to_s
     end
     def shallow_hash(hash)
-      (hash.nil? or hash.empty?) ? '(none)' :
+      (hash.nil? or hash.empty?) ? _('(none)') :
           hash.map {|key, val| "#{key}: #{val}"}.join(', ')
     end
     def select_name(item)
@@ -59,14 +59,17 @@ module Razor::CLI
     end
     def event_entities(hash)
       hash ||= {}
-      shallow_hash(Hash[hash].keep_if {|k,_| ['task', 'policy', 'broker', 'repo', 'node', 'command'].include?(k)})
+      fields = ['task', 'policy', 'broker', 'repo', 'node', 'command']
+      shallow_hash(Hash[hash].keep_if {|k,_| fields.include?(k)})
     end
     def event_misc(hash)
       hash ||= {}
-      shallow_hash(Hash[hash].delete_if {|k,_|['task', 'policy', 'broker', 'repo', 'node', 'msg', 'command'].include?(k)})
+      fields = ['task', 'policy', 'broker', 'repo', 'node', 'msg', 'command']
+      shallow_hash(Hash[hash].delete_if {|k,_| fields.include?(k)})
     end
     def node_log_entry(hash)
-      shallow_hash(Hash[hash].delete_if {|k,_|['event', 'timestamp', 'severity'].include?(k)})
+      fields = ['event', 'timestamp', 'severity']
+      shallow_hash(Hash[hash].delete_if {|k,_| fields.include?(k)})
     end
   end
 end
