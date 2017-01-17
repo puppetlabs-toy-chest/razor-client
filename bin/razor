@@ -14,7 +14,7 @@ require 'gettext-setup'
 require_relative "../lib/razor/cli"
 
 GettextSetup.initialize(File.absolute_path('locales', File.dirname(File.dirname(__FILE__))))
-FastGettext.locale = GettextSetup.negotiate_locale(GettextSetup.this_locale)
+FastGettext.locale = GettextSetup.negotiate_locale(GettextSetup.candidate_locales)
 
 include Razor::CLI::Format
 
