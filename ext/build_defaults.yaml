@@ -5,8 +5,8 @@ default_cow: ''
 cows: ''
 pbuild_conf: '/etc/pbuilderrc'
 packager: 'puppet'
-gpg_name: 'info@puppetlabs.com'
-gpg_key: '4BD6EC30'
+gpg_name: 'release@puppet.com'
+gpg_key: '7F438280EF8D349F'
 sign_tar: FALSE
 # a space separated list of mock configs
 final_mocks: ''
