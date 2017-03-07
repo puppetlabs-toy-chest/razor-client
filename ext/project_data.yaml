@@ -23,7 +23,8 @@ files:
   - lib
   - '*.md'
   - LICENSE
-gem_files: '{bin,lib}/**/* *.md LICENSE'
+  - locales
+gem_files: '{bin,lib,locales}/**/* *.md LICENSE'
 gem_require_path: 'lib'
 gem_test_files: 'spec/**/*'
 gem_executables: 'razor'
