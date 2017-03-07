@@ -1,5 +1,10 @@
 # Razor Client Release Notes
 
+## 1.4.0 - 2017-03-07
+
+* Added support for internationalization by setting the Accept-Language
+  header for API requests.
+
 ## 1.3.0 - 2016-05-19
 
 * NEW: Added elegant display of the `razor config` collection.
