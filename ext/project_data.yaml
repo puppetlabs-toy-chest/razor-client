@@ -28,6 +28,7 @@ gem_require_path: 'lib'
 gem_test_files: 'spec/**/*'
 gem_executables: 'razor'
 gem_default_executables: 'razor'
+gem_required_ruby_version: '>= 1.9.3'
 gem_runtime_dependencies:
   mime-types: '< 2.0'
   multi_json:
