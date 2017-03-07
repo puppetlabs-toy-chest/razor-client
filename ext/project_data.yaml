@@ -33,3 +33,4 @@ gem_runtime_dependencies:
   multi_json:
   rest-client: '< 1.7'
   command_line_reporter: '> 3.0'
+  gettext-setup:

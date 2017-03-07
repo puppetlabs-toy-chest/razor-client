@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   # `rest-client` adds an undesirable dependency on Ruby >= 1.9.2 in version 1.7.0.
   spec.add_dependency "rest-client", '< 1.7'
   spec.add_dependency "command_line_reporter", '~> 3.0'
+  spec.add_dependency "gettext-setup"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
