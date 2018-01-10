@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 
-# mime-types is a dependency of rest-client. We need to explicitly depend
-# on it and pin its version to make sure this works with Ruby 1.8.7
-gem 'mime-types', '< 2.0'
-# `rest-client` adds an undesirable dependency on Ruby >= 1.9.2 in version 1.7.0.
-gem 'rest-client', '< 1.7'
+raise 'Ruby should be >2.0' unless RUBY_VERSION.to_f > 2.0
+
+gem 'rest-client', '> 2.0.0'
 gem 'command_line_reporter', '>=3.0'
 gem 'gettext-setup'
-gem 'rack', '< 2.0.0'
+gem 'rack', '< 2.0.0', '>= 1.5.4'
 gem 'multi_json'
 
 group :doc do
@@ -24,8 +22,8 @@ group :test do
   gem 'rspec-expectations', '~> 2.13.0'
   gem 'rspec-mocks', '~> 2.13.1'
   gem 'simplecov'
-  gem 'webmock'
-  gem 'vcr'
+  gem 'webmock', '~> 2.3.1'
+  gem 'vcr', '~> 4.0.0'
 end
 
 group :development do

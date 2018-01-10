@@ -3,42 +3,6 @@ require 'multi_json'
 require 'yaml'
 require 'forwardable'
 
-# Needed to make the client work on Ruby 1.8.7
-unless URI.respond_to?(:encode_www_form)
-  module URI
-    def self.encode_www_form_component(str)
-      str = str.to_s
-      if HTML5ASCIIINCOMPAT.include?(str.encoding)
-        str = str.encode(Encoding::UTF_8)
-      else
-        str = str.dup
-      end
-      str.force_encoding(Encoding::ASCII_8BIT)
-      str.gsub!(/[^*\-.0-9A-Z_a-z]/, TBLENCWWWCOMP_)
-      str.force_encoding(Encoding::US_ASCII)
-    end
-    def self.encode_www_form(enum)
-      enum.map do |k,v|
-        if v.nil?
-          encode_www_form_component(k)
-        elsif v.respond_to?(:to_ary)
-          v.to_ary.map do |w|
-            str = encode_www_form_component(k)
-            unless w.nil?
-              str << '='
-              str << encode_www_form_component(w)
-            end
-          end.join('&')
-        else
-          str = encode_www_form_component(k)
-          str << '='
-          str << encode_www_form_component(v)
-        end
-      end.join('&')
-    end
-  end
-end
-
 module Razor::CLI
   class Navigate
     extend Forwardable
@@ -47,7 +11,6 @@ module Razor::CLI
       @parse = parse
       @segments = segments||[]
       @doc = entrypoint
-      @username, @password = parse.api_url.userinfo.to_s.split(':')
       @doc_resource = create_resource parse.api_url, {:accept => :json,
                                                       :accept_language => accept_language}
     end
@@ -160,6 +123,8 @@ module Razor::CLI
       # Add extra parameters to URL.
       url.query = URI.encode_www_form(params)
       url.query = nil if url.query.empty? # Remove dangling '?' from URL.
+      @username ||= url.user
+      @password ||= url.password
 
       response = get(url,headers.merge(:accept => :json,
                                        :accept_language => accept_language))
@@ -170,6 +135,9 @@ module Razor::CLI
     end
 
     def json_post(url, body)
+      @username ||= url.user
+      @password ||= url.password
+
       headers = { :accept=>:json, "Content-Type" => :json,
                   :accept_language => accept_language}
       begin
@@ -187,11 +155,13 @@ module Razor::CLI
     private
 
     def create_resource(url, headers)
-      @doc_resource = RestClient::Resource.new(url.to_s, :headers => headers,
-                                         :verify_ssl => @parse.verify_ssl?,
-                                         :ssl_ca_file      =>  @parse.ssl_ca_file,
-                                         :user => @username,
-                                         :password => @password)
+      @doc_resource = RestClient::Resource.new(url.to_s,
+          :headers => headers,
+          :verify_ssl => @parse.verify_ssl?,
+          :ssl_ca_file => @parse.ssl_ca_file,
+          # Add these in case the URL above doesn't include authentication.
+          :user => @username || url.user,
+          :password => @password || url.password)
     end
   end
 end
