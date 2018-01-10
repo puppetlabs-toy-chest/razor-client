@@ -1,14 +1,5 @@
 #!/usr/bin/env ruby
 
-# Needed to make the client work on Ruby 1.8.7
-unless Kernel.respond_to?(:require_relative)
-  module Kernel
-    def require_relative(path)
-      require File.join(File.dirname(caller[0]), path.to_str)
-    end
-  end
-end
-
 require 'rubygems'
 require 'gettext-setup'
 require_relative "../lib/razor/cli"
@@ -60,10 +51,15 @@ end
 
 begin
   document = parse.navigate.get_document
+  p document
   url = parse.navigate.last_url
   result = format_document document, parse
   # TRANSLATORS: This is a template for all results that the client outputs.
   puts _("From %{url}:\n\n%{result}\n\n") % {url: url, result: result}
+rescue RestClient::Unauthorized
+  puts _(<<-UNAUTH) % {url: url}
+Error: Credentials are required to connect to the server at %{url}"
+  UNAUTH
 rescue OptionParser::InvalidOption => e
   # TRANSLATORS: This occurs when invalid flags are passed in the navigation.
   die _("%{error}\nTry 'razor --help' for more information") %
@@ -79,6 +75,7 @@ rescue RestClient::SSLCertificateNotVerified
 rescue RestClient::Exception => e
   r = e.response
   unexpected_error(e) if r.nil?
+  p r.methods
   request_type = r.args[:method].to_s.upcase
   url = r.args[:url]
   puts _("Error from doing %{request_type} %{url}") % {request_type: request_type, url: url}

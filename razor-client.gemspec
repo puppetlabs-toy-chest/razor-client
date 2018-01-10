@@ -22,16 +22,14 @@ Gem::Specification.new do |spec|
   # e.g. https://tickets.puppetlabs.com/browse/RAZOR-572. This is only
   # effective for locally built gems, as project_data.yaml does not support
   # this feature.
-  spec.required_ruby_version = '>= 1.9.2'
+  spec.required_ruby_version = '>= 2.0.0'
 
-  # mime-types is a dependency of rest-client. We need to explicitly depend
-  # on it and pin its version to make sure the gem works with Ruby 1.8.7
-  spec.add_dependency "mime-types", '< 2.0'
+  spec.add_dependency "mime-types"
   spec.add_dependency "multi_json"
-  # `rest-client` adds an undesirable dependency on Ruby >= 1.9.2 in version 1.7.0.
-  spec.add_dependency "rest-client", '< 1.7'
+  # `rest-client` has a security vulnerability prior to this version.
+  spec.add_dependency "rest-client", '~> 2.0'
   spec.add_dependency "command_line_reporter", '~> 3.0'
-  spec.add_dependency "gettext-setup"
+  spec.add_dependency "gettext-setup", '~> 0.29'
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"

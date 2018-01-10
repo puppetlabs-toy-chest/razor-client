@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://fred:dead@localhost:8150/api
+    uri: http://localhost:8150/api
     body:
       encoding: US-ASCII
       string: ''

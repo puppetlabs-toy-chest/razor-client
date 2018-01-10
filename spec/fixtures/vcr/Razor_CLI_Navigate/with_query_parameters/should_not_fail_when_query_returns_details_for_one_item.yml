@@ -213,7 +213,7 @@ http_interactions:
   recorded_at: Mon, 09 Mar 2015 19:55:12 GMT
 - request:
     method: get
-    uri: http://fred:dead@localhost:8150/api
+    uri: http://localhost:8150/api
     body:
       encoding: US-ASCII
       string: ''
@@ -246,7 +246,7 @@ http_interactions:
   recorded_at: Mon, 09 Mar 2015 19:55:12 GMT
 - request:
     method: get
-    uri: http://fred:dead@localhost:8150/api/collections/nodes
+    uri: http://localhost:8150/api/collections/nodes
     body:
       encoding: US-ASCII
       string: ''
@@ -279,7 +279,7 @@ http_interactions:
   recorded_at: Mon, 09 Mar 2015 19:55:12 GMT
 - request:
     method: get
-    uri: http://fred:dead@localhost:8150/api/collections/nodes/node1
+    uri: http://localhost:8150/api/collections/nodes/node1
     body:
       encoding: US-ASCII
       string: ''
