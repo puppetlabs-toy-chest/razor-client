@@ -1,5 +1,10 @@
 # Razor Client Release Notes
 
+## 1.7.0 - 2018-01-17
+
+* NEW: Removed support for Ruby < 2.0
+* BUGFIX: Removed security vulnerabilities in gems
+
 ## 1.4.0 - 2017-03-07
 
 * Added support for internationalization by setting the Accept-Language
