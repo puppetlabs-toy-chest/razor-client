@@ -228,6 +228,37 @@ describe Razor::CLI::Navigate do
     end
   end
 
+  context 'when the collections endpoint has a depth parameter', :vcr do
+    it "should not be exposed to the user" do
+      nav = Razor::CLI::Parse.new(['brokers', '--depth', '1']).navigate
+      expect {nav.get_document}.to raise_error(OptionParser::InvalidOption, 'invalid option: --depth')
+    end
+
+    it "should be set to 1 when the endpoint is the final query" do
+      nav = Razor::CLI::Parse.new(['nodes']).navigate
+      nav.get_document
+      expect(nav.doc_resource.url).to match(/nodes\?depth=1/)
+    end
+
+    it "should not carry-over to later requests in a nested query" do
+      broker_name = "test_broker"
+      Razor::CLI::Parse.new(
+        ['create-broker', '--name', "#{broker_name}", '-c', 'server=puppet.example.org', '-c', 'environment=production', '--broker-type', 'puppet']
+      ).navigate.get_document['name']
+
+      nav = Razor::CLI::Parse.new(['brokers', "#{broker_name}"]).navigate
+      nav.get_document
+
+      # TODO: Once the unit testing capabilities have improved
+      # (e.g. the Navigate class has the ability to cache visited URLS),
+      # we should also assert that the /collections/brokers endpoint
+      # was visited, and that the depth parameter was not used (since
+      # it is an intermediate request). We should also update the test
+      # description when we do this to note the new assertion.
+      expect(nav.doc_resource.url).not_to match(/depth/)
+    end
+  end
+
   context "accept-language header", :vcr do
     before :each do
       GettextSetup.clear
