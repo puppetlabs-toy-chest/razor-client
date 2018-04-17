@@ -33,6 +33,12 @@ class Razor::CLI::Query
       end
 
       params.each do |param, args|
+        if param == 'depth'
+          # Set the depth parameter if the server offers it
+          @options[param] = 1
+          next
+        end
+
         if args['type'] == 'boolean'
           opts.on "--#{param}" do
             @options[param] = true
@@ -51,12 +57,23 @@ class Razor::CLI::Query
     while @segments.any?
       nav = @segments.shift
       @parse.stripped_args << nav
+
+      @options = {}
       @segments = get_optparse(@doc, nav).order(@segments)
+
+      # Adding the depth parameter to an intermediate request is an
+      # inefficiency, so we should delete it.
+      @options.delete('depth') if @segments.any?
+
       @doc = @navigate.move_to nav, @doc, @options
     end
 
     # Get the next level if it's a list of objects.
     if @doc.is_a?(Hash) and @doc['items'].is_a?(Array)
+      # If our nav endpoint had a depth parameter, then we will already have
+      # the next level.
+      return @doc if @options['depth']
+
       # Cache doc_resource since these queries are just for extra detail.
       temp_doc_resource = @navigate.doc_resource
       @doc['items'] = @doc['items'].map do |item|
