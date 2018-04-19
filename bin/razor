@@ -51,7 +51,6 @@ end
 
 begin
   document = parse.navigate.get_document
-  p document
   url = parse.navigate.last_url
   result = format_document document, parse
   # TRANSLATORS: This is a template for all results that the client outputs.
