@@ -1,6 +1,12 @@
 # Razor Client Release Notes
 
-## 1.8.0 - 2018-04-23
+## 1.8.1 - 2018-04-23
+
+* IMPROVEMENT: The default API URL now attempts to use TLS on localhost port
+  8151 before falling back to non-TLS on 8150.
+* BUGFIX: Removed extra output that was being added.
+
+## 1.8.0
 
 * IMPROVEMENT: Now allowing underscores to be mixed into argument lists,
   e.g. `razor create-broker --name test --broker_type noop`
