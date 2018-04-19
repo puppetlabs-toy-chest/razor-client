@@ -1,5 +1,11 @@
 # Razor Client Release Notes
 
+## 1.8.0 - 2018-04-23
+
+* IMPROVEMENT: Now allowing underscores to be mixed into argument lists,
+  e.g. `razor create-broker --name test --broker_type noop`
+* BUGFIX: Fixed extra output that was being added.
+
 ## 1.7.0 - 2018-01-17
 
 * NEW: Removed support for Ruby < 2.0
