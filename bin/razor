@@ -74,7 +74,6 @@ rescue RestClient::SSLCertificateNotVerified
 rescue RestClient::Exception => e
   r = e.response
   unexpected_error(e) if r.nil?
-  p r.methods
   request_type = r.args[:method].to_s.upcase
   url = r.args[:url]
   puts _("Error from doing %{request_type} %{url}") % {request_type: request_type, url: url}
