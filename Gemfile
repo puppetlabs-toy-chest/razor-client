@@ -22,7 +22,7 @@ group :test do
   gem 'rspec-expectations', '~> 2.13.0'
   gem 'rspec-mocks', '~> 2.13.1'
   gem 'simplecov'
-  gem 'webmock', '~> 2.3.1'
+  gem 'webmock', '~> 3.3.0'
   gem 'vcr', '~> 4.0.0'
 end
 
