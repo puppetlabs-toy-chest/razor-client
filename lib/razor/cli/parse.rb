@@ -16,7 +16,6 @@ module Razor::CLI
 
   class Parse
     extend Forwardable
-    DEFAULT_RAZOR_API = "http://localhost:8150/api"
 
     def_delegator 'navigate', 'query?'
 
@@ -39,7 +38,9 @@ module Razor::CLI
         opts.on "-u", "--url URL",
           _("The full Razor API URL, can also be set\n" + " "*37 +
           "with the RAZOR_API environment variable\n" + " "*37 +
-          "(default %{default_api})") % {default_api: DEFAULT_RAZOR_API} do |url|
+          "(default %{https_api} or \n" + " "*37 +
+          "%{http_api})") % {http_api: Razor::CLI::Navigate::RAZOR_HTTP_API,
+                             https_api: Razor::CLI::Navigate::RAZOR_HTTPS_API} do |url|
           parse_and_set_api_url(url, :opts)
         end
 
@@ -147,6 +148,10 @@ ERR
       !!@dump
     end
 
+    def verify_ssl=(arg)
+      @verify_ssl = arg
+    end
+
     def verify_ssl?
       !!@verify_ssl
     end
@@ -158,12 +163,13 @@ ERR
     LINUX_PEM_FILE = '/etc/puppetlabs/puppet/ssl/certs/ca.pem'
     WIN_PEM_FILE = 'C:\ProgramData\PuppetLabs\puppet\etc\ssl\certs\ca.pem'
     def initialize(args)
-      parse_and_set_api_url(ENV["RAZOR_API"] || DEFAULT_RAZOR_API, :env)
       @args = args.dup
       # To be populated externally.
       @stripped_args = []
       @format = 'short'
       @verify_ssl = true
+      @args = get_optparse.order(@args)
+      parse_and_set_api_url(ENV["RAZOR_API"], :env) if ENV["RAZOR_API"] && !@api_url
       env_pem_file = ENV['RAZOR_CA_FILE']
       # If this is set, it should actually exist.
       if env_pem_file && !File.exists?(env_pem_file)
@@ -175,13 +181,6 @@ ERR
           @ssl_ca_file = file
           break
         end
-      end
-      @args = get_optparse.order(@args)
-
-      # Localhost won't match the server's certificate; no verification required.
-      # This needs to happen after get_optparse so `-k` and `-u` can take effect.
-      if @api_url.hostname == 'localhost'
-        @verify_ssl = false
       end
 
       @args = set_help_vars(@args)
@@ -219,13 +218,18 @@ ERR
       @navigate ||=Navigate.new(self, @navigation)
     end
 
-    private
     def parse_and_set_api_url(url, source)
       begin
         unless url.start_with?('http:') or url.start_with?('https:')
           raise Razor::CLI::InvalidURIError.new(url, source)
         end
         @api_url = URI.parse(url)
+
+        # Localhost won't match the server's certificate; no verification required.
+        # This needs to happen after get_optparse so `-k` and `-u` can take effect.
+        if @api_url.hostname == 'localhost'
+          @verify_ssl = false
+        end
       rescue URI::InvalidURIError => e
         raise Razor::CLI::InvalidURIError.new(url, source)
       end

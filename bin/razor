@@ -14,26 +14,6 @@ def die(message = nil)
   exit 1
 end
 
-begin
-  parse = Razor::CLI::Parse.new(ARGV)
-rescue Razor::CLI::InvalidURIError => e
-  die e.message
-rescue OptionParser::InvalidOption => e
-  die _("%{error}\nTry 'razor --help' for more information") % {error: e.message}
-end
-
-if parse.show_version?
-  version, exit_code = parse.version
-  puts version
-  exit exit_code
-end
-
-if parse.show_help? and not parse.show_command_help?
-  output, exitcode = parse.help
-  puts output
-  exit exitcode
-end
-
 def unexpected_error(e)
   die _(<<-ERROR) % {backtrace: e.backtrace.take(10).join("\n"), error: e}
 An unexpected error has occurred.
@@ -50,11 +30,29 @@ https://tickets.puppetlabs.com/browse/RAZOR
 end
 
 begin
-  document = parse.navigate.get_document
+  parse = Razor::CLI::Parse.new(ARGV)
+
+  navigate = parse.navigate
+
+  if parse.show_version?
+    version, exit_code = parse.version
+    puts version
+    exit exit_code
+  end
+
+  if parse.show_help? and not parse.show_command_help?
+    output, exitcode = parse.help
+    puts output
+    exit exitcode
+  end
+
+  document = navigate.get_document
   url = parse.navigate.last_url
   result = format_document document, parse
   # TRANSLATORS: This is a template for all results that the client outputs.
   puts _("From %{url}:\n\n%{result}\n\n") % {url: url, result: result}
+rescue Razor::CLI::InvalidURIError => e
+  die e.message
 rescue RestClient::Unauthorized
   puts _(<<-UNAUTH) % {url: url}
 Error: Credentials are required to connect to the server at %{url}"

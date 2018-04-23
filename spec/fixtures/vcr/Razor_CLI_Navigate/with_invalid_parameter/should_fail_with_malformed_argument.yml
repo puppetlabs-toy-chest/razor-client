@@ -12,7 +12,11 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
-      - Ruby
+      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
+      Accept-Language:
+      - en_US,en
+      Host:
+      - localhost:8150
   response:
     status:
       code: 200
@@ -23,16 +27,16 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Type:
-      - application/json;charset=utf-8
+      - application/json
       Content-Length:
-      - '5650'
+      - '7110'
       Date:
-      - Mon, 09 Mar 2015 19:53:09 GMT
+      - Mon, 23 Apr 2018 19:46:12 GMT
     body:
-      encoding: US-ASCII
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"}],"version":{"server":"v0.16.1-18-gd3acc7a-dirty"}}'
+      encoding: UTF-8
+      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.8.0-dirty"}}'
     http_version:
-  recorded_at: Mon, 09 Mar 2015 19:53:09 GMT
+  recorded_at: Mon, 23 Apr 2018 19:46:12 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/commands/create-tag
@@ -45,7 +49,11 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
-      - Ruby
+      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
+      Accept-Language:
+      - en_US,en
+      Host:
+      - localhost:8150
   response:
     status:
       code: 200
@@ -54,15 +62,15 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v0.16.1-18-gd3acc7a-dirty"'
+      - '"server-version-v1.8.0-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
-      - application/json;charset=utf-8
+      - application/json
       Content-Length:
-      - '4439'
+      - '4738'
       Date:
-      - Mon, 09 Mar 2015 19:53:09 GMT
+      - Mon, 23 Apr 2018 19:46:12 GMT
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -89,82 +97,89 @@ http_interactions:
         XG5cbiMgQXR0cmlidXRlc1xuXG4gKiBuYW1lXG4gICAtIFRoZSBuYW1lIG9m
         IHRoZSB0YWcuXG4gICAtIFRoaXMgYXR0cmlidXRlIGlzIHJlcXVpcmVkLlxu
         ICAgLSBJdCBtdXN0IGJlIG9mIHR5cGUgc3RyaW5nLlxuICAgLSBJdCBtdXN0
-        IGJlIGJldHdlZW4gMSBhbmQgSW5maW5pdHkgaW4gbGVuZ3RoLlxuXG4gKiBy
-        dWxlXG4gICAtIFRoZSB0YWcgbWF0Y2hlcyBhIG5vZGUgaWYgZXZhbHVhdGlu
-        ZyB0aGlzIHJ1biBhZ2FpbnN0IHRoZSB0YWfigJlzIGZhY3RzXG4gICAgIHJl
-        c3VsdHMgaW4gdHJ1ZS4gTm90ZSB0aGF0IHRhZyBtYXRjaGluZyBpcyBjYXNl
-        IHNlbnNpdGl2ZS5cbiAgICAgXG4gICAgIEZvciBleGFtcGxlLCBoZXJlIGlz
-        IGEgdGFnIHJ1bGU6XG4gICAgIFxuICAgICAgICAgW1wib3JcIixcbiAgICAg
-        ICAgICBbXCI9XCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBcImRl
-        OmVhOmRiOmVlOmYwOjAwXCJdXG4gICAgICAgICAgW1wiPVwiLCBbXCJmYWN0
-        XCIsIFwibWFjYWRkcmVzc1wiXSwgXCJkZTplYTpkYjplZTpmMDowMVwiXV1c
-        biAgICAgXG4gICAgIFRoZSB0YWcgY291bGQgYWxzbyBiZSB3cml0dGVuIGxp
-        a2UgdGhpczpcbiAgICAgXG4gICAgICAgICBbXCJpblwiLCBbXCJmYWN0XCIs
-        IFwibWFjYWRkcmVzc1wiXSwgXCJkZTplYTpkYjplZTpmMDowMFwiLCBcImRl
-        OmVhOmRiOmVlOmYwOjAxXCJdXG4gICAgIFxuICAgICBUaGUgc3ludGF4IGZv
-        ciBydWxlIGV4cHJlc3Npb25zIGlzIGRlZmluZWQgaW4gYGxpYi9yYXpvci9t
-        YXRjaGVyLnJiYC5cbiAgICAgRXhwcmVzc2lvbnMgYXJlIG9mIHRoZSBmb3Jt
-        IGBbb3AgYXJnMSBhcmcyIC4uIGFyZ25dYFxuICAgICB3aGVyZSBvcCBpcyBv
-        bmUgb2YgdGhlIG9wZXJhdG9ycyBiZWxvdywgYW5kIGFyZzEgdGhyb3VnaCBh
-        cmduIGFyZSB0aGVcbiAgICAgYXJndW1lbnRzIGZvciB0aGUgb3BlcmF0b3Iu
-        IElmIHRoZXkgYXJlIGV4cHJlc3Npb25zIHRoZW1zZWx2ZXMsIHRoZXkgd2ls
-        bFxuICAgICBiZSBldmFsdWF0ZWQgYmVmb3JlIGBvcGAgaXMgZXZhbHVhdGVk
-        LlxuICAgLSBUaGlzIGF0dHJpYnV0ZSBpcyByZXF1aXJlZC5cbiAgIC0gSXQg
-        bXVzdCBiZSBvZiB0eXBlIGFycmF5LlxuIiwiZXhhbXBsZXMiOnsiYXBpIjoi
-        Q3JlYXRlIGEgc2ltcGxlIHRhZzpcblxue1xuICBcIm5hbWVcIjogXCJzbWFs
-        bFwiLFxuICBcInJ1bGVcIjogW1wiPVwiLCBbXCJmYWN0XCIsIFwicHJvY2Vz
-        c29yY291bnRcIl0sIFwiMlwiXVxufSIsImNsaSI6IkNyZWF0ZSBhIHNpbXBs
-        ZSB0YWc6XG5cbnJhem9yIGNyZWF0ZS10YWcgLS1uYW1lIHNtYWxsIC0tcnVs
-        ZSAnW1wiPVwiLCBbXCJmYWN0XCIsIFwicHJvY2Vzc29yY291bnRcIl0sIFwi
-        MlwiXScifSwiZnVsbCI6IiMgU1lOT1BTSVNcbkNyZWF0ZSBhIG5ldyB0YWdc
-        blxuIyBERVNDUklQVElPTlxuQ3JlYXRlIGEgbmV3IHRhZywgYW5kIHNldCB0
-        aGUgcnVsZSBpdCB3aWxsIHVzZSB0byBtYXRjaCBvbiBmYWN0cyBhbmQgbm9k
-        ZVxubWV0YWRhdGEuXG4jIEFjY2VzcyBDb250cm9sXG5cblRoaXMgY29tbWFu
-        ZCdzIGFjY2VzcyBjb250cm9sIHBhdHRlcm46IGBjb21tYW5kczpjcmVhdGUt
-        dGFnOiV7bmFtZX1gXG5cbldvcmRzIHN1cnJvdW5kZWQgYnkgYCV7Li4ufWAg
-        YXJlIHN1YnN0aXR1dGlvbnMgZnJvbSB0aGUgaW5wdXQgZGF0YTogdHlwaWNh
-        bGx5XG50aGUgbmFtZSBvZiB0aGUgb2JqZWN0IGJlaW5nIG1vZGlmaWVkLCBv
-        ciBzb21lIG90aGVyIGNyaXRpY2FsIGRldGFpbCwgdGhlc2VcbmFsbG93IHJv
-        bGVzIHRvIGJlIGdyYW50ZWQgcGFydGlhbCBhY2Nlc3MgdG8gbW9kaWZ5IHRo
-        ZSBzeXN0ZW0uXG5cbkZvciBtb3JlIGRldGFpbCBvbiBob3cgdGhlIHBlcm1p
-        c3Npb24gc3RyaW5ncyBhcmUgc3RydWN0dXJlZCBhbmQgd29yaywgeW91IGNh
-        blxuc2VlIHRoZSBbU2hpcm8gUGVybWlzc2lvbnMgZG9jdW1lbnRhdGlvbl1b
-        c2hpcm9dLiAgVGhhdCBwYXR0ZXJuIGlzIGV4cGFuZGVkXG5hbmQgdGhlbiBh
-        IHBlcm1pc3Npb24gY2hlY2sgYXBwbGllZCB0byBpdCwgYmVmb3JlIHRoZSBj
-        b21tYW5kIGlzIGF1dGhvcml6ZWQuXG5cblRoZXNlIGNoZWNrcyBvbmx5IGFw
-        cGx5IGlmIHNlY3VyaXR5IGlzIGVuYWJsZWQgaW4gdGhlIFJhem9yIGNvbmZp
-        Z3VyYXRpb25cbmZpbGU7IG9uIHRoaXMgc2VydmVyIHNlY3VyaXR5IGlzIGN1
-        cnJlbnRseSBkaXNhYmxlZC5cblxuW3NoaXJvXTogaHR0cDovL3NoaXJvLmFw
-        YWNoZS5vcmcvcGVybWlzc2lvbnMuaHRtbFxuXG4jIEF0dHJpYnV0ZXNcblxu
-        ICogbmFtZVxuICAgLSBUaGUgbmFtZSBvZiB0aGUgdGFnLlxuICAgLSBUaGlz
-        IGF0dHJpYnV0ZSBpcyByZXF1aXJlZC5cbiAgIC0gSXQgbXVzdCBiZSBvZiB0
-        eXBlIHN0cmluZy5cbiAgIC0gSXQgbXVzdCBiZSBiZXR3ZWVuIDEgYW5kIElu
-        ZmluaXR5IGluIGxlbmd0aC5cblxuICogcnVsZVxuICAgLSBUaGUgdGFnIG1h
-        dGNoZXMgYSBub2RlIGlmIGV2YWx1YXRpbmcgdGhpcyBydW4gYWdhaW5zdCB0
-        aGUgdGFn4oCZcyBmYWN0c1xuICAgICByZXN1bHRzIGluIHRydWUuIE5vdGUg
-        dGhhdCB0YWcgbWF0Y2hpbmcgaXMgY2FzZSBzZW5zaXRpdmUuXG4gICAgIFxu
-        ICAgICBGb3IgZXhhbXBsZSwgaGVyZSBpcyBhIHRhZyBydWxlOlxuICAgICBc
-        biAgICAgICAgIFtcIm9yXCIsXG4gICAgICAgICAgW1wiPVwiLCBbXCJmYWN0
-        XCIsIFwibWFjYWRkcmVzc1wiXSwgXCJkZTplYTpkYjplZTpmMDowMFwiXVxu
-        ICAgICAgICAgIFtcIj1cIiwgW1wiZmFjdFwiLCBcIm1hY2FkZHJlc3NcIl0s
-        IFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1dXG4gICAgIFxuICAgICBUaGUgdGFn
-        IGNvdWxkIGFsc28gYmUgd3JpdHRlbiBsaWtlIHRoaXM6XG4gICAgIFxuICAg
-        ICAgICAgW1wiaW5cIiwgW1wiZmFjdFwiLCBcIm1hY2FkZHJlc3NcIl0sIFwi
-        ZGU6ZWE6ZGI6ZWU6ZjA6MDBcIiwgXCJkZTplYTpkYjplZTpmMDowMVwiXVxu
-        ICAgICBcbiAgICAgVGhlIHN5bnRheCBmb3IgcnVsZSBleHByZXNzaW9ucyBp
-        cyBkZWZpbmVkIGluIGBsaWIvcmF6b3IvbWF0Y2hlci5yYmAuXG4gICAgIEV4
-        cHJlc3Npb25zIGFyZSBvZiB0aGUgZm9ybSBgW29wIGFyZzEgYXJnMiAuLiBh
-        cmduXWBcbiAgICAgd2hlcmUgb3AgaXMgb25lIG9mIHRoZSBvcGVyYXRvcnMg
-        YmVsb3csIGFuZCBhcmcxIHRocm91Z2ggYXJnbiBhcmUgdGhlXG4gICAgIGFy
-        Z3VtZW50cyBmb3IgdGhlIG9wZXJhdG9yLiBJZiB0aGV5IGFyZSBleHByZXNz
-        aW9ucyB0aGVtc2VsdmVzLCB0aGV5IHdpbGxcbiAgICAgYmUgZXZhbHVhdGVk
-        IGJlZm9yZSBgb3BgIGlzIGV2YWx1YXRlZC5cbiAgIC0gVGhpcyBhdHRyaWJ1
-        dGUgaXMgcmVxdWlyZWQuXG4gICAtIEl0IG11c3QgYmUgb2YgdHlwZSBhcnJh
-        eS5cblxuIyBFWEFNUExFU1xuXG4gIENyZWF0ZSBhIHNpbXBsZSB0YWc6XG4g
-        IFxuICB7XG4gICAgXCJuYW1lXCI6IFwic21hbGxcIixcbiAgICBcInJ1bGVc
-        IjogW1wiPVwiLCBbXCJmYWN0XCIsIFwicHJvY2Vzc29yY291bnRcIl0sIFwi
-        MlwiXVxuICB9XG4ifSwic2NoZW1hIjp7Im5hbWUiOnsidHlwZSI6InN0cmlu
-        ZyJ9LCJydWxlIjp7InR5cGUiOiJhcnJheSJ9fX0=
+        IGJlIGJldHdlZW4gMSBhbmQgSW5maW5pdHkgaW4gbGVuZ3RoLlxuICAgLSBJ
+        dHMgYXJndW1lbnQgcG9zaXRpb24gaXMgMC5cblxuICogcnVsZVxuICAgLSBU
+        aGUgdGFnIG1hdGNoZXMgYSBub2RlIGlmIGV2YWx1YXRpbmcgdGhpcyBydW4g
+        YWdhaW5zdCB0aGUgdGFn4oCZcyBmYWN0c1xuICAgICByZXN1bHRzIGluIHRy
+        dWUuIE5vdGUgdGhhdCB0YWcgbWF0Y2hpbmcgaXMgY2FzZSBzZW5zaXRpdmUu
+        XG4gICAgIFxuICAgICBGb3IgZXhhbXBsZSwgaGVyZSBpcyBhIHRhZyBydWxl
+        OlxuICAgICBcbiAgICAgICAgIFtcIm9yXCIsXG4gICAgICAgICAgW1wiPVwi
+        LCBbXCJmYWN0XCIsIFwibWFjYWRkcmVzc1wiXSwgXCJkZTplYTpkYjplZTpm
+        MDowMFwiXVxuICAgICAgICAgIFtcIj1cIiwgW1wiZmFjdFwiLCBcIm1hY2Fk
+        ZHJlc3NcIl0sIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDFcIl1dXG4gICAgIFxuICAg
+        ICBUaGUgdGFnIGNvdWxkIGFsc28gYmUgd3JpdHRlbiBsaWtlIHRoaXM6XG4g
+        ICAgIFxuICAgICAgICAgW1wiaW5cIiwgW1wiZmFjdFwiLCBcIm1hY2FkZHJl
+        c3NcIl0sIFwiZGU6ZWE6ZGI6ZWU6ZjA6MDBcIiwgXCJkZTplYTpkYjplZTpm
+        MDowMVwiXVxuICAgICBcbiAgICAgVGhlIHN5bnRheCBmb3IgcnVsZSBleHBy
+        ZXNzaW9ucyBpcyBkZWZpbmVkIGluIGBsaWIvcmF6b3IvbWF0Y2hlci5yYmAu
+        XG4gICAgIEV4cHJlc3Npb25zIGFyZSBvZiB0aGUgZm9ybSBgW29wIGFyZzEg
+        YXJnMiAuLiBhcmduXWBcbiAgICAgd2hlcmUgb3AgaXMgb25lIG9mIHRoZSBv
+        cGVyYXRvcnMgYmVsb3csIGFuZCBhcmcxIHRocm91Z2ggYXJnbiBhcmUgdGhl
+        XG4gICAgIGFyZ3VtZW50cyBmb3IgdGhlIG9wZXJhdG9yLiBJZiB0aGV5IGFy
+        ZSBleHByZXNzaW9ucyB0aGVtc2VsdmVzLCB0aGV5IHdpbGxcbiAgICAgYmUg
+        ZXZhbHVhdGVkIGJlZm9yZSBgb3BgIGlzIGV2YWx1YXRlZC5cbiAgIC0gVGhp
+        cyBhdHRyaWJ1dGUgaXMgcmVxdWlyZWQuXG4gICAtIEl0IG11c3QgYmUgb2Yg
+        dHlwZSBhcnJheS5cbiAgIC0gSXRzIGFyZ3VtZW50IHBvc2l0aW9uIGlzIDEu
+        XG4iLCJleGFtcGxlcyI6eyJhcGkiOiJDcmVhdGUgYSBzaW1wbGUgdGFnOlxu
+        XG57XG4gIFwibmFtZVwiOiBcInNtYWxsXCIsXG4gIFwicnVsZVwiOiBbXCI9
+        XCIsIFtcImZhY3RcIiwgXCJwcm9jZXNzb3Jjb3VudFwiXSwgXCIyXCJdXG59
+        IiwiY2xpIjoiQ3JlYXRlIGEgc2ltcGxlIHRhZzpcblxuICAgIHJhem9yIGNy
+        ZWF0ZS10YWcgLS1uYW1lIHNtYWxsIC0tcnVsZSAnW1wiPVwiLCBbXCJmYWN0
+        XCIsIFwicHJvY2Vzc29yY291bnRcIl0sIFwiMlwiXSdcblxuV2l0aCBwb3Np
+        dGlvbmFsIGFyZ3VtZW50cywgdGhpcyBjYW4gYmUgc2hvcnRlbmVkOjpcblxu
+        ICAgIHJhem9yIGNyZWF0ZS10YWcgc21hbGwgJ1tcIj1cIiwgW1wiZmFjdFwi
+        LCBcInByb2Nlc3NvcmNvdW50XCJdLCBcIjJcIl0nIn0sImZ1bGwiOiIjIFNZ
+        Tk9QU0lTXG5DcmVhdGUgYSBuZXcgdGFnXG5cbiMgREVTQ1JJUFRJT05cbkNy
+        ZWF0ZSBhIG5ldyB0YWcsIGFuZCBzZXQgdGhlIHJ1bGUgaXQgd2lsbCB1c2Ug
+        dG8gbWF0Y2ggb24gZmFjdHMgYW5kIG5vZGVcbm1ldGFkYXRhLlxuIyBBY2Nl
+        c3MgQ29udHJvbFxuXG5UaGlzIGNvbW1hbmQncyBhY2Nlc3MgY29udHJvbCBw
+        YXR0ZXJuOiBgY29tbWFuZHM6Y3JlYXRlLXRhZzole25hbWV9YFxuXG5Xb3Jk
+        cyBzdXJyb3VuZGVkIGJ5IGAley4uLn1gIGFyZSBzdWJzdGl0dXRpb25zIGZy
+        b20gdGhlIGlucHV0IGRhdGE6IHR5cGljYWxseVxudGhlIG5hbWUgb2YgdGhl
+        IG9iamVjdCBiZWluZyBtb2RpZmllZCwgb3Igc29tZSBvdGhlciBjcml0aWNh
+        bCBkZXRhaWwsIHRoZXNlXG5hbGxvdyByb2xlcyB0byBiZSBncmFudGVkIHBh
+        cnRpYWwgYWNjZXNzIHRvIG1vZGlmeSB0aGUgc3lzdGVtLlxuXG5Gb3IgbW9y
+        ZSBkZXRhaWwgb24gaG93IHRoZSBwZXJtaXNzaW9uIHN0cmluZ3MgYXJlIHN0
+        cnVjdHVyZWQgYW5kIHdvcmssIHlvdSBjYW5cbnNlZSB0aGUgW1NoaXJvIFBl
+        cm1pc3Npb25zIGRvY3VtZW50YXRpb25dW3NoaXJvXS4gIFRoYXQgcGF0dGVy
+        biBpcyBleHBhbmRlZFxuYW5kIHRoZW4gYSBwZXJtaXNzaW9uIGNoZWNrIGFw
+        cGxpZWQgdG8gaXQsIGJlZm9yZSB0aGUgY29tbWFuZCBpcyBhdXRob3JpemVk
+        LlxuXG5UaGVzZSBjaGVja3Mgb25seSBhcHBseSBpZiBzZWN1cml0eSBpcyBl
+        bmFibGVkIGluIHRoZSBSYXpvciBjb25maWd1cmF0aW9uXG5maWxlOyBvbiB0
+        aGlzIHNlcnZlciBzZWN1cml0eSBpcyBjdXJyZW50bHkgZGlzYWJsZWQuXG5c
+        bltzaGlyb106IGh0dHA6Ly9zaGlyby5hcGFjaGUub3JnL3Blcm1pc3Npb25z
+        Lmh0bWxcblxuIyBBdHRyaWJ1dGVzXG5cbiAqIG5hbWVcbiAgIC0gVGhlIG5h
+        bWUgb2YgdGhlIHRhZy5cbiAgIC0gVGhpcyBhdHRyaWJ1dGUgaXMgcmVxdWly
+        ZWQuXG4gICAtIEl0IG11c3QgYmUgb2YgdHlwZSBzdHJpbmcuXG4gICAtIEl0
+        IG11c3QgYmUgYmV0d2VlbiAxIGFuZCBJbmZpbml0eSBpbiBsZW5ndGguXG4g
+        ICAtIEl0cyBhcmd1bWVudCBwb3NpdGlvbiBpcyAwLlxuXG4gKiBydWxlXG4g
+        ICAtIFRoZSB0YWcgbWF0Y2hlcyBhIG5vZGUgaWYgZXZhbHVhdGluZyB0aGlz
+        IHJ1biBhZ2FpbnN0IHRoZSB0YWfigJlzIGZhY3RzXG4gICAgIHJlc3VsdHMg
+        aW4gdHJ1ZS4gTm90ZSB0aGF0IHRhZyBtYXRjaGluZyBpcyBjYXNlIHNlbnNp
+        dGl2ZS5cbiAgICAgXG4gICAgIEZvciBleGFtcGxlLCBoZXJlIGlzIGEgdGFn
+        IHJ1bGU6XG4gICAgIFxuICAgICAgICAgW1wib3JcIixcbiAgICAgICAgICBb
+        XCI9XCIsIFtcImZhY3RcIiwgXCJtYWNhZGRyZXNzXCJdLCBcImRlOmVhOmRi
+        OmVlOmYwOjAwXCJdXG4gICAgICAgICAgW1wiPVwiLCBbXCJmYWN0XCIsIFwi
+        bWFjYWRkcmVzc1wiXSwgXCJkZTplYTpkYjplZTpmMDowMVwiXV1cbiAgICAg
+        XG4gICAgIFRoZSB0YWcgY291bGQgYWxzbyBiZSB3cml0dGVuIGxpa2UgdGhp
+        czpcbiAgICAgXG4gICAgICAgICBbXCJpblwiLCBbXCJmYWN0XCIsIFwibWFj
+        YWRkcmVzc1wiXSwgXCJkZTplYTpkYjplZTpmMDowMFwiLCBcImRlOmVhOmRi
+        OmVlOmYwOjAxXCJdXG4gICAgIFxuICAgICBUaGUgc3ludGF4IGZvciBydWxl
+        IGV4cHJlc3Npb25zIGlzIGRlZmluZWQgaW4gYGxpYi9yYXpvci9tYXRjaGVy
+        LnJiYC5cbiAgICAgRXhwcmVzc2lvbnMgYXJlIG9mIHRoZSBmb3JtIGBbb3Ag
+        YXJnMSBhcmcyIC4uIGFyZ25dYFxuICAgICB3aGVyZSBvcCBpcyBvbmUgb2Yg
+        dGhlIG9wZXJhdG9ycyBiZWxvdywgYW5kIGFyZzEgdGhyb3VnaCBhcmduIGFy
+        ZSB0aGVcbiAgICAgYXJndW1lbnRzIGZvciB0aGUgb3BlcmF0b3IuIElmIHRo
+        ZXkgYXJlIGV4cHJlc3Npb25zIHRoZW1zZWx2ZXMsIHRoZXkgd2lsbFxuICAg
+        ICBiZSBldmFsdWF0ZWQgYmVmb3JlIGBvcGAgaXMgZXZhbHVhdGVkLlxuICAg
+        LSBUaGlzIGF0dHJpYnV0ZSBpcyByZXF1aXJlZC5cbiAgIC0gSXQgbXVzdCBi
+        ZSBvZiB0eXBlIGFycmF5LlxuICAgLSBJdHMgYXJndW1lbnQgcG9zaXRpb24g
+        aXMgMS5cblxuIyBFWEFNUExFU1xuXG4gIENyZWF0ZSBhIHNpbXBsZSB0YWc6
+        XG4gIFxuICB7XG4gICAgXCJuYW1lXCI6IFwic21hbGxcIixcbiAgICBcInJ1
+        bGVcIjogW1wiPVwiLCBbXCJmYWN0XCIsIFwicHJvY2Vzc29yY291bnRcIl0s
+        IFwiMlwiXVxuICB9XG4ifSwic2NoZW1hIjp7Im5hbWUiOnsidHlwZSI6InN0
+        cmluZyIsInBvc2l0aW9uIjowfSwicnVsZSI6eyJ0eXBlIjoiYXJyYXkiLCJw
+        b3NpdGlvbiI6MX19fQ==
     http_version:
-  recorded_at: Mon, 09 Mar 2015 19:53:09 GMT
-recorded_with: VCR 2.5.0
+  recorded_at: Mon, 23 Apr 2018 19:46:12 GMT
+recorded_with: VCR 4.0.0

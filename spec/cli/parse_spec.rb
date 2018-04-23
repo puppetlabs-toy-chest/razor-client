@@ -16,10 +16,9 @@ describe Razor::CLI::Parse do
     Razor::CLI::Parse.new(args)
   end
 
-  describe "#new" do
+  describe "#new", :vcr do
     context "with no arguments" do
       it {parse.show_help?.should be true}
-      it {parse.verify_ssl?.should be false}
     end
 
     context "with a '-h'" do
