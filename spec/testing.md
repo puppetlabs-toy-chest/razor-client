@@ -14,3 +14,27 @@ Here are some suggestions to make rerecording easier:
       objects be present in the database: brokers, repos, etc. The only way to issue the `create-policy` command
       successfully on the client is to issue `create-broker`, `create-repo`, etc. beforehand. These extra commands
       should be part of the test.
+
+When recording VCR interactions, we need to reset the database between each test so that we can ensure test isolation.
+The tests here assume a directory structure like this (defined in `spec_helper.rb`), which allows our tests to reset
+the database back to an empty state between tests:
+- Parent directory
+-- razor-client
+--- ...
+-- razor-server
+--- bin/razor-admin
+--- ...
+
+Thus, to run `razor-admin`, recording VCR interactions must be done with JRuby, specifically the version matching
+razor-server.
+
+If your filesystem directory matches the above, and you're ready to start recording a test, run torquebox from the
+razor-server directory in one terminal window as so:
+
+`torquebox run -b 0.0.0.0 --port 8150`
+
+Then run the tests with the `VCR_RECORD` prefix:
+
+`VCR_RECORD=new_episodes bundle exec rspec spec`
+
+See [VCR's documentation](https://relishapp.com/vcr/vcr/docs) for other available VCR modes.
