@@ -238,7 +238,9 @@ describe Razor::CLI::Navigate do
       nav.accept_language.should == GettextSetup.candidate_locales
     end
     it "should allow other accept-language headers" do
-      ENV['LANG'] = 'de_DE'
+      # This will be set on the client's machine. We're not concerned with how
+      # the Locale library figures this out.
+      Locale.set_current('de_DE')
       locales = GettextSetup.candidate_locales
       locales.should == 'de_DE,de,en'
       nav = Razor::CLI::Parse.new(['create-broker', '--name=other-broker', '--broker-type', 'puppet-pe', '-c', 'server=abc.com']).navigate
