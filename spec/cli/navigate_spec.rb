@@ -24,7 +24,7 @@ describe Razor::CLI::Navigate do
     it { nav.get_document['items'].should == []}
 
     it do
-      nav.get_document;
+      nav.get_document
       nav.last_url.to_s.should =~ %r{/api/collections/tags$}
     end
   end
@@ -42,7 +42,7 @@ describe Razor::CLI::Navigate do
     end
 
     it "should fail with malformed argument" do
-      nav = Razor::CLI::Parse.new(['create-tag', '--name', 'tag_2', '--inva^lid']).navigate
+      nav = Razor::CLI::Parse.new(['create-tag', 'tag_2', 'rule', '--inva^lid']).navigate
       expect{nav.get_document}.to raise_error(ArgumentError, /Unexpected argument --inva\^lid/)
     end
   end
@@ -51,6 +51,52 @@ describe Razor::CLI::Navigate do
     it "should fail with bad JSON" do
       nav = Razor::CLI::Parse.new(['update-tag-rule']).navigate
       expect{nav.get_document}.to raise_error(Razor::CLI::Error, /No arguments for command/)
+    end
+  end
+
+  context "finds the right API", :vcr do
+    def stub_results(real_url)
+      api_fixtures_path = File::join(File::dirname(__FILE__), '..', 'fixtures', 'sample_api')
+      sample_api = File.read(api_fixtures_path)
+      stub_const('Razor::CLI::Navigate::RAZOR_HTTPS_API', 'https://bad-https:8151/api')
+      stub_const('Razor::CLI::Navigate::RAZOR_HTTP_API', 'http://bad-http:8150/api')
+      ::WebMock.stub_request(:get, real_url).to_return(body: sample_api, headers: {"Content-Type" => 'application/json'})
+      ::WebMock.stub_request(:head, real_url)
+    end
+    let(:cli_string) do
+      %w[--version].freeze
+    end
+    it "chooses the -u argument first" do
+      url = 'http://u-argument:8000'
+      stub_results(url)
+      cli_string = %W[-u #{url} --version].freeze
+      nav = Razor::CLI::Parse.new(cli_string).navigate
+      nav.last_url.to_s.should == url
+    end
+    it "chooses the ENV variable second" do
+      url = 'http://env-variable:8000'
+      stub_results(url)
+      ENV::store('RAZOR_API', url)
+      nav = Razor::CLI::Parse.new(cli_string).navigate
+      nav.last_url.to_s.should == url
+    end
+    it "chooses the HTTPS URL third" do
+      url = 'http://https-url:8000'
+      stub_results(url)
+      stub_const('Razor::CLI::Navigate::RAZOR_HTTPS_API', url)
+      nav = Razor::CLI::Parse.new(cli_string).navigate
+      nav.last_url.to_s.should == url
+    end
+    it "chooses the HTTP URL last" do
+      url = 'http://http-url:8000'
+      refused = 'http://refused:404/api'
+      stub_results(url)
+      # PRIORITY still needs to be refused
+      stub_const('Razor::CLI::Navigate::RAZOR_HTTPS_API', refused)
+      ::WebMock.stub_request(:head, refused).to_raise(Errno::ECONNREFUSED)
+      stub_const('Razor::CLI::Navigate::RAZOR_HTTP_API', url)
+      nav = Razor::CLI::Parse.new(cli_string).navigate
+      nav.last_url.to_s.should == url
     end
   end
 

@@ -44,7 +44,10 @@ end
 RSpec.configure do |c|
   c.treat_symbols_as_metadata_keys_with_true_values = true
   c.before(:each) do
-    ENV::store('RAZOR_API', 'http://localhost:8150/api')
+    ENV.delete('RAZOR_API')
+    # VCR/WebMock do not record requests where connection is completely
+    # refused, so we need to mock that here.
+    ::WebMock.stub_request(:head, 'https://localhost:8151/api').to_raise(Errno::ECONNREFUSED)
   end
   # Make tests have no side effects when [re-]recording.
   if vcr_recording?
