@@ -1,5 +1,11 @@
 # Razor Client Release Notes
 
+## 1.9.0 - 2018-05-30
+
+* NEW: Use the server's `depth` parameter if it is supported. This will
+  dramatically decrease the number of API requests needed when listing
+  collections.
+
 ## 1.8.1 - 2018-04-23
 
 * IMPROVEMENT: The default API URL now attempts to use TLS on localhost port
