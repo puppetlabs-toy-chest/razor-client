@@ -44,6 +44,22 @@ describe Razor::CLI::Command do
       result = Command.convert_arg('tags', 'def', existing_value, cmd_schema)
       result.should == %w(abc def)
     end
+    context "number conversion" do
+      it "errors when not passed a number" do
+        ['t', '-1e', '-A', '100s'].each do |input|
+          cmd_schema = {"tags"=>{"type"=>"number"}}
+          expect{Command.convert_arg('tags', input, existing_value, cmd_schema)}.
+              to raise_error(ArgumentError, /Invalid integer for argument 'tags': #{input}/)
+        end
+      end
+    end
+    context "null conversion" do
+      it "errors when more than null is provided" do
+        cmd_schema = {"tags"=>{"type"=>"null"}}
+        expect{Command.convert_arg('tags', 'abc', existing_value, cmd_schema)}.
+            to raise_error(ArgumentError, /Expected nothing for argument 'tags', but was: 'abc'/)
+      end
+    end
   end
 
   context "resolve_alias" do
