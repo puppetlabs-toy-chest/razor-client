@@ -132,10 +132,10 @@ class Razor::CLI::Command
         begin
           Integer(value)
         rescue ArgumentError
-          raise ArgumentError, _("Invalid integer for argument '%{arg_name}': %{value}") % {argument_name: arg_name, value: value}
+          raise ArgumentError, _("Invalid integer for argument '%{argument_name}': %{value}") % {argument_name: arg_name, value: value}
         end
       when "null"
-        raise ArgumentError, _("Expected nothing for argument '%{arg_name}', but was: '%{value}'") %
+        raise ArgumentError, _("Expected nothing for argument '%{argument_name}', but was: '%{value}'") %
             {argument_name: arg_name, value: value} unless value.nil?
         nil
       when "string", nil # `nil` for 'might be an alias, send as-is'
