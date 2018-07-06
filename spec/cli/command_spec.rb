@@ -182,6 +182,11 @@ describe Razor::CLI::Command do
         body['a'].should == {}
         body['i'].should == {'abc' => '123'}
       end
+      it "knows what isn't a proper flag" do
+        body = extract(schema, ['123', '-o', '-A'])
+        body['o'].should == '-A'
+        body['n'].should be_nil
+      end
     end
   end
 end
