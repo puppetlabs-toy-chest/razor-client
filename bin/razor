@@ -54,9 +54,7 @@ begin
 rescue Razor::CLI::InvalidURIError => e
   die e.message
 rescue RestClient::Unauthorized
-  puts _(<<-UNAUTH) % {url: url}
-Error: Credentials are required to connect to the server at %{url}"
-  UNAUTH
+  die _("Error: Credentials are required to connect to the server at %{url}") % {url: url}
 rescue OptionParser::InvalidOption => e
   # TRANSLATORS: This occurs when invalid flags are passed in the navigation.
   die _("%{error}\nTry 'razor --help' for more information") %
