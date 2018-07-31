@@ -86,25 +86,22 @@ describe Razor::CLI::Format do
             {'collections' => {'some' => {'table' => {'+short' => {'+layout' => 'table'}}}}})
       result = format doc
       result.should ==
-          # The framework seems to be adding unnecessary spaces at the end of each data line;
-          # Working around this by adding \s to the expectation.
-
           # Unicode:
 #┏━━━┳━━━┳━━━┳━━━┓
-#┃ a ┃ c ┃ b ┃ e ┃\s
+#┃ a ┃ c ┃ b ┃ e ┃
 #┣━━━╊━━━╊━━━╊━━━┫
-#┃ b ┃ d ┃   ┃   ┃\s
+#┃ b ┃ d ┃   ┃   ┃
 #┣━━━╊━━━╊━━━╊━━━┫
-#┃   ┃   ┃ c ┃ f ┃\s
+#┃   ┃   ┃ c ┃ f ┃
 #┗━━━┻━━━┻━━━┻━━━┛
           # ASCII:
           <<-OUTPUT.rstrip
 +---+---+---+---+
-| a | c | b | e |\s
+| a | c | b | e |
 +---+---+---+---+
-| b | d |   |   |\s
+| b | d |   |   |
 +---+---+---+---+
-|   |   | c | f |\s
+|   |   | c | f |
 +---+---+---+---+
           OUTPUT
     end
@@ -116,21 +113,18 @@ describe Razor::CLI::Format do
           {'collections' => {'some' => {'table' => {'+short' => {'+layout' => 'table'}}}}})
       result = format doc
       result.should ==
-          # The framework seems to be adding unnecessary spaces at the end of each data line;
-          # Working around this by adding \s to the expectation.
-
           # Unicode:
 #┏━━━━━━━━━━━━┓
-#┃ a          ┃\s
+#┃ a          ┃
 #┣━━━━━━━━━━━━┫
-#┃ ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ ┃\s
+#┃ ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ ┃
 #┗━━━━━━━━━━━━┛
           # ASCII:
           <<-OUTPUT.rstrip
 +------------+
-| a          |\s
+| a          |
 +------------+
-| ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ |\s
+| ᓱᓴᓐ ᐊᒡᓗᒃᑲᖅ |
 +------------+
 OUTPUT
     end

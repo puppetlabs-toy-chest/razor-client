@@ -7,6 +7,8 @@ gem 'command_line_reporter', '>=3.0'
 gem 'gettext-setup'
 gem 'rack', '< 2.0.0', '>= 1.5.4'
 gem 'multi_json'
+gem 'domain_name', '>= 0.5.20180417'
+gem 'unf', '>= 0.2.0.beta2'
 
 group :doc do
   gem 'yard'

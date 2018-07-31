@@ -30,6 +30,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rest-client", '~> 2.0'
   spec.add_dependency "command_line_reporter", '~> 3.0'
   spec.add_dependency "gettext-setup", '~> 0.29'
+  spec.add_dependency "domain_name", '>= 0.5.20180417'
+  # This version of UNF does not require native extensions for Ruby >= 2.2.
+  spec.add_dependency 'unf', '>= 0.2.0.beta2'
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
