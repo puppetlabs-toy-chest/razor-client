@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-raise 'Ruby should be >2.0' unless RUBY_VERSION.to_f > 2.0
+gemspec
 
 def location_for(place, fake_version = nil)
   if place =~ /^(git[:@][^#]*)#(.*)/
@@ -40,10 +40,6 @@ group :test do
   gem 'simplecov'
   gem 'webmock', '~> 3.3.0'
   gem 'vcr', '~> 4.0.0'
-end
-
-group :development do
-  gem 'rake'
 end
 
 # This allows you to create `Gemfile.local` and have it loaded automatically;
