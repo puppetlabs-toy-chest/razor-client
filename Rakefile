@@ -42,36 +42,22 @@ end
 # Support for our internal packaging toolchain.  Most people outside of Puppet
 # Labs will never actually need to deal with these.
 begin
-  load File.join(File.dirname(__FILE__), 'ext', 'packaging', 'packaging.rake')
-rescue LoadError
+  require 'packaging'
+  Pkg::Util::RakeUtils.load_packaging_tasks
+rescue LoadError => e
+  puts "Error loading packaging rake tasks: #{e}"
 end
 
-begin
-  @build_defaults ||= YAML.load_file('ext/build_defaults.yaml')
-  @packaging_url  = @build_defaults['packaging_url']
-  @packaging_repo = @build_defaults['packaging_repo']
-rescue => e
-  STDERR.puts "Unable to read the packaging repo info from ext/build_defaults.yaml"
-  STDERR.puts e
-end
-
+# Kept for backwards compatibility
 namespace :package do
   desc "Bootstrap packaging automation, e.g. clone into packaging repo"
   task :bootstrap do
-    if File.exist?("ext/#{@packaging_repo}")
-      puts "It looks like you already have ext/#{@packaging_repo}. If you don't like it, blow it away with package:implode."
-    else
-      cd 'ext' do
-        %x{git clone #{@packaging_url}}
-      end
-    end
+    puts 'Bootstrap is no longer needed, using packaging-as-a-gem'
   end
 
   desc "Remove all cloned packaging automation"
   task :implode do
-    if @packaging_repo and not @packaging_repo.empty?
-      rm_rf "ext/#{@packaging_repo}"
-    end
+    puts 'Implode is no longer needed, using packaging-as-a-gem'
   end
 end
 

@@ -2,6 +2,16 @@ source 'https://rubygems.org'
 
 raise 'Ruby should be >2.0' unless RUBY_VERSION.to_f > 2.0
 
+def location_for(place, fake_version = nil)
+  if place =~ /^(git[:@][^#]*)#(.*)/
+    [fake_version, { :git => $1, :branch => $2, :require => false }].compact
+  elsif place =~ /^file:\/\/(.*)/
+    ['>= 0', { :path => File.expand_path($1), :require => false }]
+  else
+    [place, { :require => false }]
+  end
+end
+
 gem 'rest-client', '> 2.0.0'
 gem 'command_line_reporter', '>=3.0'
 gem 'gettext-setup'
@@ -9,6 +19,10 @@ gem 'rack', '< 2.0.0', '>= 1.5.4'
 gem 'multi_json'
 gem 'domain_name', '>= 0.5.20180417'
 gem 'unf', '>= 0.2.0.beta2'
+
+group :packaging do
+  gem 'packaging', *location_for(ENV['PACKAGING_LOCATION'] || '~> 0.99')
+end
 
 group :doc do
   gem 'yard'
