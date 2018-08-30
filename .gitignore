@@ -6,3 +6,4 @@ pkg/
 /coverage
 /.project
 /ext/packaging/
+Gemfile.lock
