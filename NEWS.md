@@ -1,5 +1,18 @@
 # Razor Client Release Notes
 
+## 1.9.2 - 2019-08-14
+
+* BUGFIX: Fixed error output when number or null datatypes are invalid.
+* IMPROVEMENT: Now exits with status code 1 if login credentials are missing.
+* IMPROVEMENT: Updated gem dependencies.
+* IMPROVEMENT: Better error handling for REST exceptions returned from the
+  Razor server.
+* IMPROVEMENT: Removed Gemfile.lock from repository. This broadens the spectrum
+  of which gems can be used as dependencies for this gem. This is especially
+  useful for gem dependencies that become outdated or obsolete.
+* BUGFIX: Pinned a version of the `gettext-setup` gem which caused an error if
+  the version was too old.
+
 ## 1.9.1 - 2018-06-07
 
 * NEW: Use the server's `depth` parameter if it is supported. This will
