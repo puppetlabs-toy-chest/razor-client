@@ -1,6 +1,12 @@
 # Razor Client Release Notes
 
-## 1.9.2 - 2019-08-14
+## 1.9.3 - 2019-08-19
+
+* BUGFIX: The `unf` gem dependency referenced a prerelease version of a gem.
+  Rather than force the use of `--pre` when installing the gem, we will pin
+  back to the released version, which requires GCC to build native extensions.
+
+## 1.9.2 - 2019-08-14 (yanked)
 
 * BUGFIX: Fixed error output when number or null datatypes are invalid.
 * IMPROVEMENT: Now exits with status code 1 if login credentials are missing.
