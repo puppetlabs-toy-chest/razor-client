@@ -68,6 +68,8 @@ module Razor::CLI
       error = ''
       begin
         server_version = navigate.server_version
+      rescue Razor::CLI::UnauthorizedError => e
+        error = e.message
       rescue
         error = _("Error: Could not connect to the server at %{url}.") % {url: @api_url}
       ensure
@@ -80,7 +82,7 @@ module Razor::CLI
 
     def help
       output = get_optparse.to_s
-      exit = 0
+      error = ''
       begin
         replacements = {collections: list_things(_("Collections"), navigate.collections),
                         commands: list_things(_("Commands"), navigate.commands)}
@@ -99,29 +101,24 @@ module Razor::CLI
 
 HELP
       rescue SocketError, Faraday::ConnectionFailed => e
-        puts _("Error: Could not connect to the server at %{url}") % {url: @api_url}
-        puts "       #{e}\n"
-        die
+        # TRANSLATORS: "e" is just an exception output message.
+        error = _("Error: Could not connect to the server at %{url}\n" +
+                  "       %{e}") % {url: @api_url, e: e}
       rescue Faraday::SSLError
-        puts _("Error: SSL certificate could not be verified against known CA certificates.\n" +
-               "       To turn off verification, use the -k or --insecure option.")
-        die
+        error = _("Error: SSL certificate could not be verified against known CA certificates.\n" +
+                  "       To turn off verification, use the -k or --insecure option.")
       rescue OpenSSL::SSL::SSLError => e
         # Occurs in case of e.g. certificate mismatch (FQDN vs. hostname)
-        puts _("Error: SSL certificate error from server at %{url}") % {url: @api_url}
-        puts "       #{e}"
-        die
+        error = _("Error: SSL certificate error from server at %{url}\n" +
+                  "       %{e}") % {url: @api_url, e: e}
       rescue Razor::CLI::Error => e
-        # Pass-through
-        raise e
+        error = e.message
       rescue => e
-        output << _(<<-ERR) % {url: @api_url}
-Error: Unknown error occurred while connecting to server at %{url}:
-       #{e}
-ERR
-        exit = 1
+        error = "Error: Unknown error occurred while connecting to server at %{url}:" +
+                "       %{e}" % {url: @api_url, e: e}
+      ensure
+        return [(output + "\n" + error).rstrip, error != '' ? 1 : 0]
       end
-      [output, exit]
     end
 
     def show_version?
