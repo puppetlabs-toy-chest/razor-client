@@ -52,7 +52,8 @@ begin
   # TRANSLATORS: This is a template for all results that the client outputs.
   puts _("From %{url}:\n\n%{result}\n\n") % {url: url, result: result}
 rescue Razor::CLI::InvalidURIError, Razor::CLI::UnauthorizedError => e
-  die e.message
+  puts e.message
+  die
 rescue OptionParser::InvalidOption => e
   # TRANSLATORS: This occurs when invalid flags are passed in the navigation.
   die _("%{error}\nTry 'razor --help' for more information") %
