@@ -12,14 +12,6 @@ def location_for(place, fake_version = nil)
   end
 end
 
-gem 'rest-client', '> 2.0.0'
-gem 'command_line_reporter', '>=3.0'
-gem 'gettext-setup', '>= 0.31'
-gem 'rack', '< 2.0.0', '>= 1.5.4'
-gem 'multi_json'
-gem 'domain_name', '>= 0.5.20180417'
-gem 'unf', '>= 0.1.4'
-
 group :packaging do
   gem 'packaging', *location_for(ENV['PACKAGING_LOCATION'] || '~> 0.99')
 end

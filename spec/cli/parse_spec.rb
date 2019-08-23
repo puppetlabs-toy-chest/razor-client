@@ -131,9 +131,11 @@ describe Razor::CLI::Parse do
       subject(:p) {parse}
       it { should respond_to :help}
 
-      it { output, exitcode = p.help
-           output.should be_a String
-           exitcode.should == 0}
+      it do
+        output, exitcode = p.help
+        output.should be_a String
+        exitcode.should == 0
+      end
 
       it "should print a list of known endpoints" do
         p.navigate.should_receive(:collections).and_return([])

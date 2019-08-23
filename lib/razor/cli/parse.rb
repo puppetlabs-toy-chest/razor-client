@@ -68,8 +68,6 @@ module Razor::CLI
       error = ''
       begin
         server_version = navigate.server_version
-      rescue RestClient::Unauthorized
-        error = _("Error: Credentials are required to connect to the server at %{url}.") % {url: @api_url}
       rescue
         error = _("Error: Could not connect to the server at %{url}.") % {url: @api_url}
       ensure
@@ -100,16 +98,11 @@ module Razor::CLI
       nested structures such as the configuration for a broker.
 
 HELP
-      rescue RestClient::Unauthorized
-        output << _(<<-UNAUTH) % {url: @api_url}
-Error: Credentials are required to connect to the server at %{url}"
-UNAUTH
-        exit = 1
-      rescue SocketError, Errno::ECONNREFUSED => e
+      rescue SocketError, Faraday::ConnectionFailed => e
         puts _("Error: Could not connect to the server at %{url}") % {url: @api_url}
         puts "       #{e}\n"
         die
-      rescue RestClient::SSLCertificateNotVerified
+      rescue Faraday::SSLError
         puts _("Error: SSL certificate could not be verified against known CA certificates.\n" +
                "       To turn off verification, use the -k or --insecure option.")
         die
@@ -118,6 +111,9 @@ UNAUTH
         puts _("Error: SSL certificate error from server at %{url}") % {url: @api_url}
         puts "       #{e}"
         die
+      rescue Razor::CLI::Error => e
+        # Pass-through
+        raise e
       rescue => e
         output << _(<<-ERR) % {url: @api_url}
 Error: Unknown error occurred while connecting to server at %{url}:

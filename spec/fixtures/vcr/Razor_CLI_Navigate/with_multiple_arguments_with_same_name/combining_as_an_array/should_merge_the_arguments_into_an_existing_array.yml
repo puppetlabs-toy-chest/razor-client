@@ -9,14 +9,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -29,14 +29,14 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '7110'
+      - '7432'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.8.0-dirty"}}'
+      string: '{"commands":[{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers","params":{"depth":{"type":"number"}}},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos","params":{"depth":{"type":"number"}}},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags","params":{"depth":{"type":"number"}}},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies","params":{"depth":{"type":"number"}}},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks","params":{"depth":{"type":"number"}}},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands","params":{"depth":{"type":"number"}}},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks","params":{"depth":{"type":"number"}}},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.9.5-9-g774b5ce-dirty"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/commands/create-repo
@@ -46,14 +46,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -62,7 +62,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v1.8.0-dirty"'
+      - '"server-version-v1.9.5-9-g774b5ce-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
@@ -70,7 +70,7 @@ http_interactions:
       Content-Length:
       - '8224'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"name":"create-repo","help":{"summary":"Create a new repository, from
@@ -170,7 +170,7 @@ http_interactions:
         onto the Razor server:\n  \n      {\n        \"name\": \"fedora21\",\n        \"url\":  \"http://mirrors.n-ix.net/fedora/linux/releases/21/Server/x86_64/os\"\n        \"task\":
         \"fedora\"\n      }\n"},"schema":{"name":{"type":"string","position":0},"url":{"type":"string"},"iso_url":{"type":"string","aliases":["iso-url"]},"no_content":{"type":"boolean","aliases":["no-content"]},"task":{"type":"string"}}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: post
     uri: http://localhost:8150/api/commands/create-repo
@@ -178,20 +178,18 @@ http_interactions:
       encoding: UTF-8
       string: '{"name":"name","url":"http://url.com/some.iso","task":"noop"}'
     headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Content-Type:
+      - application/json
+      Accept:
       - application/json
       Accept-Language:
       - en_US,en
-      Content-Length:
-      - '61'
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 202
@@ -206,12 +204,12 @@ http_interactions:
       Content-Length:
       - '201'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8150/api/collections/repos/name","name":"name","command":"http://localhost:8150/api/collections/commands/1"}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/collections/repos/name
@@ -221,14 +219,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -243,12 +241,12 @@ http_interactions:
       Content-Length:
       - '335'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8150/api/collections/repos/name","name":"name","iso_url":null,"url":"http://url.com/some.iso","task":{"spec":"http://api.puppetlabs.com/razor/v1/collections/tasks/member","id":"http://localhost:8150/api/collections/tasks/noop","name":"noop"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api
@@ -258,14 +256,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -278,14 +276,14 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '7110'
+      - '7432'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.8.0-dirty"}}'
+      string: '{"commands":[{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers","params":{"depth":{"type":"number"}}},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos","params":{"depth":{"type":"number"}}},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags","params":{"depth":{"type":"number"}}},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies","params":{"depth":{"type":"number"}}},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks","params":{"depth":{"type":"number"}}},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands","params":{"depth":{"type":"number"}}},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks","params":{"depth":{"type":"number"}}},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.9.5-9-g774b5ce-dirty"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/commands/create-broker
@@ -295,14 +293,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -311,7 +309,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v1.8.0-dirty"'
+      - '"server-version-v1.9.5-9-g774b5ce-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
@@ -319,7 +317,7 @@ http_interactions:
       Content-Length:
       - '5560'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"name":"create-broker","help":{"summary":"Create a new broker configuration
@@ -342,7 +340,7 @@ http_interactions:
         This attribute is required.\n   - It must be of type string.\n   - It must
         be between 1 and 250 in length.\n   - Its argument position is 0.\n\n * broker_type\n   -
         The broker type from which this broker is created.  The available\n     broker
-        types on your server are:\n     - chef\n     - legacy-puppet\n     - noop\n     -
+        types on your server are:\n     - legacy-puppet\n     - noop\n     - chef\n     -
         puppet-pe\n     - puppet\n   - This attribute is required.\n   - It must be
         of type string.\n   - It must match the name of an existing broker type.\n   -
         Its argument position is 1.\n\n * configuration\n   - The configuration for
@@ -377,7 +375,7 @@ http_interactions:
         is required.\n   - It must be of type string.\n   - It must be between 1 and
         250 in length.\n   - Its argument position is 0.\n\n * broker_type\n   - The
         broker type from which this broker is created.  The available\n     broker
-        types on your server are:\n     - chef\n     - legacy-puppet\n     - noop\n     -
+        types on your server are:\n     - legacy-puppet\n     - noop\n     - chef\n     -
         puppet-pe\n     - puppet\n   - This attribute is required.\n   - It must be
         of type string.\n   - It must match the name of an existing broker type.\n   -
         Its argument position is 1.\n\n * configuration\n   - The configuration for
@@ -390,7 +388,7 @@ http_interactions:
         {\n       \"server\":      \"puppet.example.org\",\n       \"environment\":
         \"production\"\n    },\n    \"broker_type\": \"puppet\"\n  }\n"},"schema":{"name":{"type":"string","position":0},"broker_type":{"type":"string","aliases":["broker-type"],"position":1},"configuration":{"type":"object","aliases":["c"]}}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: post
     uri: http://localhost:8150/api/commands/create-broker
@@ -398,20 +396,18 @@ http_interactions:
       encoding: UTF-8
       string: '{"name":"puppet","configuration":{"server":"puppet.example.org","environment":"production"},"broker_type":"puppet"}'
     headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Content-Type:
+      - application/json
+      Accept:
       - application/json
       Accept-Language:
       - en_US,en
-      Content-Length:
-      - '115'
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 202
@@ -426,12 +422,12 @@ http_interactions:
       Content-Length:
       - '209'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/brokers/member","id":"http://localhost:8150/api/collections/brokers/puppet","name":"puppet","command":"http://localhost:8150/api/collections/commands/2"}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/collections/brokers/puppet
@@ -441,14 +437,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -463,12 +459,12 @@ http_interactions:
       Content-Length:
       - '356'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/brokers/member","id":"http://localhost:8150/api/collections/brokers/puppet","name":"puppet","configuration":{"server":"puppet.example.org","environment":"production"},"broker_type":"puppet","policies":{"id":"http://localhost:8150/api/collections/brokers/puppet/policies","count":0,"name":"policies"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api
@@ -478,14 +474,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -498,14 +494,14 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '7110'
+      - '7432'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.8.0-dirty"}}'
+      string: '{"commands":[{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers","params":{"depth":{"type":"number"}}},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos","params":{"depth":{"type":"number"}}},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags","params":{"depth":{"type":"number"}}},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies","params":{"depth":{"type":"number"}}},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks","params":{"depth":{"type":"number"}}},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands","params":{"depth":{"type":"number"}}},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks","params":{"depth":{"type":"number"}}},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.9.5-9-g774b5ce-dirty"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/commands/create-tag
@@ -515,14 +511,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -531,7 +527,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v1.8.0-dirty"'
+      - '"server-version-v1.9.5-9-g774b5ce-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
@@ -539,7 +535,7 @@ http_interactions:
       Content-Length:
       - '4738'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -650,7 +646,7 @@ http_interactions:
         cmluZyIsInBvc2l0aW9uIjowfSwicnVsZSI6eyJ0eXBlIjoiYXJyYXkiLCJw
         b3NpdGlvbiI6MX19fQ==
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: post
     uri: http://localhost:8150/api/commands/create-tag
@@ -658,20 +654,18 @@ http_interactions:
       encoding: UTF-8
       string: '{"name":"tag1","rule":["=",["fact","processorcount"],"1"]}'
     headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Content-Type:
+      - application/json
+      Accept:
       - application/json
       Accept-Language:
       - en_US,en
-      Content-Length:
-      - '58'
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 202
@@ -686,12 +680,12 @@ http_interactions:
       Content-Length:
       - '199'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8150/api/collections/tags/tag1","name":"tag1","command":"http://localhost:8150/api/collections/commands/3"}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/collections/tags/tag1
@@ -701,14 +695,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -723,12 +717,12 @@ http_interactions:
       Content-Length:
       - '382'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8150/api/collections/tags/tag1","name":"tag1","rule":["=",["fact","processorcount"],"1"],"nodes":{"id":"http://localhost:8150/api/collections/tags/tag1/nodes","count":0,"name":"nodes"},"policies":{"id":"http://localhost:8150/api/collections/tags/tag1/policies","count":0,"name":"policies"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api
@@ -738,14 +732,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -758,14 +752,14 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '7110'
+      - '7432'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.8.0-dirty"}}'
+      string: '{"commands":[{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers","params":{"depth":{"type":"number"}}},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos","params":{"depth":{"type":"number"}}},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags","params":{"depth":{"type":"number"}}},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies","params":{"depth":{"type":"number"}}},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks","params":{"depth":{"type":"number"}}},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands","params":{"depth":{"type":"number"}}},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks","params":{"depth":{"type":"number"}}},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.9.5-9-g774b5ce-dirty"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/commands/create-tag
@@ -775,14 +769,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -791,7 +785,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v1.8.0-dirty"'
+      - '"server-version-v1.9.5-9-g774b5ce-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
@@ -799,7 +793,7 @@ http_interactions:
       Content-Length:
       - '4738'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -910,7 +904,7 @@ http_interactions:
         cmluZyIsInBvc2l0aW9uIjowfSwicnVsZSI6eyJ0eXBlIjoiYXJyYXkiLCJw
         b3NpdGlvbiI6MX19fQ==
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: post
     uri: http://localhost:8150/api/commands/create-tag
@@ -918,20 +912,18 @@ http_interactions:
       encoding: UTF-8
       string: '{"name":"tag2","rule":["=",["fact","processorcount"],"2"]}'
     headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Content-Type:
+      - application/json
+      Accept:
       - application/json
       Accept-Language:
       - en_US,en
-      Content-Length:
-      - '58'
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 202
@@ -946,12 +938,12 @@ http_interactions:
       Content-Length:
       - '199'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8150/api/collections/tags/tag2","name":"tag2","command":"http://localhost:8150/api/collections/commands/4"}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/collections/tags/tag2
@@ -961,14 +953,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -983,12 +975,12 @@ http_interactions:
       Content-Length:
       - '382'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8150/api/collections/tags/tag2","name":"tag2","rule":["=",["fact","processorcount"],"2"],"nodes":{"id":"http://localhost:8150/api/collections/tags/tag2/nodes","count":0,"name":"nodes"},"policies":{"id":"http://localhost:8150/api/collections/tags/tag2/policies","count":0,"name":"policies"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api
@@ -998,14 +990,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -1018,14 +1010,14 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '7110'
+      - '7432'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
-      string: '{"commands":[{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers"},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos"},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags"},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies"},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks"},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands"},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks"},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.8.0-dirty"}}'
+      string: '{"commands":[{"name":"update-repo-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-repo-task","id":"http://localhost:8150/api/commands/update-repo-task"},{"name":"delete-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-hook","id":"http://localhost:8150/api/commands/delete-hook"},{"name":"delete-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-broker","id":"http://localhost:8150/api/commands/delete-broker"},{"name":"register-node","rel":"http://api.puppetlabs.com/razor/v1/commands/register-node","id":"http://localhost:8150/api/commands/register-node"},{"name":"update-policy-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-broker","id":"http://localhost:8150/api/commands/update-policy-broker"},{"name":"update-policy-task","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-task","id":"http://localhost:8150/api/commands/update-policy-task"},{"name":"set-node-desired-power-state","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-desired-power-state","id":"http://localhost:8150/api/commands/set-node-desired-power-state"},{"name":"set-node-hw-info","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-hw-info","id":"http://localhost:8150/api/commands/set-node-hw-info"},{"name":"run-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/run-hook","id":"http://localhost:8150/api/commands/run-hook"},{"name":"create-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/create-policy","id":"http://localhost:8150/api/commands/create-policy"},{"name":"reinstall-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reinstall-node","id":"http://localhost:8150/api/commands/reinstall-node"},{"name":"disable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/disable-policy","id":"http://localhost:8150/api/commands/disable-policy"},{"name":"enable-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/enable-policy","id":"http://localhost:8150/api/commands/enable-policy"},{"name":"create-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/create-repo","id":"http://localhost:8150/api/commands/create-repo"},{"name":"remove-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-node-metadata","id":"http://localhost:8150/api/commands/remove-node-metadata"},{"name":"modify-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-node-metadata","id":"http://localhost:8150/api/commands/modify-node-metadata"},{"name":"update-policy-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-node-metadata","id":"http://localhost:8150/api/commands/update-policy-node-metadata"},{"name":"add-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/add-policy-tag","id":"http://localhost:8150/api/commands/add-policy-tag"},{"name":"remove-policy-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/remove-policy-tag","id":"http://localhost:8150/api/commands/remove-policy-tag"},{"name":"create-hook","rel":"http://api.puppetlabs.com/razor/v1/commands/create-hook","id":"http://localhost:8150/api/commands/create-hook"},{"name":"update-policy-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/update-policy-repo","id":"http://localhost:8150/api/commands/update-policy-repo"},{"name":"update-tag-rule","rel":"http://api.puppetlabs.com/razor/v1/commands/update-tag-rule","id":"http://localhost:8150/api/commands/update-tag-rule"},{"name":"delete-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-policy","id":"http://localhost:8150/api/commands/delete-policy"},{"name":"delete-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-tag","id":"http://localhost:8150/api/commands/delete-tag"},{"name":"create-tag","rel":"http://api.puppetlabs.com/razor/v1/commands/create-tag","id":"http://localhost:8150/api/commands/create-tag"},{"name":"delete-node","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-node","id":"http://localhost:8150/api/commands/delete-node"},{"name":"reboot-node","rel":"http://api.puppetlabs.com/razor/v1/commands/reboot-node","id":"http://localhost:8150/api/commands/reboot-node"},{"name":"move-policy","rel":"http://api.puppetlabs.com/razor/v1/commands/move-policy","id":"http://localhost:8150/api/commands/move-policy"},{"name":"set-node-ipmi-credentials","rel":"http://api.puppetlabs.com/razor/v1/commands/set-node-ipmi-credentials","id":"http://localhost:8150/api/commands/set-node-ipmi-credentials"},{"name":"delete-repo","rel":"http://api.puppetlabs.com/razor/v1/commands/delete-repo","id":"http://localhost:8150/api/commands/delete-repo"},{"name":"modify-policy-max-count","rel":"http://api.puppetlabs.com/razor/v1/commands/modify-policy-max-count","id":"http://localhost:8150/api/commands/modify-policy-max-count"},{"name":"update-node-metadata","rel":"http://api.puppetlabs.com/razor/v1/commands/update-node-metadata","id":"http://localhost:8150/api/commands/update-node-metadata"},{"name":"create-task","rel":"http://api.puppetlabs.com/razor/v1/commands/create-task","id":"http://localhost:8150/api/commands/create-task"},{"name":"update-hook-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-hook-configuration","id":"http://localhost:8150/api/commands/update-hook-configuration"},{"name":"create-broker","rel":"http://api.puppetlabs.com/razor/v1/commands/create-broker","id":"http://localhost:8150/api/commands/create-broker"},{"name":"update-broker-configuration","rel":"http://api.puppetlabs.com/razor/v1/commands/update-broker-configuration","id":"http://localhost:8150/api/commands/update-broker-configuration"}],"collections":[{"name":"brokers","rel":"http://api.puppetlabs.com/razor/v1/collections/brokers","id":"http://localhost:8150/api/collections/brokers","params":{"depth":{"type":"number"}}},{"name":"repos","rel":"http://api.puppetlabs.com/razor/v1/collections/repos","id":"http://localhost:8150/api/collections/repos","params":{"depth":{"type":"number"}}},{"name":"tags","rel":"http://api.puppetlabs.com/razor/v1/collections/tags","id":"http://localhost:8150/api/collections/tags","params":{"depth":{"type":"number"}}},{"name":"policies","rel":"http://api.puppetlabs.com/razor/v1/collections/policies","id":"http://localhost:8150/api/collections/policies","params":{"depth":{"type":"number"}}},{"name":"nodes","rel":"http://api.puppetlabs.com/razor/v1/collections/nodes","id":"http://localhost:8150/api/collections/nodes","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"tasks","rel":"http://api.puppetlabs.com/razor/v1/collections/tasks","id":"http://localhost:8150/api/collections/tasks","params":{"depth":{"type":"number"}}},{"name":"commands","rel":"http://api.puppetlabs.com/razor/v1/collections/commands","id":"http://localhost:8150/api/collections/commands","params":{"depth":{"type":"number"}}},{"name":"events","rel":"http://api.puppetlabs.com/razor/v1/collections/events","id":"http://localhost:8150/api/collections/events","params":{"start":{"type":"number"},"limit":{"type":"number"},"depth":{"type":"number"}}},{"name":"hooks","rel":"http://api.puppetlabs.com/razor/v1/collections/hooks","id":"http://localhost:8150/api/collections/hooks","params":{"depth":{"type":"number"}}},{"name":"config","rel":"http://api.puppetlabs.com/razor/v1/collections/config","id":"http://localhost:8150/api/collections/config"}],"version":{"server":"v1.9.5-9-g774b5ce-dirty"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:07 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/commands/create-policy
@@ -1035,14 +1027,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -1051,7 +1043,7 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Etag:
-      - '"server-version-v1.8.0-dirty"'
+      - '"server-version-v1.9.5-9-g774b5ce-dirty"'
       X-Content-Type-Options:
       - nosniff
       Content-Type:
@@ -1059,7 +1051,7 @@ http_interactions:
       Content-Length:
       - '11422'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:07 GMT
     body:
       encoding: UTF-8
       string: '{"name":"create-policy","help":{"summary":"Create a new policy","description":"Policies
@@ -1194,7 +1186,7 @@ http_interactions:
         \"secret\",\n    \"max_count\":     20,\n    \"before\":        \"other policy\",\n    \"tags\":          [\"small\"],\n    \"node_metadata\":
         {\"key\": \"value\"}\n  }\n"},"schema":{"name":{"type":"string","position":0},"hostname":{"type":"string"},"root_password":{"type":"string","aliases":["root-password"]},"enabled":{"type":"boolean"},"max_count":{"type":"number","aliases":["max-count"]},"before":{"type":"string"},"after":{"type":"string"},"tags":{"type":"array","aliases":["tag"]},"repo":{"type":"string"},"broker":{"type":"string"},"task":{"type":"string"},"node_metadata":{"type":"object","aliases":["node-metadata"]}}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:08 GMT
 - request:
     method: post
     uri: http://localhost:8150/api/commands/create-policy
@@ -1202,20 +1194,18 @@ http_interactions:
       encoding: UTF-8
       string: '{"name":"test","hostname":"abc.com","root_password":"abc","task":"noop","repo":"name","broker":"puppet","tags":["tag1","tag2"]}'
     headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Content-Type:
+      - application/json
+      Accept:
       - application/json
       Accept-Language:
       - en_US,en
-      Content-Length:
-      - '127'
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 202
@@ -1230,12 +1220,12 @@ http_interactions:
       Content-Length:
       - '207'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:08 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/policies/member","id":"http://localhost:8150/api/collections/policies/test","name":"test","command":"http://localhost:8150/api/collections/commands/5"}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:08 GMT
 - request:
     method: get
     uri: http://localhost:8150/api/collections/policies/test
@@ -1245,14 +1235,14 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin x86_64) jruby/9.1.5.0 (2.3.1p0)
       Accept-Language:
       - en_US,en
-      Host:
-      - localhost:8150
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Basic Og==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
@@ -1267,10 +1257,10 @@ http_interactions:
       Content-Length:
       - '1071'
       Date:
-      - Mon, 23 Apr 2018 19:46:37 GMT
+      - Fri, 23 Aug 2019 19:49:08 GMT
     body:
       encoding: UTF-8
       string: '{"spec":"http://api.puppetlabs.com/razor/v1/collections/policies/member","id":"http://localhost:8150/api/collections/policies/test","name":"test","repo":{"spec":"http://api.puppetlabs.com/razor/v1/collections/repos/member","id":"http://localhost:8150/api/collections/repos/name","name":"name"},"task":{"spec":"http://api.puppetlabs.com/razor/v1/collections/tasks/member","id":"http://localhost:8150/api/collections/tasks/noop","name":"noop"},"broker":{"spec":"http://api.puppetlabs.com/razor/v1/collections/brokers/member","id":"http://localhost:8150/api/collections/brokers/puppet","name":"puppet"},"enabled":true,"configuration":{"hostname_pattern":"abc.com","root_password":"abc"},"tags":[{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8150/api/collections/tags/tag1","name":"tag1"},{"spec":"http://api.puppetlabs.com/razor/v1/collections/tags/member","id":"http://localhost:8150/api/collections/tags/tag2","name":"tag2"}],"nodes":{"id":"http://localhost:8150/api/collections/policies/test/nodes","count":0,"name":"nodes"}}'
     http_version:
-  recorded_at: Mon, 23 Apr 2018 19:46:37 GMT
+  recorded_at: Fri, 23 Aug 2019 19:49:08 GMT
 recorded_with: VCR 4.0.0
