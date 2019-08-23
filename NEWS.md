@@ -1,5 +1,10 @@
 # Razor Client Release Notes
 
+## 1.9.4 - ???
+
+* IMPROVEMENT: Moved from `rest-client` to `faraday` due to increasing
+  dependency issues with `rest-client`. 
+
 ## 1.9.3 - 2019-08-19
 
 * BUGFIX: The `unf` gem dependency referenced a prerelease version of a gem.

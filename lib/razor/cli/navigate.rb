@@ -1,4 +1,4 @@
-require 'rest-client'
+require 'faraday'
 require 'multi_json'
 require 'yaml'
 require 'forwardable'
@@ -14,8 +14,7 @@ module Razor::CLI
       @segments = segments||[]
       set_api_url!(parse)
       @doc = entrypoint
-      @doc_resource = create_resource parse.api_url, {:accept => :json,
-                                               :accept_language => accept_language}
+      @doc_resource = create_resource parse.api_url, default_headers
     end
 
     # This returns an array of two elements:
@@ -51,7 +50,7 @@ module Razor::CLI
     attr_accessor :doc_resource
 
     def last_url
-      @doc_resource
+      @doc_resource.build_url
     end
 
     def entrypoint
@@ -100,7 +99,7 @@ module Razor::CLI
         command = json_get(cmd_url)
         Razor::CLI::Command.new(@parse, self, command, @segments, cmd_url).run
       else
-        raise NavigationError.new(@doc_resource, @segments, @doc)
+        raise NavigationError.new(@doc_resource.build_url, @segments, @doc)
       end
     end
 
@@ -114,7 +113,7 @@ module Razor::CLI
         obj = @doc[key]
       end
 
-      raise NavigationError.new(@doc_resource, key, @doc) if obj.nil?
+      raise NavigationError.new(@doc_resource.build_url, key, @doc) if obj.nil?
 
       if obj.is_a?(Hash) && obj["id"]
         url = URI.parse(obj["id"])
@@ -145,6 +144,11 @@ module Razor::CLI
       @accept_language ||= GettextSetup.candidate_locales
     end
 
+    def default_headers
+      {'accept' => 'application/json',
+       'accept_language' => accept_language}
+    end
+
     def head(url, headers={})
       resource = create_resource(url, headers)
       response = resource.head
@@ -166,10 +170,12 @@ module Razor::CLI
       @username ||= url.user
       @password ||= url.password
 
-      response = get(url,headers.merge(:accept => :json,
-                                       :accept_language => accept_language))
+      response = get(url, headers.merge(default_headers))
+      if response.status == 401
+        raise UnauthorizedError.new(url)
+      end
       unless response.headers[:content_type] =~ /application\/json/
-        raise _("Received content type %{content_type}") % {content_type: response.headers[:content_type]}
+        raise _('Received content type %{content_type}') % {content_type: response.headers[:content_type]}
       end
       MultiJson.load(response.body)
     end
@@ -178,11 +184,14 @@ module Razor::CLI
       @username ||= url.user
       @password ||= url.password
 
-      headers = { :accept=>:json, "Content-Type" => :json,
-                  :accept_language => accept_language}
+      headers = {'Content-Type' => 'application/json'}.merge(default_headers)
       begin
         resource = create_resource(url, headers)
-        response = resource.post MultiJson::dump(body)
+        # `nil` here because the URL above is absolute, not relative.
+        response = resource.post nil, MultiJson::dump(body)
+        if response.status == 401
+          raise UnauthorizedError.new(url)
+        end
       ensure
         if @parse.dump_response?
           print "POST #{url.to_s}\n#{body}\n-->\n"
@@ -200,7 +209,7 @@ module Razor::CLI
       begin
         url = RAZOR_HTTPS_API
         head(URI.parse(url))
-      rescue Errno::ENOENT, Errno::ECONNREFUSED
+      rescue Errno::ENOENT, Faraday::ConnectionFailed
         false
       ensure
         print "HEAD #{url.to_s}\n\n" if @parse.dump_response?
@@ -209,13 +218,13 @@ module Razor::CLI
     end
 
     def create_resource(url, headers)
-      @doc_resource = RestClient::Resource.new(url.to_s,
+      @doc_resource = Faraday.new(url,
           :headers => headers,
-          :verify_ssl => @parse.verify_ssl?,
-          :ssl_ca_file => @parse.ssl_ca_file,
-          # Add these in case the URL above doesn't include authentication.
-          :user => @username || url.user,
-          :password => @password || url.password)
+          :ssl => {verify: @parse.verify_ssl?,
+                   ca_file: @parse.ssl_ca_file}).tap do |req|
+            # Add these in case the URL above doesn't include authentication.
+            req.basic_auth(@username || url.user, @password || url.password)
+      end
     end
   end
 end

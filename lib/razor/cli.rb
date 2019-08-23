@@ -38,6 +38,12 @@ module Razor
       end
     end
 
+    class UnauthorizedError < Error
+      def initialize(url)
+        super _("Credentials are required to connect to the server at %{url}") % {url: url}
+      end
+    end
+
   end
 end
 

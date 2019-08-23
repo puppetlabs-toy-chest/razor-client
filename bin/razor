@@ -32,8 +32,6 @@ end
 begin
   parse = Razor::CLI::Parse.new(ARGV)
 
-  navigate = parse.navigate
-
   if parse.show_version?
     version, exit_code = parse.version
     puts version
@@ -46,28 +44,28 @@ begin
     exit exitcode
   end
 
+  navigate = parse.navigate
+
   document = navigate.get_document
   url = parse.navigate.last_url
   result = format_document document, parse
   # TRANSLATORS: This is a template for all results that the client outputs.
   puts _("From %{url}:\n\n%{result}\n\n") % {url: url, result: result}
-rescue Razor::CLI::InvalidURIError => e
+rescue Razor::CLI::InvalidURIError, Razor::CLI::UnauthorizedError => e
   die e.message
-rescue RestClient::Unauthorized
-  die _("Error: Credentials are required to connect to the server at %{url}") % {url: url}
 rescue OptionParser::InvalidOption => e
   # TRANSLATORS: This occurs when invalid flags are passed in the navigation.
   die _("%{error}\nTry 'razor --help' for more information") %
       {error: e.message}
-rescue SocketError, Errno::ECONNREFUSED => e
+rescue SocketError, Faraday::ConnectionFailed => e
   puts _("Error: Could not connect to the server at %{url}\n" +
          "       %{error}") % {url: parse.api_url, error: e}
   die
-rescue RestClient::SSLCertificateNotVerified
+rescue Faraday::SSLError
   puts _("Error: SSL certificate could not be verified against known CA " +
          "certificates.\n       To turn off verification, use the -k or --insecure option.")
   die
-rescue RestClient::Exception => e
+rescue Faraday::Error => e
   r = e.response
   unexpected_error(e) if r.nil?
   request_type = r.request.method.to_s.upcase

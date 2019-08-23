@@ -25,7 +25,7 @@ describe Razor::CLI::Navigate do
 
     it do
       nav.get_document
-      nav.last_url.to_s.should =~ %r{/api/collections/tags$}
+      nav.last_url.to_s.should =~ %r{/api/collections/tags}
     end
   end
 
@@ -67,28 +67,28 @@ describe Razor::CLI::Navigate do
       %w[--version].freeze
     end
     it "chooses the -u argument first" do
-      url = 'http://u-argument:8000'
+      url = 'http://u-argument:8000/api'
       stub_results(url)
       cli_string = %W[-u #{url} --version].freeze
       nav = Razor::CLI::Parse.new(cli_string).navigate
       nav.last_url.to_s.should == url
     end
     it "chooses the ENV variable second" do
-      url = 'http://env-variable:8000'
+      url = 'http://env-variable:8000/api'
       stub_results(url)
       ENV::store('RAZOR_API', url)
       nav = Razor::CLI::Parse.new(cli_string).navigate
       nav.last_url.to_s.should == url
     end
     it "chooses the HTTPS URL third" do
-      url = 'http://https-url:8000'
+      url = 'http://https-url:8000/api'
       stub_results(url)
       stub_const('Razor::CLI::Navigate::RAZOR_HTTPS_API', url)
       nav = Razor::CLI::Parse.new(cli_string).navigate
       nav.last_url.to_s.should == url
     end
     it "chooses the HTTP URL last" do
-      url = 'http://http-url:8000'
+      url = 'http://http-url:8000/api'
       refused = 'http://refused:404/api'
       stub_results(url)
       # PRIORITY still needs to be refused
@@ -224,15 +224,13 @@ describe Razor::CLI::Navigate do
     it "should supply that to the API service" do
       nav = Razor::CLI::Parse.new(AuthArg).navigate
       nav.get_document.should be_an_instance_of Hash
-      nav.last_url.user.should == 'fred'
-      nav.last_url.password.should == 'dead'
+      nav.doc_resource.headers['Authorization'].should match(/Basic /)
     end
 
     it "should preserve that across navigation" do
       nav = Razor::CLI::Parse.new(AuthArg + ['tags']).navigate
       nav.get_document['items'].should == []
-      nav.last_url.user.should == 'fred'
-      nav.last_url.password.should == 'dead'
+      nav.doc_resource.headers["Authorization"].should match(/Basic /)
     end
   end
 
@@ -283,7 +281,7 @@ describe Razor::CLI::Navigate do
     it "should be set to 1 when the endpoint is the final query" do
       nav = Razor::CLI::Parse.new(['nodes']).navigate
       nav.get_document
-      expect(nav.doc_resource.url).to match(/nodes\?depth=1/)
+      expect(nav.last_url.to_s).to match(/nodes\?depth=1/)
     end
 
     it "should not carry-over to later requests in a nested query" do
@@ -301,7 +299,7 @@ describe Razor::CLI::Navigate do
       # was visited, and that the depth parameter was not used (since
       # it is an intermediate request). We should also update the test
       # description when we do this to note the new assertion.
-      expect(nav.doc_resource.url).not_to match(/depth/)
+      expect(nav.last_url.to_s).not_to match(/depth/)
     end
   end
 
@@ -322,7 +320,7 @@ describe Razor::CLI::Navigate do
       locales.should == 'de_DE,de,en'
       nav = Razor::CLI::Parse.new(['create-broker', '--name=other-broker', '--broker-type', 'puppet-pe', '-c', 'server=abc.com']).navigate
       nav.accept_language.should == locales
-      nav.doc_resource.options[:headers][:accept_language].should == locales
+      nav.doc_resource.headers["accept_language"].should == locales
     end
   end
 end
