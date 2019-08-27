@@ -60,6 +60,16 @@ describe Razor::CLI::Command do
             to raise_error(ArgumentError, /Expected nothing for argument 'tags', but was: 'abc'/)
       end
     end
+    context "boolean conversion" do
+      it "errors when anything besides 'true', 'false' or nil are provided" do
+        cmd_schema = {"enabled"=>{"type"=>"boolean"}}
+        expect{Command.convert_arg('enabled', 'abc', existing_value, cmd_schema)}.
+            to raise_error(ArgumentError, /Invalid boolean for argument 'enabled': abc/)
+        expect(Command.convert_arg('enabled', 'true', existing_value, cmd_schema)).to eq(true)
+        expect(Command.convert_arg('enabled', nil, existing_value, cmd_schema)).to eq(true)
+        expect(Command.convert_arg('enabled', 'false', existing_value, cmd_schema)).to eq(false)
+      end
+    end
   end
 
   context "resolve_alias" do
@@ -104,6 +114,9 @@ describe Razor::CLI::Command do
       it "succeeds with a double dash for long flags" do
         extract({'schema' => {'name' => {'type' => 'array'}}},
                 ['--name', 'abc'])['name'].should == ['abc']
+        extract({'schema' => {'true' => {'type' => 'boolean'},
+                                      'other' => {'type' => 'number'}}},
+                ['--true', '--other', '123'])['true'].should be_true
       end
       it "succeeds with a single dash for short flags" do
         c = Razor::CLI::Command.new(nil, nil, {'schema' => {'n' => {'type' => 'array'}}},
