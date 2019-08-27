@@ -35,7 +35,7 @@ class Razor::CLI::Command
         # `--arg=value`/`--arg value`
         # `-a=value`/`-a value`
         arg_name, value = [$1, $3]
-        value = @segments.shift if value.nil? && @segments[0] !~ /^-[a-z]/
+        value = @segments.shift if value.nil? && @segments[0] !~ /^-[-]?[a-z]/
         arg_name = self.class.resolve_alias(arg_name, @cmd_schema)
         body[arg_name] = self.class.convert_arg(arg_name, value, body[arg_name], @cmd_schema)
       elsif argument =~ /\A-([a-z][a-z_-]+)(=(.+))?\Z/ and
@@ -127,7 +127,9 @@ class Razor::CLI::Command
               {argument_name: arg_name, error: error.message}
         end
       when "boolean"
-        ["true", nil].include?(value)
+        raise ArgumentError, _("Invalid boolean for argument '%{argument_name}': %{value}") %
+            {argument_name: arg_name, value: value} unless ["true", "false", nil].include?(value)
+        value != "false"
       when "number"
         begin
           Integer(value)
