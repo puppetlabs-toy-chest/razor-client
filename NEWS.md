@@ -1,5 +1,10 @@
 # Razor Client Release Notes
 
+## 1.9.5 - 2019-08-29
+
+* BUGFIX: Fixed handling of boolean arguments, e.g. `--enabled` in
+  `create-policy`, where the following arguments were not delineated properly.
+
 ## 1.9.4 - 2019-08-26
 
 * IMPROVEMENT: Moved from `rest-client` to `faraday` due to increasing
