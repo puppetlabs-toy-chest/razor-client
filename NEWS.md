@@ -1,5 +1,10 @@
 # Razor Client Release Notes
 
+## 1.9.6 - 2019-08-30
+
+* BUGFIX: The client's version number was not being displayed correctly in
+  `razor -v`.
+
 ## 1.9.5 - 2019-08-29
 
 * BUGFIX: Fixed handling of boolean arguments, e.g. `--enabled` in
